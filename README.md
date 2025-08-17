@@ -1,4 +1,4 @@
-// --- FILE: README.md ---
+
 # 72° AI LABS Website
 
 This project is a static website for 72° AI LABS, built using the Astro framework and Tailwind CSS, as per the provided brief. It is designed for optimal performance, SEO, and static deployment on platforms like GitHub Pages.
