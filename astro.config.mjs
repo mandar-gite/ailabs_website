@@ -1,3 +1,4 @@
+```
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
@@ -8,4 +9,15 @@ export default defineConfig({
   base: '/',
   output: 'static',
   integrations: [tailwind()],
+});
+
+```
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  site: 'https://mandar-gite.github.io',
+  base: '/ailabs_website',
+  build: {
+    assets: 'assets'
+  }
 });
