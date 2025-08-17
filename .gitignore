@@ -6,6 +6,7 @@ node_modules/
 dist/
 .astro/
 
+gc 
 # Environment variables
 .env
 .env.local
