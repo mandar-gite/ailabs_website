@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://72ai.in/sitemap-index.xml

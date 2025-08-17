@@ -1,0 +1,25 @@
+[
+  {
+    "id": "case-1",
+    "title": "F&B Operations Optimization",
+    "problem": "Fragmented sales data from multiple outlets led to poor inventory and staff planning.",
+    "intervention": "Developed a unified data dashboard and AI model for demand forecasting.",
+    "outcome": "Reduced food wastage by 15% and optimized staff scheduling, leading to a 20% increase in labor efficiency.",
+    "link": "/case-studies/fnb-ops-optimization"
+  },
+  {
+    "id": "case-2",
+    "title": "Manufacturing OEE Insights",
+    "problem": "Manual machine data logging resulted in inaccurate Overall Equipment Effectiveness (OEE) metrics.",
+    "intervention": "Implemented an IoT sensor-based system to automatically collect and analyze real-time machine data.",
+    "outcome": "Improved OEE visibility by 40%, identifying bottlenecks that led to a 10% increase in throughput.",
+    "link": "/case-studies/manufacturing-oee-insights"
+  },
+  {
+    "id": "case-3",
+    "title": "SME Financial Forecasting",
+    "problem": "Reliance on manual, spreadsheet-based financial tracking from Tally and GSTN data.",
+    "intervention": "Created a secure pipeline to ingest data and apply predictive models for cash flow forecasting.",
+    "outcome": "Provided a clear 12-month financial outlook, enabling proactive budget management and strategic investment decisions."
+  }
+]

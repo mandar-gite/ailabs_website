@@ -1,0 +1,55 @@
+---
+// This form uses Formspree as the backend for static forms.
+// You must replace the action URL with your unique Formspree endpoint.
+const FORM_ENDPOINT = "https://formspree.io/f/xdkdvzvl";
+---
+<section id="contact" class="py-16">
+  <h2 class="text-3xl font-bold text-white mb-10 text-center">Book a Call or Send an Inquiry</h2>
+  <div class="bg-gray-800 p-8 rounded-lg shadow-xl max-w-lg mx-auto">
+    <form action={FORM_ENDPOINT} method="POST" class="space-y-6">
+      <div>
+        <label for="name" class="block text-gray-300 mb-2">Name</label>
+        <input type="text" id="name" name="Name" class="w-full px-4 py-2 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+      </div>
+      <div>
+        <label for="company" class="block text-gray-300 mb-2">Company</label>
+        <input type="text" id="company" name="Company" class="w-full px-4 py-2 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+      </div>
+      <div>
+        <label for="email" class="block text-gray-300 mb-2">Email</label>
+        <input type="email" id="email" name="Email" class="w-full px-4 py-2 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+      </div>
+      <div>
+        <label for="phone" class="block text-gray-300 mb-2">Phone</label>
+        <input type="tel" id="phone" name="Phone" class="w-full px-4 py-2 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+      </div>
+      <div>
+        <label for="sector" class="block text-gray-300 mb-2">Sector</label>
+        <select id="sector" name="Sector" class="w-full px-4 py-2 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+          <option value="">Select your sector</option>
+          <option value="F&B (Hospitality)">F&B (Hospitality)</option>
+          <option value="Manufacturing">Manufacturing</option>
+          <option value="SME (Cross-functional)">SME (Cross-functional)</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="message" class="block text-gray-300 mb-2">Your Brief</label>
+        <textarea id="message" name="Brief" rows="5" class="w-full px-4 py-2 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500" required></textarea>
+      </div>
+      <div class="flex items-start">
+        <input type="checkbox" id="consent" name="Consent" class="mt-1" required>
+        <label for="consent" class="ml-2 text-gray-400 text-sm">
+          I consent to 72° AI LABS collecting my data for the purpose of this inquiry.
+        </label>
+      </div>
+      <!-- Honeypot field for bot protection -->
+      <input type="text" name="_gotcha" style="display:none !important">
+      <div class="text-center">
+        <button type="submit" class="px-6 py-3 bg-teal-500 hover:bg-teal-600 text-white font-semibold rounded-full shadow-lg transition-colors duration-300">
+          Send Message
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

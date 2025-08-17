@@ -1,0 +1,36 @@
+---
+const steps = [
+  {
+    icon: 'connect-icon',
+    title: 'Connect',
+    description: 'We securely connect to your existing data sources like Tally, PetPooja, and WhatsApp conversations.'
+  },
+  {
+    icon: 'clean-icon',
+    title: 'Clean & Context',
+    description: 'Our AI engine cleans, structures, and provides context to your fragmented data, turning noise into a clear signal.'
+  },
+  {
+    icon: 'decisions-icon',
+    title: 'Decisions',
+    description: 'We deliver actionable dashboards and insights that empower you to make data-driven decisions that impact your bottom line.'
+  }
+];
+---
+<section id="how-it-works" class="py-16 bg-gray-900 text-gray-200">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold text-white mb-10">How It Works</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      {steps.map(step => (
+        <div class="flex flex-col items-center p-6 bg-gray-800 rounded-lg shadow-xl">
+          <!-- Placeholder for icons - replace with SVGs or images -->
+          <div class="w-16 h-16 rounded-full bg-teal-500 flex items-center justify-center mb-4">
+            <span class="text-white text-3xl">{step.icon}</span>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-2">{step.title}</h3>
+          <p class="text-gray-400">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
