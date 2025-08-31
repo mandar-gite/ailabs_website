@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ContactForm from "../components/ContactForm.astro";
-import Bars from "../components/IllustrationBars.astro";
 // Import logo assets
 import logoSvg from "../../logo_ver2.1.svg?url";
 import logoJpg from "../../logo.jpg?url";
@@ -92,12 +91,12 @@ const seoDescription = "Turn your business data into clear, confident decisions 
     </section>
 
     <!-- Problem Section -->
-    <section class="problem-section">
+    <section class="problem-section" id="problem-section">
         <div class="max-w-[1200px] mx-auto px-5">
+            <h2 class="problem-title">Are You Making Decisions Blind?</h2>
             <div class="problem-grid">
-                <div>
-                    <h2 class="text-[#2c3e50]">You're Making Decisions Blind</h2>
-                    <ul class="problem-list reveal-list">
+                <div class="problem-col">
+                    <ul class="problem-list reveal-list" aria-label="Select the issues you face most">
                         <li class="problem-item" data-i="1">
                             <span class="problem-icon" aria-hidden="true">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -159,9 +158,22 @@ const seoDescription = "Turn your business data into clear, confident decisions 
                         </li>
                     </ul>
                 </div>
-                <div class="animate-float flex flex-col items-center">
-                    <Bars />
-                    <p class="mt-4 text-center text-[1.1rem] text-[#0C1A3F]">Your data has answers.<br/>You just need the right questions.</p>
+                <div class="flex flex-col items-center">
+                    <div class="dx-box mt-4 w-full max-w-[420px]" id="dx-box" aria-live="polite">
+                        <div class="dx-row">
+                            <strong>Which of these do you face most?</strong>
+                            <span><span class="dx-count" id="issue-count">0</span>/6 selected</span>
+                        </div>
+                        <p id="dx-msg" class="mt-1 text-sm opacity-80">Tap the ones that sting.</p>
+                    </div>
+                    <div class="dx-pop" id="dx-pop">
+                        <div class="title">You’re taking blind decisions.</div>
+                        <div class="note">Let’s light up the signal in your data.</div>
+                    </div>
+                    <p id="answers-line" class="mt-4 text-center answers-line answers-burst hidden">Your data has answers.<br/>You just need the right questions.</p>
+                    <div id="dx-cta-final" class="text-center hidden">
+                        <a href="#contact" class="dx-cta dx-cta-final">Get a free audit</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -251,5 +263,71 @@ const seoDescription = "Turn your business data into clear, confident decisions 
           });
         }, { threshold: 0.2 });
         items.forEach(el => obs.observe(el));
+
+        // Mini-score: toggle selection and update count/message
+        const countEl = document.getElementById('issue-count');
+        const msgEl = document.getElementById('dx-msg');
+        const dxPop = document.getElementById('dx-pop');
+        const answersLine = document.getElementById('answers-line');
+        const ctaFinal = document.getElementById('dx-cta-final');
+        let answersTimer = null;
+        let ctaTimer = null;
+        const problemSection = document.getElementById('problem-section');
+        function updateScore() {
+          const count = document.querySelectorAll('.problem-item.selected').length;
+          if (countEl) countEl.textContent = String(count);
+          if (!msgEl) return;
+          if (count >= 3) {
+            msgEl.textContent = "If you ticked 3 or more, you’re flying blind.";
+            if (problemSection) problemSection.classList.add('dx-active');
+            if (dxPop) dxPop.style.display = 'block';
+            if (answersLine) {
+              if (answersTimer) clearTimeout(answersTimer);
+              answersTimer = setTimeout(() => { 
+                answersLine.classList.remove('hidden');
+                answersLine.classList.add('show');
+              }, 800);
+            }
+            if (ctaFinal) {
+              if (ctaTimer) clearTimeout(ctaTimer);
+              ctaTimer = setTimeout(() => { ctaFinal.classList.remove('hidden'); }, 800 + 650);
+            }
+          } else if (count === 0) {
+            msgEl.textContent = "Tap the ones that sting.";
+            if (problemSection) problemSection.classList.remove('dx-active');
+            if (dxPop) dxPop.style.display = 'none';
+            if (answersLine) {
+              if (answersTimer) clearTimeout(answersTimer);
+              answersLine.classList.remove('show');
+              answersLine.classList.add('hidden');
+            }
+            if (ctaFinal) { if (ctaTimer) clearTimeout(ctaTimer); ctaFinal.classList.add('hidden'); }
+          } else {
+            msgEl.textContent = "Keep going — be honest.";
+            if (problemSection) problemSection.classList.remove('dx-active');
+            if (dxPop) dxPop.style.display = 'none';
+            if (answersLine) {
+              if (answersTimer) clearTimeout(answersTimer);
+              answersLine.classList.remove('show');
+              answersLine.classList.add('hidden');
+            }
+            if (ctaFinal) { if (ctaTimer) clearTimeout(ctaTimer); ctaFinal.classList.add('hidden'); }
+          }
+        }
+        function attachToggle(el) {
+          el.setAttribute('role', 'checkbox');
+          el.setAttribute('tabindex', '0');
+          el.setAttribute('aria-checked', 'false');
+          const toggle = () => {
+            const selected = el.classList.toggle('selected');
+            el.setAttribute('aria-checked', selected ? 'true' : 'false');
+            updateScore();
+          };
+          el.addEventListener('click', toggle);
+          el.addEventListener('keydown', (e) => {
+            if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggle(); }
+          });
+        }
+        document.querySelectorAll('.problem-item').forEach(attachToggle);
     </script>
 </Layout>

@@ -121,7 +121,7 @@
         }
         
         /* Problem Section */
-        .problem-section { padding: 5rem 0; background: var(--brand-cream); }
+        .problem-section { padding: 5rem 0; background: #EAF0F7; }
         
         .problem-grid {
             display: grid;
@@ -130,14 +130,26 @@
             align-items: center;
             margin-top: 3rem;
         }
+
+        .problem-title { text-align: center; font-weight: 800; font-size: 2rem; color: var(--brand-blue); margin: 0; }
+        .problem-col { transition: transform 240ms ease; }
+        .dx-active .problem-col { transform: translateX(-12px); }
         
         .problem-list { list-style: none; margin: 0; padding: 0; }
-        .problem-item { display: flex; align-items: center; gap: 0.75rem; padding: 1rem; margin-bottom: 1rem; background: #ffffff; border-radius: 12px; border: 1px solid rgba(12,26,63,0.08); box-shadow: 0 2px 12px rgba(0,0,0,0.04); opacity: 0; transform: translateY(8px); }
+        .problem-item { display: flex; align-items: center; gap: 0.75rem; padding: 1rem; margin-bottom: 1rem; background: #ffffff; border-radius: 12px; border: 1px solid rgba(12,26,63,0.08); box-shadow: 0 2px 12px rgba(0,0,0,0.04); opacity: 0; transform: translateY(8px); cursor: pointer; user-select: none; }
         .problem-item.in-view { animation: fadeUp 500ms ease-out forwards; }
-        .problem-icon { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 9999px; background: rgba(221,167,68,0.15); }
+        .problem-icon { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 9999px; background: rgba(221,167,68,0.15); transition: background 180ms ease; }
+        .problem-item.selected { background: rgba(221,167,68,0.12); border-color: var(--brand-gold); }
+        .problem-item.selected .problem-icon { background: rgba(221,167,68,0.35); }
         .problem-item span:last-child { line-height: 1.35; }
 
         @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Self-diagnose score box */
+        .dx-box { background: #ffffff; border: 1px solid rgba(12,26,63,0.08); border-radius: 12px; padding: 0.85rem 1rem; margin-top: 0.75rem; }
+        .dx-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+        .dx-count { font-weight: 800; color: var(--brand-blue); }
+        .dx-cta { display: inline-block; padding: 0.5rem 0.9rem; border-radius: 9999px; background: var(--brand-gold); color: var(--brand-blue); font-weight: 700; text-decoration: none; }
         
         /* Solution Section */
         .solution-section {
@@ -212,6 +224,8 @@
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+
+            .problem-title { font-size: 1.6rem; }
             
             .nav-links {
                 display: none;
@@ -226,6 +240,20 @@
             .reveal-list { display: flex; overflow-x: auto; gap: 1rem; scroll-snap-type: x mandatory; padding-bottom: 0.5rem; }
             .reveal-list .problem-item { min-width: 85%; scroll-snap-align: start; }
         }
+
+        /* Right callout popup */
+        .dx-pop { background: #ffffff; border: 1px solid rgba(12,26,63,0.1); border-radius: 14px; padding: 1rem 1.2rem; margin-top: 1rem; box-shadow: 0 8px 24px rgba(0,0,0,0.08); opacity: 0; transform: scale(0.96); transition: opacity 220ms ease, transform 220ms ease; text-align: center; }
+        .dx-pop .title { font-weight: 800; color: var(--brand-blue); }
+        .dx-pop .note { opacity: 0.8; }
+        .dx-active .dx-pop { opacity: 1; transform: scale(1); }
+
+        /* Answers line styling (olive green, bold) */
+        .answers-line { color: #556B2F; font-weight: 900; font-size: 1.6rem; }
+        @media (min-width: 768px) { .answers-line { font-size: 2.1rem; } }
+        .answers-burst { opacity: 0; transform: scale(0.86); }
+        .answers-burst.show { animation: burstIn 600ms cubic-bezier(.2,.8,.2,1) forwards; }
+        @keyframes burstIn { 0% { opacity: 0; transform: scale(0.86); } 60% { opacity: 1; transform: scale(1.06); } 100% { opacity: 1; transform: scale(1); } }
+        .dx-cta-final { margin-top: 0.75rem; }
 
         /* Larger desktop tweaks */
         @media (min-width: 1024px) {
@@ -245,7 +273,7 @@
             text-align: center;
         }
         
-        .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--brand-blue); }
+        .stat-number { font-size: 4.5rem; font-weight: 1800; color: var(--brand-blue); }
         
         .animate-float {
             animation: float 6s ease-in-out infinite;

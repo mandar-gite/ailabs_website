@@ -5,39 +5,39 @@ const FORM_ENDPOINT = "https://formspree.io/f/xdkdvzvl";
 import logoSvg from "../../logo_ver2.1.svg?url";
 import logoJpg from "../../logo.jpg?url";
 ---
-<section id="contact" class="py-16">
+<section id="contact" class="pt-6 pb-10">
   <h2 class="text-3xl font-bold text-white mb-10 text-center sr-only">Book a Call or Send an Inquiry</h2>
-  <div class="bg-white p-8 rounded-lg shadow-xl max-w-lg mx-auto text-[#0C1A3F]">
-    <div class="flex justify-center mb-6">
+  <div class="bg-white p-6 rounded-lg shadow-xl max-w-md mx-auto text-[#0C1A3F]">
+    <div class="flex justify-center mb-4">
       <picture>
         <source media="(max-width: 640px)" srcset={logoJpg} type="image/jpeg" />
         <source srcset={logoSvg} type="image/svg+xml" />
-        <img src={logoSvg} alt="72° AI Labs" class="h-12 sm:h-14 md:h-16 w-auto" loading="lazy" decoding="async" />
+        <img src={logoSvg} alt="72° AI Labs" class="h-28 sm:h-36 md:h-40 w-auto" loading="lazy" decoding="async" />
       </picture>
     </div>
-    <form action={FORM_ENDPOINT} method="POST" class="space-y-6">
+    <form action={FORM_ENDPOINT} method="POST" class="space-y-5">
       <!-- Metadata for better inbox + redirect after submit -->
       <input type="hidden" name="_subject" value="New inquiry from 72° AI Labs" />
       <input type="hidden" name="_redirect" value="https://72ai.in/thanks" />
       <div>
-        <label for="name" class="block text-[#0C1A3F] mb-2">Name</label>
-        <input type="text" id="name" name="Name" class="w-full px-4 py-2 rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
+        <label for="name" class="block text-sm text-[#0C1A3F] mb-2">Name</label>
+        <input type="text" id="name" name="Name" class="w-full md:w-11/12 mx-auto px-4 py-2 rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
       </div>
       <div>
-        <label for="company" class="block text-[#0C1A3F] mb-2">Company</label>
-        <input type="text" id="company" name="Company" class="w-full px-4 py-2 rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
+        <label for="company" class="block text-sm text-[#0C1A3F] mb-2">Company</label>
+        <input type="text" id="company" name="Company" class="w-full md:w-11/12 mx-auto px-4 py-2 rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
       </div>
       <div>
-        <label for="email" class="block text-[#0C1A3F] mb-2">Email</label>
-        <input type="email" id="email" name="Email" class="w-full px-4 py-2 rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
+        <label for="email" class="block text-sm text-[#0C1A3F] mb-2">Email</label>
+        <input type="email" id="email" name="Email" class="w-full md:w-11/12 mx-auto px-4 py-2 rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
       </div>
       <div>
-        <label for="phone" class="block text-[#0C1A3F] mb-2">Phone</label>
-        <input type="tel" id="phone" name="Phone" class="w-full px-4 py-2 rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
+        <label for="phone" class="block text-sm text-[#0C1A3F] mb-2">Phone</label>
+        <input type="tel" id="phone" name="Phone" class="w-full md:w-11/12 mx-auto px-4 py-2 rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
       </div>
       <div>
-        <label for="sector" class="block text-[#0C1A3F] mb-2">Sector</label>
-        <select id="sector" name="Sector" class="w-full px-4 py-2 rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
+        <label for="sector" class="block text-sm text-[#0C1A3F] mb-2">Sector</label>
+        <select id="sector" name="Sector" class="w-full md:w-11/12 mx-auto px-4 py-2 rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
           <option value="">Select your sector</option>
           <option value="F&B (Hospitality)">F&B (Hospitality)</option>
           <option value="Manufacturing">Manufacturing</option>
@@ -46,8 +46,8 @@ import logoJpg from "../../logo.jpg?url";
         </select>
       </div>
       <div>
-        <label for="message" class="block text-[#0C1A3F] mb-2">Your Brief</label>
-        <textarea id="message" name="Brief" rows="5" class="w-full px-4 py-2 rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required></textarea>
+        <label for="message" class="block text-sm text-[#0C1A3F] mb-2">Your Brief</label>
+        <textarea id="message" name="Brief" rows="6" class="w-full md:w-11/12 mx-auto px-4 py-2 rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744] min-h-[140px] md:min-h-[160px]" required></textarea>
       </div>
       <div class="flex items-start">
         <input type="checkbox" id="consent" name="Consent" class="mt-1" required>
@@ -58,7 +58,7 @@ import logoJpg from "../../logo.jpg?url";
       <!-- Honeypot field for bot protection -->
       <input type="text" name="_gotcha" style="display:none !important">
       <div class="text-center">
-        <button type="submit" class="px-6 py-3 bg-[#DDA744] hover:bg-[#c49038] text-[#0C1A3F] font-semibold rounded-full shadow-lg transition-colors duration-300">
+        <button type="submit" class="px-5 py-2.5 bg-[#DDA744] hover:bg-[#c49038] text-[#0C1A3F] font-semibold rounded-full shadow-lg transition-colors duration-300">
           Send Message
         </button>
       </div>
