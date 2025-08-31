@@ -1,11 +1,13 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
-const isProduction = process.env.NODE_ENV === 'production';
+// Optional: set BASE_PATH in CI only when deploying to a subpath
+const basePath = process.env.BASE_PATH;
 
 export default defineConfig({
-  site: 'https://mandar-gite.github.io',
-  ...(isProduction ? { base: '/ailabs_website' } : {}),
+  // Set to your live domain for correct canonical URLs
+  site: 'https://72ai.in',
+  ...(basePath ? { base: basePath } : {}),
   integrations: [tailwind()],
   build: {
     assets: 'assets'
