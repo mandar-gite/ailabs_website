@@ -34,7 +34,7 @@ To run the project in development mode with live reloading:
 npm run dev
 ```
 
-The site will be available at `http://localhost:4321`.
+The site will be available at `http://localhost:4321`. The `base` path used for GitHub Pages is applied only during production builds, so local development runs from the root URL.
 
 ### 3. Building for Production
 
@@ -55,6 +55,8 @@ The included `.github/workflows/deploy.yml` file automates the deployment proces
 3.  **Choose GitHub Actions:** Under "Source," select "GitHub Actions" to use the provided workflow.
 
 The workflow will automatically build your site and deploy the `dist` folder to the `gh-pages` branch, making it live. Remember to add a `CNAME` file to the `public` directory with `72ai.in` and configure your DNS settings as per GitHub's documentation.
+
+During this build step `NODE_ENV` is set to `production`, which enables the `/ailabs_website` base path required for GitHub Pages in `astro.config.mjs`.
 
 ## Customizing Content
 
