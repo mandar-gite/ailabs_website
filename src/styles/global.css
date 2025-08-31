@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-
-html {
-  font-family: 'Inter', sans-serif;
+:root {
+  --brand-blue: #0C1A3F;   /* Primary Blue (Midnight) */
+  --brand-gold: #DDA744;   /* Accent Gold */
+  --brand-cream: #F2E9D8;  /* Background Cream */
+  --text-dark: #0C1A3F;
+  --text-light: #ffffff;
 }
+
+html { font-family: 'Montserrat', 'Inter', sans-serif; }
 
 body {
   margin: 0;

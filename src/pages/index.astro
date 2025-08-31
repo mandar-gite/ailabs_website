@@ -1,6 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ContactForm from "../components/ContactForm.astro";
+import Bars from "../components/IllustrationBars.astro";
+// Import logo assets
+import logoSvg from "../../logo_ver2.1.svg?url";
+import logoJpg from "../../logo.jpg?url";
 const seoTitle = "72° AI Labs - Turn Data Into Decisions";
 const seoDescription = "Turn your business data into clear, confident decisions with 72° AI Labs. Affordable AI solutions for growing businesses.";
 ---
@@ -9,7 +13,14 @@ const seoDescription = "Turn your business data into clear, confident decisions 
     <header class="header">
         <div class="max-w-[1200px] mx-auto px-5">
             <nav class="nav">
-                <div class="logo">72° AI Labs</div>
+                <div class="logo flex items-center gap-3">
+                    <picture>
+                        <source media="(max-width: 640px)" srcset={logoJpg} type="image/jpeg" />
+                        <source srcset={logoSvg} type="image/svg+xml" />
+                        <img src={logoSvg} alt="72° AI Labs logo" class="h-10 w-auto" loading="eager" decoding="async" />
+                    </picture>
+                    <span class="sr-only">72° AI Labs</span>
+                </div>
                 <div class="nav-links">
                     <a href="#solutions">Solutions</a>
                     <a href="#contact">Contact</a>
@@ -95,9 +106,9 @@ const seoDescription = "Turn your business data into clear, confident decisions 
                         <li>Enterprise AI solutions cost 10x your budget</li>
                     </ul>
                 </div>
-                <div class="animate-float">
-                    <div class="text-[8rem] text-center opacity-30">📊</div>
-                    <p class="mt-4 text-center text-[1.2rem] text-[#2c3e50]">Your data has answers.<br/>You just need the right questions.</p>
+                <div class="animate-float flex flex-col items-center">
+                    <Bars />
+                    <p class="mt-4 text-center text-[1.1rem] text-[#0C1A3F]">Your data has answers.<br/>You just need the right questions.</p>
                 </div>
             </div>
         </div>
@@ -154,6 +165,7 @@ const seoDescription = "Turn your business data into clear, confident decisions 
     <!-- Footer -->
     <footer class="footer">
         <div class="max-w-[1200px] mx-auto px-5">
+            <img src={logoSvg} alt="72° AI Labs logo" class="h-10 w-auto mx-auto mb-3" loading="lazy" decoding="async" />
             <p>&copy; 2024 72° AI Labs. Turning data into decisions since day one.</p>
             <p class="mt-2 opacity-70">
                 Built for Indian SMBs | Designed for Real Results

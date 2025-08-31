@@ -1,5 +1,5 @@
 ---
-import '@fontsource/inter';
+// Fonts are loaded via Google Fonts in global.css
 import '../styles/global.css';
 import '../styles/home.css';
 
@@ -27,7 +27,10 @@ const { title, description } = Astro.props;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
 </head>
-<body class="bg-gray-900 text-gray-200 antialiased leading-relaxed">
+<body class="antialiased leading-relaxed bg-[#F2E9D8] text-[#0C1A3F]">
     <slot />
 </body>
 </html>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">

@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Montserrat', 'Inter', 'system-ui', 'Segoe UI', 'Arial', 'sans-serif'],
       },
     },
   },
