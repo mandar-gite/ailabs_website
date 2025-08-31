@@ -131,16 +131,13 @@
             margin-top: 3rem;
         }
         
-        .problem-list {
-            list-style: none;
-        }
-        
-        .problem-list li { padding: 1rem; margin-bottom: 1rem; background: #ffffff; border-radius: 10px; border: 1px solid rgba(12,26,63,0.08); }
-        
-        .problem-list li::before {
-            content: "❌";
-            margin-right: 10px;
-        }
+        .problem-list { list-style: none; margin: 0; padding: 0; }
+        .problem-item { display: flex; align-items: center; gap: 0.75rem; padding: 1rem; margin-bottom: 1rem; background: #ffffff; border-radius: 12px; border: 1px solid rgba(12,26,63,0.08); box-shadow: 0 2px 12px rgba(0,0,0,0.04); opacity: 0; transform: translateY(8px); }
+        .problem-item.in-view { animation: fadeUp 500ms ease-out forwards; }
+        .problem-icon { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 9999px; background: rgba(221,167,68,0.15); }
+        .problem-item span:last-child { line-height: 1.35; }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
         
         /* Solution Section */
         .solution-section {
@@ -223,6 +220,11 @@
             .container {
                 padding: 0 15px;
             }
+        }
+        /* Mobile swipeable list */
+        @media (max-width: 768px) {
+            .reveal-list { display: flex; overflow-x: auto; gap: 1rem; scroll-snap-type: x mandatory; padding-bottom: 0.5rem; }
+            .reveal-list .problem-item { min-width: 85%; scroll-snap-align: start; }
         }
 
         /* Larger desktop tweaks */
