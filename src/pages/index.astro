@@ -1,133 +1,547 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Nav from "../components/Nav.astro";
-import ContactForm from "../components/ContactForm.astro";
-import HowItWorks from "../components/HowItWorks.astro";
-import CaseCard from "../components/CaseCard.astro";
-import caseStudies from "../data/caseStudies.json";
-
-const seoTitle = "72° AI LABS - AI Consulting for Indian Businesses";
-const seoDescription = "AI that turns Indian business data into working decisions for SMEs, hospitality, and manufacturing. Frugal, deployable, context-aware AI solutions.";
+// src/pages/index.astro
 ---
-<Layout title={seoTitle} description={seoDescription}>
-  <Nav />
-  <main class="container mx-auto px-4">
-    <!-- Hero Section -->
-    <section id="hero" class="text-center py-20 md:py-32">
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-white mb-4">
-            AI that turns Indian business data into <br class="hidden md:inline" /><span class="text-teal-400">working decisions</span>
-        </h1>
-        <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-            From PetPooja + Tally + GSTN + WhatsApp to clean, actionable dashboards—and ₹ savings you can point to.
-        </p>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Turn your business data into clear, confident decisions with 72° AI Labs. Affordable AI solutions for growing businesses." />
+    <title>72° AI Labs - Turn Data Into Decisions</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
-
-        <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0RU90Vld_gQnF0Ei7x5DZD344qWCBpv4wXu6EwK5IiNb0r24PlpwUVhpb79Qy93-qroH283L_h" target="_blank" class="px-8 py-3 bg-teal-500 hover:bg-teal-600 text-white font-semibold rounded-full shadow-lg transition-colors duration-300">
-                Book a Free Consultation Call
-            </a>
-            <a href="https://wa.me/+919819715970?text=Hi%2C%20I%20saw%20your%20website%20and%20I'm%20interested%20in%20learning%20more%20about%20your%20services." target="_blank" class="px-8 py-3 bg-gray-800 border border-gray-600 hover:bg-gray-700 text-white font-semibold rounded-full shadow-lg transition-colors duration-300">
-                WhatsApp Us
-            </a>
-</div>
-        <div class="mt-8">
-          <a href="/resources/one-pager.pdf" class="text-sm text-gray-500 hover:text-gray-400 transition-colors duration-300">Download One-Pager &darr;</a>
-        </div>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
         
-        <!-- Trust Logos/Integrations -->
-        <div class="mt-16 py-8 px-4 bg-gray-800 rounded-lg max-w-4xl mx-auto">
-            <h3 class="text-lg font-semibold text-gray-400 mb-4">Built to integrate with your existing systems:</h3>
-            <div class="flex justify-center items-center space-x-6 md:space-x-12 opacity-50">
-                <img src="/logos/petpooja.svg" alt="PetPooja Logo" class="h-8 md:h-10" />
-                <img src="/logos/tally.svg" alt="Tally Logo" class="h-8 md:h-10" />
-                <img src="/logos/gstn.svg" alt="GSTN Logo" class="h-8 md:h-10" />
-                <img src="/logos/whatsapp.svg" alt="WhatsApp Logo" class="h-8 md:h-10" />
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #fff;
+        }
+        
+        .hero {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+        
+        /* Value Proposition Section */
+        .value-prop {
+            padding: 5rem 0;
+            background: #f8f9fa;
+        }
+        
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Problem Section */
+        .problem-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .problem-list {
+            list-style: none;
+        }
+        
+        .problem-list li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .problem-list li::before {
+            content: "❌";
+            margin-right: 10px;
+        }
+        
+        /* Solution Section */
+        .solution-section {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .solution-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            transition: transform 0.3s;
+        }
+        
+        .solution-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .solution-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: 2rem auto 0;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.9);
+            color: #2c3e50;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .problem-grid,
+            .nav-links {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 3rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">72° AI Labs</div>
+                <div class="nav-links">
+                    <a href="#solutions">Solutions</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+            
+            <div class="hero">
+                <h1>Turn Your Business Data Into <span class="highlight">Clear, Confident Decisions</span></h1>
+                <p class="subtitle">Quickly, simply, and affordably. No guesswork, no jargon – just smarter decisions for your growing business.</p>
+                <a href="#contact" class="cta-button">Get Started Today</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Value Proposition -->
+    <section class="value-prop">
+        <div class="container">
+            <h2 class="section-title">Your Data Already Knows The Answer</h2>
+            <p class="section-subtitle">We help you find it – without the complexity or cost of enterprise solutions</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">72hrs</div>
+                    <p>From Data to Insights</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <p>Works with Your Tools</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <p>Complex Migrations</p>
+                </div>
+            </div>
+            
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>Speed + Accuracy</h3>
+                    <p>Quick answers without compromising trust. Get insights in hours, not months.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <h3>Fit-for-Purpose</h3>
+                    <p>Only the features and insights you actually need. No bloated enterprise complexity.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔗</div>
+                    <h3>Integration-Friendly</h3>
+                    <p>Works seamlessly with Tally, Zoho, Excel, and tools you already use daily.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔍</div>
+                    <h3>Hidden Patterns</h3>
+                    <p>Spot risks and opportunities before they become obvious to competitors.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🇮🇳</div>
+                    <h3>Local Intelligence</h3>
+                    <p>Understands India's seasonal cycles, regional shifts, and market dynamics.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">💰</div>
+                    <h3>SMB Pricing</h3>
+                    <p>Enterprise AI capabilities at prices that make sense for growing businesses.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Sector Tiles -->
-    <section id="sectors" class="py-16">
-        <h2 class="text-3xl font-bold text-white mb-10 text-center">Our Focus Sectors</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div class="p-8 bg-gray-800 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                <span class="text-5xl mb-4 block">🍽️</span>
-                <h3 class="text-xl font-semibold text-white mb-2">Hospitality (F&B)</h3>
-                <p class="text-gray-400">Leverage your PetPooja data to reduce wastage and optimize menus.</p>
-            </div>
-            <div class="p-8 bg-gray-800 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                <span class="text-5xl mb-4 block">🏭</span>
-                <h3 class="text-xl font-semibold text-white mb-2">Manufacturing</h3>
-                <p class="text-gray-400">Unlock efficiency and reduce downtime with real-time OEE insights.</p>
-            </div>
-            <div class="p-8 bg-gray-800 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                <span class="text-5xl mb-4 block">🧩</span>
-                <h3 class="text-xl font-semibold text-white mb-2">SMEs (Cross-functional)</h3>
-                <p class="text-gray-400">Turn fragmented Tally and GSTN data into actionable financial intelligence.</p>
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="problem-grid">
+                <div>
+                    <h2 style="color: #2c3e50;">You're Making Decisions Blind</h2>
+                    <ul class="problem-list">
+                        <li>Excel sheets everywhere, but no clear picture</li>
+                        <li>Seasonal patterns surprise you every year</li>
+                        <li>Customer churn happens before you notice</li>
+                        <li>Inventory decisions based on gut feel</li>
+                        <li>Competition moves faster with better insights</li>
+                        <li>Enterprise AI solutions cost 10x your budget</li>
+                    </ul>
+                </div>
+                <div class="animate-float">
+                    <div style="font-size: 8rem; text-align: center; opacity: 0.3;">📊</div>
+                    <p style="text-align: center; font-size: 1.2rem; color: #2c3e50; margin-top: 1rem;">Your data has answers.<br>You just need the right questions.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <HowItWorks />
-
-    <!-- Mini Case Snippets -->
-    <section id="case-snippets" class="py-16">
-      <h2 class="text-3xl font-bold text-white mb-10 text-center">Real, Frugal AI Wins</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {caseStudies.map(cs => <CaseCard caseStudy={cs} />)}
-      </div>
-      <div class="text-center mt-12">
-        <a href="/case-studies" class="px-6 py-3 bg-teal-500 hover:bg-teal-600 text-white font-semibold rounded-full transition-colors duration-300">
-          View All Case Studies
-        </a>
-      </div>
+    <!-- Solution Section -->
+    <section class="solution-section" id="solutions">
+        <div class="container">
+            <h2 class="section-title">AI Tools That Fit Your Business</h2>
+            <p class="section-subtitle">Not the other way around</p>
+            
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-number">01</div>
+                    <h3>Connect Your Data</h3>
+                    <p>Link your existing systems – Tally, Zoho, spreadsheets. No migration headaches.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-number">02</div>
+                    <h3>Smart Analysis</h3>
+                    <p>AI finds patterns, predicts trends, and spots risks automatically.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-number">03</div>
+                    <h3>Clear Insights</h3>
+                    <p>Plain English answers to your business questions. No technical jargon.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-number">04</div>
+                    <h3>Take Action</h3>
+                    <p>Specific recommendations you can implement immediately.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Proof Band -->
-    <section class="py-16 text-center">
-        <div class="max-w-3xl mx-auto">
-            <h3 class="text-3xl font-semibold text-gray-300 mb-4">
-                "Built in India, for India."
-            </h3>
-            <p class="text-gray-500">
-                ~ Founder, Mandar Gite, BITS Pilani Alumnus
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Make Smarter Decisions?</h2>
+                <p>Let's turn your business data into your competitive advantage</p>
+                
+                <div class="contact-form">
+                    <h3 style="margin-bottom: 1rem;">Get Your Free Business Intelligence Audit</h3>
+                    <form action="https://formspree.io/f/your_unique_id" method="POST">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="business">Business Name</label>
+                            <input type="text" id="business" name="business" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="challenge">Biggest Data Challenge</label>
+                            <textarea id="challenge" name="challenge" placeholder="e.g., Understanding customer behavior, inventory forecasting, sales trends..."></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">Schedule My Free Audit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 72° AI Labs. Turning data into decisions since day one.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.7;">
+                Built for Indian SMBs | Designed for Real Results
             </p>
         </div>
-    </section>
+    </footer>
 
-    <!-- Newsletter Opt-in -->
-    <section id="newsletter-optin" class="py-16">
-        <div class="bg-gray-800 p-8 rounded-lg shadow-xl max-w-2xl mx-auto text-center">
-            <h3 class="text-2xl font-bold text-white mb-4">
-                Get frugal AI playbooks in your inbox.
-            </h3>
-            <p class="text-gray-400 mb-6">
-                Receive our concise, actionable guides on turning data into decisions. No fluff, no jargon.
-            </p>
-            <form action="https://formspree.io/f/mzzvqgqw" method="POST" class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
-                <input type="email" name="email" placeholder="Enter your email" class="px-4 py-2 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500 flex-grow" required />
-                <button type="submit" class="px-6 py-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold rounded-full shadow-lg transition-colors duration-300">
-                    Subscribe
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <ContactForm />
-  </main>
-  
-  <!-- Footer -->
-  <footer class="bg-gray-800 py-8 text-gray-400 text-center">
-      <div class="container mx-auto px-4">
-          <p class="mb-4">&copy; 2024 72° AI LABS. All rights reserved.</p>
-          <div class="flex justify-center space-x-6">
-              <a href="https://wa.me/+919819715970" target="_blank" class="hover:text-white transition-colors duration-300">WhatsApp</a>
-              <a href="https://www.linkedin.com/company/72°-ai-lab" target="_blank" class="hover:text-white transition-colors duration-300">LinkedIn</a>
-              <a href="mailto:hello@72ai.in" class="hover:text-white transition-colors duration-300">Email</a>
-          </div>
-          <p class="mt-4 text-sm text-gray-600">
-            <a href="/privacy-policy" class="hover:underline">Privacy Policy</a> | <a href="/terms" class="hover:underline">Terms of Service</a>
-          </p>
-      </div>
-  </footer>
-</Layout>
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
