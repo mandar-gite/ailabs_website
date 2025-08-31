@@ -2,10 +2,19 @@
 // This form uses Formspree as the backend for static forms.
 // You must replace the action URL with your unique Formspree endpoint.
 const FORM_ENDPOINT = "https://formspree.io/f/xdkdvzvl";
+import logoSvg from "../../logo_ver2.1.svg?url";
+import logoJpg from "../../logo.jpg?url";
 ---
 <section id="contact" class="py-16">
   <h2 class="text-3xl font-bold text-white mb-10 text-center sr-only">Book a Call or Send an Inquiry</h2>
   <div class="bg-white p-8 rounded-lg shadow-xl max-w-lg mx-auto text-[#0C1A3F]">
+    <div class="flex justify-center mb-6">
+      <picture>
+        <source media="(max-width: 640px)" srcset={logoJpg} type="image/jpeg" />
+        <source srcset={logoSvg} type="image/svg+xml" />
+        <img src={logoSvg} alt="72° AI Labs" class="h-12 sm:h-14 md:h-16 w-auto" loading="lazy" decoding="async" />
+      </picture>
+    </div>
     <form action={FORM_ENDPOINT} method="POST" class="space-y-6">
       <!-- Metadata for better inbox + redirect after submit -->
       <input type="hidden" name="_subject" value="New inquiry from 72° AI Labs" />

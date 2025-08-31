@@ -19,12 +19,9 @@
         
         .logo { font-size: 1.8rem; font-weight: 700; color: var(--text-dark); }
         
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
+        .nav-links { display: flex; gap: 2.5rem; }
         
-        .nav-links a { color: var(--text-dark); text-decoration: none; transition: color 0.3s; opacity: 0.9; }
+        .nav-links a { color: var(--text-dark); text-decoration: none; transition: color 0.3s; opacity: 0.9; font-weight: 600; font-size: 1.05rem; }
         
         .nav-links a:hover { opacity: 1; color: var(--text-dark); }
         
@@ -226,6 +223,12 @@
             .container {
                 padding: 0 15px;
             }
+        }
+
+        /* Larger desktop tweaks */
+        @media (min-width: 1024px) {
+            .nav-links { gap: 3rem; }
+            .nav-links a { font-size: 1.125rem; }
         }
         
         .highlight { background: var(--brand-gold); color: #0C1A3F; padding: 0.2em 0.4em; border-radius: 4px; }
