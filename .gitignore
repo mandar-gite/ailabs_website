@@ -43,6 +43,7 @@ yarn-error.log*
 
 # Claude Code configuration (personal workflow)
 .claude/
+.claude
 
 # Internal documentation
 docs/
