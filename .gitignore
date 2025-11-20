@@ -34,3 +34,35 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# ============================================
+# Internal Documentation (Private Repo Only)
+# ============================================
+# All internal docs are maintained in the private repo:
+# github.com/mandar-gite/ailabs_website_internal
+
+# Claude Code configuration (personal workflow)
+.claude/
+
+# Internal documentation
+docs/
+ROADMAP.md
+ROADMAP_SUMMARY.md
+CLAUDE_RESTRUCTURE_PLAN.md
+MIGRATION_SUMMARY.md
+*.internal.md
+*.private.md
+
+# Session and work logs
+session_logs/
+work_logs/
+daily_logs/
+
+# Project management
+planning/
+notes/
+meetings/
+
+# Business strategy
+research/
+business/
