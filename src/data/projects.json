@@ -211,41 +211,15 @@
     "tags": ["Predictive Maintenance", "Fleet Management", "IoT", "Time Series"]
   },
   {
-    "id": "mcop",
-    "name": "MCOP Email Intelligence",
-    "shortBlurb": "Local LLM email analysis: summaries, sentiment, and contextual queries.",
-    "tagline": "On-prem email understanding powered by local LLMs.",
-    "description": "Local LLM stack for email-based insight extraction.",
-    "category": "On-Prem LLM Systems",
-    "featured": true,
-    "dataTypes": [
-      "Email text",
-      "Threads",
-      "Metadata"
-    ],
-    "mlMethods": [
-      "Summarisation",
-      "Sentiment",
-      "RAG",
-      "Topic clustering"
-    ],
-    "challenges": [
-      "Long-context handling",
-      "Privacy",
-      "Mixed formatting"
-    ],
-    "tags": ["Email Analysis", "Local LLM", "On-Premise", "Privacy-First"]
-  },
-  {
     "id": "insightbridge",
-    "name": "InsightBridge (Airtable)",
-    "shortBlurb": "Retrieval and summarisation layer over Airtable datasets.",
-    "tagline": "Quick insights from distributed Airtable data.",
-    "description": "Summaries and retrieval across Airtable-based systems.",
+    "name": "InsightBridge",
+    "shortBlurb": "Retrieval and summarisation layer over distributed business datasets.",
+    "tagline": "Quick insights from distributed data sources.",
+    "description": "Summaries and retrieval across distributed data systems.",
     "category": "On-Prem LLM Systems",
     "featured": false,
     "dataTypes": [
-      "Airtable tables",
+      "Business data tables",
       "Small operational datasets"
     ],
     "mlMethods": [
@@ -257,29 +231,7 @@
       "Low data volume",
       "Schema volatility"
     ],
-    "tags": ["Airtable", "RAG", "Data Retrieval", "Summarization"]
-  },
-  {
-    "id": "photo-intelligence",
-    "name": "Home Photo Server Intelligence",
-    "shortBlurb": "Local image clustering, deduplication, and similarity search.",
-    "tagline": "Clean, searchable local photo libraries.",
-    "description": "Local clustering and deduplication for photo archives.",
-    "category": "On-Prem LLM Systems",
-    "featured": false,
-    "dataTypes": [
-      "Local image libraries"
-    ],
-    "mlMethods": [
-      "Embeddings",
-      "Clustering",
-      "Deduplication"
-    ],
-    "challenges": [
-      "Limited compute",
-      "Storage constraints"
-    ],
-    "tags": ["Image Processing", "Clustering", "Deduplication", "Computer Vision"]
+    "tags": ["Data Integration", "RAG", "Data Retrieval", "Summarization"]
   },
   {
     "id": "jnvessays",

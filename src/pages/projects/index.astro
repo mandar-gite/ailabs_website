@@ -2,7 +2,6 @@
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
-import ProjectTable from "../../components/ProjectTable.astro";
 import projectsData from "../../data/projects.json";
 import type { Project } from "../../types";
 
@@ -27,29 +26,8 @@ const seoDescription = "Practical AI built for real business systems. Local mode
         </p>
       </header>
 
-      <!-- View Toggle and Filters -->
+      <!-- Filters -->
       <div class="controls-bar">
-        <div class="view-toggle">
-          <button class="toggle-btn active" data-view="table">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="7" height="7"></rect>
-              <rect x="14" y="3" width="7" height="7"></rect>
-              <rect x="3" y="14" width="7" height="7"></rect>
-              <rect x="14" y="14" width="7" height="7"></rect>
-            </svg>
-            Table View
-          </button>
-          <button class="toggle-btn" data-view="grid">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="7" height="7"></rect>
-              <rect x="14" y="3" width="7" height="7"></rect>
-              <rect x="3" y="14" width="7" height="7"></rect>
-              <rect x="14" y="14" width="7" height="7"></rect>
-            </svg>
-            Grid View
-          </button>
-        </div>
-
         <div class="filter-controls">
           <label for="category-filter" class="filter-label">Filter by:</label>
           <select id="category-filter" class="category-filter">
@@ -61,20 +39,13 @@ const seoDescription = "Practical AI built for real business systems. Local mode
         </div>
       </div>
 
-      <!-- Table View -->
-      <div id="table-view" class="view-container active">
-        <ProjectTable projects={projects} />
-      </div>
-
       <!-- Grid View -->
-      <div id="grid-view" class="view-container">
-        <div class="projects-grid" id="projects-grid">
-          {projects.map(project => (
-            <div class="grid-item" data-category={project.category}>
-              <ProjectCard project={project} />
-            </div>
-          ))}
-        </div>
+      <div class="projects-grid" id="projects-grid">
+        {projects.map(project => (
+          <div class="grid-item" data-category={project.category}>
+            <ProjectCard project={project} />
+          </div>
+        ))}
       </div>
 
     </div>
@@ -238,34 +209,9 @@ const seoDescription = "Practical AI built for real business systems. Local mode
 </style>
 
 <script>
-  // View toggle functionality
-  const toggleBtns = document.querySelectorAll('.toggle-btn');
-  const tableView = document.getElementById('table-view');
-  const gridView = document.getElementById('grid-view');
-
-  toggleBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const view = btn.getAttribute('data-view');
-
-      // Update button states
-      toggleBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      // Toggle views
-      if (view === 'table') {
-        tableView?.classList.add('active');
-        gridView?.classList.remove('active');
-      } else {
-        tableView?.classList.remove('active');
-        gridView?.classList.add('active');
-      }
-    });
-  });
-
   // Category filter functionality
   const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
   const gridItems = document.querySelectorAll('.grid-item');
-  const tableRows = document.querySelectorAll('.table-row');
 
   categoryFilter?.addEventListener('change', (e) => {
     const selectedCategory = (e.target as HTMLSelectElement).value;
@@ -277,27 +223,6 @@ const seoDescription = "Practical AI built for real business systems. Local mode
         item.classList.remove('hidden');
       } else {
         item.classList.add('hidden');
-      }
-    });
-
-    // Filter table rows
-    tableRows.forEach(row => {
-      const rowProjectId = row.getAttribute('data-project-id');
-      const projectData = document.querySelector(`[data-category="${selectedCategory}"]`);
-
-      if (selectedCategory === 'all') {
-        (row as HTMLElement).style.display = '';
-      } else {
-        const matchingGridItem = Array.from(gridItems).find(
-          item => item.querySelector(`a[href="/projects/${rowProjectId}"]`)
-        );
-        const itemCategory = matchingGridItem?.getAttribute('data-category');
-
-        if (itemCategory === selectedCategory) {
-          (row as HTMLElement).style.display = '';
-        } else {
-          (row as HTMLElement).style.display = 'none';
-        }
       }
     });
   });
