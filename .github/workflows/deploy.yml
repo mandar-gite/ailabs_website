@@ -23,6 +23,9 @@ jobs:
           path: . # The root location of your Astro project inside the repository.
           node-version: 20 # The specific version of Node that should be used to build your site.
           package-manager: npm # The Node package manager that should be used to install dependencies and build your site.
+        env:
+          PUBLIC_GA4_ID: ${{ vars.PUBLIC_GA4_ID }}
+          PUBLIC_CLARITY_ID: ${{ vars.PUBLIC_CLARITY_ID }}
 
   deploy:
     needs: build
