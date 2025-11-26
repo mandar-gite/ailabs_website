@@ -1,237 +1,268 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ContactForm from "../components/ContactForm.astro";
-// Import logo assets
 import logoSvg from "../../logo_ver2.1.svg?url";
 import logoJpg from "../../logo.jpg?url";
+
 const seoTitle = "72° AI Labs - Practical AI for Real Business Systems";
 const seoDescription = "Local models, RAG pipelines, OCR engines, forecasting stacks, and agentic workflows that run on everyday data. Each project solves an operational bottleneck without hype or abstraction.";
 ---
+
 <Layout title={seoTitle} description={seoDescription}>
-    <!-- Header -->
-    <header class="header">
-        <div class="max-w-[1200px] mx-auto px-5">
-            <nav class="nav">
-                <div class="logo flex items-center gap-3">
+    <!-- Header with enhanced spacing -->
+    <header class="modern-header">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-8">
+            <nav class="nav-modern">
+                <div class="logo-container">
                     <picture>
                         <source media="(max-width: 640px)" srcset={logoJpg} type="image/jpeg" />
                         <source srcset={logoSvg} type="image/svg+xml" />
-                        <img src={logoSvg} alt="72° AI Labs logo" class="h-12 md:h-14 lg:h-16 w-auto" loading="eager" decoding="async" />
+                        <img src={logoSvg} alt="72° AI Labs logo" class="logo-img" loading="eager" decoding="async" />
                     </picture>
-                    <span class="sr-only">72° AI Labs</span>
                 </div>
-                <div class="nav-links">
-                    <a href="/projects">Projects</a>
-                    <a href="/solutions">Solutions</a>
-                    <a href="/about">About</a>
-                    <a href="#contact">Contact</a>
+                <div class="nav-links-modern">
+                    <a href="/projects" class="nav-link">Projects</a>
+                    <a href="/solutions" class="nav-link">Solutions</a>
+                    <a href="/about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link-cta">Contact</a>
                 </div>
             </nav>
 
-            <div class="hero">
-                <h1>Practical AI Built for <span class="highlight">Real Business Systems</span></h1>
-                <p class="subtitle">Local models, RAG pipelines, OCR engines, forecasting stacks, and agentic workflows that run on everyday data. Each project solves an operational bottleneck without hype or abstraction.</p>
-                <div class="hero-actions">
-                    <a href="/projects" class="cta-button">View Projects</a>
-                    <a href="#contact" class="cta-button-secondary">Get in Touch</a>
+            <!-- Hero Section with Conceptual Graphic -->
+            <div class="hero-modern">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Practical AI Built for<br/>
+                        <span class="hero-accent">Real Business Systems</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Local models, RAG pipelines, OCR engines, forecasting stacks, and agentic workflows
+                        that run on everyday data. Each project solves an operational bottleneck without hype or abstraction.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="/projects" class="cta-primary">
+                            <span>View Projects</span>
+                            <svg class="cta-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                        <a href="#contact" class="cta-secondary">Get in Touch</a>
+                    </div>
+                </div>
+
+                <!-- Conceptual Data Transformation Graphic -->
+                <div class="hero-graphic">
+                    <svg viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="data-flow-svg">
+                        <!-- Background subtle grid -->
+                        <defs>
+                            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <circle cx="2" cy="2" r="1" fill="rgba(0, 217, 255, 0.1)"/>
+                            </pattern>
+                            <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#0C1A3F;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#00D9FF;stop-opacity:0.8" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="600" height="400" fill="url(#grid)" opacity="0.3"/>
+
+                        <!-- Left side: Messy data (chaotic nodes) -->
+                        <g class="data-chaos">
+                            <circle cx="80" cy="120" r="6" fill="#0C1A3F" opacity="0.6"/>
+                            <circle cx="120" cy="90" r="4" fill="#0C1A3F" opacity="0.5"/>
+                            <circle cx="90" cy="180" r="5" fill="#0C1A3F" opacity="0.6"/>
+                            <circle cx="140" cy="160" r="6" fill="#0C1A3F" opacity="0.5"/>
+                            <circle cx="70" cy="250" r="4" fill="#0C1A3F" opacity="0.6"/>
+                            <circle cx="130" cy="220" r="5" fill="#0C1A3F" opacity="0.5"/>
+                            <circle cx="110" cy="290" r="4" fill="#0C1A3F" opacity="0.6"/>
+
+                            <!-- Chaotic connecting lines -->
+                            <path d="M 80 120 Q 100 105 120 90" stroke="#0C1A3F" stroke-width="1" opacity="0.3"/>
+                            <path d="M 90 180 Q 115 170 140 160" stroke="#0C1A3F" stroke-width="1" opacity="0.3"/>
+                            <path d="M 70 250 Q 100 235 130 220" stroke="#0C1A3F" stroke-width="1" opacity="0.3"/>
+                        </g>
+
+                        <!-- Center: Transformation flow -->
+                        <g class="transform-flow">
+                            <!-- Flowing lines from left to right -->
+                            <path d="M 150 120 Q 300 120 450 100" stroke="url(#flowGradient)" stroke-width="3" opacity="0.6" class="flow-line flow-1"/>
+                            <path d="M 150 200 Q 300 200 450 200" stroke="url(#flowGradient)" stroke-width="3" opacity="0.6" class="flow-line flow-2"/>
+                            <path d="M 150 280 Q 300 280 450 300" stroke="url(#flowGradient)" stroke-width="3" opacity="0.6" class="flow-line flow-3"/>
+
+                            <!-- Processing nodes -->
+                            <circle cx="300" cy="120" r="8" fill="#00D9FF" opacity="0.8" class="pulse-node"/>
+                            <circle cx="300" cy="200" r="8" fill="#00D9FF" opacity="0.8" class="pulse-node"/>
+                            <circle cx="300" cy="280" r="8" fill="#00D9FF" opacity="0.8" class="pulse-node"/>
+                        </g>
+
+                        <!-- Right side: Clear decisions (organized structure) -->
+                        <g class="data-clarity">
+                            <circle cx="480" cy="100" r="8" fill="#00D9FF" class="glow-node"/>
+                            <circle cx="520" cy="100" r="8" fill="#00D9FF" class="glow-node"/>
+                            <circle cx="480" cy="200" r="8" fill="#00D9FF" class="glow-node"/>
+                            <circle cx="520" cy="200" r="8" fill="#00D9FF" class="glow-node"/>
+                            <circle cx="480" cy="300" r="8" fill="#00D9FF" class="glow-node"/>
+                            <circle cx="520" cy="300" r="8" fill="#00D9FF" class="glow-node"/>
+
+                            <!-- Clear connecting lines -->
+                            <line x1="480" y1="100" x2="520" y2="100" stroke="#00D9FF" stroke-width="2" opacity="0.8"/>
+                            <line x1="480" y1="200" x2="520" y2="200" stroke="#00D9FF" stroke-width="2" opacity="0.8"/>
+                            <line x1="480" y1="300" x2="520" y2="300" stroke="#00D9FF" stroke-width="2" opacity="0.8"/>
+                        </g>
+
+                        <!-- Labels -->
+                        <text x="100" y="350" font-size="14" fill="#0C1A3F" opacity="0.6" font-weight="600">Messy Data</text>
+                        <text x="470" y="350" font-size="14" fill="#00D9FF" font-weight="600">Clear Decisions</text>
+                    </svg>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Value Proposition - Hidden temporarily -->
-    <!--
-    <section class="value-prop" style="display: none;">
-        <div class="max-w-[1200px] mx-auto px-5">
-            <h2 class="section-title">Your Data Already Knows The Answer</h2>
-            <p class="section-subtitle">We help you find it – without the complexity or cost of enterprise solutions</p>
-
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number">72hrs</div>
-                    <p>From Data to Insights</p>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <p>Works with Your Tools</p>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">0</div>
-                    <p>Complex Migrations</p>
-                </div>
+    <!-- Key Benefits Section with Custom Icons -->
+    <section class="benefits-section">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8 py-20 lg:py-24">
+            <div class="section-header">
+                <h2 class="section-title-modern">AI That Solves Real Problems</h2>
+                <p class="section-subtitle-modern">Speed, accuracy, cost, and decision-flow—fixed.</p>
             </div>
 
-            <div class="value-grid">
-                <div class="value-card">
-                    <div class="value-icon">⚡</div>
-                    <h3>Speed + Accuracy</h3>
-                    <p>Quick answers without compromising trust. Get insights in hours, not months.</p>
+            <div class="benefits-grid">
+                <!-- Benefit 1: Speed -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2" opacity="0.2"/>
+                            <path d="M24 14v10l7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="24" cy="24" r="2" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="benefit-title">72hrs</h3>
+                    <p class="benefit-desc">From Data to Insights</p>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">🎯</div>
-                    <h3>Fit-for-Purpose</h3>
-                    <p>Only the features and insights you actually need. No bloated enterprise complexity.</p>
+
+                <!-- Benefit 2: Integration -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect x="8" y="18" width="12" height="12" stroke="currentColor" stroke-width="2" rx="2"/>
+                            <rect x="28" y="18" width="12" height="12" stroke="currentColor" stroke-width="2" rx="2"/>
+                            <path d="M20 24h8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="24" cy="24" r="3" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="benefit-title">100%</h3>
+                    <p class="benefit-desc">Works with Your Tools</p>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">🔗</div>
-                    <h3>Integration-Friendly</h3>
-                    <p>Works seamlessly with Tally, Zoho, Excel, and tools you already use daily.</p>
+
+                <!-- Benefit 3: Complexity -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M24 8v32M8 24h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4" opacity="0.3"/>
+                            <path d="M24 16l-4 8h8l-4 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="benefit-title">Zero</h3>
+                    <p class="benefit-desc">Complex Migrations</p>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">🔍</div>
-                    <h3>Hidden Patterns</h3>
-                    <p>Spot risks and opportunities before they become obvious to competitors.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🇮🇳</div>
-                    <h3>Local Intelligence</h3>
-                    <p>Understands India's seasonal cycles, regional shifts, and market dynamics.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">💰</div>
-                    <h3>SMB Pricing</h3>
-                    <p>Enterprise AI capabilities at prices that make sense for growing businesses.</p>
+
+                <!-- Benefit 4: Accuracy -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2" opacity="0.2"/>
+                            <circle cx="24" cy="24" r="12" stroke="currentColor" stroke-width="2" opacity="0.4"/>
+                            <circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="24" cy="24" r="3" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="benefit-title">Precision</h3>
+                    <p class="benefit-desc">Not Just Calculation</p>
                 </div>
             </div>
         </div>
     </section>
-    -->
 
-    <!-- Problem Section - Hidden temporarily -->
-    <!--
-    <section class="problem-section" id="problem-section">
-        <div class="max-w-[1200px] mx-auto px-5">
-            <h2 class="problem-title">Are You Making Decisions Blind?</h2>
-            <div class="problem-grid">
-                <div class="problem-col">
-                    <ul class="problem-list reveal-list" aria-label="Select the issues you face most">
-                        <li class="problem-item" data-i="1">
-                            <span class="problem-icon" aria-hidden="true">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <rect x="3" y="3" width="14" height="18" rx="2" fill="#F2E9D8" stroke="#0C1A3F"/>
-                                  <path d="M7 10 L13 16 M13 10 L7 16" stroke="#DDA744" stroke-width="2" stroke-linecap="round"/>
-                                  <path d="M17 7 L13 3 V7 H17 Z" fill="#DDA744"/>
-                                </svg>
-                            </span>
-                            <span>You're juggling 15 Excel sheets and still can't answer “What's my best‑selling item?”</span>
-                        </li>
-                        <li class="problem-item" data-i="2">
-                            <span class="problem-icon" aria-hidden="true">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <rect x="3" y="4" width="18" height="17" rx="2" fill="#FFFFFF" stroke="#0C1A3F"/>
-                                  <rect x="3" y="4" width="18" height="4" fill="#DDA744"/>
-                                  <rect x="6" y="2" width="2" height="4" rx="1" fill="#0C1A3F"/>
-                                  <rect x="16" y="2" width="2" height="4" rx="1" fill="#0C1A3F"/>
-                                </svg>
-                            </span>
-                            <span>Every monsoon feels like déjà vu — demand spikes, but your stock is flat.</span>
-                        </li>
-                        <li class="problem-item" data-i="3">
-                            <span class="problem-icon" aria-hidden="true">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M12 21 C9 19 5 16 4 12 C3 9 5 7 7.5 7 C9 7 10.2 7.7 11 8.8 L12 10 L13 8.8 C13.8 7.7 15 7 16.5 7 C19 7 21 9 20 12 C19 16 15 19 12 21 Z" fill="#DDA744" stroke="#0C1A3F"/>
-                                  <path d="M12 10 L10.5 12.5" stroke="#0C1A3F" stroke-width="1.5"/>
-                                </svg>
-                            </span>
-                            <span>By the time you realize customers are leaving, they already have.</span>
-                        </li>
-                        <li class="problem-item" data-i="4">
-                            <span class="problem-icon" aria-hidden="true">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <circle cx="12" cy="12" r="9" fill="#FFFFFF" stroke="#0C1A3F"/>
-                                  <path d="M12 12 L17 14" stroke="#DDA744" stroke-width="2" stroke-linecap="round"/>
-                                  <path d="M6 12 A6 6 0 0 1 18 12" stroke="#0C1A3F" fill="none"/>
-                                </svg>
-                            </span>
-                            <span>Inventory decisions run on gut feel instead of signal.</span>
-                        </li>
-                        <li class="problem-item" data-i="5">
-                            <span class="problem-icon" aria-hidden="true">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M3 17 L21 7" stroke="#DDA744" stroke-width="2" stroke-linecap="round"/>
-                                  <circle cx="18" cy="7" r="2" fill="#0C1A3F"/>
-                                  <path d="M4 17 h6" stroke="#0C1A3F" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                            </span>
-                            <span>Competitors move faster because they see patterns you don't.</span>
-                        </li>
-                        <li class="problem-item" data-i="6">
-                            <span class="problem-icon" aria-hidden="true">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <circle cx="12" cy="12" r="9" fill="#F2E9D8" stroke="#0C1A3F"/>
-                                  <text x="8" y="15" font-family="Montserrat, Arial, sans-serif" font-size="10" fill="#0C1A3F">₹</text>
-                                </svg>
-                            </span>
-                            <span>“Enterprise AI” quotes start at 10× your budget.</span>
-                        </li>
-                    </ul>
+    <!-- How It Works - Visual Timeline -->
+    <section class="process-section">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8 py-20 lg:py-24">
+            <div class="section-header">
+                <h2 class="section-title-modern">How It Works</h2>
+                <p class="section-subtitle-modern">From connection to commercial advantage</p>
+            </div>
+
+            <div class="process-timeline">
+                <!-- Step 1 -->
+                <div class="timeline-step">
+                    <div class="step-marker">
+                        <div class="step-number">01</div>
+                        <div class="step-connector"></div>
+                    </div>
+                    <div class="step-content-box">
+                        <h3 class="step-title">Connect Your Data</h3>
+                        <p class="step-description">
+                            Link your existing systems—Tally, Zoho, spreadsheets. No migration headaches.
+                        </p>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center">
-                    <div class="dx-box mt-4 w-full max-w-[420px]" id="dx-box" aria-live="polite">
-                        <div class="dx-row">
-                            <strong>Which of these do you face most?</strong>
-                            <span><span class="dx-count" id="issue-count">0</span>/6 selected</span>
-                        </div>
-                        <p id="dx-msg" class="mt-1 text-sm opacity-80">Tap the ones that sting.</p>
+
+                <!-- Step 2 -->
+                <div class="timeline-step">
+                    <div class="step-marker">
+                        <div class="step-number">02</div>
+                        <div class="step-connector"></div>
                     </div>
-                    <div class="dx-pop" id="dx-pop">
-                        <div class="title">You’re taking blind decisions.</div>
-                        <div class="note">Let’s light up the signal in your data.</div>
+                    <div class="step-content-box">
+                        <h3 class="step-title">Smart Analysis</h3>
+                        <p class="step-description">
+                            AI finds patterns, predicts trends, and spots risks automatically.
+                        </p>
                     </div>
-                    <p id="answers-line" class="mt-4 text-center answers-line answers-burst hidden">Your data has answers.<br/>You just need the right questions.</p>
-                    <div id="dx-cta-final" class="text-center hidden">
-                        <a href="#contact" class="dx-cta dx-cta-final">Get a free audit</a>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="timeline-step">
+                    <div class="step-marker">
+                        <div class="step-number">03</div>
+                        <div class="step-connector"></div>
+                    </div>
+                    <div class="step-content-box">
+                        <h3 class="step-title">Clear Insights</h3>
+                        <p class="step-description">
+                            Plain English answers to your business questions. No technical jargon.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="timeline-step">
+                    <div class="step-marker">
+                        <div class="step-number">04</div>
+                    </div>
+                    <div class="step-content-box">
+                        <h3 class="step-title">Take Action</h3>
+                        <p class="step-description">
+                            Specific recommendations you can implement immediately.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    -->
 
-    <!-- Solution Section - Hidden temporarily -->
-    <!--
-    <section class="solution-section" id="solutions">
-        <div class="max-w-[1200px] mx-auto px-5">
-            <h2 class="section-title">AI Tools That Fit Your Business</h2>
-            <p class="section-subtitle">Not the other way around</p>
+    <!-- CTA Section with Data Background -->
+    <section class="final-cta-section" id="contact">
+        <div class="cta-background-pattern"></div>
+        <div class="max-w-[700px] mx-auto px-6 lg:px-8 py-20 lg:py-24 relative z-10">
+            <div class="cta-content-modern">
+                <h2 class="cta-title-modern">Ready to Make Smarter Decisions?</h2>
+                <p class="cta-subtitle-modern">
+                    Let's turn your business data into your competitive advantage
+                </p>
 
-            <div class="solution-grid">
-                <div class="solution-card">
-                    <div class="solution-number">01</div>
-                    <h3>Connect Your Data</h3>
-                    <p>Link your existing systems – Tally, Zoho, spreadsheets. No migration headaches.</p>
-                </div>
-                <div class="solution-card">
-                    <div class="solution-number">02</div>
-                    <h3>Smart Analysis</h3>
-                    <p>AI finds patterns, predicts trends, and spots risks automatically.</p>
-                </div>
-                <div class="solution-card">
-                    <div class="solution-number">03</div>
-                    <h3>Clear Insights</h3>
-                    <p>Plain English answers to your business questions. No technical jargon.</p>
-                </div>
-                <div class="solution-card">
-                    <div class="solution-number">04</div>
-                    <h3>Take Action</h3>
-                    <p>Specific recommendations you can implement immediately.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    -->
-
-    <!-- CTA Section -->
-    <section class="cta-section" id="contact">
-        <div class="max-w-[1200px] mx-auto px-5">
-            <div class="cta-content">
-                <h2>Ready to Make Smarter Decisions?</h2>
-                <p>Let's turn your business data into your competitive advantage</p>
-
-                <!-- Reuse shared contact form component -->
-                <div class="contact-form">
-                    <h3 class="mb-4">Get Your Free Business Intelligence Audit</h3>
-                    <!-- Use the Astro component version of the form -->
+                <div class="contact-form-modern">
+                    <h3 class="form-heading">Get Your Free Business Intelligence Audit</h3>
                     <ContactForm />
                 </div>
             </div>
@@ -239,106 +270,545 @@ const seoDescription = "Local models, RAG pipelines, OCR engines, forecasting st
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="max-w-[1200px] mx-auto px-5">
-            <img src={logoSvg} alt="72° AI Labs logo" class="h-10 w-auto mx-auto mb-3" loading="lazy" decoding="async" />
-            <p>&copy; 2025 72° AI LABS. Turning data into decisions since day one.</p>
-            <p class="mt-2 opacity-70">
+    <footer class="modern-footer">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8 py-12 lg:py-16">
+            <img src={logoSvg} alt="72° AI Labs logo" class="footer-logo" loading="lazy" decoding="async" />
+            <p class="footer-text">&copy; 2025 72° AI LABS. Turning data into decisions since day one.</p>
+            <p class="footer-tagline">
                 Built for Indian SMBs | Designed for Real Results
             </p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for anchor links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             });
         });
 
-        // Reveal animation for problem list items with staggered timing
-        const items = document.querySelectorAll('.problem-item');
-        const obs = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const el = entry.target;
-              const i = Number(el.getAttribute('data-i') || '0');
-              el.style.animationDelay = `${Math.max(0, i - 1) * 120}ms`;
-              el.classList.add('in-view');
-              obs.unobserve(el);
-            }
-          });
-        }, { threshold: 0.2 });
-        items.forEach(el => obs.observe(el));
+        // Animate data flow on scroll
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-        // Mini-score: toggle selection and update count/message
-        const countEl = document.getElementById('issue-count');
-        const msgEl = document.getElementById('dx-msg');
-        const dxPop = document.getElementById('dx-pop');
-        const answersLine = document.getElementById('answers-line');
-        const ctaFinal = document.getElementById('dx-cta-final');
-        let answersTimer = null;
-        let ctaTimer = null;
-        const problemSection = document.getElementById('problem-section');
-        function updateScore() {
-          const count = document.querySelectorAll('.problem-item.selected').length;
-          if (countEl) countEl.textContent = String(count);
-          if (!msgEl) return;
-          if (count >= 3) {
-            msgEl.textContent = "If you ticked 3 or more, you’re flying blind.";
-            if (problemSection) problemSection.classList.add('dx-active');
-            if (dxPop) dxPop.style.display = 'block';
-            if (answersLine) {
-              if (answersTimer) clearTimeout(answersTimer);
-              answersTimer = setTimeout(() => { 
-                answersLine.classList.remove('hidden');
-                answersLine.classList.add('show');
-              }, 800);
-            }
-            if (ctaFinal) {
-              if (ctaTimer) clearTimeout(ctaTimer);
-              ctaTimer = setTimeout(() => { ctaFinal.classList.remove('hidden'); }, 800 + 650);
-            }
-          } else if (count === 0) {
-            msgEl.textContent = "Tap the ones that sting.";
-            if (problemSection) problemSection.classList.remove('dx-active');
-            if (dxPop) dxPop.style.display = 'none';
-            if (answersLine) {
-              if (answersTimer) clearTimeout(answersTimer);
-              answersLine.classList.remove('show');
-              answersLine.classList.add('hidden');
-            }
-            if (ctaFinal) { if (ctaTimer) clearTimeout(ctaTimer); ctaFinal.classList.add('hidden'); }
-          } else {
-            msgEl.textContent = "Keep going — be honest.";
-            if (problemSection) problemSection.classList.remove('dx-active');
-            if (dxPop) dxPop.style.display = 'none';
-            if (answersLine) {
-              if (answersTimer) clearTimeout(answersTimer);
-              answersLine.classList.remove('show');
-              answersLine.classList.add('hidden');
-            }
-            if (ctaFinal) { if (ctaTimer) clearTimeout(ctaTimer); ctaFinal.classList.add('hidden'); }
-          }
-        }
-        function attachToggle(el) {
-          el.setAttribute('role', 'checkbox');
-          el.setAttribute('tabindex', '0');
-          el.setAttribute('aria-checked', 'false');
-          const toggle = () => {
-            const selected = el.classList.toggle('selected');
-            el.setAttribute('aria-checked', selected ? 'true' : 'false');
-            updateScore();
-          };
-          el.addEventListener('click', toggle);
-          el.addEventListener('keydown', (e) => {
-            if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggle(); }
-          });
-        }
-        document.querySelectorAll('.problem-item').forEach(attachToggle);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.benefit-card, .timeline-step').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </Layout>
+
+<style>
+    /* Modern Header & Navigation */
+    .modern-header {
+        background: linear-gradient(180deg, var(--brand-cream) 0%, rgba(242, 233, 216, 0.5) 100%);
+        padding: 2rem 0 8rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nav-modern {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 0;
+        margin-bottom: 6rem;
+    }
+
+    .logo-img {
+        height: 3.5rem;
+        width: auto;
+    }
+
+    .nav-links-modern {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .nav-link {
+        color: var(--brand-blue);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.05rem;
+        transition: color 0.3s ease;
+        position: relative;
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent-electric);
+        transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+    .nav-link-cta {
+        background: var(--gradient-accent);
+        color: white;
+        padding: 0.75rem 1.75rem;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 153, 255, 0.2);
+    }
+
+    .nav-link-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 25px rgba(0, 153, 255, 0.3);
+    }
+
+    /* Hero Section */
+    .hero-modern {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-top: 4rem;
+    }
+
+    .hero-content {
+        max-width: 600px;
+    }
+
+    .hero-title {
+        font-size: 4rem;
+        font-weight: 800;
+        line-height: 1.1;
+        color: var(--brand-blue);
+        margin: 0 0 2rem 0;
+        letter-spacing: -0.02em;
+    }
+
+    .hero-accent {
+        background: var(--gradient-accent);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        line-height: 1.7;
+        color: rgba(12, 26, 63, 0.75);
+        margin: 0 0 3rem 0;
+        font-weight: 400;
+    }
+
+    .hero-cta-group {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .cta-primary {
+        background: var(--gradient-accent);
+        color: white;
+        padding: 1.125rem 2.5rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 1.125rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 25px rgba(0, 153, 255, 0.25);
+    }
+
+    .cta-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 35px rgba(0, 153, 255, 0.35);
+    }
+
+    .cta-arrow {
+        transition: transform 0.3s ease;
+    }
+
+    .cta-primary:hover .cta-arrow {
+        transform: translateX(4px);
+    }
+
+    .cta-secondary {
+        background: transparent;
+        color: var(--brand-blue);
+        border: 2px solid var(--brand-blue);
+        padding: 1.125rem 2.5rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 1.125rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .cta-secondary:hover {
+        background: var(--brand-blue);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(12, 26, 63, 0.2);
+    }
+
+    /* Hero Graphic */
+    .hero-graphic {
+        position: relative;
+        padding: 2rem;
+    }
+
+    .data-flow-svg {
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 4px 20px rgba(0, 217, 255, 0.1));
+    }
+
+    /* SVG Animations */
+    @keyframes pulse {
+        0%, 100% { opacity: 0.8; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    @keyframes glow {
+        0%, 100% { opacity: 0.8; filter: drop-shadow(0 0 4px #00D9FF); }
+        50% { opacity: 1; filter: drop-shadow(0 0 8px #00D9FF); }
+    }
+
+    @keyframes flowAnimation {
+        0% { stroke-dashoffset: 1000; }
+        100% { stroke-dashoffset: 0; }
+    }
+
+    .pulse-node {
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    .glow-node {
+        animation: glow 2s ease-in-out infinite;
+    }
+
+    .flow-line {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: flowAnimation 3s ease-in-out infinite;
+    }
+
+    .flow-1 { animation-delay: 0s; }
+    .flow-2 { animation-delay: 0.5s; }
+    .flow-3 { animation-delay: 1s; }
+
+    /* Benefits Section */
+    .benefits-section {
+        background: white;
+        position: relative;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 5rem;
+    }
+
+    .section-title-modern {
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--brand-blue);
+        margin: 0 0 1rem 0;
+        letter-spacing: -0.01em;
+    }
+
+    .section-subtitle-modern {
+        font-size: 1.25rem;
+        color: rgba(12, 26, 63, 0.6);
+        font-weight: 500;
+    }
+
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+    }
+
+    .benefit-card {
+        text-align: center;
+        padding: 3rem 2rem;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(0, 217, 255, 0.02) 0%, rgba(0, 153, 255, 0.05) 100%);
+        border: 2px solid rgba(0, 217, 255, 0.1);
+        transition: all 0.4s ease;
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    .benefit-card.animate-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .benefit-card:hover {
+        border-color: var(--accent-cyan);
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0, 217, 255, 0.15);
+    }
+
+    .benefit-icon {
+        color: var(--accent-electric);
+        margin: 0 auto 1.5rem;
+        width: 48px;
+        height: 48px;
+    }
+
+    .benefit-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--brand-blue);
+        margin: 0 0 0.5rem 0;
+    }
+
+    .benefit-desc {
+        font-size: 1.125rem;
+        color: rgba(12, 26, 63, 0.7);
+        font-weight: 500;
+    }
+
+    /* Process Timeline */
+    .process-section {
+        background: var(--brand-cream);
+    }
+
+    .process-timeline {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .timeline-step {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        opacity: 0;
+        transform: translateX(-30px);
+        transition: all 0.5s ease;
+    }
+
+    .timeline-step.animate-in {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .step-marker {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .step-number {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: var(--gradient-accent);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: 800;
+        box-shadow: 0 6px 20px rgba(0, 153, 255, 0.25);
+    }
+
+    .step-connector {
+        width: 3px;
+        flex: 1;
+        background: linear-gradient(180deg, var(--accent-cyan) 0%, transparent 100%);
+        margin-top: 1rem;
+    }
+
+    .timeline-step:last-child .step-connector {
+        display: none;
+    }
+
+    .step-content-box {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        border: 2px solid rgba(0, 217, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .step-content-box:hover {
+        border-color: var(--accent-cyan);
+        box-shadow: 0 8px 30px rgba(0, 217, 255, 0.1);
+    }
+
+    .step-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--brand-blue);
+        margin: 0 0 1rem 0;
+    }
+
+    .step-description {
+        font-size: 1.125rem;
+        line-height: 1.7;
+        color: rgba(12, 26, 63, 0.75);
+        margin: 0;
+    }
+
+    /* Final CTA Section */
+    .final-cta-section {
+        background: var(--brand-blue);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta-background-pattern {
+        position: absolute;
+        inset: 0;
+        background-image:
+            radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(0, 153, 255, 0.1) 0%, transparent 50%);
+    }
+
+    .cta-content-modern {
+        text-align: center;
+        color: white;
+    }
+
+    .cta-title-modern {
+        font-size: 3rem;
+        font-weight: 800;
+        margin: 0 0 1rem 0;
+    }
+
+    .cta-subtitle-modern {
+        font-size: 1.25rem;
+        opacity: 0.9;
+        margin: 0 0 3rem 0;
+    }
+
+    .contact-form-modern {
+        background: white;
+        padding: 3rem;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .form-heading {
+        color: var(--brand-blue);
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 0 2rem 0;
+    }
+
+    /* Footer */
+    .modern-footer {
+        background: var(--brand-blue);
+        color: white;
+        text-align: center;
+    }
+
+    .footer-logo {
+        height: 2.5rem;
+        width: auto;
+        margin: 0 auto 1.5rem;
+        opacity: 0.9;
+    }
+
+    .footer-text {
+        font-size: 1rem;
+        margin: 0 0 0.5rem 0;
+        opacity: 0.8;
+    }
+
+    .footer-tagline {
+        font-size: 0.875rem;
+        opacity: 0.6;
+        margin: 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        .hero-modern {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+        }
+
+        .hero-graphic {
+            order: -1;
+        }
+
+        .nav-links-modern {
+            gap: 1.5rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .section-title-modern {
+            font-size: 2rem;
+        }
+
+        .benefits-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .timeline-step {
+            grid-template-columns: 60px 1fr;
+            gap: 1rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+        }
+
+        .nav-links-modern {
+            display: none; /* Mobile menu would be implemented */
+        }
+
+        .cta-title-modern {
+            font-size: 2rem;
+        }
+
+        .contact-form-modern {
+            padding: 2rem;
+        }
+    }
+
+    /* Staggered animation delays */
+    .benefit-card:nth-child(1) { transition-delay: 0.1s; }
+    .benefit-card:nth-child(2) { transition-delay: 0.2s; }
+    .benefit-card:nth-child(3) { transition-delay: 0.3s; }
+    .benefit-card:nth-child(4) { transition-delay: 0.4s; }
+
+    .timeline-step:nth-child(1) { transition-delay: 0.1s; }
+    .timeline-step:nth-child(2) { transition-delay: 0.2s; }
+    .timeline-step:nth-child(3) { transition-delay: 0.3s; }
+    .timeline-step:nth-child(4) { transition-delay: 0.4s; }
+</style>

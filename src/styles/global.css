@@ -6,8 +6,12 @@
   --brand-blue: #0C1A3F;   /* Primary Blue (Midnight) */
   --brand-gold: #DDA744;   /* Accent Gold */
   --brand-cream: #F2E9D8;  /* Background Cream */
+  --accent-cyan: #00D9FF;  /* Vibrant Accent - Energy & Insights */
+  --accent-electric: #0099FF; /* Electric Blue - CTAs */
   --text-dark: #0C1A3F;
   --text-light: #ffffff;
+  --gradient-primary: linear-gradient(135deg, #0C1A3F 0%, #1a2951 100%);
+  --gradient-accent: linear-gradient(135deg, #00D9FF 0%, #0099FF 100%);
 }
 
 html { font-family: 'Montserrat', 'Inter', sans-serif; }
