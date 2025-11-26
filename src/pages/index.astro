@@ -13,13 +13,14 @@ const seoDescription = "Local models, RAG pipelines, OCR engines, forecasting st
     <header class="modern-header">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-8">
             <nav class="nav-modern">
-                <div class="logo-container">
+                <a href="/" class="logo-container">
                     <picture>
                         <source media="(max-width: 640px)" srcset={logoJpg} type="image/jpeg" />
                         <source srcset={logoSvg} type="image/svg+xml" />
                         <img src={logoSvg} alt="72° AI Labs logo" class="logo-img" loading="eager" decoding="async" />
                     </picture>
-                </div>
+                    <span class="company-name">72° AI LABS</span>
+                </a>
                 <div class="nav-links-modern">
                     <a href="/projects" class="nav-link">Projects</a>
                     <a href="/solutions" class="nav-link">Solutions</a>
@@ -329,9 +330,29 @@ const seoDescription = "Local models, RAG pipelines, OCR engines, forecasting st
         margin-bottom: 6rem;
     }
 
+    .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .logo-container:hover {
+        opacity: 0.9;
+    }
+
     .logo-img {
-        height: 3.5rem;
+        height: 4.5rem;
         width: auto;
+    }
+
+    .company-name {
+        color: var(--brand-blue);
+        font-weight: 800;
+        font-size: 1.75rem;
+        letter-spacing: -0.02em;
+        white-space: nowrap;
     }
 
     .nav-links-modern {

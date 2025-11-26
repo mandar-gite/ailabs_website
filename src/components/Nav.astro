@@ -5,13 +5,13 @@ import logoJpg from "../../logo.jpg?url";
 ---
 <header class="bg-[#0C1A3F] shadow-md sticky top-0 z-50">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="/" class="flex items-center gap-3">
+        <a href="/" class="flex items-center gap-3 md:gap-4">
             <picture>
                 <source media="(max-width: 640px)" srcset={logoJpg} type="image/jpeg" />
                 <source srcset={logoSvg} type="image/svg+xml" />
-                <img src={logoSvg} alt="72° AI Labs logo" class="h-10 md:h-12 lg:h-14 w-auto" />
+                <img src={logoSvg} alt="72° AI Labs logo" class="h-14 md:h-16 lg:h-20 w-auto" />
             </picture>
-            <span class="sr-only">72° AI LABS</span>
+            <span class="text-white font-bold text-xl md:text-2xl lg:text-3xl tracking-tight">72° AI LABS</span>
         </a>
         <nav class="hidden md:flex space-x-8 lg:space-x-10">
             <a href="/projects" class="text-gray-200 hover:text-white transition-colors duration-300 text-base md:text-lg">Projects</a>
