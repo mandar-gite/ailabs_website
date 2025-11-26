@@ -33,7 +33,7 @@
     "name": "CallMind",
     "shortBlurb": "Speech understanding for calls: transcription, topic extraction, and summaries.",
     "tagline": "Structured intelligence from noisy sales and service calls.",
-    "description": "Speech understanding for real-world call environments.",
+    "description": "Automatically transcribe and analyze sales and support calls to understand customer needs, coach agents, and spot trends—without listening to hours of recordings.",
     "category": "Operational Intelligence",
     "featured": true,
     "dataTypes": [
