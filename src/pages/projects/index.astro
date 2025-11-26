@@ -1,0 +1,304 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import ProjectTable from "../../components/ProjectTable.astro";
+import projectsData from "../../data/projects.json";
+import type { Project } from "../../types";
+
+const projects = projectsData as Project[];
+const categories = [...new Set(projects.map(p => p.category))];
+
+const seoTitle = "Projects | 72° AI Labs";
+const seoDescription = "Practical AI built for real business systems. Local models, RAG pipelines, OCR engines, forecasting stacks, and agentic workflows that run on everyday data.";
+---
+
+<Layout title={seoTitle} description={seoDescription}>
+  <Nav />
+  <main class="projects-page">
+    <div class="max-w-[1400px] mx-auto px-5 py-16">
+
+      <!-- Header -->
+      <header class="page-header">
+        <h1 class="page-title">Projects</h1>
+        <p class="page-subtitle">
+          Practical AI built for real business systems. Local models, RAG pipelines, OCR engines,
+          forecasting stacks, and agentic workflows that run on everyday data.
+        </p>
+      </header>
+
+      <!-- View Toggle and Filters -->
+      <div class="controls-bar">
+        <div class="view-toggle">
+          <button class="toggle-btn active" data-view="table">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+            </svg>
+            Table View
+          </button>
+          <button class="toggle-btn" data-view="grid">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+            </svg>
+            Grid View
+          </button>
+        </div>
+
+        <div class="filter-controls">
+          <label for="category-filter" class="filter-label">Filter by:</label>
+          <select id="category-filter" class="category-filter">
+            <option value="all">All Categories</option>
+            {categories.map(cat => (
+              <option value={cat}>{cat}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <!-- Table View -->
+      <div id="table-view" class="view-container active">
+        <ProjectTable projects={projects} />
+      </div>
+
+      <!-- Grid View -->
+      <div id="grid-view" class="view-container">
+        <div class="projects-grid" id="projects-grid">
+          {projects.map(project => (
+            <div class="grid-item" data-category={project.category}>
+              <ProjectCard project={project} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .projects-page {
+    background: var(--brand-cream);
+    min-height: 100vh;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--brand-blue);
+    margin: 0 0 1rem 0;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(12, 26, 63, 0.8);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .controls-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .view-toggle {
+    display: flex;
+    gap: 0.5rem;
+    background: white;
+    padding: 0.25rem;
+    border-radius: 8px;
+    border: 1px solid rgba(12, 26, 63, 0.1);
+  }
+
+  .toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: rgba(12, 26, 63, 0.6);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .toggle-btn:hover {
+    color: var(--brand-blue);
+    background: rgba(12, 26, 63, 0.05);
+  }
+
+  .toggle-btn.active {
+    background: var(--brand-blue);
+    color: white;
+  }
+
+  .toggle-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .filter-label {
+    font-weight: 600;
+    color: var(--brand-blue);
+    font-size: 0.875rem;
+  }
+
+  .category-filter {
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    border: 2px solid rgba(12, 26, 63, 0.2);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--brand-blue);
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230C1A3F' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+  }
+
+  .category-filter:hover,
+  .category-filter:focus {
+    border-color: var(--brand-gold);
+    outline: none;
+  }
+
+  .view-container {
+    display: none;
+  }
+
+  .view-container.active {
+    display: block;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .grid-item {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .grid-item.hidden {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+    }
+
+    .controls-bar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .view-toggle,
+    .filter-controls {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // View toggle functionality
+  const toggleBtns = document.querySelectorAll('.toggle-btn');
+  const tableView = document.getElementById('table-view');
+  const gridView = document.getElementById('grid-view');
+
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const view = btn.getAttribute('data-view');
+
+      // Update button states
+      toggleBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Toggle views
+      if (view === 'table') {
+        tableView?.classList.add('active');
+        gridView?.classList.remove('active');
+      } else {
+        tableView?.classList.remove('active');
+        gridView?.classList.add('active');
+      }
+    });
+  });
+
+  // Category filter functionality
+  const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
+  const gridItems = document.querySelectorAll('.grid-item');
+  const tableRows = document.querySelectorAll('.table-row');
+
+  categoryFilter?.addEventListener('change', (e) => {
+    const selectedCategory = (e.target as HTMLSelectElement).value;
+
+    // Filter grid items
+    gridItems.forEach(item => {
+      const itemCategory = item.getAttribute('data-category');
+      if (selectedCategory === 'all' || itemCategory === selectedCategory) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+
+    // Filter table rows
+    tableRows.forEach(row => {
+      const rowProjectId = row.getAttribute('data-project-id');
+      const projectData = document.querySelector(`[data-category="${selectedCategory}"]`);
+
+      if (selectedCategory === 'all') {
+        (row as HTMLElement).style.display = '';
+      } else {
+        const matchingGridItem = Array.from(gridItems).find(
+          item => item.querySelector(`a[href="/projects/${rowProjectId}"]`)
+        );
+        const itemCategory = matchingGridItem?.getAttribute('data-category');
+
+        if (itemCategory === selectedCategory) {
+          (row as HTMLElement).style.display = '';
+        } else {
+          (row as HTMLElement).style.display = 'none';
+        }
+      }
+    });
+  });
+</script>

@@ -1,0 +1,101 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import projectsData from '../../data/projects.json';
+import type { Project } from '../../types';
+
+const projects = projectsData as Project[];
+const project = projects.find(p => p.id === 'usedcar')!;
+
+const seoTitle = `${project.name} | 72° AI Labs`;
+const seoDescription = project.tagline;
+---
+
+<Layout title={seoTitle} description={seoDescription}>
+  <Nav />
+  <main class='project-detail'>
+    <div class='max-w-[1000px] mx-auto px-5 py-16'>
+      <nav class='breadcrumb'>
+        <a href='/projects'>Projects</a>
+        <span class='separator'>/</span>
+        <span class='current'>{project.name}</span>
+      </nav>
+      <header class='project-header'>
+        <div class='category-badge'>{project.category}</div>
+        <h1 class='project-title'>{project.name}</h1>
+        <p class='project-tagline'>{project.tagline}</p>
+      </header>
+      <section class='tech-section'>
+        <h2 class='section-heading'>Technical Overview</h2>
+        <div class='tech-grid'>
+          <div class='tech-card'>
+            <h3 class='tech-card-title'>Data Sources</h3>
+            <ul class='tech-list'>
+              {project.dataTypes.map(data => (<li>{data}</li>))}
+            </ul>
+          </div>
+          <div class='tech-card'>
+            <h3 class='tech-card-title'>ML / NLP Stack</h3>
+            <ul class='tech-list'>
+              {project.mlMethods.map(method => (<li>{method}</li>))}
+            </ul>
+          </div>
+          <div class='tech-card'>
+            <h3 class='tech-card-title'>Key Challenges</h3>
+            <ul class='tech-list challenges'>
+              {project.challenges.map(challenge => (<li>{challenge}</li>))}
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class='description-section'>
+        <h2 class='section-heading'>About This Project</h2>
+        <p class='project-description'>{project.description}</p>
+      </section>
+      <section class='cta-section'>
+        <div class='cta-card'>
+          <h3>Interested in this solution?</h3>
+          <p>Let's discuss how we can adapt this approach for your business.</p>
+          <a href='/#contact' class='cta-button'>Get in Touch</a>
+        </div>
+      </section>
+      <div class='back-link'>
+        <a href='/projects'>← Back to All Projects</a>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .project-detail { background: var(--brand-cream); min-height: 100vh; }
+  .breadcrumb { font-size: 0.875rem; color: rgba(12, 26, 63, 0.6); margin-bottom: 2rem; }
+  .breadcrumb a { color: var(--brand-blue); text-decoration: none; transition: color 0.2s ease; }
+  .breadcrumb a:hover { color: var(--brand-gold); }
+  .separator { margin: 0 0.5rem; }
+  .current { color: rgba(12, 26, 63, 0.6); }
+  .project-header { margin-bottom: 3rem; }
+  .category-badge { display: inline-block; background: var(--brand-gold); color: white; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+  .project-title { font-size: 3rem; font-weight: 800; color: var(--brand-blue); margin: 0 0 1rem 0; line-height: 1.2; }
+  .project-tagline { font-size: 1.25rem; color: rgba(12, 26, 63, 0.75); line-height: 1.6; }
+  .tech-section { margin-bottom: 3rem; }
+  .section-heading { font-size: 1.75rem; font-weight: 700; color: var(--brand-blue); margin: 0 0 1.5rem 0; }
+  .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .tech-card { background: white; border: 2px solid rgba(12, 26, 63, 0.1); border-radius: 8px; padding: 1.5rem; }
+  .tech-card-title { font-size: 1.125rem; font-weight: 700; color: var(--brand-blue); margin: 0 0 1rem 0; padding-bottom: 0.75rem; border-bottom: 2px solid var(--brand-gold); }
+  .tech-list { list-style: none; padding: 0; margin: 0; }
+  .tech-list li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: rgba(12, 26, 63, 0.85); line-height: 1.6; }
+  .tech-list li::before { content: '→'; position: absolute; left: 0; color: var(--brand-gold); font-weight: 700; }
+  .tech-list.challenges li { font-style: italic; color: rgba(12, 26, 63, 0.7); }
+  .description-section { margin-bottom: 3rem; padding: 2rem; background: white; border-radius: 8px; border: 2px solid rgba(12, 26, 63, 0.1); }
+  .project-description { font-size: 1.125rem; line-height: 1.8; color: rgba(12, 26, 63, 0.85); }
+  .cta-section { margin-bottom: 3rem; }
+  .cta-card { background: var(--brand-blue); color: white; padding: 2.5rem; border-radius: 8px; text-align: center; }
+  .cta-card h3 { font-size: 1.5rem; margin: 0 0 0.75rem 0; }
+  .cta-card p { font-size: 1.125rem; margin: 0 0 1.5rem 0; opacity: 0.9; }
+  .cta-button { display: inline-block; background: var(--brand-gold); color: var(--brand-blue); padding: 0.875rem 2rem; border-radius: 6px; font-weight: 700; text-decoration: none; transition: all 0.3s ease; }
+  .cta-button:hover { background: #c49038; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(221, 167, 68, 0.3); }
+  .back-link { text-align: center; }
+  .back-link a { color: var(--brand-blue); text-decoration: none; font-weight: 600; transition: color 0.2s ease; }
+  .back-link a:hover { color: var(--brand-gold); }
+  @media (max-width: 768px) { .project-title { font-size: 2rem; } .tech-grid { grid-template-columns: 1fr; } }
+</style>

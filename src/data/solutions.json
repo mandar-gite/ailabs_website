@@ -1,0 +1,38 @@
+[
+  {
+    "id": "finance-automation",
+    "name": "Finance Automation",
+    "description": "Clean ledgers, automated reconciliation, and intelligent financial data processing for Indian businesses.",
+    "projects": ["fastaccounting"]
+  },
+  {
+    "id": "operational-intelligence",
+    "name": "Operational Intelligence",
+    "description": "Real-time insights and automation for operational workflows across industries.",
+    "projects": ["callmind", "cascade", "hospitality-hub", "tire-analytics"]
+  },
+  {
+    "id": "content-marketing",
+    "name": "Content & Marketing Intelligence",
+    "description": "AI-powered content generation and marketing analytics built on local, privacy-first infrastructure.",
+    "projects": ["martech"]
+  },
+  {
+    "id": "document-ocr",
+    "name": "Document & OCR Systems",
+    "description": "Advanced document understanding, OCR, and intelligent extraction from complex formats.",
+    "projects": ["jnvessays", "docintel"]
+  },
+  {
+    "id": "onprem-llm",
+    "name": "On-Prem LLM Systems",
+    "description": "Privacy-first, local LLM deployments for sensitive data and air-gapped environments.",
+    "projects": ["mcop", "insightbridge", "photo-intelligence"]
+  },
+  {
+    "id": "data-engineering",
+    "name": "Data Engineering & Integration",
+    "description": "Robust data pipelines, feature engineering, and advanced modeling for complex datasets.",
+    "projects": ["nextsurge", "usedcar"]
+  }
+]

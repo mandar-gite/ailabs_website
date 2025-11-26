@@ -9,6 +9,9 @@ export default defineConfig({
   site: 'https://72ai.in',
   ...(basePath ? { base: basePath } : {}),
   integrations: [tailwind()],
+  devToolbar: {
+    enabled: false
+  },
   build: {
     assets: 'assets'
   }

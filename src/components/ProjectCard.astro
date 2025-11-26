@@ -1,0 +1,100 @@
+---
+// Component for displaying a project card in grid view
+export interface Props {
+  project: {
+    id: string;
+    name: string;
+    shortBlurb: string;
+    category: string;
+    featured?: boolean;
+  };
+}
+
+const { project } = Astro.props;
+---
+
+<a href={`/projects/${project.id}`} class="project-card group">
+  <div class="card-header">
+    <h3 class="project-name">{project.name}</h3>
+    {project.featured && <span class="featured-badge">Featured</span>}
+  </div>
+  <p class="project-category">{project.category}</p>
+  <p class="project-blurb">{project.shortBlurb}</p>
+  <div class="card-footer">
+    <span class="view-details">View details →</span>
+  </div>
+</a>
+
+<style>
+  .project-card {
+    display: block;
+    background: white;
+    border: 2px solid rgba(12, 26, 63, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--brand-blue);
+  }
+
+  .project-card:hover {
+    border-color: var(--brand-gold);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(12, 26, 63, 0.12);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--brand-blue);
+  }
+
+  .featured-badge {
+    background: var(--brand-gold);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .project-category {
+    font-size: 0.875rem;
+    color: var(--brand-gold);
+    font-weight: 600;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .project-blurb {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(12, 26, 63, 0.8);
+    margin: 0 0 1rem 0;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .view-details {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--brand-blue);
+    transition: color 0.3s ease;
+  }
+
+  .project-card:hover .view-details {
+    color: var(--brand-gold);
+  }
+</style>

@@ -1,0 +1,335 @@
+[
+  {
+    "id": "fastaccounting",
+    "name": "FastAccounting",
+    "shortBlurb": "Automated accounting and reconciliation across Tally, banks, invoices, and GST.",
+    "tagline": "Clean ledgers and reconciliations by automating messy financial data.",
+    "description": "Automated reconciliation across Tally, banking, invoices, and GST.",
+    "category": "Finance Automation",
+    "featured": true,
+    "dataTypes": [
+      "Tally exports",
+      "Bank statements",
+      "Invoices",
+      "GST files",
+      "Payment-gateway logs"
+    ],
+    "mlMethods": [
+      "OCR",
+      "Entity matching",
+      "Anomaly detection",
+      "Similarity models"
+    ],
+    "challenges": [
+      "Messy ledgers",
+      "Inconsistent vendor naming",
+      "Partial records",
+      "Format variability"
+    ],
+    "tags": ["Tally", "Banking", "GST", "Invoices", "Reconciliation"]
+  },
+  {
+    "id": "callmind",
+    "name": "CallMind",
+    "shortBlurb": "Speech understanding for calls: transcription, topic extraction, and summaries.",
+    "tagline": "Structured intelligence from noisy sales and service calls.",
+    "description": "Speech understanding for real-world call environments.",
+    "category": "Operational Intelligence",
+    "featured": true,
+    "dataTypes": [
+      "Call recordings",
+      "Transcripts",
+      "Agent notes"
+    ],
+    "mlMethods": [
+      "ASR",
+      "Diarisation",
+      "Topic extraction",
+      "Sentiment modelling"
+    ],
+    "challenges": [
+      "Noisy audio",
+      "Accent variability",
+      "Long-call coherence"
+    ],
+    "tags": ["Speech-to-Text", "Transcription", "Call Analytics", "NLP"]
+  },
+  {
+    "id": "cascade",
+    "name": "Cascade",
+    "shortBlurb": "Workflow automation engine that reads emails, tickets, and ops text.",
+    "tagline": "Automated decision-flows for fragmented operational processes.",
+    "description": "Agentic workflows for email- and ticket-driven operations.",
+    "category": "Operational Intelligence",
+    "featured": true,
+    "dataTypes": [
+      "Emails",
+      "Tickets",
+      "Chat logs",
+      "Workflow text"
+    ],
+    "mlMethods": [
+      "Retrieval",
+      "Agentic reasoning",
+      "State modelling"
+    ],
+    "challenges": [
+      "Fragmented context",
+      "Ambiguous state transitions"
+    ],
+    "tags": ["Workflow Automation", "Email Processing", "Ticket Management", "Agent Systems"]
+  },
+  {
+    "id": "nextsurge",
+    "name": "NextSurge Momentum Alpha",
+    "shortBlurb": "Market-signal models built on engineered features and walk-forward validation.",
+    "tagline": "Tested market signals built from robust feature engineering.",
+    "description": "Feature-rich market-signal models with walk-forward testing.",
+    "category": "Data Engineering & Integration",
+    "featured": true,
+    "dataTypes": [
+      "OHLCV data",
+      "Indicator feature sets",
+      "Labelled trading signals"
+    ],
+    "mlMethods": [
+      "LightGBM",
+      "XGBoost with custom loss",
+      "Ensemble models",
+      "Walk-forward CV"
+    ],
+    "challenges": [
+      "Non-stationarity",
+      "Sparse positives",
+      "Leakage control"
+    ],
+    "tags": ["Market Analysis", "Feature Engineering", "Forecasting", "Backtesting"]
+  },
+  {
+    "id": "hospitality-hub",
+    "name": "Hospitality & F&B Data Hub",
+    "shortBlurb": "Unified analytics across POS, Tally, WhatsApp, Meta, Google, and influencer feeds.",
+    "tagline": "Unified operational intelligence across restaurant systems.",
+    "description": "Unified ops and marketing intelligence for restaurants.",
+    "category": "Operational Intelligence",
+    "featured": true,
+    "dataTypes": [
+      "POS data",
+      "Tally",
+      "WhatsApp text",
+      "Meta/Google APIs",
+      "Influencer feeds"
+    ],
+    "mlMethods": [
+      "Forecasting",
+      "Text classification",
+      "Entity linking",
+      "Attribution modelling"
+    ],
+    "challenges": [
+      "Schema mismatch",
+      "Noisy ops text",
+      "Multi-source alignment"
+    ],
+    "tags": ["POS Integration", "Restaurant Analytics", "Social Media", "Marketing Data"]
+  },
+  {
+    "id": "martech",
+    "name": "MarTech Intelligence",
+    "shortBlurb": "Local RAG-powered LinkedIn content engine with multi-agent planning.",
+    "tagline": "Local AI engine that plans and produces LinkedIn-ready content.",
+    "description": "Local RAG engine for LinkedIn content operations.",
+    "category": "Content & Marketing Intelligence",
+    "featured": true,
+    "dataTypes": [
+      "Scraped LinkedIn posts",
+      "Industry articles",
+      "Content metadata",
+      "Embeddings"
+    ],
+    "mlMethods": [
+      "RAG",
+      "Embeddings",
+      "Local LLMs",
+      "Agent planning"
+    ],
+    "challenges": [
+      "Noisy scrape data",
+      "Inconsistent metadata",
+      "Maintaining brand consistency"
+    ],
+    "tags": ["RAG", "Content Generation", "LinkedIn", "Multi-Agent", "Local LLM"]
+  },
+  {
+    "id": "usedcar",
+    "name": "Used-Car Market Intelligence",
+    "shortBlurb": "Pricing-behaviour modelling for marketplace data.",
+    "tagline": "Insights into price movements and margin gaps.",
+    "description": "Modelling pricing behaviour in noisy marketplaces.",
+    "category": "Data Engineering & Integration",
+    "featured": false,
+    "dataTypes": [
+      "Marketplace listings",
+      "Pricing history",
+      "Vehicle metadata"
+    ],
+    "mlMethods": [
+      "Regression models",
+      "Similarity search",
+      "Anomaly detection"
+    ],
+    "challenges": [
+      "Missing metadata",
+      "Volatile pricing",
+      "Scrape noise"
+    ],
+    "tags": ["Price Modeling", "Market Analysis", "Behavior Prediction"]
+  },
+  {
+    "id": "tire-analytics",
+    "name": "Tire-Life Analytics",
+    "shortBlurb": "Predictive modelling of tire-replacement cycles for fleet and industrial setups.",
+    "tagline": "Predictive tyre-replacement modelling for reliability planning.",
+    "description": "Predictive modelling for tyre-life and replacement cycles.",
+    "category": "Operational Intelligence",
+    "featured": false,
+    "dataTypes": [
+      "Tire usage logs",
+      "RE coefficients",
+      "Replacement history"
+    ],
+    "mlMethods": [
+      "Gaussian mixtures",
+      "Survival analysis",
+      "Latent variable modelling"
+    ],
+    "challenges": [
+      "Low signal-to-noise",
+      "Long lags",
+      "Hidden operational variables"
+    ],
+    "tags": ["Predictive Maintenance", "Fleet Management", "IoT", "Time Series"]
+  },
+  {
+    "id": "mcop",
+    "name": "MCOP Email Intelligence",
+    "shortBlurb": "Local LLM email analysis: summaries, sentiment, and contextual queries.",
+    "tagline": "On-prem email understanding powered by local LLMs.",
+    "description": "Local LLM stack for email-based insight extraction.",
+    "category": "On-Prem LLM Systems",
+    "featured": true,
+    "dataTypes": [
+      "Email text",
+      "Threads",
+      "Metadata"
+    ],
+    "mlMethods": [
+      "Summarisation",
+      "Sentiment",
+      "RAG",
+      "Topic clustering"
+    ],
+    "challenges": [
+      "Long-context handling",
+      "Privacy",
+      "Mixed formatting"
+    ],
+    "tags": ["Email Analysis", "Local LLM", "On-Premise", "Privacy-First"]
+  },
+  {
+    "id": "insightbridge",
+    "name": "InsightBridge (Airtable)",
+    "shortBlurb": "Retrieval and summarisation layer over Airtable datasets.",
+    "tagline": "Quick insights from distributed Airtable data.",
+    "description": "Summaries and retrieval across Airtable-based systems.",
+    "category": "On-Prem LLM Systems",
+    "featured": false,
+    "dataTypes": [
+      "Airtable tables",
+      "Small operational datasets"
+    ],
+    "mlMethods": [
+      "Retrieval",
+      "Summarisation",
+      "Lightweight ML"
+    ],
+    "challenges": [
+      "Low data volume",
+      "Schema volatility"
+    ],
+    "tags": ["Airtable", "RAG", "Data Retrieval", "Summarization"]
+  },
+  {
+    "id": "photo-intelligence",
+    "name": "Home Photo Server Intelligence",
+    "shortBlurb": "Local image clustering, deduplication, and similarity search.",
+    "tagline": "Clean, searchable local photo libraries.",
+    "description": "Local clustering and deduplication for photo archives.",
+    "category": "On-Prem LLM Systems",
+    "featured": false,
+    "dataTypes": [
+      "Local image libraries"
+    ],
+    "mlMethods": [
+      "Embeddings",
+      "Clustering",
+      "Deduplication"
+    ],
+    "challenges": [
+      "Limited compute",
+      "Storage constraints"
+    ],
+    "tags": ["Image Processing", "Clustering", "Deduplication", "Computer Vision"]
+  },
+  {
+    "id": "jnvessays",
+    "name": "JNVessays",
+    "shortBlurb": "Handwriting-OCR pipeline for exam and evaluation workflow.",
+    "tagline": "Extracts meaningful text from handwritten exam sheets.",
+    "description": "Handwriting-OCR pipeline for exam digitisation.",
+    "category": "Document & OCR Systems",
+    "featured": false,
+    "dataTypes": [
+      "Handwritten exam sheets",
+      "Scanned pages"
+    ],
+    "mlMethods": [
+      "Handwriting OCR",
+      "Layout parsing",
+      "Answer segmentation"
+    ],
+    "challenges": [
+      "Low-quality scans",
+      "Varied handwriting",
+      "Multilingual content"
+    ],
+    "tags": ["OCR", "Handwriting Recognition", "Education", "Document Processing"]
+  },
+  {
+    "id": "docintel",
+    "name": "DocIntel",
+    "shortBlurb": "Document-understanding for PDFs, scans, and mixed-format files.",
+    "tagline": "Structured understanding of complex documents.",
+    "description": "OCR and layout intelligence for complex documents.",
+    "category": "Document & OCR Systems",
+    "featured": true,
+    "dataTypes": [
+      "PDFs",
+      "Images",
+      "Word files",
+      "Mixed-format documents"
+    ],
+    "mlMethods": [
+      "OCR",
+      "Layout analysis",
+      "Entity extraction",
+      "Semantic search"
+    ],
+    "challenges": [
+      "Inconsistent document quality",
+      "Table reconstruction",
+      "Mixed languages"
+    ],
+    "tags": ["Document AI", "OCR", "Layout Analysis", "PDF Processing"]
+  }
+]

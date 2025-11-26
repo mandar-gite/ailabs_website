@@ -4,8 +4,8 @@ import ContactForm from "../components/ContactForm.astro";
 // Import logo assets
 import logoSvg from "../../logo_ver2.1.svg?url";
 import logoJpg from "../../logo.jpg?url";
-const seoTitle = "72° AI Labs - Turn Data Into Decisions";
-const seoDescription = "Turn your business data into clear, confident decisions with 72° AI Labs. Affordable AI solutions for growing businesses.";
+const seoTitle = "72° AI Labs - Practical AI for Real Business Systems";
+const seoDescription = "Local models, RAG pipelines, OCR engines, forecasting stacks, and agentic workflows that run on everyday data. Each project solves an operational bottleneck without hype or abstraction.";
 ---
 <Layout title={seoTitle} description={seoDescription}>
     <!-- Header -->
@@ -21,21 +21,27 @@ const seoDescription = "Turn your business data into clear, confident decisions 
                     <span class="sr-only">72° AI Labs</span>
                 </div>
                 <div class="nav-links">
-                    <a href="#solutions">Solutions</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/solutions">Solutions</a>
+                    <a href="/about">About</a>
                     <a href="#contact">Contact</a>
                 </div>
             </nav>
 
             <div class="hero">
-                <h1>Turn Your Business Data Into <span class="highlight">Clear, Confident Decisions</span></h1>
-                <p class="subtitle">Quickly, simply, and affordably. No guesswork, no jargon – just smarter decisions for your growing business.</p>
-                <a href="#contact" class="cta-button">Get Started Today</a>
+                <h1>Practical AI Built for <span class="highlight">Real Business Systems</span></h1>
+                <p class="subtitle">Local models, RAG pipelines, OCR engines, forecasting stacks, and agentic workflows that run on everyday data. Each project solves an operational bottleneck without hype or abstraction.</p>
+                <div class="hero-actions">
+                    <a href="/projects" class="cta-button">View Projects</a>
+                    <a href="#contact" class="cta-button-secondary">Get in Touch</a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Value Proposition -->
-    <section class="value-prop">
+    <!-- Value Proposition - Hidden temporarily -->
+    <!--
+    <section class="value-prop" style="display: none;">
         <div class="max-w-[1200px] mx-auto px-5">
             <h2 class="section-title">Your Data Already Knows The Answer</h2>
             <p class="section-subtitle">We help you find it – without the complexity or cost of enterprise solutions</p>
@@ -89,8 +95,10 @@ const seoDescription = "Turn your business data into clear, confident decisions 
             </div>
         </div>
     </section>
+    -->
 
-    <!-- Problem Section -->
+    <!-- Problem Section - Hidden temporarily -->
+    <!--
     <section class="problem-section" id="problem-section">
         <div class="max-w-[1200px] mx-auto px-5">
             <h2 class="problem-title">Are You Making Decisions Blind?</h2>
@@ -178,8 +186,10 @@ const seoDescription = "Turn your business data into clear, confident decisions 
             </div>
         </div>
     </section>
+    -->
 
-    <!-- Solution Section -->
+    <!-- Solution Section - Hidden temporarily -->
+    <!--
     <section class="solution-section" id="solutions">
         <div class="max-w-[1200px] mx-auto px-5">
             <h2 class="section-title">AI Tools That Fit Your Business</h2>
@@ -209,6 +219,7 @@ const seoDescription = "Turn your business data into clear, confident decisions 
             </div>
         </div>
     </section>
+    -->
 
     <!-- CTA Section -->
     <section class="cta-section" id="contact">

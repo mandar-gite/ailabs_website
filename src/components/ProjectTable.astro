@@ -1,0 +1,226 @@
+---
+// Component for displaying projects in a technical table format
+import type { Project } from '../types';
+
+export interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+---
+
+<div class="table-wrapper">
+  <table class="projects-table">
+    <thead>
+      <tr>
+        <th>Project</th>
+        <th>Kind of Data</th>
+        <th>ML / NLP Methods</th>
+        <th>Challenges</th>
+      </tr>
+    </thead>
+    <tbody>
+      {projects.map((project) => (
+        <tr class="table-row" data-project-id={project.id}>
+          <td class="project-cell">
+            <a href={`/projects/${project.id}`} class="project-link">
+              <strong>{project.name}</strong>
+            </a>
+          </td>
+          <td class="data-cell">
+            <ul class="data-list">
+              {project.dataTypes.map((data) => (
+                <li>{data}</li>
+              ))}
+            </ul>
+          </td>
+          <td class="methods-cell">
+            <ul class="methods-list">
+              {project.mlMethods.map((method) => (
+                <li>{method}</li>
+              ))}
+            </ul>
+          </td>
+          <td class="challenges-cell">
+            <ul class="challenges-list">
+              {project.challenges.map((challenge) => (
+                <li>{challenge}</li>
+              ))}
+            </ul>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid rgba(12, 26, 63, 0.1);
+    background: white;
+  }
+
+  .projects-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  thead {
+    background: var(--brand-blue);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--brand-gold);
+  }
+
+  .table-row {
+    border-bottom: 1px solid rgba(12, 26, 63, 0.08);
+    transition: background-color 0.2s ease;
+  }
+
+  .table-row:hover {
+    background-color: rgba(221, 167, 68, 0.05);
+  }
+
+  td {
+    padding: 1.25rem 1rem;
+    vertical-align: top;
+  }
+
+  .project-cell {
+    min-width: 200px;
+    font-weight: 600;
+  }
+
+  .project-link {
+    color: var(--brand-blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .project-link:hover {
+    color: var(--brand-gold);
+  }
+
+  .data-cell,
+  .methods-cell,
+  .challenges-cell {
+    min-width: 220px;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    list-style-type: disc;
+  }
+
+  li {
+    margin-bottom: 0.375rem;
+    line-height: 1.5;
+    color: rgba(12, 26, 63, 0.85);
+  }
+
+  li:last-child {
+    margin-bottom: 0;
+  }
+
+  .data-list li {
+    color: rgba(12, 26, 63, 0.75);
+  }
+
+  .methods-list li {
+    color: var(--brand-blue);
+    font-weight: 500;
+  }
+
+  .challenges-list li {
+    color: rgba(12, 26, 63, 0.7);
+    font-style: italic;
+  }
+
+  /* Mobile responsive - convert to cards */
+  @media (max-width: 768px) {
+    .table-wrapper {
+      border: none;
+      background: transparent;
+    }
+
+    .projects-table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+
+    thead {
+      display: none;
+    }
+
+    .table-row {
+      background: white;
+      border: 2px solid rgba(12, 26, 63, 0.1);
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      padding: 1rem;
+    }
+
+    .table-row:hover {
+      background: white;
+      border-color: var(--brand-gold);
+    }
+
+    td {
+      padding: 0.75rem 0;
+      border: none;
+    }
+
+    td::before {
+      content: attr(data-label);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--brand-blue);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.5px;
+    }
+
+    .project-cell::before {
+      content: "Project";
+    }
+
+    .data-cell::before {
+      content: "Data Types";
+    }
+
+    .methods-cell::before {
+      content: "ML/NLP Methods";
+    }
+
+    .challenges-cell::before {
+      content: "Challenges";
+    }
+
+    .project-cell {
+      min-width: auto;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid rgba(12, 26, 63, 0.1);
+      margin-bottom: 0.75rem;
+    }
+  }
+</style>

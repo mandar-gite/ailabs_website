@@ -1,0 +1,185 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import solutionsData from "../../data/solutions.json";
+import projectsData from "../../data/projects.json";
+import type { Solution, Project } from "../../types";
+
+const solutions = solutionsData as Solution[];
+const projects = projectsData as Project[];
+
+const seoTitle = "Solutions | 72° AI Labs";
+const seoDescription = "Comprehensive AI solutions across Finance Automation, Operational Intelligence, Document & OCR, On-Prem LLM Systems, and Data Engineering.";
+---
+
+<Layout title={seoTitle} description={seoDescription}>
+  <Nav />
+  <main class="solutions-page">
+    <div class="max-w-[1400px] mx-auto px-5 py-16">
+
+      <!-- Header -->
+      <header class="page-header">
+        <h1 class="page-title">Solutions</h1>
+        <p class="page-subtitle">
+          Comprehensive AI capabilities organized by operational domain.
+          Each solution category represents proven approaches to specific business challenges.
+        </p>
+      </header>
+
+      <!-- Solutions Grid -->
+      <div class="solutions-container">
+        {solutions.map((solution) => {
+          const solutionProjects = projects.filter(p =>
+            solution.projects.includes(p.id)
+          );
+
+          return (
+            <section class="solution-section" id={solution.id}>
+              <div class="solution-header">
+                <h2 class="solution-title">{solution.name}</h2>
+                <p class="solution-description">{solution.description}</p>
+              </div>
+
+              <div class="projects-grid">
+                {solutionProjects.map(project => (
+                  <ProjectCard project={project} />
+                ))}
+              </div>
+            </section>
+          );
+        })}
+      </div>
+
+      <!-- CTA -->
+      <section class="cta-box">
+        <h3>Need a custom solution?</h3>
+        <p>We can adapt these approaches or build new systems tailored to your operational context.</p>
+        <a href="/#contact" class="cta-button">Discuss Your Needs</a>
+      </section>
+
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .solutions-page {
+    background: var(--brand-cream);
+    min-height: 100vh;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--brand-blue);
+    margin: 0 0 1rem 0;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(12, 26, 63, 0.8);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .solutions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .solution-section {
+    background: white;
+    border-radius: 12px;
+    padding: 3rem;
+    border: 2px solid rgba(12, 26, 63, 0.08);
+  }
+
+  .solution-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 3px solid var(--brand-gold);
+  }
+
+  .solution-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--brand-blue);
+    margin: 0 0 0.75rem 0;
+  }
+
+  .solution-description {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: rgba(12, 26, 63, 0.75);
+    margin: 0;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .cta-box {
+    background: var(--brand-blue);
+    color: white;
+    padding: 3rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 4rem;
+  }
+
+  .cta-box h3 {
+    font-size: 2rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .cta-box p {
+    font-size: 1.125rem;
+    margin: 0 0 2rem 0;
+    opacity: 0.9;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: var(--brand-gold);
+    color: var(--brand-blue);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.125rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: #c49038;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(221, 167, 68, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .solution-section {
+      padding: 2rem 1.5rem;
+    }
+
+    .solution-title {
+      font-size: 1.5rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

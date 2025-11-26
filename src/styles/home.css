@@ -42,11 +42,20 @@
             font-size: 1.3rem;
             margin-bottom: 2rem;
             opacity: 0.95;
-            max-width: 600px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.6;
         }
-        
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
         .cta-button {
             background: var(--brand-blue);
             color: var(--text-light);
@@ -60,11 +69,32 @@
             text-decoration: none;
             display: inline-block;
         }
-        
+
         .cta-button:hover {
             background: #0a1535;
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(12, 26, 63, 0.25);
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            color: var(--brand-blue);
+            border: 2px solid var(--brand-blue);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button-secondary:hover {
+            background: var(--brand-blue);
+            color: var(--text-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(12, 26, 63, 0.15);
         }
         
         /* Value Proposition Section */

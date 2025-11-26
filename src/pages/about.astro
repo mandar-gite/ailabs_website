@@ -1,70 +1,430 @@
 ---
-// src/pages/about.astro
 import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+
 const seoTitle = "About | 72° AI LABS";
 const seoDescription = "Why 72°, what we believe, and how we turn Indian business data into working decisions.";
 ---
+
 <Layout title={seoTitle} description={seoDescription}>
-  <main class="container mx-auto px-4 py-16 text-[#0C1A3F]">
-    <section class="max-w-3xl mx-auto mb-16">
-      <h1 class="text-4xl font-extrabold mb-4">About 72° AI LABS</h1>
-      <p class="text-gray-700">
-        We build frugal, context-aware AI that turns Indian business data into working decisions.
-        PetPooja, Tally, GSTN, WhatsApp—connected, cleaned, and converted into dashboards and actions you can bank on.
-      </p>
-    </section>
+  <Nav />
+  <main class="about-page">
 
-    <section class="max-w-3xl mx-auto mb-12">
-      <h2 class="text-2xl font-bold mb-3">Why “72°”?</h2>
-      <p class="text-gray-700">
-        A regular pentagon’s external angle is 72°. That one visible angle hints at the golden ratio within.
-        Likewise, we read a few observable signals to decode the structure underneath—so decisions become obvious.
-      </p>
-    </section>
-
-    <section class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
-      <div>
-        <h2 class="text-2xl font-bold mb-3">Our Principles</h2>
-        <ul class="space-y-3 text-gray-700">
-          <li><strong>Balance</strong> — speed with thoughtfulness.</li>
-          <li><strong>Proportion</strong> — precision without bloat.</li>
-          <li><strong>Harmony</strong> — integrates with people & systems.</li>
-          <li><strong>Discovery</strong> — surface non-obvious opportunities.</li>
-          <li><strong>Contextual Intelligence</strong> — adapt models to your world.</li>
-        </ul>
-      </div>
-      <div class="bg-white rounded-lg p-6 border border-[rgba(12,26,63,0.08)]">
-        <h3 class="text-xl font-semibold mb-2">How We Work</h3>
-        <ol class="list-decimal list-inside space-y-2 text-gray-700">
-          <li><strong>Connect</strong> your live tools.</li>
-          <li><strong>Clean & Context</strong> to raise signal quality.</li>
-          <li><strong>Decisions</strong> — dashboards & operating cues; iterate with your ops rhythm.</li>
-        </ol>
+    <!-- Hero Section -->
+    <section class="about-hero">
+      <div class="max-w-[1000px] mx-auto px-5 py-20 text-center">
+        <h1 class="page-title">About 72° AI LABS</h1>
+        <p class="page-subtitle">
+          We build frugal, context-aware AI that turns Indian business data into working decisions.
+          PetPooja, Tally, GSTN, WhatsApp—connected, cleaned, and converted into dashboards and actions you can bank on.
+        </p>
       </div>
     </section>
 
-    <section class="max-w-3xl mx-auto mb-12">
-      <h2 class="text-2xl font-bold mb-3">What We Do</h2>
-      <ul class="space-y-2 text-gray-700">
-        <li>Data Intelligence & AI Insights</li>
-        <li>Operational Optimisation (F&B, Manufacturing)</li>
-        <li>Advisory on AI Strategy for SMEs</li>
-      </ul>
+    <!-- Why 72 Section -->
+    <section class="why-section">
+      <div class="max-w-[1000px] mx-auto px-5 py-16">
+        <div class="why-card">
+          <div class="icon-wrapper">
+            <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M50 10 L90 35 L75 75 L25 75 L10 35 Z" stroke="#DDA744" stroke-width="3" fill="rgba(221, 167, 68, 0.1)"/>
+              <circle cx="50" cy="50" r="8" fill="#DDA744"/>
+            </svg>
+          </div>
+          <h2 class="section-heading">Why "72°"?</h2>
+          <p class="section-text">
+            A regular pentagon's external angle is 72°. That one visible angle hints at the golden ratio within.
+            Likewise, we read a few observable signals to decode the structure underneath—so decisions become obvious.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <section class="max-w-3xl mx-auto mb-16">
-      <h2 class="text-2xl font-bold mb-3">Built for Bharat-scale realities</h2>
-      <p class="text-gray-700">
-        We prioritise frugal engineering and fast ROI—smaller pilots, clear KPIs (₹ saved, hours saved),
-        and clean handovers that avoid vendor lock-in.
-      </p>
+    <!-- Principles & Process -->
+    <section class="principles-section">
+      <div class="max-w-[1200px] mx-auto px-5 py-16">
+        <div class="principles-grid">
+
+          <!-- Principles Card -->
+          <div class="principle-card">
+            <h2 class="card-heading">Our Principles</h2>
+            <ul class="principles-list">
+              <li>
+                <span class="principle-name">Balance</span>
+                <span class="principle-desc">Speed with thoughtfulness</span>
+              </li>
+              <li>
+                <span class="principle-name">Proportion</span>
+                <span class="principle-desc">Precision without bloat</span>
+              </li>
+              <li>
+                <span class="principle-name">Harmony</span>
+                <span class="principle-desc">Integrates with people & systems</span>
+              </li>
+              <li>
+                <span class="principle-name">Discovery</span>
+                <span class="principle-desc">Surface non-obvious opportunities</span>
+              </li>
+              <li>
+                <span class="principle-name">Contextual Intelligence</span>
+                <span class="principle-desc">Adapt models to your world</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- How We Work Card -->
+          <div class="process-card">
+            <h2 class="card-heading">How We Work</h2>
+            <ol class="process-list">
+              <li>
+                <span class="step-number">01</span>
+                <div class="step-content">
+                  <strong>Connect</strong>
+                  <p>Link your live tools and data sources</p>
+                </div>
+              </li>
+              <li>
+                <span class="step-number">02</span>
+                <div class="step-content">
+                  <strong>Clean & Context</strong>
+                  <p>Raise signal quality through processing</p>
+                </div>
+              </li>
+              <li>
+                <span class="step-number">03</span>
+                <div class="step-content">
+                  <strong>Decisions</strong>
+                  <p>Dashboards & operating cues; iterate with your ops rhythm</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+        </div>
+      </div>
     </section>
 
-    <section class="max-w-3xl mx-auto">
-      <h2 class="text-2xl font-bold mb-1">Who’s behind this</h2>
-      <p class="text-gray-700">
-        Founded by <strong>Mandar Gite</strong> (BITS Pilani alumnus). Built in India, for India.
-      </p>
+    <!-- What We Do -->
+    <section class="services-section">
+      <div class="max-w-[1000px] mx-auto px-5 py-16">
+        <h2 class="section-heading-center">What We Do</h2>
+        <div class="services-grid">
+          <div class="service-item">
+            <div class="service-icon">→</div>
+            <h3>Data Intelligence & AI Insights</h3>
+          </div>
+          <div class="service-item">
+            <div class="service-icon">→</div>
+            <h3>Operational Optimisation (F&B, Manufacturing)</h3>
+          </div>
+          <div class="service-item">
+            <div class="service-icon">→</div>
+            <h3>Advisory on AI Strategy for SMEs</h3>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+      <div class="max-w-[1000px] mx-auto px-5 py-16">
+        <div class="mission-card">
+          <h2 class="section-heading">Built for Bharat-scale realities</h2>
+          <p class="section-text">
+            We prioritise frugal engineering and fast ROI—smaller pilots, clear KPIs (₹ saved, hours saved),
+            and clean handovers that avoid vendor lock-in.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder-section">
+      <div class="max-w-[1000px] mx-auto px-5 py-16">
+        <div class="founder-card">
+          <h2 class="card-heading">Who's behind this</h2>
+          <p class="founder-text">
+            Founded by <strong>Mandar Gite</strong>, a BITS Pilani alumnus who builds AI systems that fix real business problems—speed, accuracy, cost, and decision-flow.
+            His work sits where operations, data, and technology collide: pricing that adapts, workflows that run themselves, documents that read themselves, and models that turn raw data into commercial advantage.
+          </p>
+          <p class="founder-text">
+            He designs AI that integrates into the daily machinery of a business: sales calls, finance ops, marketing cycles, inventory planning, and field operations.
+            The systems don't decorate dashboards; they change how teams work and how money moves.
+          </p>
+          <p class="founder-tagline">Built in India for Indian businesses that need functional intelligence with immediate operational impact.</p>
+        </div>
+      </div>
+    </section>
+
   </main>
 </Layout>
+
+<style>
+  .about-page {
+    background: var(--brand-cream);
+    min-height: 100vh;
+  }
+
+  /* Hero Section */
+  .about-hero {
+    background: linear-gradient(135deg, var(--brand-blue) 0%, #0a1535 100%);
+    color: white;
+  }
+
+  .page-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0 0 1.5rem 0;
+    color: white;
+  }
+
+  .page-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    opacity: 0.95;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Why Section */
+  .why-section {
+    background: white;
+  }
+
+  .why-card {
+    text-align: center;
+    padding: 3rem;
+    background: var(--brand-cream);
+    border-radius: 12px;
+    border: 2px solid rgba(221, 167, 68, 0.2);
+  }
+
+  .icon-wrapper {
+    margin: 0 auto 2rem;
+    width: 80px;
+    height: 80px;
+  }
+
+  .section-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--brand-blue);
+    margin: 0 0 1rem 0;
+  }
+
+  .section-heading-center {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--brand-blue);
+    text-align: center;
+    margin: 0 0 3rem 0;
+  }
+
+  .section-text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: rgba(12, 26, 63, 0.8);
+  }
+
+  /* Principles Section */
+  .principles-section {
+    background: var(--brand-cream);
+  }
+
+  .principles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .principle-card,
+  .process-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 2px solid rgba(12, 26, 63, 0.08);
+  }
+
+  .card-heading {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--brand-blue);
+    margin: 0 0 2rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--brand-gold);
+  }
+
+  .principles-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .principles-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .principle-name {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--brand-blue);
+  }
+
+  .principle-desc {
+    color: rgba(12, 26, 63, 0.7);
+    font-size: 0.95rem;
+  }
+
+  .process-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .process-list li {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .step-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--brand-gold);
+    flex-shrink: 0;
+  }
+
+  .step-content {
+    flex: 1;
+  }
+
+  .step-content strong {
+    display: block;
+    font-size: 1.125rem;
+    color: var(--brand-blue);
+    margin-bottom: 0.25rem;
+  }
+
+  .step-content p {
+    color: rgba(12, 26, 63, 0.7);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Services Section */
+  .services-section {
+    background: white;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .service-item {
+    background: var(--brand-cream);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 2px solid rgba(12, 26, 63, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .service-item:hover {
+    border-color: var(--brand-gold);
+    transform: translateY(-4px);
+  }
+
+  .service-icon {
+    font-size: 2rem;
+    color: var(--brand-gold);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .service-item h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--brand-blue);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Mission Section */
+  .mission-section {
+    background: var(--brand-cream);
+  }
+
+  .mission-card {
+    background: var(--brand-blue);
+    color: white;
+    padding: 3rem;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .mission-card .section-heading {
+    color: white;
+  }
+
+  .mission-card .section-text {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Founder Section */
+  .founder-section {
+    background: white;
+  }
+
+  .founder-card {
+    background: var(--brand-cream);
+    padding: 3rem;
+    border-radius: 12px;
+    border: 2px solid rgba(221, 167, 68, 0.2);
+    text-align: center;
+  }
+
+  .founder-text {
+    font-size: 1.25rem;
+    color: rgba(12, 26, 63, 0.85);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .founder-tagline {
+    font-size: 1.125rem;
+    color: var(--brand-gold);
+    font-weight: 600;
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: 2.5rem;
+    }
+
+    .principles-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .why-card,
+    .principle-card,
+    .process-card,
+    .mission-card,
+    .founder-card {
+      padding: 2rem;
+    }
+  }
+</style>
