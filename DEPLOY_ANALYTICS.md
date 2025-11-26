@@ -71,3 +71,11 @@ Then commit and push. But the proper way is to use GitHub repository variables.
 4. If script is missing, environment variable wasn't passed to build
 
 **Need help?** Let me know and I can update the GitHub Actions workflow for you.
+# Analytics Tracking Active
+
+Google Analytics 4 is now configured and tracking website traffic.
+
+Tracking ID: G-QWVMR5E9MM
+
+Monitor your analytics at: https://analytics.google.com/
+
