@@ -19,32 +19,28 @@ import logoJpg from "../../logo.jpg?url";
       <!-- Metadata for better inbox + redirect after submit -->
       <input type="hidden" name="_subject" value="New inquiry from 72° AI Labs" />
       <input type="hidden" name="_redirect" value="https://72ai.in/thanks" />
-      <div>
-        <label for="name" class="block text-sm text-[#0C1A3F] mb-1.5">Name</label>
-        <input type="text" id="name" name="Name" class="w-full px-3 py-2 text-sm rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
+
+      <!-- Two-column grid for Name, Company, Email, Phone -->
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label for="name" class="block text-sm text-[#0C1A3F] mb-1.5">Name</label>
+          <input type="text" id="name" name="Name" class="w-full px-3 py-2 text-sm rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
+        </div>
+        <div>
+          <label for="company" class="block text-sm text-[#0C1A3F] mb-1.5">Company</label>
+          <input type="text" id="company" name="Company" class="w-full px-3 py-2 text-sm rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
+        </div>
+        <div>
+          <label for="email" class="block text-sm text-[#0C1A3F] mb-1.5">Email</label>
+          <input type="email" id="email" name="Email" class="w-full px-3 py-2 text-sm rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
+        </div>
+        <div>
+          <label for="phone" class="block text-sm text-[#0C1A3F] mb-1.5">Phone</label>
+          <input type="tel" id="phone" name="Phone" class="w-full px-3 py-2 text-sm rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
+        </div>
       </div>
-      <div>
-        <label for="company" class="block text-sm text-[#0C1A3F] mb-1.5">Company</label>
-        <input type="text" id="company" name="Company" class="w-full px-3 py-2 text-sm rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
-      </div>
-      <div>
-        <label for="email" class="block text-sm text-[#0C1A3F] mb-1.5">Email</label>
-        <input type="email" id="email" name="Email" class="w-full px-3 py-2 text-sm rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
-      </div>
-      <div>
-        <label for="phone" class="block text-sm text-[#0C1A3F] mb-1.5">Phone</label>
-        <input type="tel" id="phone" name="Phone" class="w-full px-3 py-2 text-sm rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
-      </div>
-      <div>
-        <label for="sector" class="block text-sm text-[#0C1A3F] mb-1.5">Sector</label>
-        <select id="sector" name="Sector" class="w-full px-3 py-2 text-sm rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744]" required>
-          <option value="">Select your sector</option>
-          <option value="F&B (Hospitality)">F&B (Hospitality)</option>
-          <option value="Manufacturing">Manufacturing</option>
-          <option value="SME (Cross-functional)">SME (Cross-functional)</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
+
+      <!-- Full-width Your Brief -->
       <div>
         <label for="message" class="block text-sm text-[#0C1A3F] mb-1.5">Your Brief</label>
         <textarea id="message" name="Brief" rows="4" class="w-full px-3 py-2 text-sm rounded-md bg-white text-[#0C1A3F] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DDA744] min-h-[100px]" required></textarea>
