@@ -33,9 +33,11 @@ function formatDate(date: Date): string {
 
 const seoTitle = `${post.data.title} | 72° AI Labs Blog`;
 const seoDescription = post.data.description;
+// Use post-specific OG image if available, otherwise use blog default
+const ogImage = post.data.image || "/og-blog.jpg";
 ---
 
-<Layout title={seoTitle} description={seoDescription}>
+<Layout title={seoTitle} description={seoDescription} ogImage={ogImage}>
   <Nav />
   <main class="blog-post-page">
     <article class="blog-post">

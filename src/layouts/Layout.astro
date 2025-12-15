@@ -15,8 +15,9 @@ const { title, description, canonical, ogImage } = Astro.props;
 // Generate canonical URL
 const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
 
-// Default OG image
-const ogImageURL = ogImage || new URL('/favicon.png', Astro.site).href;
+// Default OG image - Create /public/og-default.jpg (1200x630) for better social sharing
+// Falls back to favicon if og-default.jpg doesn't exist
+const ogImageURL = ogImage || new URL('/og-default.jpg', Astro.site).href;
 
 // Get Google Analytics ID from environment variable
 const GA4_ID = import.meta.env.PUBLIC_GA4_ID;

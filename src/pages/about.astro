@@ -4,9 +4,10 @@ import Nav from "../components/Nav.astro";
 
 const seoTitle = "About | 72° AI LABS";
 const seoDescription = "Frugal AI built for SMEs. Convert scattered business data into clear decisions across finance, ops, sales, support, marketing, and logistics operations.";
+const ogImage = "/og-about.jpg"; // Create this 1200x630 image for social sharing
 ---
 
-<Layout title={seoTitle} description={seoDescription}>
+<Layout title={seoTitle} description={seoDescription} ogImage={ogImage}>
   <Nav />
   <main class="about-page">
 
