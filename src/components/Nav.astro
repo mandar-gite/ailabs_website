@@ -19,8 +19,8 @@ import logoJpg from "../../logo.jpg?url";
             <a href="/about" class="text-gray-200 hover:text-white transition-colors duration-300 text-base md:text-lg">About</a>
             <a href="/#contact" class="px-5 py-2.5 bg-[#DDA744] hover:bg-[#c49038] text-[#0C1A3F] rounded-full transition-colors duration-300 text-base md:text-lg font-semibold">Contact</a>
         </nav>
-        <button id="mobile-menu-button" class="md:hidden text-gray-200 hover:text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <button id="mobile-menu-button" class="md:hidden text-gray-200 hover:text-white" aria-label="Toggle mobile menu" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
             </svg>
         </button>
@@ -37,6 +37,8 @@ import logoJpg from "../../logo.jpg?url";
     const mobileMenu = document.getElementById('mobile-menu');
 
     mobileMenuButton.addEventListener('click', () => {
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        mobileMenuButton.setAttribute('aria-expanded', (!isExpanded).toString());
         mobileMenu.classList.toggle('hidden');
     });
 </script>

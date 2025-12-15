@@ -6,9 +6,17 @@ import '../styles/home.css';
 export interface Props {
     title: string;
     description: string;
+    canonical?: string;
+    ogImage?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, canonical, ogImage } = Astro.props;
+
+// Generate canonical URL
+const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
+
+// Default OG image
+const ogImageURL = ogImage || new URL('/favicon.png', Astro.site).href;
 
 // Get Google Analytics ID from environment variable
 const GA4_ID = import.meta.env.PUBLIC_GA4_ID;
@@ -24,13 +32,24 @@ const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_ID;
 
     <!-- SEO & Favicons -->
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:site_name" content="72° AI LABS" />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,8 +82,120 @@ const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_ID;
             })(window, document, "clarity", "script", CLARITY_ID);
         </script>
     )}
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://72ai.in/#organization",
+                "name": "72° AI LABS",
+                "url": "https://72ai.in",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://72ai.in/favicon.png"
+                },
+                "description": "Frugal AI built for SMEs. Convert scattered business data into clear decisions across finance, ops, sales, support, marketing, and logistics operations.",
+                "founder": {
+                    "@type": "Person",
+                    "name": "Mandar Gite",
+                    "alumniOf": "BITS Pilani"
+                },
+                "areaServed": {
+                    "@type": "Country",
+                    "name": "India"
+                },
+                "sameAs": []
+            },
+            {
+                "@type": "LocalBusiness",
+                "@id": "https://72ai.in/#localbusiness",
+                "name": "72° AI LABS",
+                "image": "https://72ai.in/favicon.png",
+                "description": "We build frugal, context-aware AI that converts scattered business data into clear, usable decisions for SMEs in India.",
+                "url": "https://72ai.in",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "IN"
+                },
+                "priceRange": "$$",
+                "knowsAbout": [
+                    "Artificial Intelligence",
+                    "Business Intelligence",
+                    "Data Analytics",
+                    "Machine Learning",
+                    "Operational Optimization"
+                ]
+            },
+            {
+                "@type": "Service",
+                "@id": "https://72ai.in/#service-data-intelligence",
+                "serviceType": "Data Intelligence & AI Insights",
+                "provider": {
+                    "@id": "https://72ai.in/#organization"
+                },
+                "areaServed": {
+                    "@type": "Country",
+                    "name": "India"
+                },
+                "description": "AI-powered data intelligence and insights for business decision-making"
+            },
+            {
+                "@type": "Service",
+                "@id": "https://72ai.in/#service-operational-optimization",
+                "serviceType": "Operational Optimization",
+                "provider": {
+                    "@id": "https://72ai.in/#organization"
+                },
+                "areaServed": {
+                    "@type": "Country",
+                    "name": "India"
+                },
+                "description": "Operational optimization for F&B and Manufacturing industries",
+                "industry": ["Food & Beverage", "Manufacturing"]
+            },
+            {
+                "@type": "Service",
+                "@id": "https://72ai.in/#service-ai-advisory",
+                "serviceType": "AI Strategy Advisory",
+                "provider": {
+                    "@id": "https://72ai.in/#organization"
+                },
+                "areaServed": {
+                    "@type": "Country",
+                    "name": "India"
+                },
+                "description": "Strategic AI advisory services for small and medium enterprises (SMEs)",
+                "audience": {
+                    "@type": "Audience",
+                    "audienceType": "Small and Medium Enterprises"
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body class="antialiased leading-relaxed bg-[#F2E9D8] text-[#0C1A3F]">
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
     <slot />
+    <style>
+        .skip-to-main {
+            position: absolute;
+            left: -9999px;
+            z-index: 999;
+            padding: 1em;
+            background-color: #0C1A3F;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .skip-to-main:focus {
+            left: 50%;
+            transform: translateX(-50%);
+            top: 10px;
+        }
+    </style>
 </body>
 </html>
