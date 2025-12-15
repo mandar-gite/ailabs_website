@@ -55,31 +55,6 @@
     "tags": ["Speech-to-Text", "Transcription", "Call Analytics", "NLP"]
   },
   {
-    "id": "cascade",
-    "name": "Cascade",
-    "shortBlurb": "Workflow automation engine that reads emails, tickets, and ops text.",
-    "tagline": "Automated decision-flows for fragmented operational processes.",
-    "description": "Agentic workflows for email- and ticket-driven operations.",
-    "category": "Operational Intelligence",
-    "featured": true,
-    "dataTypes": [
-      "Emails",
-      "Tickets",
-      "Chat logs",
-      "Workflow text"
-    ],
-    "mlMethods": [
-      "Retrieval",
-      "Agentic reasoning",
-      "State modelling"
-    ],
-    "challenges": [
-      "Fragmented context",
-      "Ambiguous state transitions"
-    ],
-    "tags": ["Workflow Automation", "Email Processing", "Ticket Management", "Agent Systems"]
-  },
-  {
     "id": "nextsurge",
     "name": "NextSurge Momentum Alpha",
     "shortBlurb": "Market-signal models built on engineered features and walk-forward validation.",
@@ -159,31 +134,6 @@
       "Maintaining brand consistency"
     ],
     "tags": ["RAG", "Content Generation", "LinkedIn", "Multi-Agent", "Local LLM"]
-  },
-  {
-    "id": "usedcar",
-    "name": "Used-Car Market Intelligence",
-    "shortBlurb": "Pricing-behaviour modelling for marketplace data.",
-    "tagline": "Insights into price movements and margin gaps.",
-    "description": "Modelling pricing behaviour in noisy marketplaces.",
-    "category": "Data Engineering & Integration",
-    "featured": false,
-    "dataTypes": [
-      "Marketplace listings",
-      "Pricing history",
-      "Vehicle metadata"
-    ],
-    "mlMethods": [
-      "Regression models",
-      "Similarity search",
-      "Anomaly detection"
-    ],
-    "challenges": [
-      "Missing metadata",
-      "Volatile pricing",
-      "Scrape noise"
-    ],
-    "tags": ["Price Modeling", "Market Analysis", "Behavior Prediction"]
   },
   {
     "id": "tire-analytics",
