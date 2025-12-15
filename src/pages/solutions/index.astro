@@ -18,14 +18,13 @@ const seoDescription = "Comprehensive AI solutions across Finance Automation, Op
   <main class="solutions-page">
     <div class="max-w-[1400px] mx-auto px-6 lg:px-8 py-20 lg:py-24">
 
-      <!-- Header -->
-      <header class="page-header">
-        <h1 class="page-title">Solutions</h1>
-        <p class="page-subtitle">
+      <!-- Description -->
+      <div class="page-intro">
+        <p class="intro-text">
           Comprehensive AI capabilities organized by operational domain.
           Each solution category represents proven approaches to specific business challenges.
         </p>
-      </header>
+      </div>
 
       <!-- Solutions Grid -->
       <div class="solutions-container">
@@ -68,22 +67,15 @@ const seoDescription = "Comprehensive AI solutions across Finance Automation, Op
     min-height: 100vh;
   }
 
-  .page-header {
+  .page-intro {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
   }
 
-  .page-title {
-    font-size: 3rem;
-    font-weight: 800;
-    color: var(--brand-blue);
-    margin: 0 0 1rem 0;
-  }
-
-  .page-subtitle {
-    font-size: 1.125rem;
+  .intro-text {
+    font-size: var(--text-lg);
     line-height: 1.7;
-    color: rgba(12, 26, 63, 0.8);
+    color: rgba(12, 26, 63, 0.75);
     max-width: 700px;
     margin: 0 auto;
   }

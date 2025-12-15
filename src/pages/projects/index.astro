@@ -17,14 +17,13 @@ const seoDescription = "Practical AI built for real business systems. Local mode
   <main class="projects-page">
     <div class="max-w-[1400px] mx-auto px-6 lg:px-8 py-20 lg:py-24">
 
-      <!-- Header -->
-      <header class="page-header">
-        <h1 class="page-title">Projects</h1>
-        <p class="page-subtitle">
+      <!-- Description -->
+      <div class="page-intro">
+        <p class="intro-text">
           Practical AI built for real business systems. Local models, RAG pipelines, OCR engines,
           forecasting stacks, and agentic workflows that run on everyday data.
         </p>
-      </header>
+      </div>
 
       <!-- Filters -->
       <div class="controls-bar">
@@ -58,22 +57,15 @@ const seoDescription = "Practical AI built for real business systems. Local mode
     min-height: 100vh;
   }
 
-  .page-header {
+  .page-intro {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
 
-  .page-title {
-    font-size: 3rem;
-    font-weight: 800;
-    color: var(--brand-blue);
-    margin: 0 0 1rem 0;
-  }
-
-  .page-subtitle {
-    font-size: 1.125rem;
+  .intro-text {
+    font-size: var(--text-lg);
     line-height: 1.7;
-    color: rgba(12, 26, 63, 0.8);
+    color: rgba(12, 26, 63, 0.75);
     max-width: 800px;
     margin: 0 auto;
   }
