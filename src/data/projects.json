@@ -6,7 +6,7 @@
     "tagline": "Clean ledgers and reconciliations by automating messy financial data.",
     "description": "Automated reconciliation across Tally, banking, invoices, and GST.",
     "category": "Finance Automation",
-    "featured": true,
+    "featured": false,
     "dataTypes": [
       "Tally exports",
       "Bank statements",
@@ -35,7 +35,7 @@
     "tagline": "Structured intelligence from noisy sales and service calls.",
     "description": "Automatically transcribe and analyze sales and support calls to understand customer needs, coach agents, and spot trends—without listening to hours of recordings.",
     "category": "Operational Intelligence",
-    "featured": true,
+    "featured": false,
     "dataTypes": [
       "Call recordings",
       "Transcripts",
@@ -61,7 +61,7 @@
     "tagline": "Tested market signals built from robust feature engineering.",
     "description": "Feature-rich market-signal models with walk-forward testing.",
     "category": "Data Engineering & Integration",
-    "featured": true,
+    "featured": false,
     "dataTypes": [
       "OHLCV data",
       "Indicator feature sets",
@@ -87,7 +87,7 @@
     "tagline": "Unified operational intelligence across restaurant systems.",
     "description": "Unified ops and marketing intelligence for restaurants.",
     "category": "Operational Intelligence",
-    "featured": true,
+    "featured": false,
     "dataTypes": [
       "POS data",
       "Tally",
@@ -115,7 +115,7 @@
     "tagline": "Local AI engine that plans and produces LinkedIn-ready content.",
     "description": "Local RAG engine for LinkedIn content operations.",
     "category": "Content & Marketing Intelligence",
-    "featured": true,
+    "featured": false,
     "dataTypes": [
       "Scraped LinkedIn posts",
       "Industry articles",
@@ -214,7 +214,7 @@
     "tagline": "Structured understanding of complex documents.",
     "description": "OCR and layout intelligence for complex documents.",
     "category": "Document & OCR Systems",
-    "featured": true,
+    "featured": false,
     "dataTypes": [
       "PDFs",
       "Images",
