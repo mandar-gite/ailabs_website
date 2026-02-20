@@ -8,24 +8,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Vibrant accent color system (Electric Blue/Cyan) to design palette
-- Custom SVG data transformation visualization in hero section
-- Custom SVG icons throughout homepage (replaced emojis)
-- Visual process timeline with gradient connectors
-- Scroll-triggered animations for progressive content disclosure
-- Radial gradient background patterns for depth
+- Shared `Footer` component — pentagon mark, tagline, nav links, copyright — deployed across all 16 pages
+- Pipeline hero graphic — animated SVG showing Spreadsheet/Documents/Live Data → 72° AI → Forecasts/Insights/Decisions
+- Four capability badges: Your Data. Your Rules. / Open Source Models / Host in Your Cloud / No Subscription Fees
+- Floating "100% Custom-built for your stack" metric card in hero
+- Six capability cards with plain-English outcome headlines (Finance, Ops, Sales, Support, Marketing, Logistics)
+- Trust bar listing 5 industries on homepage
+- Inter font loaded via Google Fonts
 
 ### Changed
-- Complete homepage visual redesign with modern B2B aesthetic
-- Standardized container widths across entire site (design system)
-- Unified horizontal padding (px-6 lg:px-8) across all pages
-- Unified vertical spacing (py-20 lg:py-24) for consistent rhythm
-- Enhanced typography with gradient text effects
-- Increased white space throughout for premium feel
+- Full visual identity update: white/slate/blue palette replaces cream/navy/cyan
+- Nav: frosted glass sticky header with inline SVG pentagon mark, bold dark links
+- Homepage: complete rewrite — pipeline hero, capabilities grid, How It Works, proof stats, CTA section
+- Positioning updated to "Building in India for the World" (global audience)
+- Step 4 of How It Works: "Your system keeps getting smarter" (removed "we grow with you" framing)
+- Stats: "5+ Industries served across India" (removed inaccurate "three continents" claim)
+- About: founder tagline updated to "Building in India for the World"
+- CSS design tokens consolidated in `global.css`
 
-### Performance
-- Optimized SVG animations with CSS transforms
-- Implemented staggered animation delays for smooth UX
+### Fixed
+- Removed all "72 hours delivery" promises from copy
+- Removed India-specific tool references (Tally/Zoho) — now uses "ERP, CRM, spreadsheets"
+- Removed "RAG Pipeline" badge (too technical for target audience)
+- Removed "ai-pipeline · running" terminal label from hero graphic
 
 ---
 
