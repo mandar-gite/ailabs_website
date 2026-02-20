@@ -1,0 +1,124 @@
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <svg class="footer-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,4 96,36 79,90 21,90 4,36" fill="#0C1A3F"/>
+                    <line x1="50" y1="4"  x2="21" y2="90" stroke="#DDA744" stroke-width="0.6" opacity="0.35"/>
+                    <line x1="50" y1="4"  x2="79" y2="90" stroke="#DDA744" stroke-width="0.6" opacity="0.35"/>
+                    <line x1="4"  y1="36" x2="79" y2="90" stroke="#DDA744" stroke-width="0.6" opacity="0.35"/>
+                    <line x1="96" y1="36" x2="21" y2="90" stroke="#DDA744" stroke-width="0.6" opacity="0.35"/>
+                    <line x1="4"  y1="36" x2="96" y2="36" stroke="#DDA744" stroke-width="0.6" opacity="0.35"/>
+                    <path d="M50,50 C50,44 55,40 60,43 C65,46 66,53 62,58 C58,63 50,63 45,58 C40,53 40,44 46,39 C52,34 62,35 67,42" stroke="#DDA744" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                </svg>
+                <div class="footer-name">
+                    72° AI LABS
+                    <span>Building in India for the World</span>
+                </div>
+            </div>
+
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="/solutions">Solutions</a>
+                <a href="/projects">Projects</a>
+                <a href="/blog">Blog</a>
+                <a href="/about">About</a>
+                <a href="/#contact">Contact</a>
+            </nav>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 72° AI LABS. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .site-footer {
+        background: var(--bg);
+        border-top: 1px solid var(--border);
+        padding: 3rem 0 2rem;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .footer-grid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .footer-mark {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+    }
+
+    .footer-name {
+        font-weight: 700;
+        font-size: 0.9375rem;
+        color: var(--text);
+        line-height: 1.2;
+    }
+
+    .footer-name span {
+        display: block;
+        font-size: 0.65rem;
+        font-weight: 500;
+        color: var(--text-3);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    .footer-nav {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .footer-nav a {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text-2);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .footer-nav a:hover {
+        color: var(--text);
+    }
+
+    .footer-bottom {
+        border-top: 1px solid var(--border);
+        padding-top: 1.5rem;
+        text-align: center;
+    }
+
+    .footer-bottom p {
+        font-size: 0.8125rem;
+        color: var(--text-3);
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        .footer-grid {
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .footer-nav {
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+    }
+</style>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
 import projectsData from '../../data/projects.json';
 import type { Project } from '../../types';
 
@@ -64,6 +65,7 @@ const seoDescription = project.tagline;
       </div>
     </div>
   </main>
+  <Footer />
 </Layout>
 
 <style>

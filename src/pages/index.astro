@@ -2,822 +2,909 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import ContactForm from "../components/ContactForm.astro";
-import logoSvg from "../../logo_ver2.1.svg?url";
-import logoJpg from "../../logo.jpg?url";
+import Footer from "../components/Footer.astro";
 
-const seoTitle = "72° AI Labs - Practical AI for Real Business Systems";
-const seoDescription = "Local models, RAG pipelines, OCR engines, forecasting stacks, and agentic workflows that run on everyday data. Each project solves an operational bottleneck without hype or abstraction.";
-const ogImage = "/og-home.jpg"; // Create this 1200x630 image for social sharing
+const seoTitle = "72° AI LABS — Bespoke AI Systems for Growing Businesses";
+const seoDescription = "We build AI systems that work on your actual data — not demos. Custom models, RAG pipelines, intelligent workflows, and decision tools for businesses ready to move beyond spreadsheets.";
+const ogImage = "/og-home.jpg";
 ---
 
 <Layout title={seoTitle} description={seoDescription} ogImage={ogImage}>
     <Nav />
 
-    <!-- Header with enhanced spacing -->
-    <header class="modern-header">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-8">
+    <main id="main-content">
 
-            <!-- Hero Section with Conceptual Graphic -->
-            <div class="hero-modern">
-                <div class="hero-content">
-                    <h1 class="hero-title">
-                        Practical AI Built for<br/>
-                        <span class="hero-accent">Real Business Systems</span>
-                    </h1>
-                    <p class="hero-subtitle">
-                        Local models, RAG pipelines, OCR engines, forecasting stacks, and agentic workflows
-                        that run on everyday data. Each project solves an operational bottleneck without hype or abstraction.
-                    </p>
-                    <div class="hero-cta-group">
-                        <a href="/projects" class="cta-primary">
-                            <span>View Projects</span>
-                            <svg class="cta-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                                <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </a>
-                        <a href="#contact" class="cta-secondary">Get in Touch</a>
-                    </div>
-                </div>
-
-                <!-- Conceptual Data Transformation Graphic -->
-                <div class="hero-graphic">
-                    <svg viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="data-flow-svg" role="img" aria-label="Data transformation visualization showing messy data being processed into clear decisions">
-                        <!-- Background subtle grid -->
-                        <defs>
-                            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                                <circle cx="2" cy="2" r="1" fill="rgba(0, 217, 255, 0.1)"/>
-                            </pattern>
-                            <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#0C1A3F;stop-opacity:0.3" />
-                                <stop offset="100%" style="stop-color:#00D9FF;stop-opacity:0.8" />
-                            </linearGradient>
-                        </defs>
-                        <rect width="600" height="400" fill="url(#grid)" opacity="0.3"/>
-
-                        <!-- Left side: Messy data (chaotic nodes) -->
-                        <g class="data-chaos">
-                            <circle cx="80" cy="120" r="6" fill="#0C1A3F" opacity="0.6"/>
-                            <circle cx="120" cy="90" r="4" fill="#0C1A3F" opacity="0.5"/>
-                            <circle cx="90" cy="180" r="5" fill="#0C1A3F" opacity="0.6"/>
-                            <circle cx="140" cy="160" r="6" fill="#0C1A3F" opacity="0.5"/>
-                            <circle cx="70" cy="250" r="4" fill="#0C1A3F" opacity="0.6"/>
-                            <circle cx="130" cy="220" r="5" fill="#0C1A3F" opacity="0.5"/>
-                            <circle cx="110" cy="290" r="4" fill="#0C1A3F" opacity="0.6"/>
-
-                            <!-- Chaotic connecting lines -->
-                            <path d="M 80 120 Q 100 105 120 90" stroke="#0C1A3F" stroke-width="1" opacity="0.3"/>
-                            <path d="M 90 180 Q 115 170 140 160" stroke="#0C1A3F" stroke-width="1" opacity="0.3"/>
-                            <path d="M 70 250 Q 100 235 130 220" stroke="#0C1A3F" stroke-width="1" opacity="0.3"/>
-                        </g>
-
-                        <!-- Center: Transformation flow -->
-                        <g class="transform-flow">
-                            <!-- Flowing lines from left to right -->
-                            <path d="M 150 120 Q 300 120 450 100" stroke="url(#flowGradient)" stroke-width="3" opacity="0.6" class="flow-line flow-1"/>
-                            <path d="M 150 200 Q 300 200 450 200" stroke="url(#flowGradient)" stroke-width="3" opacity="0.6" class="flow-line flow-2"/>
-                            <path d="M 150 280 Q 300 280 450 300" stroke="url(#flowGradient)" stroke-width="3" opacity="0.6" class="flow-line flow-3"/>
-
-                            <!-- Processing nodes -->
-                            <circle cx="300" cy="120" r="8" fill="#00D9FF" opacity="0.8" class="pulse-node"/>
-                            <circle cx="300" cy="200" r="8" fill="#00D9FF" opacity="0.8" class="pulse-node"/>
-                            <circle cx="300" cy="280" r="8" fill="#00D9FF" opacity="0.8" class="pulse-node"/>
-                        </g>
-
-                        <!-- Right side: Clear decisions (organized structure) -->
-                        <g class="data-clarity">
-                            <circle cx="480" cy="100" r="8" fill="#00D9FF" class="glow-node"/>
-                            <circle cx="520" cy="100" r="8" fill="#00D9FF" class="glow-node"/>
-                            <circle cx="480" cy="200" r="8" fill="#00D9FF" class="glow-node"/>
-                            <circle cx="520" cy="200" r="8" fill="#00D9FF" class="glow-node"/>
-                            <circle cx="480" cy="300" r="8" fill="#00D9FF" class="glow-node"/>
-                            <circle cx="520" cy="300" r="8" fill="#00D9FF" class="glow-node"/>
-
-                            <!-- Clear connecting lines -->
-                            <line x1="480" y1="100" x2="520" y2="100" stroke="#00D9FF" stroke-width="2" opacity="0.8"/>
-                            <line x1="480" y1="200" x2="520" y2="200" stroke="#00D9FF" stroke-width="2" opacity="0.8"/>
-                            <line x1="480" y1="300" x2="520" y2="300" stroke="#00D9FF" stroke-width="2" opacity="0.8"/>
-                        </g>
-
-                        <!-- Labels -->
-                        <text x="100" y="350" font-size="14" fill="#0C1A3F" opacity="0.6" font-weight="600">Messy Data</text>
-                        <text x="470" y="350" font-size="14" fill="#00D9FF" font-weight="600">Clear Decisions</text>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Key Benefits Section with Custom Icons -->
-    <section class="benefits-section">
-        <div class="max-w-[1200px] mx-auto px-6 lg:px-8 py-10 lg:py-12">
-            <div class="section-header">
-                <h2 class="section-title-modern">AI That Solves Real Problems</h2>
-                <p class="section-subtitle-modern">Speed, accuracy, cost, and decision-flow—fixed.</p>
-            </div>
-
-            <div class="benefits-grid">
-                <!-- Benefit 1: Speed -->
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                            <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2" opacity="0.2"/>
-                            <path d="M24 14v10l7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                            <circle cx="24" cy="24" r="2" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3 class="benefit-title">72hrs</h3>
-                    <p class="benefit-desc">From Data to Insights</p>
-                </div>
-
-                <!-- Benefit 2: Integration -->
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                            <rect x="8" y="18" width="12" height="12" stroke="currentColor" stroke-width="2" rx="2"/>
-                            <rect x="28" y="18" width="12" height="12" stroke="currentColor" stroke-width="2" rx="2"/>
-                            <path d="M20 24h8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                            <circle cx="24" cy="24" r="3" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3 class="benefit-title">100%</h3>
-                    <p class="benefit-desc">Works with Your Tools</p>
-                </div>
-
-                <!-- Benefit 3: Complexity -->
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                            <path d="M24 8v32M8 24h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4" opacity="0.3"/>
-                            <path d="M24 16l-4 8h8l-4 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="benefit-title">Zero</h3>
-                    <p class="benefit-desc">Complex Migrations</p>
-                </div>
-
-                <!-- Benefit 4: Accuracy -->
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                            <circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2" opacity="0.2"/>
-                            <circle cx="24" cy="24" r="12" stroke="currentColor" stroke-width="2" opacity="0.4"/>
-                            <circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="2"/>
-                            <circle cx="24" cy="24" r="3" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3 class="benefit-title">Precision</h3>
-                    <p class="benefit-desc">Not Just Calculation</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works - Visual Timeline -->
-    <section class="process-section">
-        <div class="max-w-[1200px] mx-auto px-6 lg:px-8 py-20 lg:py-24">
-            <div class="section-header">
-                <h2 class="section-title-modern">How It Works</h2>
-                <p class="section-subtitle-modern">From connection to commercial advantage</p>
-            </div>
-
-            <div class="process-timeline">
-                <!-- Step 1 -->
-                <div class="timeline-step">
-                    <div class="step-marker">
-                        <div class="step-number">01</div>
-                        <div class="step-connector"></div>
-                    </div>
-                    <div class="step-content-box">
-                        <h3 class="step-title">Connect Your Data</h3>
-                        <p class="step-description">
-                            Link your existing systems—Tally, Zoho, spreadsheets. No migration headaches.
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <p class="hero-eyebrow">Building in India for the World</p>
+                        <h1 class="hero-heading">
+                            Your data.<br/>
+                            <span class="hero-accent">Your AI system.</span><br/>
+                            Built to last.
+                        </h1>
+                        <p class="hero-body">
+                            We build AI systems on your actual data — not generic demos.
+                            Custom models, intelligent workflows, and decision tools
+                            that fit how your business already works.
                         </p>
+                        <div class="hero-actions">
+                            <a href="/solutions" class="btn-primary">See What We Build</a>
+                            <a href="/#contact" class="btn-ghost">Talk to Us</a>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Step 2 -->
-                <div class="timeline-step">
-                    <div class="step-marker">
-                        <div class="step-number">02</div>
-                        <div class="step-connector"></div>
-                    </div>
-                    <div class="step-content-box">
-                        <h3 class="step-title">Smart Analysis</h3>
-                        <p class="step-description">
-                            AI finds patterns, predicts trends, and spots risks automatically.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="timeline-step">
-                    <div class="step-marker">
-                        <div class="step-number">03</div>
-                        <div class="step-connector"></div>
-                    </div>
-                    <div class="step-content-box">
-                        <h3 class="step-title">Clear Insights</h3>
-                        <p class="step-description">
-                            Plain English answers to your business questions. No technical jargon.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="timeline-step">
-                    <div class="step-marker">
-                        <div class="step-number">04</div>
-                    </div>
-                    <div class="step-content-box">
-                        <h3 class="step-title">Take Action</h3>
-                        <p class="step-description">
-                            Specific recommendations you can implement immediately.
-                        </p>
+                    <div class="hero-graphic" aria-hidden="true">
+                        <div class="graphic-window">
+                            <div class="window-bar">
+                                <div class="window-dot dot-red"></div>
+                                <div class="window-dot dot-amber"></div>
+                                <div class="window-dot dot-green"></div>
+                            </div>
+                            <div class="window-body">
+                                <div class="pipeline-label">Data → Intelligence Pipeline</div>
+                                <svg class="pipeline-svg" viewBox="0 0 420 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" stop-color="#2563EB" stop-opacity="0.3"/>
+                                            <stop offset="100%" stop-color="#2563EB" stop-opacity="0.9"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <!-- Source boxes -->
+                                    <rect x="8" y="32" width="76" height="28" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+                                    <text x="46" y="51" text-anchor="middle" font-family="Inter" font-size="9.5" font-weight="600" fill="#475569">Spreadsheet</text>
+                                    <rect x="8" y="96" width="76" height="28" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+                                    <text x="46" y="115" text-anchor="middle" font-family="Inter" font-size="9.5" font-weight="600" fill="#475569">Documents</text>
+                                    <rect x="8" y="160" width="76" height="28" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+                                    <text x="46" y="179" text-anchor="middle" font-family="Inter" font-size="9.5" font-weight="600" fill="#475569">Live Data</text>
+                                    <!-- Flow lines in -->
+                                    <path class="line-flow" d="M84 46 Q180 46 196 110" stroke="url(#lg1)" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path class="line-flow" d="M84 110 Q140 110 196 110" stroke="url(#lg1)" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path class="line-flow" d="M84 174 Q180 174 196 110" stroke="url(#lg1)" stroke-width="1.5" stroke-linecap="round"/>
+                                    <!-- Processing node -->
+                                    <circle class="node-pulse" cx="212" cy="110" r="28" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
+                                    <circle cx="212" cy="110" r="18" fill="#2563EB"/>
+                                    <text x="212" y="106" text-anchor="middle" font-family="Inter" font-size="7.5" font-weight="800" fill="white">72°</text>
+                                    <text x="212" y="118" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="rgba(255,255,255,0.7)">AI</text>
+                                    <!-- Ripple -->
+                                    <circle cx="212" cy="110" r="28" fill="none" stroke="#2563EB" stroke-width="1">
+                                        <animate attributeName="r" values="28;42;28" dur="3s" repeatCount="indefinite"/>
+                                        <animate attributeName="stroke-opacity" values="0.4;0;0.4" dur="3s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <!-- Flow lines out — evenly spaced to match inputs -->
+                                    <path class="line-flow" d="M230 97 Q300 46 336 46" stroke="url(#lg1)" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path class="line-flow" d="M240 110 Q300 110 336 110" stroke="url(#lg1)" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path class="line-flow" d="M230 123 Q300 174 336 174" stroke="url(#lg1)" stroke-width="1.5" stroke-linecap="round"/>
+                                    <!-- Output boxes — evenly spaced -->
+                                    <rect x="336" y="32" width="76" height="28" rx="6" fill="#2563EB"/>
+                                    <text x="374" y="51" text-anchor="middle" font-family="Inter" font-size="9.5" font-weight="600" fill="white">Forecasts</text>
+                                    <rect x="336" y="96" width="76" height="28" rx="6" fill="#2563EB"/>
+                                    <text x="374" y="115" text-anchor="middle" font-family="Inter" font-size="9.5" font-weight="600" fill="white">Insights</text>
+                                    <rect x="336" y="160" width="76" height="28" rx="6" fill="#2563EB"/>
+                                    <text x="374" y="179" text-anchor="middle" font-family="Inter" font-size="9.5" font-weight="600" fill="white">Decisions</text>
+                                </svg>
+                                <div class="window-badges">
+                                    <span class="badge"><span class="badge-dot"></span>Your Data. Your Rules.</span>
+                                    <span class="badge"><span class="badge-dot"></span>Open Source Models</span>
+                                    <span class="badge"><span class="badge-dot"></span>Host in Your Cloud</span>
+                                    <span class="badge"><span class="badge-dot"></span>No Subscription Fees</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="float-metric">
+                            <div class="metric-num">100%</div>
+                            <div class="metric-label">Custom-built<br/>for your stack</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section with Data Background -->
-    <section class="final-cta-section" id="contact">
-        <div class="cta-background-pattern"></div>
-        <div class="max-w-[700px] mx-auto px-6 lg:px-8 py-20 lg:py-24 relative z-10">
-            <div class="cta-content-modern">
-                <h2 class="cta-title-modern">Ready to Make Smarter Decisions?</h2>
-                <p class="cta-subtitle-modern">
-                    Let's turn your business data into your competitive advantage
-                </p>
-
-                <div class="contact-form-modern">
-                    <h3 class="form-heading">Get Your Free Business Intelligence Audit</h3>
-                    <ContactForm />
+        <!-- Trust bar -->
+        <section class="trust-bar">
+            <div class="container">
+                <p class="trust-label">Deployed across</p>
+                <div class="trust-items">
+                    <span>Manufacturing</span>
+                    <span class="sep">·</span>
+                    <span>Food & Beverage</span>
+                    <span class="sep">·</span>
+                    <span>Retail & Distribution</span>
+                    <span class="sep">·</span>
+                    <span>Professional Services</span>
+                    <span class="sep">·</span>
+                    <span>Logistics</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="modern-footer">
-        <div class="max-w-[1200px] mx-auto px-6 lg:px-8 py-12 lg:py-16">
-            <img src={logoSvg} alt="72° AI Labs logo" class="footer-logo" loading="lazy" decoding="async" />
-            <p class="footer-text">&copy; 2025 72° AI LABS. Turning data into decisions since day one.</p>
-            <p class="footer-tagline">
-                Built for Indian SMBs | Designed for Real Results
-            </p>
-        </div>
-    </footer>
+        <!-- Capabilities -->
+        <section class="capabilities">
+            <div class="container">
+                <div class="section-header">
+                    <h2>What we build</h2>
+                    <p>AI that answers the questions keeping you up at night</p>
+                </div>
 
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+                <div class="cap-grid">
+                    <div class="cap-card">
+                        <div class="cap-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                        </div>
+                        <div class="cap-label">Finance</div>
+                        <h3>Know where every rupee is going — before month-end</h3>
+                        <p>AI that tracks cash flow, flags anomalies, and surfaces the numbers that actually matter to your business.</p>
+                    </div>
 
-        // Animate data flow on scroll
-        const observerOptions = {
-            threshold: 0.3,
-            rootMargin: '0px 0px -100px 0px'
-        };
+                    <div class="cap-card">
+                        <div class="cap-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                        </div>
+                        <div class="cap-label">Operations</div>
+                        <h3>Spot bottlenecks before they cost you</h3>
+                        <p>Real-time visibility into production, inventory, and fulfilment — with AI-flagged issues before they escalate.</p>
+                    </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                }
-            });
-        }, observerOptions);
+                    <div class="cap-card">
+                        <div class="cap-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                        </div>
+                        <div class="cap-label">Sales</div>
+                        <h3>Know which deals will close — and which won't</h3>
+                        <p>Pipeline intelligence that surfaces high-value opportunities and tells your team where to focus this week.</p>
+                    </div>
 
-        document.querySelectorAll('.benefit-card, .timeline-step').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
+                    <div class="cap-card">
+                        <div class="cap-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                        </div>
+                        <div class="cap-label">Customer Support</div>
+                        <h3>Answer every customer query — in seconds</h3>
+                        <p>Intelligent assistants trained on your products, policies, and past conversations. No outsourcing required.</p>
+                    </div>
+
+                    <div class="cap-card">
+                        <div class="cap-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg>
+                        </div>
+                        <div class="cap-label">Marketing</div>
+                        <h3>Know which campaign is working — and which is wasting budget</h3>
+                        <p>Attribution and performance analytics that connect spend to revenue, not just clicks and impressions.</p>
+                    </div>
+
+                    <div class="cap-card">
+                        <div class="cap-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/><path d="M13 15.5h.01M17 15.5h.01"/></svg>
+                        </div>
+                        <div class="cap-label">Logistics</div>
+                        <h3>Know where your shipment is — before your customer asks</h3>
+                        <p>End-to-end tracking, delay prediction, and automated alerts that keep your supply chain moving.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="process">
+            <div class="container">
+                <div class="section-header">
+                    <h2>How it works</h2>
+                    <p>From your existing data to a running AI system</p>
+                </div>
+
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">01</div>
+                        <div class="step-body">
+                            <h3>We connect to your existing systems</h3>
+                            <p>ERP, CRM, spreadsheets, databases — wherever your data lives. No migration, no disruption to what's already working.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-num">02</div>
+                        <div class="step-body">
+                            <h3>Our models learn your business</h3>
+                            <p>We train on your data, your terminology, your processes. The result speaks your language, not generic AI language.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-num">03</div>
+                        <div class="step-body">
+                            <h3>You get a system built for you</h3>
+                            <p>A purpose-built AI system, tested on your real data and handed over ready to run. Full documentation, full ownership.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-num">04</div>
+                        <div class="step-body">
+                            <h3>We stay as it evolves</h3>
+                            <p>Ongoing support as your business grows. New data sources, new questions, new capabilities — we grow with you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proof -->
+        <section class="proof">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat">
+                        <div class="stat-num">5+</div>
+                        <div class="stat-label">Industries served across three continents</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">100%</div>
+                        <div class="stat-label">Built on your actual data — not pre-trained demos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">0</div>
+                        <div class="stat-label">Migrations required to get started</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA / Contact -->
+        <section class="cta-section" id="contact">
+            <div class="container">
+                <div class="cta-inner">
+                    <div class="cta-text">
+                        <h2>Not a demo. Not a template.<br/>A system built for your business.</h2>
+                        <p>Tell us what's not working. We'll tell you if AI can fix it — and what that looks like in practice.</p>
+                        <ul class="cta-points">
+                            <li>Free initial assessment</li>
+                            <li>No vendor lock-in</li>
+                            <li>You own the system</li>
+                        </ul>
+                    </div>
+                    <div class="cta-form-wrap">
+                        <h3>Get in touch</h3>
+                        <ContactForm />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <Footer />
+
 </Layout>
 
 <style>
-    /* Modern Header & Navigation */
-    .modern-header {
-        background: linear-gradient(180deg, var(--brand-cream) 0%, rgba(242, 233, 216, 0.5) 100%);
-        padding: 0.7rem 0 3rem 0;
-        position: relative;
-        overflow: hidden;
+    /* Layout */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
     }
 
-    .nav-modern {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.5rem 0;
-        margin-bottom: 6rem;
+    /* Hero */
+    .hero {
+        padding: 5rem 0 4rem;
+        background: var(--bg);
     }
 
-    .logo-container {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        text-decoration: none;
-        transition: opacity 0.3s ease;
-    }
-
-    .logo-container:hover {
-        opacity: 0.9;
-    }
-
-    .logo-img {
-        height: 4.5rem;
-        width: auto;
-    }
-
-    .company-name {
-        color: var(--brand-blue);
-        font-weight: 800;
-        font-size: 1.75rem;
-        letter-spacing: -0.02em;
-        white-space: nowrap;
-    }
-
-    .nav-links-modern {
-        display: flex;
-        gap: 3rem;
-        align-items: center;
-    }
-
-    .nav-link {
-        color: var(--brand-blue);
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1.05rem;
-        transition: color 0.3s ease;
-        position: relative;
-    }
-
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: -4px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--accent-electric);
-        transition: width 0.3s ease;
-    }
-
-    .nav-link:hover::after {
-        width: 100%;
-    }
-
-    .nav-link-cta {
-        background: var(--gradient-accent);
-        color: white;
-        padding: 0.75rem 1.75rem;
-        border-radius: 50px;
-        font-weight: 700;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 153, 255, 0.2);
-    }
-
-    .nav-link-cta:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 25px rgba(0, 153, 255, 0.3);
-    }
-
-    /* Hero Section */
-    .hero-modern {
+    .hero-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 55fr 45fr;
         gap: 4rem;
         align-items: center;
-        margin-top: 4rem;
     }
 
-    .hero-content {
-        max-width: 600px;
+    .hero-eyebrow {
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0 0 1.25rem;
     }
 
-    .hero-title {
-        font-size: var(--text-4xl);
+    .hero-heading {
+        font-size: var(--text-5xl);
         font-weight: 800;
         line-height: 1.1;
-        color: var(--brand-blue);
-        margin: 0 0 2rem 0;
+        color: var(--text);
         letter-spacing: -0.02em;
+        margin: 0 0 1.5rem;
     }
 
     .hero-accent {
-        background: var(--gradient-accent);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: var(--accent);
     }
 
-    .hero-subtitle {
+    .hero-body {
         font-size: var(--text-lg);
+        color: var(--text-2);
         line-height: 1.7;
-        color: rgba(12, 26, 63, 0.75);
-        margin: 0 0 3rem 0;
-        font-weight: 400;
+        margin: 0 0 2.5rem;
+        max-width: 520px;
     }
 
-    .hero-cta-group {
+    .hero-actions {
         display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.9375rem;
+        padding: 0.875rem 1.75rem;
+        border-radius: var(--radius-sm);
+        text-decoration: none;
+        transition: background 0.15s;
+    }
+
+    .btn-primary:hover {
+        background: var(--accent-hover);
+    }
+
+    .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        background: transparent;
+        color: var(--text);
+        font-weight: 600;
+        font-size: 0.9375rem;
+        padding: 0.875rem 1.75rem;
+        border-radius: var(--radius-sm);
+        border: 1.5px solid var(--border);
+        text-decoration: none;
+        transition: border-color 0.15s, background 0.15s;
+    }
+
+    .btn-ghost:hover {
+        border-color: var(--border-hover);
+        background: var(--surface);
+    }
+
+    /* Pipeline graphic */
+    .hero-graphic {
+        position: relative;
+    }
+
+    .graphic-window {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-xl);
+        overflow: hidden;
+    }
+
+    .window-bar {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.875rem 1.25rem;
+        border-bottom: 1px solid var(--border);
+        background: var(--surface);
+    }
+
+    .window-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+
+    .dot-red   { background: #FF5F57; }
+    .dot-amber { background: #FEBC2E; }
+    .dot-green { background: #28C840; }
+
+    .window-body {
+        padding: 1.5rem;
+    }
+
+    .pipeline-label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-3);
+        margin-bottom: 1.25rem;
+    }
+
+    .pipeline-svg {
+        width: 100%;
+        height: auto;
+    }
+
+    .node-pulse {
+        animation: node-breathe 3s ease-in-out infinite;
+    }
+
+    @keyframes node-breathe {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+    }
+
+    .line-flow {
+        stroke-dasharray: 160;
+        stroke-dashoffset: 160;
+        animation: flow 2s ease-in-out infinite;
+    }
+
+    .line-flow:nth-child(2) { animation-delay: 0.4s; }
+    .line-flow:nth-child(3) { animation-delay: 0.8s; }
+
+    @keyframes flow {
+        0%   { stroke-dashoffset: 160; opacity: 0.2; }
+        50%  { stroke-dashoffset: 0;   opacity: 1; }
+        100% { stroke-dashoffset: -160; opacity: 0.2; }
+    }
+
+    .window-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1.25rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--border);
+    }
+
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 0.3rem 0.65rem;
+        font-size: 0.73rem;
+        font-weight: 600;
+        color: var(--text-2);
+    }
+
+    .badge-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #22C55E;
+        flex-shrink: 0;
+    }
+
+    .float-metric {
+        position: absolute;
+        bottom: 1rem;
+        right: -1.25rem;
+        background: var(--accent);
+        color: #fff;
+        border-radius: var(--radius);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-lg);
+        animation: float 5s ease-in-out infinite;
+        min-width: 130px;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+    }
+
+    .metric-num {
+        font-size: 1.75rem;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        line-height: 1;
+    }
+
+    .metric-label {
+        font-size: 0.7rem;
+        font-weight: 500;
+        opacity: 0.85;
+        margin-top: 0.25rem;
+        line-height: 1.4;
+    }
+
+    /* Trust bar */
+    .trust-bar {
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 1.25rem 0;
+        background: var(--surface);
+    }
+
+    .trust-bar .container {
+        display: flex;
+        align-items: center;
         gap: 1.5rem;
         flex-wrap: wrap;
     }
 
-    .cta-primary {
-        background: var(--gradient-accent);
-        color: white;
-        padding: 1.125rem 2.5rem;
-        border-radius: 50px;
+    .trust-label {
+        font-size: 0.75rem;
         font-weight: 700;
-        font-size: var(--text-lg);
-        text-decoration: none;
-        display: inline-flex;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-3);
+        white-space: nowrap;
+        margin: 0;
+    }
+
+    .trust-items {
+        display: flex;
         align-items: center;
         gap: 0.75rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 6px 25px rgba(0, 153, 255, 0.25);
+        flex-wrap: wrap;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--text-2);
     }
 
-    .cta-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 35px rgba(0, 153, 255, 0.35);
+    .trust-items .sep {
+        color: var(--border-hover);
     }
 
-    .cta-arrow {
-        transition: transform 0.3s ease;
-    }
-
-    .cta-primary:hover .cta-arrow {
-        transform: translateX(4px);
-    }
-
-    .cta-secondary {
-        background: transparent;
-        color: var(--brand-blue);
-        border: 2px solid var(--brand-blue);
-        padding: 1.125rem 2.5rem;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 1.125rem;
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
-
-    .cta-secondary:hover {
-        background: var(--brand-blue);
-        color: white;
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(12, 26, 63, 0.2);
-    }
-
-    /* Hero Graphic */
-    .hero-graphic {
-        position: relative;
-        padding: 2rem;
-    }
-
-    .data-flow-svg {
-        width: 100%;
-        height: auto;
-        filter: drop-shadow(0 4px 20px rgba(0, 217, 255, 0.1));
-    }
-
-    /* SVG Animations */
-    @keyframes pulse {
-        0%, 100% { opacity: 0.8; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.2); }
-    }
-
-    @keyframes glow {
-        0%, 100% { opacity: 0.8; filter: drop-shadow(0 0 4px #00D9FF); }
-        50% { opacity: 1; filter: drop-shadow(0 0 8px #00D9FF); }
-    }
-
-    @keyframes flowAnimation {
-        0% { stroke-dashoffset: 1000; }
-        100% { stroke-dashoffset: 0; }
-    }
-
-    .pulse-node {
-        animation: pulse 2s ease-in-out infinite;
-    }
-
-    .glow-node {
-        animation: glow 2s ease-in-out infinite;
-    }
-
-    .flow-line {
-        stroke-dasharray: 1000;
-        stroke-dashoffset: 1000;
-        animation: flowAnimation 3s ease-in-out infinite;
-    }
-
-    .flow-1 { animation-delay: 0s; }
-    .flow-2 { animation-delay: 0.5s; }
-    .flow-3 { animation-delay: 1s; }
-
-    /* Benefits Section */
-    .benefits-section {
-        background: white;
-        position: relative;
+    /* Capabilities */
+    .capabilities {
+        padding: 5rem 0;
+        background: var(--bg);
     }
 
     .section-header {
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
     }
 
-    .section-title-modern {
+    .section-header h2 {
         font-size: var(--text-3xl);
-        font-weight: 800;
-        color: var(--brand-blue);
-        margin: 0 0 1rem 0;
+        font-weight: 700;
+        color: var(--text);
+        margin: 0 0 0.75rem;
         letter-spacing: -0.01em;
     }
 
-    .section-subtitle-modern {
+    .section-header p {
         font-size: var(--text-lg);
-        color: rgba(12, 26, 63, 0.6);
-        font-weight: 500;
+        color: var(--text-2);
+        margin: 0;
     }
 
-    .benefits-grid {
+    .cap-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 3rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
     }
 
-    .benefit-card {
-        text-align: center;
-        padding: 1.5rem 1rem;
-        border-radius: 16px;
-        background: linear-gradient(135deg, rgba(0, 217, 255, 0.02) 0%, rgba(0, 153, 255, 0.05) 100%);
-        border: 2px solid rgba(0, 217, 255, 0.1);
-        transition: all 0.4s ease;
-        opacity: 0;
-        transform: translateY(30px);
+    .cap-card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.75rem;
+        transition: box-shadow 0.2s, border-color 0.2s;
     }
 
-    .benefit-card.animate-in {
-        opacity: 1;
-        transform: translateY(0);
+    .cap-card:hover {
+        box-shadow: var(--shadow-md);
+        border-color: var(--border-hover);
     }
 
-    .benefit-card:hover {
-        border-color: var(--accent-cyan);
-        transform: translateY(-8px);
-        box-shadow: 0 12px 40px rgba(0, 217, 255, 0.15);
-    }
-
-    .benefit-icon {
-        color: var(--accent-electric);
-        margin: 0 auto 1.5rem;
-        width: 48px;
-        height: 48px;
-    }
-
-    .benefit-title {
-        font-size: var(--text-3xl);
-        font-weight: 800;
-        color: var(--brand-blue);
-        margin: 0 0 0.5rem 0;
-    }
-
-    .benefit-desc {
-        font-size: var(--text-lg);
-        color: rgba(12, 26, 63, 0.7);
-        font-weight: 500;
-    }
-
-    /* Process Timeline */
-    .process-section {
-        background: var(--brand-cream);
-    }
-
-    .process-timeline {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .timeline-step {
-        display: grid;
-        grid-template-columns: 100px 1fr;
-        gap: 2rem;
-        margin-bottom: 3rem;
-        opacity: 0;
-        transform: translateX(-30px);
-        transition: all 0.5s ease;
-    }
-
-    .timeline-step.animate-in {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    .step-marker {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .step-number {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        background: var(--gradient-accent);
-        color: white;
+    .cap-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--accent-light);
+        border-radius: var(--radius-sm);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 2rem;
-        font-weight: 800;
-        box-shadow: 0 6px 20px rgba(0, 153, 255, 0.25);
+        color: var(--accent);
+        margin-bottom: 1rem;
     }
 
-    .step-connector {
-        width: 3px;
-        flex: 1;
-        background: linear-gradient(180deg, var(--accent-cyan) 0%, transparent 100%);
-        margin-top: 1rem;
-    }
-
-    .timeline-step:last-child .step-connector {
-        display: none;
-    }
-
-    .step-content-box {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 12px;
-        border: 2px solid rgba(0, 217, 255, 0.1);
-        transition: all 0.3s ease;
-    }
-
-    .step-content-box:hover {
-        border-color: var(--accent-cyan);
-        box-shadow: 0 8px 30px rgba(0, 217, 255, 0.1);
-    }
-
-    .step-title {
-        font-size: 1.75rem;
+    .cap-label {
+        font-size: 0.7rem;
         font-weight: 700;
-        color: var(--brand-blue);
-        margin: 0 0 1rem 0;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-3);
+        margin-bottom: 0.5rem;
     }
 
-    .step-description {
-        font-size: 1.125rem;
-        line-height: 1.7;
-        color: rgba(12, 26, 63, 0.75);
+    .cap-card h3 {
+        font-size: 0.9375rem;
+        font-weight: 700;
+        color: var(--text);
+        margin: 0 0 0.75rem;
+        line-height: 1.4;
+    }
+
+    .cap-card p {
+        font-size: 0.875rem;
+        color: var(--text-2);
+        line-height: 1.6;
         margin: 0;
     }
 
-    /* Final CTA Section */
-    .final-cta-section {
-        background: var(--brand-blue);
-        position: relative;
-        overflow: hidden;
+    /* Process */
+    .process {
+        padding: 5rem 0;
+        background: var(--surface);
     }
 
-    .cta-background-pattern {
-        position: absolute;
-        inset: 0;
-        background-image:
-            radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 80%, rgba(0, 153, 255, 0.1) 0%, transparent 50%);
+    .steps {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        max-width: 900px;
+        margin: 0 auto;
     }
 
-    .cta-content-modern {
-        text-align: center;
-        color: white;
+    .step {
+        display: flex;
+        gap: 1.25rem;
+        align-items: flex-start;
     }
 
-    .cta-title-modern {
-        font-size: var(--text-3xl);
+    .step-num {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        font-size: 0.8125rem;
         font-weight: 800;
-        margin: 0 0 0.75rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
     }
 
-    .cta-subtitle-modern {
-        font-size: var(--text-lg);
-        opacity: 0.9;
-        margin: 0 0 2rem 0;
+    .step-body h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text);
+        margin: 0 0 0.5rem;
+        line-height: 1.4;
     }
 
-    .contact-form-modern {
-        background: white;
+    .step-body p {
+        font-size: 0.875rem;
+        color: var(--text-2);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* Proof */
+    .proof {
+        padding: 4rem 0;
+        background: var(--bg);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .stat-num {
+        font-size: var(--text-4xl);
+        font-weight: 800;
+        color: var(--text);
+        letter-spacing: -0.02em;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.875rem;
+        color: var(--text-2);
+        line-height: 1.4;
+    }
+
+    /* CTA / Contact */
+    .cta-section {
+        padding: 5rem 0;
+        background: var(--surface);
+    }
+
+    .cta-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+    }
+
+    .cta-text h2 {
+        font-size: var(--text-3xl);
+        font-weight: 700;
+        color: var(--text);
+        margin: 0 0 1rem;
+        letter-spacing: -0.01em;
+        line-height: 1.25;
+    }
+
+    .cta-text p {
+        font-size: var(--text-base);
+        color: var(--text-2);
+        line-height: 1.7;
+        margin: 0 0 1.5rem;
+    }
+
+    .cta-points {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .cta-points li {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text-2);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .cta-points li::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex-shrink: 0;
+    }
+
+    .cta-form-wrap {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
         padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        box-shadow: var(--shadow-md);
     }
 
-    .form-heading {
-        color: var(--brand-blue);
+    .cta-form-wrap h3 {
         font-size: var(--text-xl);
         font-weight: 700;
-        margin: 0 0 1.5rem 0;
+        color: var(--text);
+        margin: 0 0 1.5rem;
     }
 
     /* Footer */
-    .modern-footer {
-        background: var(--brand-blue);
-        color: white;
+    .site-footer {
+        background: var(--bg);
+        border-top: 1px solid var(--border);
+        padding: 3rem 0 2rem;
+    }
+
+    .footer-grid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .footer-mark {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+    }
+
+    .footer-name {
+        font-weight: 700;
+        font-size: 0.9375rem;
+        color: var(--text);
+        line-height: 1.2;
+    }
+
+    .footer-name span {
+        display: block;
+        font-size: 0.65rem;
+        font-weight: 500;
+        color: var(--text-3);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    .footer-nav {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .footer-nav a {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text-2);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .footer-nav a:hover {
+        color: var(--text);
+    }
+
+    .footer-bottom {
+        border-top: 1px solid var(--border);
+        padding-top: 1.5rem;
         text-align: center;
     }
 
-    .footer-logo {
-        height: 2.5rem;
-        width: auto;
-        margin: 0 auto 1.5rem;
-        opacity: 0.9;
-    }
-
-    .footer-text {
-        font-size: 1rem;
-        margin: 0 0 0.5rem 0;
-        opacity: 0.8;
-    }
-
-    .footer-tagline {
-        font-size: 0.875rem;
-        opacity: 0.6;
+    .footer-bottom p {
+        font-size: 0.8125rem;
+        color: var(--text-3);
         margin: 0;
     }
 
-    /* Responsive Design */
+    /* Responsive */
     @media (max-width: 1024px) {
-        .hero-modern {
-            grid-template-columns: 1fr;
-            gap: 3rem;
+        .cap-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+            padding: 3rem 0;
         }
 
-        .hero-title {
-            font-size: 3rem;
+        .hero-grid {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        .hero-heading {
+            font-size: var(--text-3xl);
         }
 
         .hero-graphic {
             order: -1;
         }
 
-        .nav-links-modern {
-            gap: 1.5rem;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .hero-title {
-            font-size: 2.5rem;
-        }
-
-        .section-title-modern {
-            font-size: 2rem;
-        }
-
-        .benefits-grid {
+        .cap-grid {
             grid-template-columns: 1fr;
         }
 
-        .timeline-step {
-            grid-template-columns: 60px 1fr;
+        .steps {
+            grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .cta-inner {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .footer-grid {
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .footer-nav {
+            flex-wrap: wrap;
             gap: 1rem;
         }
 
-        .step-number {
-            width: 60px;
-            height: 60px;
-            font-size: 1.5rem;
-        }
-
-        .nav-links-modern {
-            display: none; /* Mobile menu would be implemented */
-        }
-
-        .cta-title-modern {
-            font-size: 2rem;
-        }
-
-        .contact-form-modern {
-            padding: 2rem;
+        .trust-bar .container {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.75rem;
         }
     }
-
-    /* Staggered animation delays */
-    .benefit-card:nth-child(1) { transition-delay: 0.1s; }
-    .benefit-card:nth-child(2) { transition-delay: 0.2s; }
-    .benefit-card:nth-child(3) { transition-delay: 0.3s; }
-    .benefit-card:nth-child(4) { transition-delay: 0.4s; }
-
-    .timeline-step:nth-child(1) { transition-delay: 0.1s; }
-    .timeline-step:nth-child(2) { transition-delay: 0.2s; }
-    .timeline-step:nth-child(3) { transition-delay: 0.3s; }
-    .timeline-step:nth-child(4) { transition-delay: 0.4s; }
 </style>
