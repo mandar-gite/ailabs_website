@@ -1,0 +1,66 @@
+# 72° AI LABS
+
+> Bespoke AI systems for growing businesses. Built in India.
+
+72° AI LABS designs and builds custom AI systems on your actual business data — not generic demos. We work with SMEs and mid-sized enterprises in India to turn scattered data across finance, operations, documents, and workflows into working intelligence.
+
+## About
+
+- **Company**: 72° AI LABS
+- **Website**: https://72ai.in
+- **Location**: India
+- **Founded**: 2024
+- **Founder**: Mandar Gite (BITS Pilani alumnus)
+- **Tagline**: Frugal AI built for SMEs
+
+The name "72°" comes from the external angle of a regular pentagon — a shape that encodes the golden ratio. We read a few observable signals to decode the structure underneath a business, so decisions become obvious.
+
+## What We Do
+
+We build bespoke AI systems across six practice areas:
+
+**Finance Automation**
+Automated ledger reconciliation, intelligent financial data processing, and clean accounting pipelines for Indian businesses. Key project: FastAccounting.
+
+**Operational Intelligence**
+Real-time insights and workflow automation for F&B, manufacturing, and service operations. Projects include: CallMind (AI call intelligence), Cascade (operational dashboards), Hospitality Hub, Tire Analytics.
+
+**Document & OCR Systems**
+Advanced document understanding, OCR, and intelligent data extraction from complex formats (PDFs, invoices, handwritten records). Projects: DocIntel, JNV Essays.
+
+**On-Premises LLM Systems**
+Privacy-first, local LLM deployments for sensitive data and air-gapped environments. No data leaves your infrastructure. Project: InsightBridge.
+
+**Content & Marketing Intelligence**
+AI-powered content generation and marketing analytics on local, privacy-first infrastructure. Project: MarTech Suite.
+
+**Data Engineering & Integration**
+Robust data pipelines, feature engineering, time-series modeling, and forecasting for complex datasets. Projects: NextSurge (equity forecasting), Used Car pricing model.
+
+## How We Work
+
+- We build on your actual data, not generic models
+- Frugal architecture: no unnecessary infrastructure bloat
+- Context-aware systems that fit how your business already operates
+- Python-based stack: RAG pipelines, fine-tuned models, workflow automation
+- Deployable on-prem or cloud
+
+## Who We Work With
+
+- SMEs and mid-sized enterprises in India
+- Industries: F&B, Manufacturing, Finance, Retail, Logistics
+- Companies moving beyond spreadsheets to structured intelligence
+
+## Contact
+
+- **Website**: https://72ai.in
+- **Contact page**: https://72ai.in/#contact
+- **Blog**: https://72ai.in/blog
+
+## Key Pages
+
+- Solutions: https://72ai.in/solutions
+- Projects: https://72ai.in/projects
+- About: https://72ai.in/about
+- Blog: https://72ai.in/blog
+- Voice DNA (free tool): https://72ai.in/voice-dna
