@@ -1,0 +1,126 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="Page Not Found | 72° AI LABS"
+  description="The page you're looking for doesn't exist. Explore our AI solutions for SMEs."
+>
+  <Nav />
+  <main class="not-found-page" id="main-content">
+    <div class="container">
+      <div class="error-card">
+        <div class="error-code">404</div>
+        <h1 class="error-heading">Page not found</h1>
+        <p class="error-text">
+          The page you're looking for doesn't exist or has been moved.
+        </p>
+        <div class="actions">
+          <a href="/" class="btn-primary">Go Home</a>
+          <a href="/about" class="btn-secondary">About Us</a>
+          <a href="/solutions" class="btn-secondary">Solutions</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .not-found-page {
+    background: var(--brand-cream);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .container {
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .error-card {
+    background: white;
+    border-radius: 12px;
+    border: 2px solid rgba(12, 26, 63, 0.08);
+    padding: 3rem 2.5rem;
+    text-align: center;
+  }
+
+  .error-code {
+    font-size: 6rem;
+    font-weight: 900;
+    color: var(--brand-gold);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .error-heading {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--brand-blue);
+    margin: 0 0 1rem 0;
+  }
+
+  .error-text {
+    font-size: 1.125rem;
+    color: rgba(12, 26, 63, 0.7);
+    line-height: 1.7;
+    margin: 0 0 2.5rem 0;
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--brand-blue);
+    color: white;
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background: #0a1535;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--brand-blue);
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid rgba(12, 26, 63, 0.2);
+    transition: border-color 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--brand-gold);
+    color: var(--brand-gold);
+  }
+
+  @media (max-width: 480px) {
+    .error-code {
+      font-size: 4rem;
+    }
+
+    .error-card {
+      padding: 2rem 1.5rem;
+    }
+
+    .actions {
+      flex-direction: column;
+    }
+  }
+</style>
