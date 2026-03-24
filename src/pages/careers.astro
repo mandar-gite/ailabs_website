@@ -73,14 +73,13 @@ const CAREERS_FORM_ENDPOINT = "https://formspree.io/f/mkopwwon";
         <div class="form-card">
           <h2 class="form-heading">Send us your details</h2>
           <p class="form-sub">
-            We don't always have open roles listed. Share your CV and a note anyway —
+            We don't always have open roles listed. Drop a note anyway —
             we keep good profiles on file and reach out when there's a fit.
           </p>
 
           <form
             action={CAREERS_FORM_ENDPOINT}
             method="POST"
-            enctype="multipart/form-data"
             class="career-form"
           >
             <input type="hidden" name="_subject" value="Careers application — 72° AI LABS" />
@@ -120,28 +119,6 @@ const CAREERS_FORM_ENDPOINT = "https://formspree.io/f/mkopwwon";
               ></textarea>
             </div>
 
-            <div class="field">
-              <label for="cv">Upload your CV <span class="field-hint">(PDF or Word, max 5 MB)</span></label>
-              <div class="file-input-wrapper">
-                <input
-                  type="file"
-                  id="cv"
-                  name="CV"
-                  accept=".pdf,.doc,.docx"
-                  class="file-input"
-                />
-                <label for="cv" class="file-label">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="17 8 12 3 7 8"/>
-                    <line x1="12" y1="3" x2="12" y2="15"/>
-                  </svg>
-                  <span class="file-label-text">Choose file</span>
-                </label>
-                <span class="file-name" id="file-name-display">No file chosen</span>
-              </div>
-            </div>
-
             <div class="consent-row">
               <input type="checkbox" id="consent" name="Consent" required />
               <label for="consent">
@@ -160,16 +137,6 @@ const CAREERS_FORM_ENDPOINT = "https://formspree.io/f/mkopwwon";
   </main>
   <Footer />
 </Layout>
-
-<script>
-  const input = document.getElementById('cv') as HTMLInputElement;
-  const display = document.getElementById('file-name-display');
-  if (input && display) {
-    input.addEventListener('change', () => {
-      display.textContent = input.files?.[0]?.name ?? 'No file chosen';
-    });
-  }
-</script>
 
 <style>
   .careers-page {
@@ -326,13 +293,7 @@ const CAREERS_FORM_ENDPOINT = "https://formspree.io/f/mkopwwon";
     color: var(--brand-blue);
   }
 
-  .field-hint {
-    font-weight: 400;
-    color: rgba(12, 26, 63, 0.5);
-    font-size: 0.8rem;
-  }
-
-  .field input[type="text"],
+.field input[type="text"],
   .field input[type="email"],
   .field textarea {
     padding: 0.65rem 0.9rem;
@@ -355,48 +316,6 @@ const CAREERS_FORM_ENDPOINT = "https://formspree.io/f/mkopwwon";
   .field input::placeholder,
   .field textarea::placeholder {
     color: rgba(12, 26, 63, 0.35);
-  }
-
-  /* File input */
-  .file-input-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-  }
-
-  .file-input {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-  }
-
-  .file-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1.25rem;
-    background: var(--brand-cream);
-    border: 1.5px solid rgba(12, 26, 63, 0.2);
-    border-radius: 6px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--brand-blue);
-    cursor: pointer;
-    transition: border-color 0.2s ease;
-    white-space: nowrap;
-  }
-
-  .file-label:hover {
-    border-color: var(--brand-gold);
-  }
-
-  .file-name {
-    font-size: 0.875rem;
-    color: rgba(12, 26, 63, 0.55);
   }
 
   /* Consent */

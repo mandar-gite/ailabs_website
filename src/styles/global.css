@@ -7,6 +7,11 @@
   --logo-blue: #0C1A3F;
   --logo-gold: #DDA744;
 
+  /* Brand palette (used across pages) */
+  --brand-blue:  #0C1A3F;
+  --brand-gold:  #DDA744;
+  --brand-cream: #FAF7F2;
+
   /* Site palette */
   --bg:           #FFFFFF;
   --surface:      #F8FAFC;
