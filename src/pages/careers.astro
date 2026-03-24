@@ -1,0 +1,460 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+// Replace with your Formspree careers endpoint:
+// 1. Go to https://formspree.io → New Form → name it "Careers"
+// 2. Paste the generated endpoint below
+const CAREERS_FORM_ENDPOINT = "https://formspree.io/f/mkopwwon";
+---
+
+<Layout
+  title="Careers | 72° AI LABS"
+  description="Join 72° AI LABS. We build frugal, context-aware AI for SMEs in India. Share your CV and tell us how you'd like to contribute."
+  canonical="https://72ai.in/careers"
+>
+  <Nav />
+  <main class="careers-page" id="main-content">
+
+    <!-- Hero -->
+    <section class="careers-hero">
+      <div class="hero-inner">
+        <p class="hero-label">Join us</p>
+        <h1 class="hero-heading">Thank you for your interest in 72° AI LABS</h1>
+        <p class="hero-sub">
+          We're a small team building frugal, context-aware AI for Indian SMEs.
+          If you're someone who likes working close to real business problems — not just models —
+          we'd love to hear from you.
+        </p>
+      </div>
+    </section>
+
+    <!-- What we look for -->
+    <section class="values-section">
+      <div class="section-inner">
+        <h2 class="section-heading">What we look for</h2>
+        <div class="values-grid">
+          <div class="value-item">
+            <span class="value-icon">→</span>
+            <div>
+              <strong>Problem-first thinking</strong>
+              <p>You start with the business problem, not the technology.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <span class="value-icon">→</span>
+            <div>
+              <strong>Frugal engineering</strong>
+              <p>You find the simplest working solution, not the most impressive one.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <span class="value-icon">→</span>
+            <div>
+              <strong>Ownership</strong>
+              <p>You're comfortable taking a problem end-to-end.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <span class="value-icon">→</span>
+            <div>
+              <strong>Context curiosity</strong>
+              <p>You learn the domain — F&B, manufacturing, finance — not just the stack.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="form-section">
+      <div class="section-inner">
+        <div class="form-card">
+          <h2 class="form-heading">Send us your details</h2>
+          <p class="form-sub">
+            We don't always have open roles listed. Share your CV and a note anyway —
+            we keep good profiles on file and reach out when there's a fit.
+          </p>
+
+          <form
+            action={CAREERS_FORM_ENDPOINT}
+            method="POST"
+            enctype="multipart/form-data"
+            class="career-form"
+          >
+            <input type="hidden" name="_subject" value="Careers application — 72° AI LABS" />
+            <input type="hidden" name="_redirect" value="https://72ai.in/thanks" />
+            <!-- Honeypot -->
+            <input type="text" name="_gotcha" style="display:none !important" />
+
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="Name" required placeholder="Your full name" />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="Email" required placeholder="you@example.com" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="role">What kind of work interests you?</label>
+              <input
+                type="text"
+                id="role"
+                name="Interest"
+                placeholder="e.g. AI / ML engineering, data analytics, product, operations..."
+              />
+            </div>
+
+            <div class="field">
+              <label for="message">Tell us about yourself</label>
+              <textarea
+                id="message"
+                name="Message"
+                rows="5"
+                required
+                placeholder="What have you built or solved that you're proud of? What draws you to working with SMEs?"
+              ></textarea>
+            </div>
+
+            <div class="field">
+              <label for="cv">Upload your CV <span class="field-hint">(PDF or Word, max 5 MB)</span></label>
+              <div class="file-input-wrapper">
+                <input
+                  type="file"
+                  id="cv"
+                  name="CV"
+                  accept=".pdf,.doc,.docx"
+                  class="file-input"
+                />
+                <label for="cv" class="file-label">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="17 8 12 3 7 8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                  </svg>
+                  <span class="file-label-text">Choose file</span>
+                </label>
+                <span class="file-name" id="file-name-display">No file chosen</span>
+              </div>
+            </div>
+
+            <div class="consent-row">
+              <input type="checkbox" id="consent" name="Consent" required />
+              <label for="consent">
+                I consent to 72° AI LABS storing my details for recruitment purposes.
+              </label>
+            </div>
+
+            <div class="form-submit">
+              <button type="submit" class="btn-submit">Send Application</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  const input = document.getElementById('cv') as HTMLInputElement;
+  const display = document.getElementById('file-name-display');
+  if (input && display) {
+    input.addEventListener('change', () => {
+      display.textContent = input.files?.[0]?.name ?? 'No file chosen';
+    });
+  }
+</script>
+
+<style>
+  .careers-page {
+    background: var(--brand-cream);
+    min-height: 100vh;
+  }
+
+  /* Hero */
+  .careers-hero {
+    background: linear-gradient(135deg, var(--brand-blue) 0%, #0a1535 100%);
+    color: white;
+    margin-top: 1.5rem;
+    padding: 4rem 0;
+  }
+
+  .hero-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  .hero-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+    margin: 0 0 1rem 0;
+  }
+
+  .hero-heading {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: white;
+    margin: 0 0 1.25rem 0;
+    line-height: 1.2;
+  }
+
+  .hero-sub {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+  }
+
+  /* Shared section layout */
+  .section-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--brand-blue);
+    margin: 0 0 2rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--brand-gold);
+    display: inline-block;
+  }
+
+  /* Values */
+  .values-section {
+    background: white;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .value-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: var(--brand-cream);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 2px solid rgba(12, 26, 63, 0.06);
+  }
+
+  .value-icon {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--brand-gold);
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .value-item strong {
+    display: block;
+    font-size: 1rem;
+    color: var(--brand-blue);
+    margin-bottom: 0.25rem;
+  }
+
+  .value-item p {
+    font-size: 0.9rem;
+    color: rgba(12, 26, 63, 0.7);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Form */
+  .form-section {
+    background: var(--brand-cream);
+  }
+
+  .form-card {
+    background: white;
+    border-radius: 12px;
+    border: 2px solid rgba(12, 26, 63, 0.08);
+    padding: 3rem 2.5rem;
+  }
+
+  .form-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--brand-blue);
+    margin: 0 0 0.75rem 0;
+  }
+
+  .form-sub {
+    font-size: 1rem;
+    color: rgba(12, 26, 63, 0.7);
+    line-height: 1.7;
+    margin: 0 0 2rem 0;
+  }
+
+  .career-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .field label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--brand-blue);
+  }
+
+  .field-hint {
+    font-weight: 400;
+    color: rgba(12, 26, 63, 0.5);
+    font-size: 0.8rem;
+  }
+
+  .field input[type="text"],
+  .field input[type="email"],
+  .field textarea {
+    padding: 0.65rem 0.9rem;
+    border: 1.5px solid rgba(12, 26, 63, 0.2);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: var(--brand-blue);
+    background: white;
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+    resize: vertical;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--brand-gold);
+  }
+
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: rgba(12, 26, 63, 0.35);
+  }
+
+  /* File input */
+  .file-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .file-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+  }
+
+  .file-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    background: var(--brand-cream);
+    border: 1.5px solid rgba(12, 26, 63, 0.2);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--brand-blue);
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .file-label:hover {
+    border-color: var(--brand-gold);
+  }
+
+  .file-name {
+    font-size: 0.875rem;
+    color: rgba(12, 26, 63, 0.55);
+  }
+
+  /* Consent */
+  .consent-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .consent-row input[type="checkbox"] {
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+    accent-color: var(--brand-gold);
+  }
+
+  .consent-row label {
+    font-size: 0.85rem;
+    color: rgba(12, 26, 63, 0.7);
+    line-height: 1.5;
+  }
+
+  .form-submit {
+    padding-top: 0.5rem;
+  }
+
+  .btn-submit {
+    background: var(--brand-blue);
+    color: white;
+    padding: 0.8rem 2.25rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    font-family: inherit;
+  }
+
+  .btn-submit:hover {
+    background: #0a1535;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .form-card {
+      padding: 2rem 1.25rem;
+    }
+
+    .section-inner {
+      padding: 3rem 1.25rem;
+    }
+  }
+</style>
