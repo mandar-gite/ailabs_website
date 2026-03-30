@@ -1,0 +1,250 @@
+---
+// ExitIntentPopup.astro
+// Exit-intent popup — centered modal overlay
+// Triggered by: desktop mouseleave (clientY<5) or mobile 40s low-engagement timer
+// Suppression: sessionStorage key 'exit_popup_shown' (cleared on tab close = once per session)
+---
+
+<div id="exit-overlay" style="display:none" aria-hidden="true">
+  <div
+    id="exit-card"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="exit-heading"
+    aria-describedby="exit-sub"
+  >
+    <button id="exit-close" aria-label="Close popup">✕</button>
+    <p class="exit-eyebrow">Before you go</p>
+    <h2 id="exit-heading">Get a free AI readiness assessment for your business</h2>
+    <p id="exit-sub" class="exit-sub">15 minutes. No pitch. Just clarity.</p>
+    <a href="/#contact" id="exit-cta">Book a Free Call →</a>
+    <button id="exit-dismiss">continue browsing</button>
+  </div>
+</div>
+
+<style>
+  #exit-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  #exit-card {
+    background: #0C1A3F;
+    border-radius: 12px;
+    padding: 2rem 2.25rem;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    animation: popup-enter 280ms ease-out both;
+  }
+
+  #exit-card.is-exiting {
+    animation: popup-exit 220ms ease-in both;
+  }
+
+  @keyframes popup-enter {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes popup-exit {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(16px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #exit-card,
+    #exit-card.is-exiting {
+      animation: none;
+    }
+  }
+
+  #exit-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1.1rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.25rem;
+    transition: color 0.15s;
+  }
+
+  #exit-close:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .exit-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #DDA744;
+    margin: 0 0 0.75rem;
+  }
+
+  #exit-heading {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.4;
+    margin: 0 0 0.75rem;
+  }
+
+  .exit-sub {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 1.5rem;
+  }
+
+  #exit-cta {
+    display: inline-block;
+    background: #2563EB;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.15s;
+    margin-bottom: 1rem;
+  }
+
+  #exit-cta:hover {
+    background: #1d4ed8;
+  }
+
+  #exit-dismiss {
+    display: block;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin: 0 auto;
+    text-decoration: underline;
+    padding: 0;
+    transition: color 0.15s;
+  }
+
+  #exit-dismiss:hover {
+    color: rgba(255, 255, 255, 0.6);
+  }
+</style>
+
+<script>
+  const STORAGE_KEY = 'exit_popup_shown';
+  const overlay = document.getElementById('exit-overlay') as HTMLElement;
+  const card = document.getElementById('exit-card') as HTMLElement;
+  const closeBtn = document.getElementById('exit-close') as HTMLButtonElement;
+  const dismissBtn = document.getElementById('exit-dismiss') as HTMLButtonElement;
+  const ctaLink = document.getElementById('exit-cta') as HTMLAnchorElement;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let previouslyFocused: HTMLElement | null = null;
+
+  // --- Show / Hide ---
+
+  function showPopup() {
+    if (sessionStorage.getItem(STORAGE_KEY)) return;
+    previouslyFocused = document.activeElement as HTMLElement;
+    overlay.style.display = 'flex';
+    overlay.removeAttribute('aria-hidden');
+    card.classList.remove('is-exiting');
+    closeBtn.focus();
+    document.addEventListener('keydown', handleKeydown);
+  }
+
+  function hidePopup() {
+    sessionStorage.setItem(STORAGE_KEY, '1');
+    document.removeEventListener('keydown', handleKeydown);
+
+    if (prefersReducedMotion) {
+      overlay.style.display = 'none';
+      overlay.setAttribute('aria-hidden', 'true');
+      if (previouslyFocused) previouslyFocused.focus();
+      return;
+    }
+
+    card.classList.add('is-exiting');
+    card.addEventListener('animationend', () => {
+      overlay.style.display = 'none';
+      overlay.setAttribute('aria-hidden', 'true');
+      card.classList.remove('is-exiting');
+      if (previouslyFocused) previouslyFocused.focus();
+    }, { once: true });
+  }
+
+  // --- Focus Trap ---
+
+  function handleKeydown(e: KeyboardEvent) {
+    if (e.key === 'Escape') {
+      hidePopup();
+      return;
+    }
+    if (e.key !== 'Tab') return;
+
+    const focusable = Array.from(
+      card.querySelectorAll<HTMLElement>('button, a[href]')
+    ).filter(el => !el.hasAttribute('disabled'));
+
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (e.shiftKey) {
+      if (document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    } else {
+      if (document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
+
+  // --- Dismiss Handlers ---
+
+  closeBtn.addEventListener('click', hidePopup);
+  dismissBtn.addEventListener('click', hidePopup);
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) hidePopup();
+  });
+
+  // Hide immediately on CTA click — no animation, navigation is the transition
+  ctaLink.addEventListener('click', () => {
+    sessionStorage.setItem(STORAGE_KEY, '1');
+    overlay.style.display = 'none';
+    overlay.setAttribute('aria-hidden', 'true');
+    document.removeEventListener('keydown', handleKeydown);
+  });
+
+  // --- Triggers ---
+
+  const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+
+  if (!isTouchDevice) {
+    document.addEventListener('mouseleave', (e) => {
+      if ((e as MouseEvent).clientY < 5) showPopup();
+    });
+  } else {
+    // Mobile: show after 40s if user hasn't scrolled past the fold
+    setTimeout(() => {
+      if (window.scrollY < window.innerHeight) showPopup();
+    }, 40000);
+  }
+</script>

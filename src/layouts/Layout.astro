@@ -2,6 +2,7 @@
 // Fonts are loaded via Google Fonts in global.css
 import '../styles/global.css';
 import '../styles/home.css';
+import ExitIntentPopup from '../components/ExitIntentPopup.astro';
 
 export interface Props {
     title: string;
@@ -181,6 +182,7 @@ const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_ID;
 <body class="antialiased leading-relaxed bg-white text-[#1E293B]">
     <a href="#main-content" class="skip-to-main">Skip to main content</a>
     <slot />
+    <ExitIntentPopup />
     <style>
         .skip-to-main {
             position: absolute;
