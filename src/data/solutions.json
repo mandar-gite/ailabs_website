@@ -24,12 +24,6 @@
     "projects": ["jnvessays", "docintel"]
   },
   {
-    "id": "onprem-llm",
-    "name": "On-Prem LLM Systems",
-    "description": "Privacy-first, local LLM deployments for sensitive data and air-gapped environments.",
-    "projects": []
-  },
-  {
     "id": "data-engineering",
     "name": "Data Engineering & Integration",
     "description": "Robust data pipelines, feature engineering, and advanced modeling for complex datasets.",
