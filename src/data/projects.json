@@ -163,6 +163,7 @@
   {
     "id": "insightbridge",
     "name": "InsightBridge",
+    "hidden": true,
     "shortBlurb": "Retrieval and summarisation layer over distributed business datasets.",
     "tagline": "Quick insights from distributed data sources.",
     "description": "Summaries and retrieval across distributed data systems.",

@@ -27,7 +27,7 @@
     "id": "onprem-llm",
     "name": "On-Prem LLM Systems",
     "description": "Privacy-first, local LLM deployments for sensitive data and air-gapped environments.",
-    "projects": ["insightbridge"]
+    "projects": []
   },
   {
     "id": "data-engineering",
