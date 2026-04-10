@@ -47,6 +47,7 @@ yarn-error.log*
 
 # Internal documentation
 #docs/
+docs/plans/
 ROADMAP.md
 ROADMAP_SUMMARY.md
 CLAUDE_RESTRUCTURE_PLAN.md
