@@ -22,8 +22,6 @@ faq:
     answer: "RAG (Retrieval-Augmented Generation) grounds AI responses in actual data by querying a vector database before generating output, reducing hallucination and ensuring responses are based on real domain knowledge."
 ---
 
-# Building Multi-Agent AI Systems That Actually Work
-
 Most AI content generators are glorified prompt wrappers. One prompt in, one output out. They work until they don't—and when they fail, they fail completely.
 
 We built something different: a **multi-agent RAG system** where specialized AI agents collaborate, check each other's work, and fail gracefully when things go wrong. This post walks through the architecture, the design decisions, and the lessons learned.

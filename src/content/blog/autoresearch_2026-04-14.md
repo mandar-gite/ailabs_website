@@ -22,8 +22,6 @@ faq:
     answer: "Reducing batch size and model size to get more optimization steps per fixed time budget. On constrained hardware, more iterations beat larger models — inverting the standard ML scaling playbook."
 ---
 
-# I Ran Karpathy's AutoResearch on a $300 GPU. The Agent Discovered Something the H100 Benchmarks Won't Show You.
-
 *57 autonomous experiments, 7 hours, RTX 3060. Why smaller models win on consumer hardware.*
 
 ---
