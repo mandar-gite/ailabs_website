@@ -36,9 +36,74 @@ const seoTitle = `${post.data.title} | 72° AI Labs Blog`;
 const seoDescription = post.data.description;
 // Use post-specific OG image if available, otherwise use blog default
 const ogImage = post.data.image || "/og-blog.jpg";
+const canonicalURL = new URL(`/blog/${post.slug}`, Astro.site).href;
+const ogImageURL = new URL(ogImage, Astro.site).href;
+
+const articleMeta = {
+  publishedTime: post.data.pubDate.toISOString(),
+  modifiedTime: post.data.updatedDate?.toISOString(),
+  author: post.data.author || "Mandar Gite",
+  tags: post.data.tags,
+};
+
+const blogPostingLD = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "image": ogImageURL,
+  "datePublished": post.data.pubDate.toISOString(),
+  ...(post.data.updatedDate && { "dateModified": post.data.updatedDate.toISOString() }),
+  "author": {
+    "@type": "Person",
+    "name": post.data.author || "Mandar Gite",
+    "url": "https://72ai.in"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "72° AI LABS",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://72ai.in/favicon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalURL
+  },
+  ...(post.data.tags && { "keywords": post.data.tags.join(", ") })
+};
+
+const faqLD = post.data.faq?.length ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": post.data.faq.map((item) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+} : null;
+
+const breadcrumbLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://72ai.in" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://72ai.in/blog" },
+    { "@type": "ListItem", "position": 3, "name": post.data.title, "item": canonicalURL }
+  ]
+};
 ---
 
-<Layout title={seoTitle} description={seoDescription} ogImage={ogImage}>
+<Layout title={seoTitle} description={seoDescription} ogImage={ogImage} pageType="article" articleMeta={articleMeta}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(blogPostingLD)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLD)} />
+    {faqLD && <script type="application/ld+json" set:html={JSON.stringify(faqLD)} />}
+  </Fragment>
   <Nav />
   <main class="blog-post-page">
     <article class="blog-post">

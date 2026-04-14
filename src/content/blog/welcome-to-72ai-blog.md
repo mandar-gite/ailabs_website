@@ -7,6 +7,15 @@ category: "Company News"
 tags: ["announcement", "AI", "SMB"]
 featured: true
 draft: false
+faq:
+  - question: "What does 72° AI Labs do?"
+    answer: "72° AI Labs builds frugal, context-aware AI solutions for Indian small and medium businesses, converting scattered business data into clear decisions across finance, operations, sales, support, marketing, and logistics."
+  - question: "Who is the 72° AI Labs blog for?"
+    answer: "Business owners, operators, and technical teams at Indian SMBs who want to understand how AI can solve real operational problems without enterprise budgets."
+  - question: "What topics does the blog cover?"
+    answer: "Real implementation stories, technical deep dives on RAG pipelines and ML systems, industry-specific use cases in F&B and manufacturing, and frugal engineering approaches to building effective AI."
+  - question: "How is this blog different from other AI blogs?"
+    answer: "Every post prioritizes clear ROI metrics, real code, honest trade-offs, and implementation steps you can follow. No hype, no abstraction — working systems built for Bharat-scale realities."
 ---
 
 Welcome to the 72° AI Labs blog. This space is dedicated to sharing practical insights about AI implementation, real-world case studies, and operational intelligence specifically designed for Indian small and medium businesses.
@@ -37,3 +46,17 @@ We'll be publishing new articles regularly. Each post tackles a specific operati
 ---
 
 *Have a specific topic you'd like us to cover? Reach out through our [contact form](/#contact).*
+
+## Frequently Asked Questions
+
+**What does 72° AI Labs do?**
+72° AI Labs builds frugal, context-aware AI solutions for Indian small and medium businesses. We convert scattered business data into clear, usable decisions across finance, operations, sales, support, marketing, and logistics.
+
+**Who is the 72° AI Labs blog for?**
+Business owners, operators, and technical teams at Indian SMBs who want to understand how AI can solve real operational problems without enterprise budgets. We also cover technical deep dives for developers building AI systems.
+
+**What topics does the blog cover?**
+Real implementation stories, technical deep dives on RAG pipelines and ML systems, industry-specific use cases in F&B and manufacturing, and frugal engineering approaches to building effective AI on constrained budgets.
+
+**How is this blog different from other AI blogs?**
+Every post prioritizes clear ROI metrics, real code and architecture decisions, honest trade-offs, and implementation steps you can follow. No hype, no abstraction — working systems built for Bharat-scale realities.

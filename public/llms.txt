@@ -64,3 +64,18 @@ Robust data pipelines, feature engineering, time-series modeling, and forecastin
 - About: https://72ai.in/about
 - Blog: https://72ai.in/blog
 - Voice DNA (free tool): https://72ai.in/voice-dna
+- RSS Feed: https://72ai.in/rss.xml
+
+## Blog Posts
+
+**I Ran Karpathy's AutoResearch on a $300 GPU**
+https://72ai.in/blog/autoresearch_2026-04-14
+57 autonomous AI experiments on an RTX 3060 overnight. The agent discovered that on consumer hardware, smaller models and more iterations beat larger models — inverting the standard ML scaling playbook. 23.4% improvement in prediction quality, 66% smaller model, 55% less VRAM.
+
+**Building Multi-Agent AI Systems That Actually Work**
+https://72ai.in/blog/blog1_martech_technical
+Architecture deep dive into a production multi-agent RAG system with four specialized agents (planner, researcher, writer, reviewer), iterative quality loops, graceful degradation, and real-time streaming. Runs entirely on local hardware.
+
+**Welcome to 72° AI Labs Blog**
+https://72ai.in/blog/welcome-to-72ai-blog
+Introduction to our blog covering practical AI implementation, real-world case studies, and operational intelligence for Indian SMBs. Every post prioritizes clear ROI metrics, real code, and honest trade-offs.

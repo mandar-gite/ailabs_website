@@ -7,6 +7,19 @@ category: "Technical Deep Dive"
 tags: ["AI", "RAG", "multi-agent", "architecture", "engineering"]
 featured: false
 draft: false
+faq:
+  - question: "What is a multi-agent AI system?"
+    answer: "A multi-agent system uses multiple specialized AI agents that each handle a distinct task (planning, research, writing, review) and coordinate through an orchestrator, producing more reliable output than a single LLM call."
+  - question: "Why use multiple agents instead of one powerful model?"
+    answer: "Specialization beats generalization. Dedicated agents with focused prompts and tools outperform a generalist approach, and each agent can be individually improved or replaced."
+  - question: "Can multi-agent systems run on local hardware?"
+    answer: "Yes. The stack runs entirely on a single server using local models (8B parameter), ChromaDB for vector storage, and sentence-transformers for embeddings. No cloud API dependencies for core functionality."
+  - question: "What happens when the LLM service fails?"
+    answer: "The system includes a template-based fallback generator that maintains the same API contract. Clients receive content either way, with metadata indicating the source."
+  - question: "How does the quality control loop work?"
+    answer: "The Reviewer Agent scores content on relevance, accuracy, engagement, and clarity. If the overall score falls below 0.7, it triggers a rewrite. The loop runs up to 3 times before flagging for human review."
+  - question: "What is RAG and why does it matter?"
+    answer: "RAG (Retrieval-Augmented Generation) grounds AI responses in actual data by querying a vector database before generating output, reducing hallucination and ensuring responses are based on real domain knowledge."
 ---
 
 # Building Multi-Agent AI Systems That Actually Work
@@ -253,3 +266,23 @@ That's what 72° AI Labs does. Practical AI for real business systems.
 
 
 *If you're looking to implement AI that actually works with your existing data and systems, reach out [here](/#contact).*
+
+## Frequently Asked Questions
+
+**What is a multi-agent AI system?**
+A multi-agent system uses multiple specialized AI agents that each handle a distinct task (planning, research, writing, review) and coordinate through an orchestrator. This produces more reliable output than a single LLM call handling everything.
+
+**Why use multiple agents instead of one powerful model?**
+Specialization beats generalization. A single agent trying to plan, research, write, and review produces mediocre results. Dedicated agents with focused prompts and tools outperform a generalist approach, and each agent can be individually improved or replaced.
+
+**Can multi-agent systems run on local hardware?**
+Yes. The stack described in this post runs entirely on a single server using local models (Hermes-3-Llama-3.1-8B via LM Studio), ChromaDB for vector storage, and sentence-transformers for embeddings. No cloud API dependencies for core functionality.
+
+**What happens when the LLM service fails?**
+The system includes a template-based fallback generator that maintains the same API contract. Clients receive content either way, with metadata indicating whether it came from the full agent pipeline or the fallback system.
+
+**How does the quality control loop work?**
+The Reviewer Agent scores content on relevance, accuracy, engagement, and clarity. If the overall score falls below 0.7, it triggers a rewrite with specific feedback. The loop runs up to 3 times before flagging for human review.
+
+**What is RAG and why does it matter?**
+RAG (Retrieval-Augmented Generation) grounds AI responses in actual data by querying a vector database before generating output. This reduces hallucination and ensures responses are based on real domain knowledge rather than the model's training data alone.
