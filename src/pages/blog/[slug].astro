@@ -335,6 +335,37 @@ const breadcrumbLD = {
     color: rgba(12, 26, 63, 0.75);
   }
 
+  .post-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .post-content :global(thead) {
+    background: var(--brand-blue);
+    color: white;
+  }
+
+  .post-content :global(th) {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .post-content :global(td) {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(12, 26, 63, 0.1);
+    color: rgba(12, 26, 63, 0.85);
+  }
+
+  .post-content :global(tbody tr:hover) {
+    background: rgba(221, 167, 68, 0.05);
+  }
+
   .post-content :global(hr) {
     border: none;
     border-top: 2px solid rgba(12, 26, 63, 0.1);
