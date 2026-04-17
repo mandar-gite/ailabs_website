@@ -20,6 +20,7 @@
     "title": "SME Financial Forecasting",
     "problem": "Reliance on manual, spreadsheet-based financial tracking from Tally and GSTN data.",
     "intervention": "Created a secure pipeline to ingest data and apply predictive models for cash flow forecasting.",
-    "outcome": "Provided a clear 12-month financial outlook, enabling proactive budget management and strategic investment decisions."
+    "outcome": "Provided a clear 12-month financial outlook, enabling proactive budget management and strategic investment decisions.",
+    "link": "/case-studies/sme-financial-forecasting"
   }
 ]
