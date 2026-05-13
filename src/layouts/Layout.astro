@@ -27,7 +27,7 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
 
 // Default OG image - Create /public/og-default.jpg (1200x630) for better social sharing
 // Falls back to favicon if og-default.jpg doesn't exist
-const ogImageURL = ogImage || new URL('/og-default.jpg', Astro.site).href;
+const ogImageURL = new URL(ogImage || '/og-default.jpg', Astro.site).href;
 
 // Get Google Analytics ID from environment variable
 const GA4_ID = import.meta.env.PUBLIC_GA4_ID;
@@ -52,6 +52,8 @@ const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_ID;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="72° AI LABS" />
     <meta property="og:locale" content="en_IN" />
     {articleMeta && (

@@ -29,4 +29,10 @@ Allow: /
 User-agent: meta-externalagent
 Allow: /
 
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
 Sitemap: https://72ai.in/sitemap-index.xml
