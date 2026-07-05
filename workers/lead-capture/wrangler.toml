@@ -1,0 +1,7 @@
+name = "lead-capture-72ai"
+main = "src/index.js"
+compatibility_date = "2026-07-01"
+
+# Secret (never committed) — set with:
+#   npx wrangler secret put HUBSPOT_TOKEN
+# Reuses the existing HubSpot private app token (contacts write scope).
