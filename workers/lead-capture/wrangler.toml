@@ -2,6 +2,12 @@ name = "lead-capture-72ai"
 main = "src/index.js"
 compatibility_date = "2026-07-01"
 
+# Served on the site's own domain (same-origin, no CORS) rather than workers.dev.
+workers_dev = false
+routes = [
+  { pattern = "72ai.in/api/lead*", zone_name = "72ai.in" }
+]
+
 # Secret (never committed) — set with:
 #   npx wrangler secret put HUBSPOT_TOKEN
 # Reuses the existing HubSpot private app token (contacts write scope).
