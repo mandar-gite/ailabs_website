@@ -207,40 +207,32 @@ const ogImage = "/og-home.jpg";
         <section class="process">
             <div class="container">
                 <div class="section-header">
-                    <h2>How it works</h2>
-                    <p>From your existing data to a running AI system</p>
+                    <h2>How we work</h2>
+                    <p>A bespoke engagement — from first conversation to a system you own</p>
                 </div>
 
                 <div class="steps">
                     <div class="step">
                         <div class="step-num">01</div>
                         <div class="step-body">
-                            <h3>We connect to your existing systems</h3>
-                            <p>ERP, CRM, spreadsheets, databases — wherever your data lives. No migration, no disruption to what's already working.</p>
+                            <h3>Discovery — we map the problem worth solving</h3>
+                            <p>We start with your business, not a demo. Together we find where decisions stall, what data you already have, and the one outcome that would move the needle most. You leave with a clear, prioritised scope — before anyone writes code.</p>
                         </div>
                     </div>
 
                     <div class="step">
                         <div class="step-num">02</div>
                         <div class="step-body">
-                            <h3>Your models learn your business</h3>
-                            <p>We train your models on your data, your terminology, your processes. The result speaks your language, not generic AI language.</p>
+                            <h3>Proof of concept — we prove value on your real data</h3>
+                            <p>We build a working prototype on your actual data and put it in front of you fast. You see real output against a concrete success measure, so you can judge the value — and the fit — before committing to a full build.</p>
                         </div>
                     </div>
 
                     <div class="step">
                         <div class="step-num">03</div>
                         <div class="step-body">
-                            <h3>You get a system built for you</h3>
-                            <p>A purpose-built AI system, tested on your real data and handed over ready to run. Full documentation, full ownership.</p>
-                        </div>
-                    </div>
-
-                    <div class="step">
-                        <div class="step-num">04</div>
-                        <div class="step-body">
-                            <h3>Your system keeps getting smarter</h3>
-                            <p>As your business expands, so does the AI. New data sources, sharper questions, broader capabilities — without rebuilding from scratch.</p>
+                            <h3>Implementation — we harden it into a system you own</h3>
+                            <p>Once the PoC earns its place, we engineer it into a production system: integrated with your tools, documented, and handed over with full ownership. No lock-in, and a foundation that keeps getting smarter as your business grows.</p>
                         </div>
                     </div>
                 </div>
@@ -712,9 +704,9 @@ const ogImage = "/og-home.jpg";
 
     .steps {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: 2rem 2.5rem;
-        max-width: 900px;
+        max-width: 1080px;
         margin: 0 auto;
     }
 
@@ -941,6 +933,11 @@ const ogImage = "/og-home.jpg";
     @media (max-width: 1024px) {
         .cap-grid {
             grid-template-columns: repeat(2, 1fr);
+        }
+
+        .steps {
+            grid-template-columns: 1fr;
+            max-width: 720px;
         }
     }
 
