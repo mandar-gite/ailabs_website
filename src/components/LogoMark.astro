@@ -1,20 +1,26 @@
 ---
-// Single source of truth for the 72° pentagon brand mark.
-// Used in Nav, Footer, and ContactForm. Size in px via the `size` prop.
+// Single source of truth for the 72° brand mark (navy pentagon + gold spiral).
+// Mark-only asset derived from the full logo lockup; consumers render any text
+// separately (Nav/Footer/ContactForm/about). Size in px via the `size` prop.
 interface Props {
     size?: number;
 }
 const { size = 40 } = Astro.props;
 ---
-<svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <polygon points="50,4 96,36 79,90 21,90 4,36" fill="#0C1A3F"/>
-    <line x1="50" y1="4"  x2="21" y2="90" stroke="#DDA744" stroke-width="0.6" opacity="0.35"/>
-    <line x1="50" y1="4"  x2="79" y2="90" stroke="#DDA744" stroke-width="0.6" opacity="0.35"/>
-    <line x1="4"  y1="36" x2="79" y2="90" stroke="#DDA744" stroke-width="0.6" opacity="0.35"/>
-    <line x1="96" y1="36" x2="21" y2="90" stroke="#DDA744" stroke-width="0.6" opacity="0.35"/>
-    <line x1="4"  y1="36" x2="96" y2="36" stroke="#DDA744" stroke-width="0.6" opacity="0.35"/>
-    <path d="M50,50 C50,44 55,40 60,43 C65,46 66,53 62,58 C58,63 50,63 45,58 C40,53 40,44 46,39 C52,34 62,35 67,42" stroke="#DDA744" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-</svg>
+<img
+    src="/logos/logo-mark.png"
+    width={size}
+    height={size}
+    alt=""
+    aria-hidden="true"
+    class="logo-mark"
+    decoding="async"
+/>
 <style>
-    svg { display: block; flex-shrink: 0; }
+    .logo-mark {
+        display: block;
+        flex-shrink: 0;
+        max-width: none; /* override Tailwind base img { max-width: 100% } */
+        object-fit: contain;
+    }
 </style>
