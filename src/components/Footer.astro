@@ -1,16 +1,11 @@
+---
+import LogoMark from "./LogoMark.astro";
+---
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-grid">
             <div class="footer-brand">
-                <svg class="footer-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <polygon points="50,4 96,36 79,90 21,90 4,36" fill="#0C1A3F"/>
-                    <line x1="50" y1="4"  x2="21" y2="90" stroke="#DDA744" stroke-width="0.6" opacity="0.35"/>
-                    <line x1="50" y1="4"  x2="79" y2="90" stroke="#DDA744" stroke-width="0.6" opacity="0.35"/>
-                    <line x1="4"  y1="36" x2="79" y2="90" stroke="#DDA744" stroke-width="0.6" opacity="0.35"/>
-                    <line x1="96" y1="36" x2="21" y2="90" stroke="#DDA744" stroke-width="0.6" opacity="0.35"/>
-                    <line x1="4"  y1="36" x2="96" y2="36" stroke="#DDA744" stroke-width="0.6" opacity="0.35"/>
-                    <path d="M50,50 C50,44 55,40 60,43 C65,46 66,53 62,58 C58,63 50,63 45,58 C40,53 40,44 46,39 C52,34 62,35 67,42" stroke="#DDA744" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                </svg>
+                <LogoMark size={36} />
                 <div class="footer-name">
                     72° AI LABS
                     <span>Building in India for the World</span>
@@ -56,12 +51,6 @@
         display: flex;
         align-items: center;
         gap: 0.75rem;
-    }
-
-    .footer-mark {
-        width: 36px;
-        height: 36px;
-        flex-shrink: 0;
     }
 
     .footer-name {

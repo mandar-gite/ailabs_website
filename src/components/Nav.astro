@@ -1,11 +1,10 @@
 ---
+import LogoMark from "./LogoMark.astro";
 ---
 <header class="nav-header">
     <div class="nav-inner">
         <a href="/" class="nav-logo">
-            <div class="nav-logo-mark">
-                <img src="/logos/logo.jpg" alt="" class="nav-logo-img" />
-            </div>
+            <LogoMark size={38} />
             <div class="nav-logo-text">
                 72° AI LABS
                 <span>Bespoke AI Systems</span>
@@ -67,26 +66,10 @@
         text-decoration: none;
     }
 
-    .nav-logo-mark {
-        width: 44px;
-        height: 44px;
-        overflow: hidden;
-        flex-shrink: 0;
-        margin-top: -5px;
-    }
-
-    .nav-logo-img {
-        display: block;
-        width: 68px;
-        height: 68px;
-        max-width: none;
-        margin-left: -12px;
-    }
-
     .nav-logo-text {
-        font-weight: 700;
+        font-weight: 800;
         font-size: 1rem;
-        color: var(--text);
+        color: var(--wp-ink);
         letter-spacing: -0.01em;
         line-height: 1.2;
     }
@@ -108,17 +91,17 @@
 
     .nav-links a {
         text-decoration: none;
-        color: var(--text);
-        font-weight: 700;
-        font-size: 0.875rem;
-        padding: 0.5rem 0.875rem;
-        border-radius: var(--radius-sm);
+        color: var(--wp-ink-2);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.55rem 0.9rem;
+        border-radius: 10px;
         transition: color 0.15s, background 0.15s;
     }
 
     .nav-links a:hover {
-        color: var(--accent);
-        background: var(--surface);
+        color: var(--wp-ink);
+        background: var(--wp-canvas-2);
     }
 
     .nav-mobile-btn {

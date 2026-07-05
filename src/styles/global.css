@@ -25,6 +25,18 @@
   --accent-light: #EFF6FF;
   --accent-mid:   #BFDBFE;
 
+  /* Warm-premium palette (homepage redesign — being rolled out site-wide) */
+  --wp-ink:        #1A2238;   /* softened navy — text-strong */
+  --wp-ink-2:      #5B6472;   /* muted body */
+  --wp-ink-3:      #8A93A3;   /* captions */
+  --wp-canvas-2:   #F6F7F9;   /* neutral light band / chip fill */
+  --wp-line:       rgba(26,34,56,0.08);
+  --wp-line-2:     rgba(26,34,56,0.14);
+  --wp-gold:       #D9A441;   /* single warm accent */
+  --wp-gold-deep:  #C4902E;
+  --wp-gold-tint:  rgba(217,164,65,0.12);
+  --wp-navy:       #0C1A3F;
+
   /* Shadows */
   --shadow-sm: 0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
   --shadow-md: 0 4px 16px rgba(15,23,42,0.08), 0 2px 4px rgba(15,23,42,0.04);
@@ -49,7 +61,7 @@
 }
 
 html {
-  font-family: 'Inter', 'Montserrat', -apple-system, sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
   font-size: 16px;
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
