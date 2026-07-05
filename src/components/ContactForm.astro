@@ -10,7 +10,7 @@ import LogoMark from "./LogoMark.astro";
     <div class="flex justify-center mb-3">
       <LogoMark size={56} />
     </div>
-    <form action={FORM_ENDPOINT} method="POST" class="space-y-3.5">
+    <form id="contact-form" action={FORM_ENDPOINT} method="POST" class="space-y-3.5">
       <!-- Metadata for better inbox + redirect after submit -->
       <input type="hidden" name="_subject" value="New inquiry from 72° AI Labs" />
       <input type="hidden" name="_redirect" value="https://72ai.in/thanks" />
@@ -56,3 +56,37 @@ import LogoMark from "./LogoMark.astro";
     </form>
   </div>
 </section>
+
+<script>
+  // Progressive enhancement: with JS, submit to BOTH the HubSpot Worker (owns the
+  // lead in the CRM) and Formspree (email notification + fallback so no lead is lost),
+  // then redirect to /thanks. Without JS, the plain <form action> still posts to
+  // Formspree with its _redirect, so leads are captured either way.
+  const HUBSPOT_ENDPOINT = "https://72ai.in/api/lead";
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const payload: Record<string, string> = {};
+    fd.forEach((v, k) => (payload[k] = String(v)));
+
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+    if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
+
+    await Promise.allSettled([
+      fetch(HUBSPOT_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }),
+      fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: fd,
+      }),
+    ]);
+
+    window.location.href = "/thanks";
+  });
+</script>
