@@ -7,7 +7,7 @@ export async function GET(context: APIContext) {
 
   return rss({
     title: '72° AI Labs Blog',
-    description: 'Practical AI insights, experiment logs, and real-world case studies for Indian SMBs.',
+    description: 'Practical AI insights, experiment logs, and real-world case studies for growing businesses.',
     site: context.site!,
     items: posts
       .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
