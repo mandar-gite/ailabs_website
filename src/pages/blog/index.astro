@@ -47,7 +47,6 @@ function formatDate(date: Date): string {
             <a href={`/blog/${post.slug}`} class="post-link">
               <div class="post-meta">
                 <span class="post-category">{post.data.category}</span>
-                {post.data.featured && <span class="featured-badge">Featured</span>}
               </div>
               <h2 class="post-title">{post.data.title}</h2>
               <p class="post-description">{post.data.description}</p>
