@@ -207,7 +207,7 @@ import Footer from "../components/Footer.astro";
 <style>
   /* Layout */
   .container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
   }
@@ -215,14 +215,14 @@ import Footer from "../components/Footer.astro";
     max-width: 720px;
   }
   .container.center {
-    text-align: center;
+    text-align: left;
   }
 
   /* Hero */
   .hero {
     background: var(--bg);
     padding: 5rem 0 4rem;
-    text-align: center;
+    text-align: left;
     border-bottom: 1px solid var(--border);
   }
 
@@ -231,7 +231,7 @@ import Footer from "../components/Footer.astro";
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--accent);
+    color: var(--wp-gold-deep);
     margin: 0 0 1.25rem;
   }
 
@@ -246,7 +246,7 @@ import Footer from "../components/Footer.astro";
   .subtitle {
     font-size: var(--text-xl);
     color: var(--text-2);
-    margin: 0 auto 3rem;
+    margin: 0 0 3rem;
     max-width: 560px;
     line-height: 1.5;
   }
@@ -254,14 +254,14 @@ import Footer from "../components/Footer.astro";
   .stats-row {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 2rem;
     margin-bottom: 3rem;
     flex-wrap: wrap;
   }
 
   .stat {
-    text-align: center;
+    text-align: left;
   }
 
   .stat-number {
@@ -288,28 +288,27 @@ import Footer from "../components/Footer.astro";
   .hero-actions {
     display: flex;
     gap: 1rem;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
   }
 
   /* Buttons */
   .btn-primary {
     display: inline-block;
-    background: #0C1A3F;
-    color: white;
+    background: var(--wp-gold);
+    color: #241a00;
     padding: 0.875rem 2.25rem;
-    border-radius: 8px;
+    border-radius: 14px;
     text-decoration: none;
     font-weight: 700;
     font-size: 1rem;
     transition: background 0.2s, transform 0.15s;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 10px 26px rgba(217,164,65,0.30);
   }
 
   .btn-primary:hover {
-    background: #1a2d5a;
+    background: var(--wp-gold-deep);
     transform: translateY(-1px);
-    box-shadow: var(--shadow-lg);
   }
 
   .btn-ghost {
@@ -363,9 +362,9 @@ import Footer from "../components/Footer.astro";
   .section-subtitle {
     font-size: var(--text-lg);
     color: var(--text-2);
-    margin: 0 auto 3rem;
+    margin: 0 0 3rem;
     max-width: 600px;
-    text-align: center;
+    text-align: left;
   }
 
   .lead {
@@ -383,7 +382,7 @@ import Footer from "../components/Footer.astro";
   }
 
   .caption {
-    text-align: center;
+    text-align: left;
     font-size: var(--text-sm);
     color: var(--text-3);
     font-style: italic;
@@ -497,12 +496,12 @@ import Footer from "../components/Footer.astro";
   .code-download {
     font-size: var(--text-sm);
     font-weight: 700;
-    color: var(--accent);
+    color: var(--wp-gold-deep);
     text-decoration: none;
   }
 
   .code-download:hover {
-    color: var(--accent-hover);
+    color: var(--wp-gold);
     text-decoration: underline;
   }
 
