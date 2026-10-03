@@ -26,6 +26,7 @@ jobs:
         env:
           PUBLIC_GA4_ID: ${{ vars.PUBLIC_GA4_ID }}
           PUBLIC_CLARITY_ID: ${{ vars.PUBLIC_CLARITY_ID }}
+          PUBLIC_APOLLO_APP_ID: ${{ vars.PUBLIC_APOLLO_APP_ID }}
 
   deploy:
     needs: build

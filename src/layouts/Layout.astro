@@ -32,6 +32,7 @@ const ogImageURL = new URL(ogImage || '/og-default.jpg', Astro.site).href;
 // Get Google Analytics ID from environment variable
 const GA4_ID = import.meta.env.PUBLIC_GA4_ID;
 const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_ID;
+const APOLLO_APP_ID = import.meta.env.PUBLIC_APOLLO_APP_ID;
 ---
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -107,12 +108,14 @@ const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_ID;
     )}
 
     <!-- Apollo.io Website Tracker -->
-    <script is:inline>
-        function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
-        o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
-        o.onload=function(){window.trackingFunctions.onLoad({appId:"69f1fbdff07d34000d8893cb"})},
-        document.head.appendChild(o)}initApollo();
-    </script>
+    {APOLLO_APP_ID && (
+        <script is:inline define:vars={{ APOLLO_APP_ID }}>
+            function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
+            o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
+            o.onload=function(){window.trackingFunctions.onLoad({appId:APOLLO_APP_ID})},
+            document.head.appendChild(o)}initApollo();
+        </script>
+    )}
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">

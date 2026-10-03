@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Apollo visitor tracker now reads its app id from `PUBLIC_APOLLO_APP_ID` and only renders when it's set. Switched to the current workspace id (`6a99...616c`); the old hardcoded one was stale
+
 ### Added
 - Shared `Footer` component — pentagon mark, tagline, nav links, copyright — deployed across all pages
 - Pipeline hero graphic — animated SVG showing Spreadsheet/Documents/Live Data → 72° AI → Forecasts/Insights/Decisions
