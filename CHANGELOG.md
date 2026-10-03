@@ -9,8 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Apollo visitor tracker now reads its app id from `PUBLIC_APOLLO_APP_ID` and only renders when it's set. Switched to the current workspace id (`6a99...616c`); the old hardcoded one was stale
+- Repo moved onto Git Flow: new `develop` branch, 8 merged or dead branches deleted. `scratch/`, `thoughts/` and agent tool dirs are gitignored ([session note](docs/changelog/2026-10-03-apollo-tracker-and-git-flow.md))
 
 ### Added
+- `tests/apollo-tracker.test.mjs`: builds the site with and without `PUBLIC_APOLLO_APP_ID` and checks the tracker renders only when set
+- `docs/changelog/` for dated session notes
 - Shared `Footer` component — pentagon mark, tagline, nav links, copyright — deployed across all pages
 - Pipeline hero graphic — animated SVG showing Spreadsheet/Documents/Live Data → 72° AI → Forecasts/Insights/Decisions
 - Four capability badges: Your Data. Your Rules. / Open Source Models / Host in Your Cloud / No Subscription Fees
