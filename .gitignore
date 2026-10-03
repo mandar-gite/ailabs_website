@@ -68,3 +68,14 @@ meetings/
 # Business strategy
 research/
 business/
+
+# Local scratch: design screenshots, prototypes, stale copies
+scratch/
+
+# Agent and tool working dirs
+.playwright-mcp/
+.serena/
+.superpowers/
+
+# Handoffs stay local; mirrored to ~/smriti/website_72ai/thoughts
+thoughts/
