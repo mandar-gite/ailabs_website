@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-07
+
+First tagged release. Everything below was live or merged before this tag.
+
+### Fixed
+- Contact form no longer shows /thanks when both HubSpot and Formspree reject the lead. It redirects only when at least one accepts it; otherwise the visitor keeps their input and sees an inline error
+
+### Added
+- "Book a 30-min call" beside the contact form, using the HubSpot Meetings scheduler. The embed script loads only when the section nears the viewport, with a plain booking link as fallback
+- Playwright e2e suite in `tests/e2e/` for pages, nav, contact form, exit popup and booking
+- `PRODUCT.md`, `DESIGN.md` and 11 page critiques in `.impeccable/critique/`
+
 ### Changed
 - Apollo visitor tracker now reads its app id from `PUBLIC_APOLLO_APP_ID` and only renders when it's set. Switched to the current workspace id (`6a99...616c`); the old hardcoded one was stale
 - Repo moved onto Git Flow: new `develop` branch, 8 merged or dead branches deleted. `scratch/`, `thoughts/` and agent tool dirs are gitignored ([session note](docs/changelog/2026-10-03-apollo-tracker-and-git-flow.md))
