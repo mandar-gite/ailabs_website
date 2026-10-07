@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-07T11:41:58.489442+00:00",
+  "title": "Design System: 72° AI LABS",
+  "extensions": {
+    "colorMeta": {
+      "gold": {
+        "role": "primary",
+        "displayName": "Pentagon Gold",
+        "canonical": "oklch(75.1% 0.130 79.8)",
+        "tonalRamp": [
+          "oklch(15% 0.071 79.8)",
+          "oklch(25% 0.084 79.8)",
+          "oklch(38% 0.101 79.8)",
+          "oklch(50% 0.117 79.8)",
+          "oklch(62% 0.127 79.8)",
+          "oklch(74% 0.111 79.8)",
+          "oklch(86% 0.096 79.8)",
+          "oklch(95% 0.084 79.8)"
+        ]
+      },
+      "gold-deep": {
+        "role": "primary",
+        "displayName": "Burnished Gold",
+        "canonical": "oklch(68.7% 0.126 79.0)",
+        "tonalRamp": [
+          "oklch(15% 0.069 79.0)",
+          "oklch(25% 0.082 79.0)",
+          "oklch(38% 0.099 79.0)",
+          "oklch(50% 0.114 79.0)",
+          "oklch(62% 0.124 79.0)",
+          "oklch(74% 0.109 79.0)",
+          "oklch(86% 0.093 79.0)",
+          "oklch(95% 0.082 79.0)"
+        ]
+      },
+      "navy": {
+        "role": "secondary",
+        "displayName": "Midnight Navy",
+        "canonical": "oklch(23.1% 0.073 265.4)",
+        "tonalRamp": [
+          "oklch(15% 0.040 265.4)",
+          "oklch(25% 0.048 265.4)",
+          "oklch(38% 0.057 265.4)",
+          "oklch(50% 0.066 265.4)",
+          "oklch(62% 0.072 265.4)",
+          "oklch(74% 0.063 265.4)",
+          "oklch(86% 0.054 265.4)",
+          "oklch(95% 0.048 265.4)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Softened Ink",
+        "canonical": "oklch(25.6% 0.043 268.1)",
+        "tonalRamp": [
+          "oklch(15% 0.024 268.1)",
+          "oklch(25% 0.028 268.1)",
+          "oklch(38% 0.034 268.1)",
+          "oklch(50% 0.039 268.1)",
+          "oklch(62% 0.042 268.1)",
+          "oklch(74% 0.037 268.1)",
+          "oklch(86% 0.032 268.1)",
+          "oklch(95% 0.028 268.1)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Slate Body",
+        "canonical": "oklch(50.1% 0.025 259.2)",
+        "tonalRamp": [
+          "oklch(15% 0.014 259.2)",
+          "oklch(25% 0.016 259.2)",
+          "oklch(38% 0.019 259.2)",
+          "oklch(50% 0.022 259.2)",
+          "oklch(62% 0.024 259.2)",
+          "oklch(74% 0.021 259.2)",
+          "oklch(86% 0.018 259.2)",
+          "oklch(95% 0.016 259.2)"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Quiet Caption",
+        "canonical": "oklch(66.1% 0.026 262.1)",
+        "tonalRamp": [
+          "oklch(15% 0.014 262.1)",
+          "oklch(25% 0.017 262.1)",
+          "oklch(38% 0.020 262.1)",
+          "oklch(50% 0.023 262.1)",
+          "oklch(62% 0.025 262.1)",
+          "oklch(74% 0.022 262.1)",
+          "oklch(86% 0.019 262.1)",
+          "oklch(95% 0.017 262.1)"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Canvas White",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(25% 0.000 89.9)",
+          "oklch(38% 0.000 89.9)",
+          "oklch(50% 0.000 89.9)",
+          "oklch(62% 0.000 89.9)",
+          "oklch(74% 0.000 89.9)",
+          "oklch(86% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      },
+      "canvas-2": {
+        "role": "neutral",
+        "displayName": "Cool Mist",
+        "canonical": "oklch(97.6% 0.003 264.5)",
+        "tonalRamp": [
+          "oklch(15% 0.002 264.5)",
+          "oklch(25% 0.002 264.5)",
+          "oklch(38% 0.002 264.5)",
+          "oklch(50% 0.003 264.5)",
+          "oklch(62% 0.003 264.5)",
+          "oklch(74% 0.002 264.5)",
+          "oklch(86% 0.002 264.5)",
+          "oklch(95% 0.002 264.5)"
+        ]
+      },
+      "logo-gold": {
+        "role": "logo",
+        "displayName": "Brand Kit Gold (logo only)",
+        "canonical": "oklch(76.1% 0.130 79.5)",
+        "tonalRamp": [
+          "oklch(15% 0.072 79.5)",
+          "oklch(25% 0.085 79.5)",
+          "oklch(38% 0.102 79.5)",
+          "oklch(50% 0.117 79.5)",
+          "oklch(62% 0.128 79.5)",
+          "oklch(74% 0.112 79.5)",
+          "oklch(86% 0.096 79.5)",
+          "oklch(95% 0.085 79.5)"
+        ]
+      },
+      "gold-tint": {
+        "role": "primary",
+        "displayName": "Gold Wash",
+        "canonical": "rgba(217,164,65,0.12)"
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(26,34,56,0.08)"
+      },
+      "line-2": {
+        "role": "neutral",
+        "displayName": "Firm Hairline",
+        "canonical": "rgba(26,34,56,0.14)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headers and contact heading."
+      },
+      "stat": {
+        "displayName": "Stat",
+        "purpose": "Proof numbers."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card and step headings."
+      },
+      "body-lead": {
+        "displayName": "Body Lead",
+        "purpose": "Hero paragraph and section intros, about 60ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Card and step descriptions."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase eyebrows, category labels, captions."
+      }
+    },
+    "shadows": [
+      {
+        "name": "rest",
+        "value": "0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04)",
+        "purpose": "Buttons and cards at rest."
+      },
+      {
+        "name": "raised",
+        "value": "0 4px 16px rgba(15,23,42,0.08), 0 2px 4px rgba(15,23,42,0.04)",
+        "purpose": "Dropdowns and popovers."
+      },
+      {
+        "name": "lifted",
+        "value": "0 12px 40px rgba(15,23,42,0.10), 0 4px 8px rgba(15,23,42,0.04)",
+        "purpose": "Hovered cards and the floating metric."
+      },
+      {
+        "name": "showpiece",
+        "value": "0 24px 60px rgba(15,23,42,0.12), 0 8px 16px rgba(15,23,42,0.06)",
+        "purpose": "Hero pipeline window only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-fast",
+        "value": "150ms ease",
+        "purpose": "Button and nav colour/lift transitions."
+      },
+      {
+        "name": "card-hover",
+        "value": "220ms ease",
+        "purpose": "Card shadow, border and lift."
+      },
+      {
+        "name": "edge-reveal",
+        "value": "320ms cubic-bezier(.2,.7,.2,1)",
+        "purpose": "Gold top edge scaling in on card hover."
+      },
+      {
+        "name": "pipeline-flow",
+        "value": "2s ease-in-out infinite",
+        "purpose": "Hero flow lines; off under reduced motion."
+      },
+      {
+        "name": "breathe",
+        "value": "3s ease-in-out infinite",
+        "purpose": "Hero node pulse and ripple; off under reduced motion."
+      },
+      {
+        "name": "float",
+        "value": "5s ease-in-out infinite",
+        "purpose": "Hero metric card drift (8px); off under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "768px"
+      },
+      {
+        "name": "tablet",
+        "value": "1024px"
+      },
+      {
+        "name": "container",
+        "value": "1200px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main call to action; white with ink outline, inverts to solid ink on hover.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">See What We Build</a>",
+      "css": ".ds-btn-primary{font-family:'Plus Jakarta Sans',Inter,-apple-system,sans-serif;display:inline-flex;align-items:center;background:#fff;color:var(--wp-ink,#1A2238);font-weight:700;font-size:0.9375rem;padding:0.9rem 1.75rem;border-radius:14px;border:1.5px solid var(--wp-ink,#1A2238);text-decoration:none;box-shadow:0 1px 3px rgba(15,23,42,0.06),0 1px 2px rgba(15,23,42,0.04);transition:background .15s,color .15s,transform .15s,box-shadow .15s}.ds-btn-primary:hover{background:var(--wp-ink,#1A2238);color:#fff;transform:translateY(-2px);box-shadow:0 4px 16px rgba(15,23,42,0.08),0 2px 4px rgba(15,23,42,0.04)}.ds-btn-primary:active{transform:translateY(0);box-shadow:0 1px 3px rgba(15,23,42,0.06)}.ds-btn-primary:focus-visible{outline:2px solid #D9A441;outline-offset:3px}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action beside the primary; hairline border that firms on hover.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Talk to Us</a>",
+      "css": ".ds-btn-ghost{font-family:'Plus Jakarta Sans',Inter,-apple-system,sans-serif;display:inline-flex;align-items:center;background:#fff;color:var(--wp-ink,#1A2238);font-weight:700;font-size:0.9375rem;padding:0.9rem 1.75rem;border-radius:14px;border:1px solid var(--wp-line-2,rgba(26,34,56,0.14));text-decoration:none;box-shadow:0 1px 3px rgba(15,23,42,0.06),0 1px 2px rgba(15,23,42,0.04);transition:border-color .15s,transform .15s}.ds-btn-ghost:hover{border-color:var(--wp-ink-2,#5B6472);transform:translateY(-2px)}.ds-btn-ghost:active{transform:translateY(0)}.ds-btn-ghost:focus-visible{outline:2px solid #D9A441;outline-offset:3px}"
+    },
+    {
+      "name": "Contact Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Contact form field with gold focus ring.",
+      "html": "<label class=\"ds-label\">Work email<input class=\"ds-input\" type=\"email\" placeholder=\"you@company.com\"></label>",
+      "css": ".ds-label{font-family:'Plus Jakarta Sans',Inter,-apple-system,sans-serif;display:block;font-size:0.875rem;color:#0C1A3F}.ds-input{font-family:'Plus Jakarta Sans',Inter,-apple-system,sans-serif;display:block;width:100%;margin-top:6px;padding:8px 12px;font-size:0.875rem;border-radius:6px;background:#fff;color:#0C1A3F;border:1px solid #D1D5DB;outline:none}.ds-input:focus-visible,.ds-input:focus{box-shadow:0 0 0 2px #D9A441;border-color:transparent}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Sticky blurred bar with pill-hover links.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-brand\">72° AI LABS<small>Bespoke AI Systems</small></span><span class=\"ds-nav-links\"><a href=\"#\">Solutions</a><a href=\"#\">Projects</a><a href=\"#\">Blog</a><a href=\"#\">About</a></span></nav>",
+      "css": ".ds-nav{font-family:'Plus Jakarta Sans',Inter,-apple-system,sans-serif;display:flex;align-items:center;justify-content:space-between;height:76px;padding:0 2rem;background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(26,34,56,0.08)}.ds-nav-brand{font-weight:800;font-size:1.1rem;color:#1A2238;letter-spacing:-0.01em;line-height:1.2}.ds-nav-brand small{display:block;font-size:0.7rem;font-weight:500;color:#8A93A3;letter-spacing:0.04em;text-transform:uppercase}.ds-nav-links{display:flex;gap:0.25rem}.ds-nav-links a{color:#5B6472;font-weight:600;font-size:0.98rem;padding:0.55rem 0.95rem;border-radius:10px;text-decoration:none;transition:color .15s,background .15s}.ds-nav-links a:hover{color:#1A2238;background:#F6F7F9}.ds-nav-links a:focus-visible{outline:2px solid #D9A441;outline-offset:2px}"
+    },
+    {
+      "name": "Eyebrow and Badge",
+      "kind": "chip",
+      "refersTo": "eyebrow",
+      "description": "Gold-wash eyebrow above the hero; mist badges with gold dot.",
+      "html": "<span class=\"ds-eyebrow\">Bespoke AI Systems</span> <span class=\"ds-badge\"><i></i>Host in Your Cloud</span>",
+      "css": ".ds-eyebrow{font-family:'Plus Jakarta Sans',Inter,-apple-system,sans-serif;display:inline-flex;font-size:0.74rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C4902E;background:rgba(217,164,65,0.12);padding:0.4rem 0.8rem;border-radius:999px}.ds-badge{font-family:'Plus Jakarta Sans',Inter,-apple-system,sans-serif;display:inline-flex;align-items:center;gap:0.4rem;background:#F6F7F9;border:1px solid rgba(26,34,56,0.08);border-radius:999px;padding:0.32rem 0.7rem;font-size:0.73rem;font-weight:600;color:#5B6472}.ds-badge i{width:6px;height:6px;border-radius:50%;background:#D9A441}"
+    },
+    {
+      "name": "Capability Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Signature card: resting shadow, 5px lift, gold top edge scaling in on hover.",
+      "html": "<div class=\"ds-card\" tabindex=\"0\"><div class=\"ds-card-icon\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><line x1=\"12\" y1=\"1\" x2=\"12\" y2=\"23\"/><path d=\"M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6\"/></svg></div><div class=\"ds-card-label\">Finance</div><h3>Know where the money's going, before month-end</h3><p>AI that tracks cash flow, flags anomalies, and surfaces the numbers that matter.</p></div>",
+      "css": ".ds-card{font-family:'Plus Jakarta Sans',Inter,-apple-system,sans-serif;position:relative;overflow:hidden;background:#fff;border:1px solid rgba(26,34,56,0.08);border-radius:20px;padding:2rem;max-width:340px;box-shadow:0 1px 3px rgba(15,23,42,0.06),0 1px 2px rgba(15,23,42,0.04);transition:box-shadow .22s,border-color .22s,transform .22s}.ds-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:#D9A441;transform:scaleX(0);transform-origin:left;transition:transform .32s cubic-bezier(.2,.7,.2,1)}.ds-card:hover,.ds-card:focus-visible{box-shadow:0 12px 40px rgba(15,23,42,0.10),0 4px 8px rgba(15,23,42,0.04);border-color:rgba(26,34,56,0.14);transform:translateY(-5px);outline:none}.ds-card:hover::after,.ds-card:focus-visible::after{transform:scaleX(1)}.ds-card-icon{width:48px;height:48px;background:#F6F7F9;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#1A2238;margin-bottom:1.2rem;transition:background .22s,color .22s}.ds-card:hover .ds-card-icon{background:rgba(217,164,65,0.12);color:#C4902E}.ds-card-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:#8A93A3;margin-bottom:0.5rem}.ds-card h3{font-size:1.02rem;font-weight:700;color:#1A2238;margin:0 0 0.6rem;line-height:1.35;letter-spacing:-0.01em}.ds-card p{font-size:0.9rem;color:#5B6472;line-height:1.6;margin:0}"
+    },
+    {
+      "name": "Process Step",
+      "kind": "custom",
+      "refersTo": "step-number",
+      "description": "Navy disc with gold numeral, the densest brand moment.",
+      "html": "<div class=\"ds-step\"><span class=\"ds-step-num\">01</span><div><h3>Discovery</h3><p>Map where decisions stall and the one outcome worth solving first.</p></div></div>",
+      "css": ".ds-step{font-family:'Plus Jakarta Sans',Inter,-apple-system,sans-serif;display:flex;gap:1.25rem;align-items:flex-start;max-width:340px}.ds-step-num{width:44px;height:44px;border-radius:50%;background:#0C1A3F;color:#D9A441;font-size:0.8125rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}.ds-step h3{font-size:1.02rem;font-weight:700;color:#1A2238;margin:0 0 0.4rem;line-height:1.4}.ds-step p{font-size:0.9rem;color:#5B6472;line-height:1.6;margin:0}"
+    },
+    {
+      "name": "Submit Button",
+      "kind": "button",
+      "refersTo": "button-submit",
+      "description": "Gold pill submit on the contact form (target tokens; code still uses drift #DDA744).",
+      "html": "<button class=\"ds-btn-submit\" type=\"button\">Send message</button>",
+      "css": ".ds-btn-submit{font-family:'Plus Jakarta Sans',Inter,-apple-system,sans-serif;padding:0.5rem 1.5rem;font-size:0.875rem;font-weight:600;background:#D9A441;color:#0C1A3F;border:none;border-radius:999px;box-shadow:0 4px 16px rgba(15,23,42,0.08);cursor:pointer;transition:background .3s,transform .15s}.ds-btn-submit:hover{background:#C4902E}.ds-btn-submit:active{transform:translateY(1px)}.ds-btn-submit:focus-visible{outline:2px solid #0C1A3F;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Golden Angle",
+    "overview": "A regular pentagon's external angle is 72°, and that one visible angle carries the golden ratio inside it. The system works the same way: a single precise gold accent, set against a calm white field and softened navy ink, signals the structure underneath. Every screen should read as proportion first and decoration never. If an element can't explain its place in the composition, it goes.\n\nDensity is open and unhurried. Sections breathe on 104px vertical rhythm, content sits in a 1200px column, and the type does the heavy lifting: tight, heavy Plus Jakarta Sans headlines (800 weight, negative tracking) over muted, generous body copy. Gold appears as a thread (an eyebrow, a separator dot, a hover edge, an accent word) and never as a flood.\n\nComponents are tactile and confident. Surfaces carry a visible resting shadow, lift on hover, and should press back on click. The feel is a well-made physical object: you can tell what's touchable before you touch it.",
+    "keyCharacteristics": [
+      "White canvas with one cool-grey band colour; no cream, no gradients behind content.",
+      "One warm accent (gold) used sparingly; navy reserved for dense, high-contrast moments.",
+      "Heavy, tightly tracked display type over quiet grey body copy.",
+      "Generous radii (14px controls, 20px cards) and pill-shaped small labels.",
+      "Resting shadows and hover lift; motion that's short and purposeful, and off under reduced motion."
+    ],
+    "rules": [
+      {
+        "name": "The One Thread Rule",
+        "body": "Gold is the only chromatic accent. Keep it to roughly 5% of any viewport; its scarcity is what makes it read as \"the point\". No second accent hue, no blue links.",
+        "section": "colors"
+      },
+      {
+        "name": "The Large-Gold Rule",
+        "body": "Burnished Gold on white measures 2.85:1, which misses WCAG AA even for large text (3:1). The incumbent hero accent words accept that at display size (2.7rem and up) because the same line is complete without them; a darker gold is an open fix. Anything smaller that must be read sits in Softened Ink with gold as a dot, rule or underline beside it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Single Palette Rule",
+        "body": "The `--wp-*` tokens in `src/styles/global.css` are the system. The older `--brand-cream` / `--brand-gold` set and the slate/blue `--text*`, `--accent*`, `--surface`, `--border` set are drift still present on `/about`, ProjectCard, the contact form and the mobile nav. New work uses `--wp-*` only and migrates the old ones when touched.",
+        "section": "colors"
+      },
+      {
+        "name": "The Weight-Not-Face Rule",
+        "body": "Hierarchy comes from weight (800 / 700 / 400) and tracking. Don't introduce a second typeface for headings. The logo's serif belongs to the logo artwork only.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tight-Top Rule",
+        "body": "Anything 2rem or larger tracks negative (-0.03em to -0.04em). Anything uppercase tracks positive (+0.09em to +0.1em). Body copy stays at normal tracking.",
+        "section": "typography"
+      },
+      {
+        "name": "The Left-Edge Rule",
+        "body": "Content aligns to the left edge of the column. Centred text is reserved for the contact form heading and the footer copyright line.",
+        "section": "layout"
+      },
+      {
+        "name": "The Earned Lift Rule",
+        "body": "Lift is a response. Buttons rise 2px and cards 5px on hover, paired with the next shadow step. Nothing floats at rest except the single hero metric card.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Press-Back Rule",
+        "body": "Tactile means the click lands. Interactive surfaces should settle back (translateY(0), shadow returns to Rest) on `:active`. Current buttons and cards don't do this yet; add it whenever they're touched.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use the `--wp-*` tokens from `src/styles/global.css` for every new surface.",
+      "**Do** keep gold to dots, rules, edges, numerals and display-size accent words.",
+      "**Do** track headlines negative (-0.03em to -0.04em) at 800 weight, and uppercase labels positive (+0.1em).",
+      "**Do** give interactive surfaces the Rest shadow, a hover lift with the next shadow step, and a press-back on `:active`.",
+      "**Do** alternate Canvas White and Cool Mist bands, separated by Hairline borders.",
+      "**Do** disable every looping animation under `prefers-reduced-motion: reduce`."
+    ],
+    "donts": [
+      "**Don't** set body-size text in Burnished Gold or Pentagon Gold on white; it fails contrast.",
+      "**Don't** set readable small text in Quiet Caption (#8A93A3); at about 3:1 it's for decorative micro-labels only.",
+      "**Don't** reintroduce cream (#FAF7F2), the slate/blue site palette (#2563EB, #1E293B) or brand-kit gold (#DDA744) in UI. Brand-kit gold is for the logo.",
+      "**Don't** use the logo serif or any second typeface for headings.",
+      "**Don't** stretch, recolour, shadow or filter the logo (per `Brand_Kit.md`).",
+      "**Don't** float or animate anything at rest beyond the hero pipeline window and its metric card.",
+      "**Don't** rely on `src/styles/home.css` (legacy, still imported by `src/layouts/Layout.astro`); its `.hero` and `.cta-section` rules leak centring that pages currently override."
+    ]
+  }
+}

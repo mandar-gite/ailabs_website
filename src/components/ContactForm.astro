@@ -48,6 +48,9 @@ import LogoMark from "./LogoMark.astro";
       </div>
       <!-- Honeypot field for bot protection -->
       <input type="text" name="_gotcha" style="display:none !important">
+      <p id="contact-form-error" role="alert" class="text-sm text-red-700 text-center" hidden>
+        We couldn't send your message. Check your connection and try again.
+      </p>
       <div class="text-center pt-1">
         <button type="submit" class="px-6 py-2 text-sm bg-[#DDA744] hover:bg-[#c49038] text-[#0C1A3F] font-semibold rounded-full shadow-lg transition-colors duration-300">
           Send Message
@@ -60,10 +63,13 @@ import LogoMark from "./LogoMark.astro";
 <script>
   // Progressive enhancement: with JS, submit to BOTH the HubSpot Worker (owns the
   // lead in the CRM) and Formspree (email notification + fallback so no lead is lost),
-  // then redirect to /thanks. Without JS, the plain <form action> still posts to
+  // then redirect to /thanks once at least one of them has accepted the lead. If both
+  // fail, the visitor stays on the form with their input and sees an error instead
+  // of a false "thank you". Without JS, the plain <form action> still posts to
   // Formspree with its _redirect, so leads are captured either way.
   const HUBSPOT_ENDPOINT = "https://72ai.in/api/lead";
   const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const errorEl = document.getElementById("contact-form-error");
 
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -72,9 +78,12 @@ import LogoMark from "./LogoMark.astro";
     fd.forEach((v, k) => (payload[k] = String(v)));
 
     const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+    const label = btn?.textContent ?? "Send Message";
     if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
+    if (errorEl) errorEl.hidden = true;
 
-    await Promise.allSettled([
+    // fetch only rejects on network errors, so an HTTP error must be checked via res.ok.
+    const results = await Promise.allSettled([
       fetch(HUBSPOT_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -87,6 +96,12 @@ import LogoMark from "./LogoMark.astro";
       }),
     ]);
 
-    window.location.href = "/thanks";
+    if (results.some((r) => r.status === "fulfilled" && r.value.ok)) {
+      window.location.href = "/thanks";
+      return;
+    }
+
+    if (btn) { btn.disabled = false; btn.textContent = label; }
+    if (errorEl) errorEl.hidden = false;
   });
 </script>

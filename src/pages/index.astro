@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import ContactForm from "../components/ContactForm.astro";
+import BookCall from "../components/BookCall.astro";
 import Footer from "../components/Footer.astro";
 
 const seoTitle = "72° AI LABS — Bespoke AI Systems for Growing Businesses";
@@ -271,10 +272,14 @@ const ogImage = "/og-home.jpg";
                             <li>You own the system</li>
                         </ul>
                     </div>
+                </div>
+                <div class="cta-paths">
                     <div class="cta-form-wrap">
-                        <h3>Get in touch</h3>
+                        <h3>Send a brief</h3>
                         <ContactForm />
                     </div>
+                    <div class="cta-or" aria-hidden="true">or</div>
+                    <BookCall />
                 </div>
             </div>
         </section>
@@ -794,10 +799,26 @@ const ogImage = "/og-home.jpg";
 
     .cta-inner {
         position: relative;
+        max-width: 720px;
+        margin: 0 auto 3rem;
+    }
+
+    /* Two ways in, side by side: send a brief or book a call */
+    .cta-paths {
+        position: relative;
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        gap: 2rem;
+        align-items: start;
+    }
+
+    .cta-or {
+        align-self: center;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--wp-ink-2);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
     }
 
     /* Override the legacy home.css `.cta-section { text-align:center }` leak */
@@ -940,6 +961,17 @@ const ogImage = "/og-home.jpg";
             grid-template-columns: 1fr;
             max-width: 720px;
         }
+
+        .cta-paths {
+            max-width: 560px;
+            margin: 0 auto;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 1.5rem;
+        }
+
+        .cta-or {
+            text-align: center;
+        }
     }
 
     @media (max-width: 768px) {
@@ -973,10 +1005,6 @@ const ogImage = "/og-home.jpg";
             gap: 2rem;
         }
 
-        .cta-inner {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
 
         .footer-grid {
             flex-direction: column;

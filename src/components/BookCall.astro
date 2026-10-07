@@ -1,0 +1,78 @@
+---
+// HubSpot Meetings scheduler. Bookings land in HubSpot as meetings on the
+// contact record, alongside leads from the Worker at 72ai.in/api/lead.
+const MEETINGS_URL = "https://meetings-na2.hubspot.com/mandar-gite";
+---
+<div id="book-call" class="book-call">
+  <h3>Book a 30-min call</h3>
+  <p class="book-call-lede">Prefer to talk it through? Pick a slot that suits you. You'll speak with Mandar, the founder.</p>
+  <div class="meetings-iframe-container" data-src={`${MEETINGS_URL}?embed=true`}></div>
+  <p class="book-call-fallback">
+    Calendar not loading? <a href={MEETINGS_URL} target="_blank" rel="noopener noreferrer">Open the booking page</a>
+  </p>
+</div>
+
+<script>
+  // The embed script is third-party JS, so it loads only when the visitor nears
+  // the scheduler. MeetingsEmbedCode.js scans for .meetings-iframe-container when
+  // it runs and builds the iframe straight away if the page has already loaded.
+  const EMBED_SCRIPT = "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
+  const container = document.querySelector("#book-call .meetings-iframe-container");
+
+  const loadEmbed = () => {
+    if (document.querySelector(`script[src="${EMBED_SCRIPT}"]`)) return;
+    const s = document.createElement("script");
+    s.src = EMBED_SCRIPT;
+    s.async = true;
+    document.body.appendChild(s);
+  };
+
+  if (container && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        io.disconnect();
+        loadEmbed();
+      }
+    }, { rootMargin: "200px" });
+    io.observe(container);
+  } else if (container) {
+    loadEmbed();
+  }
+</script>
+
+<style>
+  .book-call h3 {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--wp-ink);
+    margin: 0 0 0.5rem;
+    text-align: center;
+  }
+
+  .book-call-lede {
+    font-size: 0.9rem;
+    color: var(--wp-ink-2);
+    line-height: 1.6;
+    margin: 0 0 1rem;
+    text-align: center;
+  }
+
+  .meetings-iframe-container {
+    min-height: 200px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .book-call-fallback {
+    font-size: 0.8rem;
+    color: var(--wp-ink-2);
+    margin: 0.75rem 0 0;
+    text-align: center;
+  }
+
+  .book-call-fallback a {
+    color: var(--wp-ink);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+</style>
