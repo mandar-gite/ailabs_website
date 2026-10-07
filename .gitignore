@@ -79,3 +79,8 @@ scratch/
 
 # Handoffs stay local; mirrored to ~/smriti/website_72ai/thoughts
 thoughts/
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/

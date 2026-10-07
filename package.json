@@ -7,7 +7,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:e2e": "PUBLIC_GA4_ID= PUBLIC_CLARITY_ID= PUBLIC_APOLLO_APP_ID= astro build && playwright test",
+    "test:e2e:ui": "PUBLIC_GA4_ID= PUBLIC_CLARITY_ID= PUBLIC_APOLLO_APP_ID= astro build && playwright test --ui"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
@@ -18,6 +20,7 @@
     "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "typescript": "^5.0.0"
   }
 }
