@@ -1,4 +1,4 @@
-import type { Page } from '@playwright/test';
+import type { Page, Route } from '@playwright/test';
 import { test, expect } from './fixtures';
 
 const HUBSPOT = 'https://72ai.in/api/lead';
@@ -16,8 +16,15 @@ async function fillForm(page: Page) {
 
 test('empty form is blocked by required fields', async ({ page, blocked }) => {
   await page.goto('/#contact');
-  await page.locator('#contact-form').getByRole('button', { name: 'Send Message' }).click();
+  const button = page.locator('#contact-form button[type="submit"]');
+  await button.click();
 
+  // The submit handler disables the button and swaps its label synchronously,
+  // so an untouched button proves the handler never ran. The short settle lets
+  // any submit that did slip through reach the network guard or redirect.
+  await expect(button).toBeEnabled();
+  await expect(button).toHaveText('Send Message');
+  await page.waitForTimeout(500);
   await expect(page).not.toHaveURL(/\/thanks/);
   expect(await page.locator('#name').evaluate((el: HTMLInputElement) => el.validity.valueMissing)).toBe(true);
   expect(blocked.filter((u) => u.includes('formspree') || u.includes('/api/lead'))).toEqual([]);
@@ -52,13 +59,68 @@ test('valid submit posts to HubSpot and Formspree, then redirects', async ({ pag
   });
 });
 
-test('still redirects when both lead endpoints fail', async ({ page }) => {
-  await page.route(HUBSPOT, (route) => route.fulfill({ status: 500, body: 'down' }));
-  await page.route(FORMSPREE, (route) => route.fulfill({ status: 500, body: 'down' }));
+// The lead is captured if either endpoint accepts it, so one failure still
+// counts as success.
+for (const failing of ['HubSpot', 'Formspree'] as const) {
+  test(`redirects when only ${failing} fails`, async ({ page }) => {
+    await page.route(HUBSPOT, (route) =>
+      route.fulfill(failing === 'HubSpot' ? { status: 500, body: 'down' } : { status: 200, json: { ok: true } }),
+    );
+    await page.route(FORMSPREE, (route) =>
+      route.fulfill(failing === 'Formspree' ? { status: 500, body: 'down' } : { status: 200, json: { ok: true } }),
+    );
+
+    await page.goto('/#contact');
+    await fillForm(page);
+    await page.locator('#contact-form').getByRole('button', { name: 'Send Message' }).click();
+    await expect(page).toHaveURL(/\/thanks\/?$/);
+  });
+}
+
+// When neither endpoint has the lead, the visitor must not see /thanks: they
+// stay on the form with their input intact and a visible error.
+const bothFail = {
+  'HTTP 500': (route: Route) => route.fulfill({ status: 500, body: 'down' }),
+  'network error': (route: Route) => route.abort('failed'),
+};
+for (const [label, handler] of Object.entries(bothFail)) {
+  test(`shows an error and keeps input when both endpoints fail (${label})`, async ({ page }) => {
+    await page.route(HUBSPOT, handler);
+    await page.route(FORMSPREE, handler);
+
+    await page.goto('/#contact');
+    await fillForm(page);
+    const button = page.locator('#contact-form button[type="submit"]');
+    await button.click();
+
+    const alert = page.locator('#contact-form [role="alert"]');
+    await expect(alert).toBeVisible();
+    await expect(alert).toContainText(/couldn't send/i);
+    await expect(button).toBeEnabled();
+    await expect(button).toHaveText('Send Message');
+    await expect(page).not.toHaveURL(/\/thanks/);
+    await expect(page.locator('#contact-form').getByLabel('Your Brief')).toHaveValue(
+      'Forecasting demand across 3 warehouses.',
+    );
+  });
+}
+
+test('retry after a failed submit succeeds and clears the error', async ({ page }) => {
+  let down = true;
+  const respond = (route: Route) =>
+    down ? route.fulfill({ status: 500, body: 'down' }) : route.fulfill({ status: 200, json: { ok: true } });
+  await page.route(HUBSPOT, respond);
+  await page.route(FORMSPREE, respond);
 
   await page.goto('/#contact');
   await fillForm(page);
-  await page.locator('#contact-form').getByRole('button', { name: 'Send Message' }).click();
+  const button = page.locator('#contact-form button[type="submit"]');
+
+  await button.click();
+  await expect(page.locator('#contact-form [role="alert"]')).toBeVisible();
+
+  down = false;
+  await button.click();
   await expect(page).toHaveURL(/\/thanks\/?$/);
 });
 
