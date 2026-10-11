@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-11
+
+### Fixed
+- Homepage hero has one solid primary CTA ("Talk to Us"); "See What We Build" is secondary
+- Hero and contact copy are left-aligned instead of justified, which left wide word gaps on mobile; hero copy drops its em dash
+- Hero buttons align with the copy instead of inheriting the global `home.css` centring, and go full width on mobile
+
+### Added
+- Floating "Book a call" button that appears after the hero and hides at the contact section
+- Placeholder in the booking panel until the HubSpot calendar loads
+
 ## [0.1.0] - 2026-10-07
 
 First tagged release. Everything below was live or merged before this tag.
