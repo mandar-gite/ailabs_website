@@ -29,13 +29,12 @@ const ogImage = "/og-home.jpg";
                             <span class="hero-accent">Your AI system.</span>
                         </h1>
                         <p class="hero-body">
-                            We build AI systems on your actual data — not generic demos.
-                            Custom models, intelligent workflows, and decision tools
-                            that fit how your business already works.
+                            We build AI systems on your own data: custom models, workflows
+                            and decision tools that fit how your business already works.
                         </p>
                         <div class="hero-actions">
-                            <a href="/solutions" class="btn-primary">See What We Build</a>
-                            <a href="/#contact" class="btn-ghost">Talk to Us</a>
+                            <a href="/#contact" class="btn-primary">Talk to Us</a>
+                            <a href="/solutions" class="btn-ghost">See What We Build</a>
                         </div>
                     </div>
 
@@ -286,9 +285,28 @@ const ogImage = "/og-home.jpg";
 
     </main>
 
+    <a id="book-call-fab" class="book-call-fab" href="#book-call" hidden>Book a call</a>
+
     <Footer />
 
 </Layout>
+
+<script>
+    // Floating "Book a call": shown once the hero has scrolled away, hidden again
+    // at the contact section, where the form and calendar are already on screen.
+    const fab = document.getElementById("book-call-fab");
+    const hero = document.querySelector(".hero");
+    const contact = document.querySelector("section#contact");
+    if (fab && hero && contact && "IntersectionObserver" in window) {
+        const seen = new Map();
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((e) => seen.set(e.target, e.isIntersecting));
+            fab.hidden = !!(seen.get(hero) || seen.get(contact));
+        });
+        io.observe(hero);
+        io.observe(contact);
+    }
+</script>
 
 <style>
     /* Layout */
@@ -366,11 +384,11 @@ const ogImage = "/og-home.jpg";
         line-height: 1.7;
         margin: 0 0 2.4rem;
         max-width: 520px;
-        text-align: justify;
     }
 
     .hero-actions {
         display: flex;
+        justify-content: flex-start; /* overrides the global home.css centring */
         gap: 0.85rem;
         flex-wrap: wrap;
     }
@@ -378,8 +396,8 @@ const ogImage = "/og-home.jpg";
     .btn-primary {
         display: inline-flex;
         align-items: center;
-        background: #fff;
-        color: var(--wp-ink);
+        background: var(--wp-ink);
+        color: #fff;
         font-weight: 700;
         font-size: 0.9375rem;
         padding: 0.9rem 1.75rem;
@@ -391,8 +409,7 @@ const ogImage = "/og-home.jpg";
     }
 
     .btn-primary:hover {
-        background: var(--wp-ink);
-        color: #fff;
+        background: var(--wp-ink-2);
         transform: translateY(-2px);
     }
 
@@ -838,7 +855,7 @@ const ogImage = "/og-home.jpg";
         color: var(--wp-ink-2);
         line-height: 1.7;
         margin: 0 0 1.5rem;
-        text-align: justify;
+        text-align: left;
     }
 
     .cta-points {
@@ -878,6 +895,30 @@ const ogImage = "/og-home.jpg";
         color: var(--wp-ink);
         margin: 0 0 1rem;
         text-align: center;
+    }
+
+    /* Floating book-a-call */
+    .book-call-fab {
+        position: fixed;
+        right: 1.25rem;
+        bottom: 1.25rem;
+        z-index: 40;
+        padding: 0.8rem 1.4rem;
+        border-radius: 999px;
+        background: var(--wp-ink);
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.9375rem;
+        text-decoration: none;
+        box-shadow: 0 8px 24px rgba(26, 34, 56, 0.25);
+    }
+
+    .book-call-fab:hover {
+        background: var(--wp-ink-2);
+    }
+
+    .book-call-fab[hidden] {
+        display: none;
     }
 
     /* Footer */
@@ -977,6 +1018,11 @@ const ogImage = "/og-home.jpg";
     @media (max-width: 768px) {
         .hero {
             padding: 3rem 0;
+        }
+
+        .hero-actions a {
+            flex: 1 1 100%;
+            justify-content: center;
         }
 
         .hero-grid {
