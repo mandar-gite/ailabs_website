@@ -6,7 +6,9 @@ const MEETINGS_URL = "https://meetings-na2.hubspot.com/mandar-gite";
 <div id="book-call" class="book-call">
   <h3>Book a 30-min call</h3>
   <p class="book-call-lede">Prefer to talk it through? Pick a slot that suits you. You'll speak with Mandar, the founder.</p>
-  <div class="meetings-iframe-container" data-src={`${MEETINGS_URL}?embed=true`}></div>
+  <div class="meetings-iframe-container" data-src={`${MEETINGS_URL}?embed=true`}>
+    <p class="meetings-placeholder">Loading available slots...</p>
+  </div>
   <p class="book-call-fallback">
     Calendar not loading? <a href={MEETINGS_URL} target="_blank" rel="noopener noreferrer">Open the booking page</a>
   </p>
@@ -58,9 +60,26 @@ const MEETINGS_URL = "https://meetings-na2.hubspot.com/mandar-gite";
   }
 
   .meetings-iframe-container {
-    min-height: 200px;
+    min-height: 420px;
     border-radius: 0.5rem;
     overflow: hidden;
+  }
+
+  /* Shown until HubSpot's script inserts its iframe */
+  .meetings-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+    margin: 0;
+    border: 1px dashed var(--wp-line-2);
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--wp-ink-2);
+  }
+
+  .meetings-iframe-container:has(iframe) .meetings-placeholder {
+    display: none;
   }
 
   .book-call-fallback {
