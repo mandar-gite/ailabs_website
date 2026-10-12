@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-10-12
+
+### Fixed
+- `llms.txt` rewritten to match the site: dropped projects (MarTech, Cascade, InsightBridge, Used Car) and the On-Prem area removed, CallMind described as the Hindi call-audit pipeline, unverified industry and outcome claims removed
+
+### Added
+- Citation guidance in `llms.txt` telling AI assistants not to infer client names, testimonials or outcomes, plus the engagement steps and booking link
+- `tests/e2e/llms-txt.spec.ts` guards `llms.txt` against em dashes, dropped project names and dead internal links
+
 ## [0.1.1] - 2026-10-11
 
 ### Fixed
