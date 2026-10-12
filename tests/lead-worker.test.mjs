@@ -126,3 +126,27 @@ test('need and timing are added to the HubSpot message', async () => {
   assert.match(message, /Need: Documents or OCR/);
   assert.match(message, /Timing: Within a month/);
 });
+
+// Security review 2026-10-12: caps must cover the lowercase fallback fields the
+// Worker also reads, and logs must not carry submitted personal data.
+for (const [field, size] of [['message', 5001], ['email', 255], ['name', 201], ['company', 201], ['phone', 41]]) {
+  test(`over-long lowercase "${field}" fallback is rejected too`, async () => {
+    const body = { ...VALID };
+    delete body[field === 'message' ? 'Brief' : field[0].toUpperCase() + field.slice(1)];
+    body[field] = field === 'email' ? 'a'.repeat(size - 12) + '@example.com' : 'x'.repeat(size);
+    const res = await worker.fetch(post(body), env());
+    assert.equal(res.status, 422);
+    assert.equal(calls.length, 0);
+  });
+}
+
+test('HubSpot error logs carry no submitted personal data', async () => {
+  hubspot = () => new Response(JSON.stringify({ status: 'error', category: 'VALIDATION_ERROR', message: 'Email address asha@example.com is invalid' }), { status: 400 });
+  const logged = [];
+  const orig = console.error;
+  console.error = (...a) => logged.push(a.map(String).join(' '));
+  try { await worker.fetch(post(VALID), env()); } finally { console.error = orig; }
+  const all = logged.join('\n');
+  assert.match(all, /VALIDATION_ERROR/);
+  assert.doesNotMatch(all, /asha@example\.com|Asha|Rao Textiles|98200/);
+});
