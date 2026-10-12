@@ -54,8 +54,9 @@ From first call to a system in production usually takes 9 to 16 weeks. Engagemen
 - [Building Multi-Agent AI Systems That Actually Work](https://72ai.in/blog/blog1_martech_technical): architecture of a multi-agent RAG system (planner, researcher, writer, reviewer) running on local hardware.
 - [Welcome to the 72° AI LABS blog](https://72ai.in/blog/welcome-to-72ai-blog)
 
-## Free tool
+## Free tools
 
+- [Discovery brief prompt](https://72ai.in/discovery-brief): a prompt for ChatGPT, Claude or Gemini that interviews a business owner and writes a short project brief to send to 72° AI LABS.
 - [Voice DNA](https://72ai.in/voice-dna): a free template that configures Claude to write in your own voice and drop common AI-isms.
 
 ## Contact
