@@ -11,6 +11,7 @@ export default defineConfig({
   // Dropped project pages: send old links to the projects index
   redirects: {
     '/projects/martech': '/projects',
+    '/projects/insightbridge': '/projects',
   },
   ...(basePath ? { base: basePath } : {}),
   integrations: [

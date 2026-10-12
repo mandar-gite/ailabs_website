@@ -1,0 +1,127 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const CONTACT = "mandar.gite@72ai.in";
+---
+
+<Layout title="Privacy Policy | 72° AI Labs" description="What 72° AI LABS collects on 72ai.in, why, who processes it, and how to access or delete your data.">
+  <Nav />
+  <main id="main-content" class="privacy-page">
+    <h1>Privacy policy</h1>
+    <p class="updated">Last updated 12 October 2026</p>
+
+    <p>
+      This page explains what 72° AI LABS collects when you use 72ai.in, why, and what you can ask us to do with it. Questions or requests: <a href={`mailto:${CONTACT}`}>{CONTACT}</a>.
+    </p>
+
+    <h2>What we collect and why</h2>
+
+    <h3>When you send a brief</h3>
+    <p>
+      The contact form asks for your name, company, email, phone and brief, plus optional answers about what you need and when. We use it only to reply and to plan a first conversation. It goes to our CRM, HubSpot, through a small service of ours hosted on Cloudflare, and to Formspree, which emails it to us.
+    </p>
+
+    <h3>When you apply for work</h3>
+    <p>
+      The careers form asks for your name, email, the kind of work that interests you and a note about yourself. Formspree emails it to us, and we keep it to contact you if a fit comes up.
+    </p>
+
+    <h3>When you book a call</h3>
+    <p>
+      The booking calendar is provided by HubSpot. Nothing from HubSpot loads until you click "Show available times" or open the booking page. From then on, HubSpot handles the details you enter and may set its own cookie.
+    </p>
+
+    <h3>Analytics, only if you accept</h3>
+    <p>
+      If you click Accept on the cookie banner, we use Google Analytics to see how the site is used, Microsoft Clarity to see how pages are used through heatmaps and session recordings, and Apollo to recognise which companies visit. If you decline, none of them load. You can change your choice at any time with "Cookie settings" at the bottom of every page.
+    </p>
+
+    <h3>What your browser stores</h3>
+    <p>
+      Your cookie choice is saved in your browser's local storage (<code>72ai_consent</code>), and a session flag (<code>exit_popup_shown</code>) stops a popup appearing twice. Neither is sent to us or used to track you.
+    </p>
+
+    <h3>Hosting</h3>
+    <p>
+      The site is served by GitHub Pages and Cloudflare. Like any web host, they process your IP address and request details to deliver pages and protect the site, including limiting repeated form submissions.
+    </p>
+
+    <h2>What we don't do</h2>
+    <p>We don't sell your data, share it for advertising, or add you to mailing lists you didn't ask for.</p>
+
+    <h2>Where it's processed</h2>
+    <p>
+      HubSpot, Formspree, Google, Microsoft, Apollo, GitHub and Cloudflare may store and process data outside India, under their own privacy terms.
+    </p>
+
+    <h2>How long we keep it</h2>
+    <p>
+      We keep enquiry and application details while they're relevant to a conversation or working relationship, and delete them when you ask. Analytics data is kept according to each provider's retention settings.
+    </p>
+
+    <h2>Your choices</h2>
+    <p>
+      You can ask to see, correct or delete the personal data we hold about you, or withdraw consent, by emailing <a href={`mailto:${CONTACT}`}>{CONTACT}</a>. We'll reply within 30 days.
+    </p>
+
+    <h2>Changes</h2>
+    <p>If this policy changes, we'll update this page and the date at the top.</p>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .privacy-page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 4rem;
+    color: var(--wp-ink-2);
+    line-height: 1.7;
+  }
+
+  h1 {
+    margin: 0 0 0.25rem;
+    font-size: clamp(2rem, 4.5vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--wp-ink);
+  }
+
+  .updated {
+    margin: 0 0 1.75rem;
+    font-size: 0.875rem;
+  }
+
+  h2 {
+    margin: 2.25rem 0 0.5rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--wp-ink);
+  }
+
+  h3 {
+    margin: 1.5rem 0 0.35rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--wp-ink);
+  }
+
+  p {
+    margin: 0 0 0.75rem;
+  }
+
+  a {
+    color: var(--wp-ink);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  code {
+    font-size: 0.875em;
+    background: var(--wp-canvas-2);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+  }
+</style>

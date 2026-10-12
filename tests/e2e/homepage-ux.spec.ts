@@ -42,6 +42,6 @@ test('floating book-a-call button shows between hero and contact', async ({ page
 test('calendar panel shows a placeholder until the embed loads', async ({ page }) => {
   // The fixture answers the embed script with an empty 204, so no iframe appears.
   await page.goto('/');
-  await page.locator('#book-call').scrollIntoViewIfNeeded();
+  await page.locator('#book-call').getByRole('button', { name: 'Show available times' }).click();
   await expect(page.locator('#book-call .meetings-placeholder')).toBeVisible();
 });
