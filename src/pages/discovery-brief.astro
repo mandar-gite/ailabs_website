@@ -59,6 +59,13 @@ const prompt = readFileSync(path.join(process.cwd(), "public/discovery-brief-pro
 </Layout>
 
 <script>
+  import { trackEvent } from "../utils/analytics";
+
+  // GA4 funnel: prompt copied or downloaded -> brief sent (website_lead_source in HubSpot).
+  // trackEvent is a no-op without consent, because gtag only exists after Accept.
+  document.querySelector('a[download="discovery-brief-prompt.txt"]')
+    ?.addEventListener("click", () => trackEvent("discovery_prompt_copy", { method: "download" }));
+
   const btn = document.getElementById("copy-prompt") as HTMLButtonElement | null;
   const pre = document.getElementById("brief-prompt");
   btn?.addEventListener("click", async () => {
@@ -66,6 +73,7 @@ const prompt = readFileSync(path.join(process.cwd(), "public/discovery-brief-pro
     try {
       await navigator.clipboard.writeText(text);
       btn.textContent = "Copied";
+      trackEvent("discovery_prompt_copy", { method: "copy" });
     } catch {
       // Clipboard blocked (old browser or insecure context): select the text for a manual copy.
       const range = document.createRange();

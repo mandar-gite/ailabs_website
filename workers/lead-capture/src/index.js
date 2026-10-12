@@ -110,6 +110,10 @@ export default {
       ].filter(Boolean).join("\n"),
     };
     for (const k of Object.keys(properties)) if (!properties[k]) delete properties[k];
+    // Attribution: briefs written with the /discovery-brief prompt start with this line.
+    properties.website_lead_source = fields.Brief.startsWith("Discovery brief (72ai prompt)")
+      ? "discovery_prompt"
+      : "contact_form";
 
     const HS = "https://api.hubapi.com/crm/v3/objects/contacts";
     const auth = {
@@ -119,24 +123,35 @@ export default {
 
     // Create; if the contact already exists HubSpot returns 409 with the existing id,
     // then update that contact instead (create-or-update by email).
-    let res;
-    try {
-      res = await fetch(HS, {
+    const upsert = async (props) => {
+      let r = await fetch(HS, {
         method: "POST",
         headers: auth,
-        body: JSON.stringify({ properties }),
+        body: JSON.stringify({ properties: props }),
       });
-
-      if (res.status === 409) {
-        const err = await res.json().catch(() => ({}));
+      if (r.status === 409) {
+        const err = await r.json().catch(() => ({}));
         const m = String(err.message || "").match(/Existing ID:\s*(\d+)/);
         if (m) {
-          res = await fetch(`${HS}/${m[1]}`, {
+          r = await fetch(`${HS}/${m[1]}`, {
             method: "PATCH",
             headers: auth,
-            body: JSON.stringify({ properties }),
+            body: JSON.stringify({ properties: props }),
           });
         }
+      }
+      return r;
+    };
+
+    let res;
+    try {
+      res = await upsert(properties);
+      // If HubSpot rejects the attribution property (missing in this portal),
+      // keep the lead: retry once without it.
+      if (res.status === 400) {
+        console.error("hubspot_retry_without_lead_source", 400);
+        const { website_lead_source, ...rest } = properties;
+        res = await upsert(rest);
       }
     } catch (e) {
       console.error("hubspot_unreachable", e?.name || "Error");
