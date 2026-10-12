@@ -47,6 +47,7 @@ From first call to a system in production usually takes 9 to 16 weeks. Engagemen
 - [GradeQP](https://72ai.in/projects/gradeqp): proof of concept that checks draft exam papers against paper-setting rules and cites the rule behind each finding.
 - [Valent](https://72ai.in/projects/valent): extracts preference terms from company charters with verbatim citations, then models the liquidation waterfall at an assumed exit value; it does not estimate fair market value.
 - [Contract Risk Radar](https://72ai.in/projects/contract-risk-radar): reviews contract clauses against 133 policy obligations and suggests a verdict with a rationale; built and evaluated on synthetic contracts.
+- [Farm Wildlife Alerts](https://72ai.in/projects/farm-wildlife-alerts): in development; identifies which animal is entering a farm plot at night and alerts the farmer only for target species. No accuracy figures are published yet.
 - [JNVessays](https://72ai.in/projects/jnvessays): proof of concept for reading handwritten exam sheets with OCR.
 - [DocIntel](https://72ai.in/projects/docintel): document understanding for PDFs, scans and mixed-format files.
 
