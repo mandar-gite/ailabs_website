@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-10-12
+
+### Added
+- Farm Wildlife Alerts project page (in development): night-time farm wildlife identification with alerts for target species only; no accuracy figures published yet
+
 ## [0.7.0] - 2026-10-12
 
 ### Added
