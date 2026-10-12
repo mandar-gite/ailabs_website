@@ -41,6 +41,20 @@ CI runs the Worker tests and the e2e suite on every pull request, and again befo
 
 IDs come from build-time env vars: `PUBLIC_GA4_ID`, `PUBLIC_CLARITY_ID`, `PUBLIC_APOLLO_APP_ID`. In production they're GitHub repository variables read by `.github/workflows/deploy.yml`. Each tracker only renders when its ID is set. Setup details: [docs/deployment/ANALYTICS_SETUP.md](docs/deployment/ANALYTICS_SETUP.md).
 
+## Deploy the lead Worker
+
+The Worker at `72ai.in/api/lead` deploys separately from the site; merging to `main` doesn't touch it. Run its tests first, then deploy from `workers/lead-capture/`:
+
+```bash
+node --test tests/lead-worker.test.mjs
+cd workers/lead-capture
+env -u CLOUDFLARE_API_TOKEN npx wrangler deploy
+```
+
+`env -u` matters on coeus: `~/.env` sets a `CLOUDFLARE_API_TOKEN` that can't edit Workers, and Wrangler would use it instead of the OAuth login. If the login has expired, run `env -u CLOUDFLARE_API_TOKEN npx wrangler login`; on a machine without a browser, open an SSH tunnel first (`ssh -L 8976:localhost:8976 coeus`) so the login callback reaches it.
+
+The HubSpot token is a Worker secret (`npx wrangler secret put HUBSPOT_TOKEN`) and survives deploys. Logs and rate-limit settings live in `wrangler.toml`.
+
 ## Git workflow and releases
 
 The repo follows Git Flow with Conventional Commits.
