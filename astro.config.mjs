@@ -8,6 +8,10 @@ const basePath = process.env.BASE_PATH;
 export default defineConfig({
   // Set to your live domain for correct canonical URLs
   site: 'https://72ai.in',
+  // Dropped project pages: send old links to the projects index
+  redirects: {
+    '/projects/martech': '/projects',
+  },
   ...(basePath ? { base: basePath } : {}),
   integrations: [
     tailwind(),

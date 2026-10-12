@@ -12,12 +12,6 @@
     "projects": ["callmind", "cascade", "hospitality-hub", "tire-analytics"]
   },
   {
-    "id": "content-marketing",
-    "name": "Content & Marketing Intelligence",
-    "description": "AI-powered content generation and marketing analytics built on local, privacy-first infrastructure.",
-    "projects": ["martech"]
-  },
-  {
     "id": "document-ocr",
     "name": "Document & OCR Systems",
     "description": "Advanced document understanding, OCR, and intelligent extraction from complex formats.",

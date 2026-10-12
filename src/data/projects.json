@@ -109,33 +109,6 @@
     "tags": ["POS Integration", "Restaurant Analytics", "Social Media", "Marketing Data"]
   },
   {
-    "id": "martech",
-    "name": "MarTech Intelligence",
-    "shortBlurb": "Local RAG-powered LinkedIn content engine with multi-agent planning.",
-    "tagline": "Local AI engine that plans and produces LinkedIn-ready content.",
-    "description": "Local RAG engine for LinkedIn content operations.",
-    "category": "Content & Marketing Intelligence",
-    "featured": false,
-    "dataTypes": [
-      "Scraped LinkedIn posts",
-      "Industry articles",
-      "Content metadata",
-      "Embeddings"
-    ],
-    "mlMethods": [
-      "RAG",
-      "Embeddings",
-      "Local LLMs",
-      "Agent planning"
-    ],
-    "challenges": [
-      "Noisy scrape data",
-      "Inconsistent metadata",
-      "Maintaining brand consistency"
-    ],
-    "tags": ["RAG", "Content Generation", "LinkedIn", "Multi-Agent", "Local LLM"]
-  },
-  {
     "id": "tire-analytics",
     "name": "Tire-Life Analytics",
     "shortBlurb": "Predictive modelling of tire-replacement cycles for fleet and industrial setups.",
