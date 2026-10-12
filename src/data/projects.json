@@ -2,31 +2,37 @@
   {
     "id": "fastaccounting",
     "name": "FastAccounting",
-    "shortBlurb": "Automated accounting and reconciliation across Tally, banks, invoices, and GST.",
-    "tagline": "Clean ledgers and reconciliations by automating messy financial data.",
-    "description": "Automated reconciliation across Tally, banking, invoices, and GST.",
+    "shortBlurb": "Expense classification, forecasting and anomaly detection on Tally daybook data.",
+    "tagline": "Party-group classification at 95.9% accuracy across 5 companies' books.",
+    "description": "A proof of concept on 5 companies' Tally exports: Random Forest models with text features classify transactions by party and expense group (95.9% average party-group accuracy), XGBoost and Prophet forecast recurring expenses 3 months ahead, and Isolation Forest flags unusual entries for review.",
     "category": "Finance Automation",
     "featured": false,
     "dataTypes": [
-      "Tally exports",
-      "Bank statements",
-      "Invoices",
-      "GST files",
-      "Payment-gateway logs"
+      "Tally daybook exports",
+      "Voucher and ledger entries",
+      "Transaction narrations",
+      "60 months of history"
     ],
     "mlMethods": [
-      "OCR",
-      "Entity matching",
-      "Anomaly detection",
-      "Similarity models"
+      "Random Forest classification",
+      "TF-IDF text features",
+      "XGBoost and Prophet forecasting",
+      "Isolation Forest anomaly detection",
+      "MLflow and Optuna experiment tracking"
     ],
     "challenges": [
-      "Messy ledgers",
-      "Inconsistent vendor naming",
-      "Partial records",
-      "Format variability"
+      "Inconsistent narrations and vendor names",
+      "Imbalanced expense categories",
+      "Irregular and sparse expense series",
+      "Anomalies without labels"
     ],
-    "tags": ["Tally", "Banking", "GST", "Invoices", "Reconciliation"]
+    "tags": [
+      "Tally",
+      "Expense Classification",
+      "Forecasting",
+      "Anomaly Detection",
+      "Feature Engineering"
+    ]
   },
   {
     "id": "callmind",

@@ -17,3 +17,12 @@ for (const path of ['/projects', '/solutions']) {
     expect(text).not.toMatch(/Content & Marketing Intelligence/);
   });
 }
+
+// FastAccounting is expense classification, forecasting and anomaly detection
+// (verified from its repo, 2026-10-12); the old reconciliation claim must not return.
+test('FastAccounting page describes the verified work, not reconciliation', async ({ page }) => {
+  await page.goto('/projects/fastaccounting');
+  const text = await page.locator('main').innerText();
+  expect(text).not.toMatch(/reconcil/i);
+  expect(text).toContain('Tally');
+});
