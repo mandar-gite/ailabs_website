@@ -3,24 +3,24 @@
     "id": "finance-automation",
     "name": "Finance Automation",
     "description": "Routine accounting work automated on the data you already keep: classifying transactions, forecasting expenses and flagging unusual entries.",
-    "projects": ["fastaccounting"]
+    "projects": ["fastaccounting", "valent"]
   },
   {
     "id": "operational-intelligence",
     "name": "Operational Intelligence",
     "description": "Real-time insights and automation for operational workflows across industries.",
-    "projects": ["callmind"]
+    "projects": ["callmind", "contract-risk-radar"]
   },
   {
     "id": "document-ocr",
     "name": "Document & OCR Systems",
     "description": "Advanced document understanding, OCR, and intelligent extraction from complex formats.",
-    "projects": ["jnvessays", "docintel"]
+    "projects": ["jnvessays", "docintel", "gradeqp"]
   },
   {
     "id": "data-engineering",
     "name": "Data Engineering & Integration",
     "description": "Robust data pipelines, feature engineering, and advanced modeling for complex datasets.",
-    "projects": ["nextsurge"]
+    "projects": ["nextsurge", "report-copilot"]
   }
 ]
