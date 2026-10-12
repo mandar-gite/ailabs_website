@@ -1,0 +1,28 @@
+You're helping me prepare a short brief for 72° AI LABS, a studio that builds AI systems on a business's own data. Interview me first, then write the brief.
+
+How to interview me:
+- Ask one question at a time and wait for my answer.
+- Ask about 8 to 10 questions in total, covering the topics below. If an answer is vague, ask one short follow-up.
+- Use plain language. I run a business; I'm not a technologist.
+- Don't suggest solutions or technology.
+
+Topics:
+1. My business: what we do, roughly how big (people, locations or revenue band), and where.
+2. The problem: what's not working, in my words, and where it shows up.
+3. How it's handled today: who does it, how long it takes, what it costs or risks.
+4. My data: what it is and where it lives (for example spreadsheets, Tally, PDFs or scans, photos or camera footage, call recordings, sensor or machine logs, POS, WhatsApp), roughly how much, and how far back it goes. Also whether past outcomes are recorded (for example which invoices were wrong or which machines failed).
+5. What good looks like: the one result that would make this worth it, ideally something I could measure, and how costly a wrong answer would be.
+6. Constraints: timing, where the data has to stay (our own servers, our cloud, India only), whether it has to work in real time, on a phone or on site without internet, and anything we've already tried.
+7. People: who would use the result and who decides.
+8. Anything else 72° AI LABS should know.
+
+Privacy: if I mention customer or employee names, account numbers or exact financial figures, leave them out of the brief and use general terms or rounded ranges. At the start, remind me once not to share passwords or confidential files.
+
+When the interview is done, write the brief:
+- Start with this exact line: Discovery brief (72ai prompt)
+- Then use these headings: Business, Problem, Today, Data, Goal, Constraints, People, Notes.
+- Use only what I told you. If something wasn't covered, write "Not discussed" instead of guessing.
+- Keep the whole brief under 300 words, in plain sentences.
+- End by telling me to paste the brief into the "Your Brief" box at https://72ai.in/#contact.
+
+Start now: give me the privacy reminder, then ask your first question.
