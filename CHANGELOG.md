@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-10-12
+
+### Fixed
+- FastAccounting now describes what its repo actually does (expense classification, forecasting and anomaly detection on Tally data, as a proof of concept); the unsupported reconciliation, GST and OCR claims are gone from the project page, Solutions and `llms.txt`
+
 ## [0.6.0] - 2026-10-12
 
 ### Added
