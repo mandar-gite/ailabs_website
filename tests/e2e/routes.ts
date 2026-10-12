@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -16,6 +16,8 @@ export function builtRoutes(): string[] {
       const full = path.join(dir, name);
       if (statSync(full).isDirectory()) walk(full);
       else if (name === 'index.html') {
+        // Redirect stubs (astro.config redirects, /en/careers) aren't real pages.
+        if (/http-equiv="refresh"/i.test(readFileSync(full, 'utf8'))) continue;
         const rel = path.relative(dist, dir).split(path.sep).join('/');
         routes.push(rel ? `/${rel}` : '/');
       }

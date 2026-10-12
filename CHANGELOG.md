@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-12
+
+### Added
+- Contact form: optional "What do you need?" and "When?" dropdowns, forwarded to HubSpot by the lead Worker
+- `/careers/thanks`: applicants get their own confirmation page instead of the general one
+- `PageHeader` component giving `/about`, `/projects` and `/solutions` an h1
+- Lead Worker rate limit (5 submissions per minute per IP) and Workers Logs
+- CI: Worker tests and the e2e suite run on every pull request and gate each deploy
+
+### Changed
+- Homepage copy: no em dashes, contact heading rewritten, trust bar reads "Built for", "5+ industries" stat removed
+- Contact form fields stack on phones (email was cut off at 390px); submit button uses the navy primary style
+- CallMind copy and technical details come from its verified brief
+- Careers page: clearer h1 and founder-led wording
+- Dependencies patched within current majors: astro 5.18.2, @astrojs/rss 4.0.19
+- Root docs moved into `docs/`; README rewritten with test commands and release steps
+
+### Removed
+- MarTech project, its page and the Content & Marketing practice area; `/projects/martech` redirects to `/projects`
+- Legacy global `home.css` (screenshot diffs of all 20 pages confirmed each change matched the page's own CSS)
+- Unconfirmed claims in hidden TL;DR copy
+
+### Fixed
+- Skip link now works on every page (`#main-content` was missing on 14)
+- Solutions no longer reference missing projects
+- Only one element uses `id="contact"`
+- `/thanks` and `/careers/thanks` are noindex; no exit popup there or on the 404 page
+- Lead Worker: non-object bodies no longer crash it, field lengths are capped (including fallback keys), HubSpot errors are caught and no longer echoed to the browser or logged with personal data
+
 ## [0.1.2] - 2026-10-12
 
 ### Fixed

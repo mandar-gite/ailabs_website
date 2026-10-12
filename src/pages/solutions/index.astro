@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
+import PageHeader from "../../components/PageHeader.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import Footer from "../../components/Footer.astro";
 import solutionsData from "../../data/solutions.json";
@@ -11,14 +12,15 @@ const solutions = solutionsData as Solution[];
 const projects = projectsData as Project[];
 
 const seoTitle = "Solutions | 72° AI Labs";
-const seoDescription = "Comprehensive AI solutions across Finance Automation, Operational Intelligence, Document & OCR, On-Prem LLM Systems, and Data Engineering.";
+const seoDescription = "AI systems built on your own data across 4 practice areas: Finance Automation, Operational Intelligence, Document & OCR Systems, and Data Engineering & Integration.";
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
   <Nav />
-  <main class="solutions-page">
-    <p class="sr-only">TL;DR: Six practice areas — Finance Automation, Operational Intelligence, Document &amp; OCR, On-Prem LLM, Content &amp; Marketing Intelligence, and Data Engineering. Each maps to a real business problem with a working project behind it, not a slide deck.</p>
+  <main id="main-content" class="solutions-page">
+    <p class="sr-only">TL;DR: 4 practice areas: Finance Automation, Operational Intelligence, Document &amp; OCR Systems, and Data Engineering &amp; Integration. Each maps to a business problem with a built project behind it.</p>
     <div class="max-w-[1400px] mx-auto px-6 lg:px-8 py-8 lg:py-10">
+      <PageHeader title="Problems we solve" intro="4 practice areas, each with a project we've built behind it." />
 
       <!-- Solutions Grid -->
       <div class="solutions-container">

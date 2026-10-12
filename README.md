@@ -1,67 +1,67 @@
-
 # 72° AI LABS Website
 
-This project is a static website for 72° AI LABS, built using the Astro framework and Tailwind CSS, as per the provided brief. It is designed for optimal performance, SEO, and static deployment on platforms like GitHub Pages.
+The marketing site for 72° AI LABS, live at [72ai.in](https://72ai.in). Static Astro 5 site with Tailwind v3, deployed to GitHub Pages behind Cloudflare.
 
-## Project Structure
+What the site is for, who it serves and what it may claim: [PRODUCT.md](PRODUCT.md). Visual system: [DESIGN.md](DESIGN.md). Release history: [CHANGELOG.md](CHANGELOG.md). More guides: [docs/](docs/README.md).
 
-- `public/`: Contains static assets like `robots.txt`, `sitemap-index.xml`, and logos. This is where Astro places the final build output.
-- `src/components/`: Reusable Astro components for different sections of the website.
-- `src/data/`: JSON files for content that can be easily updated without touching the page files.
-- `src/layouts/`: Base layout component to maintain a consistent look and feel across all pages.
-- `src/pages/`: All of the website's pages. Astro automatically creates a page for each `.astro` file in this directory.
-- `src/styles/`: Global CSS file.
-
-## Getting Started
-
-### 1. Installation
-
-First, ensure you have Node.js and npm installed. Then, create a new Astro project and replace the generated files with the ones provided above.
+## Run it
 
 ```bash
-# Create a new Astro project
-npm create astro@latest
-
-# Choose "Just the basics" and follow the prompts.
-# After creation, replace the files with the ones provided.
+npm install
+cp .env.example .env   # analytics IDs; all optional for local work
+npm run dev            # http://localhost:4321
+npm run build          # static output in dist/
+npm run preview        # serve dist/ locally
 ```
 
-### 2. Running Locally
-
-To run the project in development mode with live reloading:
+## Test it
 
 ```bash
-npm run dev
+npm run test:e2e                          # builds with analytics off, then runs Playwright
+npm run test:e2e:ui                       # same, in Playwright's UI mode
+node --test tests/apollo-tracker.test.mjs # Apollo tracker env var check (2 full builds, slow)
+node --test tests/lead-worker.test.mjs    # lead-capture Worker, HubSpot mocked
 ```
 
-The site will be available at `http://localhost:4321`. The `base` path used for GitHub Pages is applied only during production builds, so local development runs from the root URL.
+CI runs the Worker tests and the e2e suite on every pull request, and again before each deploy; a failure blocks the deploy. The e2e suite in `tests/e2e/` runs on desktop and mobile viewports. Every request leaving localhost is stubbed (`tests/e2e/fixtures.ts`), so tests never send real leads to HubSpot or Formspree.
 
-### 3. Building for Production
+## Where things live
 
-To build the static site, ready for deployment:
+| Path | What |
+|---|---|
+| `src/pages/` | One file per route |
+| `src/components/` | Shared components: `ContactForm`, `BookCall` (HubSpot calendar), `Nav`, `Footer`, `ExitIntentPopup` |
+| `src/data/*.json` | Projects and solutions content |
+| `src/content/blog/` | Blog posts (Markdown) |
+| `public/` | Static files served as-is, including `llms.txt` and logos |
+| `workers/lead-capture/` | Cloudflare Worker at `72ai.in/api/lead` that writes leads to HubSpot |
+| `docs/` | Setup, deployment, analytics and brand guides |
 
-```bash
-npm run build
-```
+## Analytics
 
-This command will generate the static files in the `dist` directory.
+IDs come from build-time env vars: `PUBLIC_GA4_ID`, `PUBLIC_CLARITY_ID`, `PUBLIC_APOLLO_APP_ID`. In production they're GitHub repository variables read by `.github/workflows/deploy.yml`. Each tracker only renders when its ID is set. Setup details: [docs/deployment/ANALYTICS_SETUP.md](docs/deployment/ANALYTICS_SETUP.md).
 
-### 4. Deployment to GitHub Pages
+## Git workflow and releases
 
-The included `.github/workflows/deploy.yml` file automates the deployment process.
+The repo follows Git Flow with Conventional Commits.
 
-1.  **Commit the code:** Push all the project files to the `main` branch of your GitHub repository.
-2.  **Go to Settings > Pages:** On your GitHub repository, navigate to the "Settings" tab, then "Pages."
-3.  **Choose GitHub Actions:** Under "Source," select "GitHub Actions" to use the provided workflow.
+- `main` is production. A push to `main` deploys 72ai.in through GitHub Actions.
+- `develop` is the integration branch. Work branches (`feature/`, `fix/`, `chore/`) start from `develop` and come back through a PR, merged with a merge commit.
+- Only the owner promotes `develop` to `main`, through a release branch and a tag.
 
-The workflow will automatically build your site and deploy the `dist` folder to the `gh-pages` branch, making it live. Remember to add a `CNAME` file to the `public` directory with `72ai.in` and configure your DNS settings as per GitHub's documentation.
+To cut a release:
 
-During this build step `NODE_ENV` is set to `production`, which enables the `/ailabs_website` base path required for GitHub Pages in `astro.config.mjs`.
+1. Branch `release/X.Y.Z` from `develop`.
+2. Bump `version` in `package.json` (`npm install --package-lock-only` to sync the lockfile) and move the changes into a `## [X.Y.Z] - YYYY-MM-DD` section of `CHANGELOG.md`.
+3. Commit as `chore(release): X.Y.Z`, open a PR to `main`, merge it.
+4. Tag the merge commit: `git tag -a vX.Y.Z -m "Release X.Y.Z"` and push the tag.
+5. Merge `main` back into `develop`.
+6. Watch the "Deploy to GitHub Pages" run and check 72ai.in.
 
-## Customizing Content
+Patch releases for fixes, minor for new features. Run `npm run test:e2e` before opening the release PR.
 
--   **Case Studies:** Edit `src/data/caseStudies.json` to update the mini case study snippets.
--   **Page Copy:** Edit the text directly within the `.astro` files in `src/pages/`.
--   **Form Endpoints:** **Important:** Replace the placeholder `https://formspree.io/f/your_unique_id` in `src/components/ContactForm.astro` with your actual Formspree endpoint. Do the same for the newsletter form.
+## Content rules
 
-This setup provides a highly performant, SEO-friendly, and maintainable foundation that fully addresses the brief.
+- Copy follows `public/voice-dna.md`: contractions, short paragraphs, numbers as digits, no em dashes.
+- Don't add client names, logos, testimonials or outcome figures until the founder confirms them (see "Evidence on Hand" in `PRODUCT.md`).
+- New project pages start from a brief written with the `/create_websitebrief` skill. Briefs live in `website_brief/`, which is gitignored because some hold private customer details.

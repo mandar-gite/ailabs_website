@@ -165,7 +165,7 @@ A white, near-neutral field with softened navy ink and a single warm gold that c
 - **Hairline** (rgba(26,34,56,0.08)) and **Firm Hairline** (rgba(26,34,56,0.14)): borders and dividers; the firm one for hover and ghost buttons.
 
 ### Logo-only
-- **Brand Kit Gold** (#DDA744) with Midnight Navy: reserved for the logo artwork per `Brand_Kit.md`. Not a UI colour.
+- **Brand Kit Gold** (#DDA744) with Midnight Navy: reserved for the logo artwork per `docs/Brand_Kit.md`. Not a UI colour.
 
 ### Named Rules
 **The One Thread Rule.** Gold is the only chromatic accent. Keep it to roughly 5% of any viewport; its scarcity is what makes it read as "the point". No second accent hue, no blue links.
@@ -282,6 +282,6 @@ The hero graphic: a white 20px-cornered window with Showpiece shadow, a Cool Mis
 - **Don't** set readable small text in Quiet Caption (#8A93A3); at about 3:1 it's for decorative micro-labels only.
 - **Don't** reintroduce cream (#FAF7F2), the slate/blue site palette (#2563EB, #1E293B) or brand-kit gold (#DDA744) in UI. Brand-kit gold is for the logo.
 - **Don't** use the logo serif or any second typeface for headings.
-- **Don't** stretch, recolour, shadow or filter the logo (per `Brand_Kit.md`).
+- **Don't** stretch, recolour, shadow or filter the logo (per `docs/Brand_Kit.md`).
 - **Don't** float or animate anything at rest beyond the hero pipeline window and its metric card.
-- **Don't** rely on `src/styles/home.css` (legacy, still imported by `src/layouts/Layout.astro`); its `.hero` and `.cta-section` rules leak centring that pages currently override.
+- **Don't** add global page-section styles (`.hero`, `.cta-section`, `.container`) to a shared stylesheet. The legacy `home.css` did this and leaked into every page; it was removed on 2026-10-12. Keep section styles scoped to their page or component.
