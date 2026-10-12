@@ -2,7 +2,7 @@
   {
     "id": "finance-automation",
     "name": "Finance Automation",
-    "description": "Clean ledgers, automated reconciliation, and intelligent financial data processing for Indian businesses.",
+    "description": "Routine accounting work automated on the data you already keep: classifying transactions, forecasting expenses and flagging unusual entries.",
     "projects": ["fastaccounting"]
   },
   {
