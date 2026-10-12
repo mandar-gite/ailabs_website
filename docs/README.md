@@ -21,8 +21,8 @@ Welcome to the developer documentation for the 72° AI Labs website. This docume
 
 The repository includes several specialized guides:
 
-- **[Analytics Setup](../ANALYTICS_SETUP.md)** - Complete guide for setting up GA4 and Clarity
-- **[Brand Kit](../Brand_Kit.md)** - Brand guidelines, colors, fonts, and logo usage
+- **[Analytics Setup](deployment/ANALYTICS_SETUP.md)** - Complete guide for setting up GA4 and Clarity
+- **[Brand Kit](Brand_Kit.md)** - Brand guidelines, colors, fonts, and logo usage
 - **[Main README](../README.md)** - Project overview and quick setup
 
 ## Project Overview
@@ -40,8 +40,8 @@ The website is optimized for performance, SEO, and static deployment on GitHub P
 
 - Check the relevant documentation section first
 - Look at existing code examples in the repository
-- For analytics questions, see the [Analytics Setup Guide](../ANALYTICS_SETUP.md)
-- For brand-related questions, see the [Brand Kit](../Brand_Kit.md)
+- For analytics questions, see the [Analytics Setup Guide](deployment/ANALYTICS_SETUP.md)
+- For brand-related questions, see the [Brand Kit](Brand_Kit.md)
 
 ## Contributing
 

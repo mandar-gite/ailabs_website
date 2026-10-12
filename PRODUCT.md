@@ -48,7 +48,7 @@ Market position: India-based, selling globally. India is the origin and a source
 - Founder: Mandar Gite, BITS Pilani alumnus. Founded 2024. Founder tagline: "Building AI that adapts to your business."
 - Hero line: "Your data. Your AI system." Eyebrow: "Bespoke AI Systems."
 - Brand principles from `/about`: Balance, Proportion, Harmony, Discovery, Contextual Intelligence.
-- Logo assets in `public/logos/` (`logo.jpg`, `logo-mark.png`) and `logo_ver3.3_1x1.jpg`. `Brand_Kit.md` forbids stretching, recolouring (beyond approved mono versions), filters or drop shadows on the logo.
+- Logo assets in `public/logos/` (`logo.jpg`, `logo-mark.png`, `logo_ver3.3_1x1.jpg`). `docs/Brand_Kit.md` forbids stretching, recolouring (beyond approved mono versions), filters or drop shadows on the logo.
 - Voice: `public/voice-dna.md` governs all copy. Contractions, short paragraphs, numbers as digits, specific claims, no em dashes, no "This isn't X, it's Y" constructions, and none of the banned AI phrases listed there.
 
 ## Evidence on Hand
