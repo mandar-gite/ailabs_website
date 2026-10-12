@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-10-12
+
+### Added
+- 4 projects from repo-verified briefs: GradeQP (exam-paper checks with cited rules), Report Copilot (plain-language report requests to validated scripts, designed around India's DPDP Act), Valent (cap-table extraction with verbatim citations and waterfall modelling), Contract Risk Radar (clause review against 133 policy obligations, on synthetic contracts)
+
+### Changed
+- Project detail pages come from one dynamic route (`src/pages/projects/[id].astro`) instead of 5 copies
+
+### Removed
+- Unverified `caseStudies.json` and the unused `CaseCard` component
+
 ## [0.6.2] - 2026-10-12
 
 ### Removed
