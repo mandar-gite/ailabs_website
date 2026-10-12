@@ -97,59 +97,6 @@
     "tags": ["Market Analysis", "Feature Engineering", "Forecasting", "Backtesting"]
   },
   {
-    "id": "hospitality-hub",
-    "name": "Hospitality & F&B Data Hub",
-    "shortBlurb": "Unified analytics across POS, Tally, WhatsApp, Meta, Google, and influencer feeds.",
-    "tagline": "Unified operational intelligence across restaurant systems.",
-    "description": "Unified ops and marketing intelligence for restaurants.",
-    "category": "Operational Intelligence",
-    "featured": false,
-    "dataTypes": [
-      "POS data",
-      "Tally",
-      "WhatsApp text",
-      "Meta/Google APIs",
-      "Influencer feeds"
-    ],
-    "mlMethods": [
-      "Forecasting",
-      "Text classification",
-      "Entity linking",
-      "Attribution modelling"
-    ],
-    "challenges": [
-      "Schema mismatch",
-      "Noisy ops text",
-      "Multi-source alignment"
-    ],
-    "tags": ["POS Integration", "Restaurant Analytics", "Social Media", "Marketing Data"]
-  },
-  {
-    "id": "tire-analytics",
-    "name": "Tire-Life Analytics",
-    "shortBlurb": "Predictive modelling of tire-replacement cycles for fleet and industrial setups.",
-    "tagline": "Predictive tyre-replacement modelling for reliability planning.",
-    "description": "Predictive modelling for tyre-life and replacement cycles.",
-    "category": "Operational Intelligence",
-    "featured": false,
-    "dataTypes": [
-      "Tire usage logs",
-      "RE coefficients",
-      "Replacement history"
-    ],
-    "mlMethods": [
-      "Gaussian mixtures",
-      "Survival analysis",
-      "Latent variable modelling"
-    ],
-    "challenges": [
-      "Low signal-to-noise",
-      "Long lags",
-      "Hidden operational variables"
-    ],
-    "tags": ["Predictive Maintenance", "Fleet Management", "IoT", "Time Series"]
-  },
-  {
     "id": "jnvessays",
     "name": "JNVessays",
     "shortBlurb": "Handwriting-OCR pipeline for exam and evaluation workflow.",

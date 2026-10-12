@@ -9,7 +9,7 @@
     "id": "operational-intelligence",
     "name": "Operational Intelligence",
     "description": "Real-time insights and automation for operational workflows across industries.",
-    "projects": ["callmind", "hospitality-hub", "tire-analytics"]
+    "projects": ["callmind"]
   },
   {
     "id": "document-ocr",

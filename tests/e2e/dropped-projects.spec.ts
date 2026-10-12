@@ -2,7 +2,7 @@ import { test, expect } from './fixtures';
 
 // MarTech was dropped from the site (PRODUCT.md, 2026-10-07). Old links to its
 // page must land somewhere useful, and nothing may still list it.
-for (const slug of ['martech', 'insightbridge']) {
+for (const slug of ['martech', 'insightbridge', 'hospitality-hub', 'tire-analytics']) {
   test(`old ${slug} URL redirects to /projects`, async ({ page }) => {
     await page.goto(`/projects/${slug}`);
     await expect(page).toHaveURL(/\/projects\/?$/);
