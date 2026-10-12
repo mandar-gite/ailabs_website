@@ -46,3 +46,16 @@ test('prompt covers non-text data, outcome history, error cost and where it runs
     expect(PROMPT).toContain(s);
   }
 });
+
+test('copying the prompt sends a GA4 event when gtag is present', async ({ page, context, browserName }) => {
+  test.skip(browserName !== 'chromium', 'clipboard permissions are Chromium-only here');
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  // Stands in for gtag after consent; the fixture declines consent, so nothing else defines it.
+  await page.addInitScript(() => {
+    (window as any).__events = [];
+    (window as any).gtag = (...args: unknown[]) => (window as any).__events.push(args);
+  });
+  await page.goto('/discovery-brief');
+  await page.locator('#copy-prompt').click();
+  await expect.poll(() => page.evaluate(() => (window as any).__events)).toContainEqual(['event', 'discovery_prompt_copy', { method: 'copy' }]);
+});

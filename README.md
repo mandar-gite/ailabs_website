@@ -55,6 +55,8 @@ env -u CLOUDFLARE_API_TOKEN npx wrangler deploy
 
 The HubSpot token is a Worker secret (`npx wrangler secret put HUBSPOT_TOKEN`) and survives deploys. Logs and rate-limit settings live in `wrangler.toml`.
 
+The Worker writes a `website_lead_source` contact property (`discovery_prompt` or `contact_form`). In a new HubSpot account, create it first with `HUBSPOT_TOKEN=... workers/lead-capture/scripts/create-hubspot-property.sh` (needs `crm.schemas.contacts.write`); if it's missing, the Worker retries without it so no lead is lost.
+
 ## Git workflow and releases
 
 The repo follows Git Flow with Conventional Commits.
