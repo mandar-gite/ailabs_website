@@ -5,8 +5,14 @@ import Footer from '../../components/Footer.astro';
 import projectsData from '../../data/projects.json';
 import type { Project } from '../../types';
 
-const projects = projectsData as Project[];
-const project = projects.find(p => p.id === 'callmind')!;
+// One page per project in projects.json (hidden entries excluded).
+export function getStaticPaths() {
+  return (projectsData as (Project & { hidden?: boolean })[])
+    .filter((p) => !p.hidden)
+    .map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props as { project: Project };
 
 const seoTitle = `${project.name} | 72° AI Labs`;
 const seoDescription = project.tagline;
