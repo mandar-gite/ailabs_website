@@ -1,0 +1,22 @@
+name: CI
+
+# Runs the e2e suite on every pull request so a red PR shows before merge.
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: node --test tests/lead-worker.test.mjs
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
