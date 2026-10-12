@@ -8,10 +8,14 @@ import { test as base, expect } from '@playwright/test';
 type Fixtures = {
   blocked: string[];
   suppressExitPopup: boolean;
+  consent: 'granted' | 'denied' | null;
 };
 
 export const test = base.extend<Fixtures>({
   suppressExitPopup: [true, { option: true }],
+  // The cookie banner would cover the page too, so specs start with consent
+  // declined (no trackers run). Consent specs override this with null.
+  consent: ['denied', { option: true }],
 
   blocked: async ({ context }, use) => {
     const blocked: string[] = [];
@@ -28,10 +32,15 @@ export const test = base.extend<Fixtures>({
 
   // The exit-intent popup would cover the page in unrelated specs, so it is
   // marked as already shown unless a spec opts out.
-  page: async ({ page, blocked, suppressExitPopup }, use) => {
+  page: async ({ page, blocked, suppressExitPopup, consent }, use) => {
     void blocked; // make sure the network guard is installed before any navigation
     if (suppressExitPopup) {
       await page.addInitScript(() => sessionStorage.setItem('exit_popup_shown', '1'));
+    }
+    if (consent) {
+      await page.addInitScript((v) => {
+        if (!localStorage.getItem('72ai_consent')) localStorage.setItem('72ai_consent', v);
+      }, consent);
     }
     await use(page);
   },

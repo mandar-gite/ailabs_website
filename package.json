@@ -8,8 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test:e2e": "PUBLIC_GA4_ID= PUBLIC_CLARITY_ID= PUBLIC_APOLLO_APP_ID= astro build && playwright test",
-    "test:e2e:ui": "PUBLIC_GA4_ID= PUBLIC_CLARITY_ID= PUBLIC_APOLLO_APP_ID= astro build && playwright test --ui"
+    "test:e2e": "PUBLIC_GA4_ID=G-TEST000000 PUBLIC_CLARITY_ID=testclarity PUBLIC_APOLLO_APP_ID=testapollo0000000000000000 astro build && playwright test",
+    "test:e2e:ui": "PUBLIC_GA4_ID=G-TEST000000 PUBLIC_CLARITY_ID=testclarity PUBLIC_APOLLO_APP_ID=testapollo0000000000000000 astro build && playwright test --ui"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.18",

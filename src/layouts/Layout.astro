@@ -2,6 +2,7 @@
 // Fonts are loaded via Google Fonts in global.css
 import '../styles/global.css';
 import ExitIntentPopup from '../components/ExitIntentPopup.astro';
+import ConsentBanner from '../components/ConsentBanner.astro';
 
 export interface ArticleMeta {
     publishedTime: string;
@@ -34,6 +35,7 @@ const ogImageURL = new URL(ogImage || '/og-default.jpg', Astro.site).href;
 const GA4_ID = import.meta.env.PUBLIC_GA4_ID;
 const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_ID;
 const APOLLO_APP_ID = import.meta.env.PUBLIC_APOLLO_APP_ID;
+const HAS_TRACKERS = Boolean(GA4_ID || CLARITY_ID || APOLLO_APP_ID);
 ---
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -82,40 +84,51 @@ const APOLLO_APP_ID = import.meta.env.PUBLIC_APOLLO_APP_ID;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Analytics: each tracker queues its start-up code; ConsentBanner runs the
+         queue only after the visitor accepts, so nothing loads before consent. -->
+    {HAS_TRACKERS && <script is:inline>window.__consentQueue = [];</script>}
+
     <!-- Google Analytics 4 -->
     {GA4_ID && (
-        <>
-            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
-            <script is:inline define:vars={{ GA4_ID }}>
+        <script is:inline define:vars={{ GA4_ID }}>
+            window.__consentQueue.push(function () {
+                var s = document.createElement('script');
+                s.async = true;
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
+                document.head.appendChild(s);
                 window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', GA4_ID, {
+                window.gtag = function () { window.dataLayer.push(arguments); };
+                window.gtag('js', new Date());
+                window.gtag('config', GA4_ID, {
                     page_title: document.title,
                     page_location: window.location.href
                 });
-            </script>
-        </>
+            });
+        </script>
     )}
 
     <!-- Microsoft Clarity -->
     {CLARITY_ID && (
         <script is:inline define:vars={{ CLARITY_ID }}>
-            (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", CLARITY_ID);
+            window.__consentQueue.push(function () {
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", CLARITY_ID);
+            });
         </script>
     )}
 
     <!-- Apollo.io Website Tracker -->
     {APOLLO_APP_ID && (
         <script is:inline define:vars={{ APOLLO_APP_ID }}>
-            function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
-            o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
-            o.onload=function(){window.trackingFunctions.onLoad({appId:APOLLO_APP_ID})},
-            document.head.appendChild(o)}initApollo();
+            window.__consentQueue.push(function () {
+                var n=Math.random().toString(36).substring(7),o=document.createElement("script");
+                o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
+                o.onload=function(){window.trackingFunctions.onLoad({appId:APOLLO_APP_ID})},
+                document.head.appendChild(o);
+            });
         </script>
     )}
 
@@ -206,6 +219,7 @@ const APOLLO_APP_ID = import.meta.env.PUBLIC_APOLLO_APP_ID;
     <a href="#main-content" class="skip-to-main">Skip to main content</a>
     <slot />
     {exitPopup && <ExitIntentPopup />}
+    {HAS_TRACKERS && <ConsentBanner />}
     <style>
         .skip-to-main {
             position: absolute;
