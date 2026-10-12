@@ -64,8 +64,7 @@ Market position: India-based, selling globally. India is the origin and a source
 
 - **CallMind:** `website_brief/callmind.md` is the truth (Hindi script-compliance audit). The live sentiment/topic-extraction copy is wrong.
 - **MarTech Intelligence:** dropped from the site.
-- **Hospitality & F&B Data Hub:** deployed across multiple restaurants.
-- **Tire-Life Analytics:** is essentially supply-chain analytics; full details to come from its repo.
+- **Hospitality & F&B Data Hub** (repo BrewNexus) and **Tire-Life Analytics** (repo Bridgestone): proofs of concept that the clients never let go ahead. Corrected 2026-10-12: neither was deployed. Both removed from the site; don't present either as delivered work or name the clients.
 - **JNVessays:** a quick proof of concept, not a production system.
 - **NextSurge Momentum Alpha:** stays, but needs reframing.
 - **InsightBridge:** hidden; there is no On-Prem LLM practice area. Cascade and Used Car are removed from Solutions.
