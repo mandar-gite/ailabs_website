@@ -1,0 +1,220 @@
+---
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+// Single source: the same file is shown here, copied by the button and offered as a download.
+const prompt = readFileSync(path.join(process.cwd(), "public/discovery-brief-prompt.txt"), "utf8").trim();
+---
+
+<Layout
+  title="Discovery Brief Prompt | 72° AI Labs"
+  description="A free prompt for ChatGPT, Claude or Gemini. It interviews you about your business and writes a short brief you can send to 72° AI LABS."
+>
+  <Nav />
+  <main id="main-content" class="brief-page">
+    <section class="brief-hero">
+      <p class="eyebrow">Free prompt</p>
+      <h1>Write your discovery brief with your own AI</h1>
+      <p class="lede">
+        Paste this prompt into ChatGPT, Claude or Gemini. It asks you 8 to 10 questions about your business, then writes a short brief you can send us. It takes about 10 minutes.
+      </p>
+    </section>
+
+    <section class="brief-steps">
+      <h2>How it works</h2>
+      <ol>
+        <li><strong>Copy the prompt</strong> below.</li>
+        <li><strong>Paste it</strong> into ChatGPT, Claude or Gemini and answer its questions.</li>
+        <li><strong>Paste the brief</strong> it writes into the "Your Brief" box on our <a href="/#contact">contact form</a>.</li>
+      </ol>
+    </section>
+
+    <section class="brief-tool">
+      <div class="tool-bar">
+        <span class="tool-label">The prompt</span>
+        <div class="tool-actions">
+          <a href="/discovery-brief-prompt.txt" download="discovery-brief-prompt.txt" class="tool-link">Download .txt</a>
+          <button type="button" id="copy-prompt" class="tool-copy">Copy prompt</button>
+        </div>
+      </div>
+      <pre id="brief-prompt">{prompt}</pre>
+    </section>
+
+    <section class="brief-privacy">
+      <h2>Your data stays with you</h2>
+      <p>
+        The conversation happens in your own AI account; we only see the brief you choose to send. The prompt tells the AI to leave out names, account numbers and exact figures. Don't share passwords or confidential files with any AI tool.
+      </p>
+    </section>
+
+    <section class="brief-cta">
+      <a href="/#contact" class="cta-primary">Send your brief</a>
+      <a href="/#book-call" class="cta-secondary">Prefer to talk? Book a call</a>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  const btn = document.getElementById("copy-prompt") as HTMLButtonElement | null;
+  const pre = document.getElementById("brief-prompt");
+  btn?.addEventListener("click", async () => {
+    const text = pre?.textContent?.trim() ?? "";
+    try {
+      await navigator.clipboard.writeText(text);
+      btn.textContent = "Copied";
+    } catch {
+      // Clipboard blocked (old browser or insecure context): select the text for a manual copy.
+      const range = document.createRange();
+      if (pre) range.selectNodeContents(pre);
+      window.getSelection()?.removeAllRanges();
+      window.getSelection()?.addRange(range);
+      btn.textContent = "Press Ctrl+C to copy";
+    }
+    setTimeout(() => { btn.textContent = "Copy prompt"; }, 2500);
+  });
+</script>
+
+<style>
+  .brief-page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 4rem;
+    color: var(--wp-ink);
+  }
+
+  .eyebrow {
+    margin: 0 0 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--wp-gold-deep);
+  }
+
+  h1 {
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 4.5vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+
+  h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .lede,
+  .brief-privacy p {
+    margin: 0;
+    font-size: var(--text-lg);
+    line-height: 1.65;
+    color: var(--wp-ink-2);
+  }
+
+  section + section {
+    margin-top: 2.5rem;
+  }
+
+  ol {
+    margin: 0;
+    padding-left: 1.25rem;
+    list-style: decimal;
+    line-height: 1.8;
+    color: var(--wp-ink-2);
+  }
+
+  ol a {
+    color: var(--wp-ink);
+    font-weight: 600;
+  }
+
+  .brief-tool {
+    border: 1px solid var(--wp-line-2);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .tool-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--wp-canvas-2);
+    border-bottom: 1px solid var(--wp-line-2);
+  }
+
+  .tool-label,
+  .tool-link,
+  .tool-copy {
+    white-space: nowrap;
+  }
+
+  .tool-label {
+    font-weight: 700;
+    font-size: 0.875rem;
+  }
+
+  .tool-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .tool-link {
+    font-size: 0.875rem;
+    color: var(--wp-ink);
+    font-weight: 600;
+  }
+
+  .tool-copy {
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    border: 0;
+    background: var(--wp-ink);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+
+  pre {
+    margin: 0;
+    padding: 1.25rem;
+    max-height: 420px;
+    overflow: auto;
+    white-space: pre-wrap;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--wp-ink);
+  }
+
+  .brief-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    align-items: center;
+  }
+
+  .cta-primary {
+    padding: 0.9rem 1.75rem;
+    border-radius: 14px;
+    background: var(--wp-ink);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .cta-secondary {
+    color: var(--wp-ink);
+    font-weight: 600;
+  }
+</style>

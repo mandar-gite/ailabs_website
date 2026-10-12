@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import ContactForm from "../components/ContactForm.astro";
 import BookCall from "../components/BookCall.astro";
+import { engagement, durationLabel, totalWeeks } from "../utils/engagement";
 import Footer from "../components/Footer.astro";
 
 const seoTitle = "72° AI LABS | Bespoke AI Systems for Growing Businesses";
@@ -216,6 +217,12 @@ const ogImage = "/og-home.jpg";
                         <div class="step-body">
                             <h3>Discovery: we map the problem worth solving</h3>
                             <p>We start with your business. Together we find where decisions stall, what data you already have, and the one outcome that would move the needle most. You leave with a clear, prioritised scope before anyone writes code.</p>
+                            <div class="step-meta">
+                                <span class="step-chip">{durationLabel(engagement[0])}</span>
+                                {engagement[0].free && <span class="step-chip step-chip-free">Free</span>}
+                            </div>
+                            <p class="step-get"><strong>You get:</strong> {engagement[0].youGet}</p>
+                            <a href="/discovery-brief" class="step-link">Start now with our brief prompt</a>
                         </div>
                     </div>
 
@@ -224,6 +231,11 @@ const ogImage = "/og-home.jpg";
                         <div class="step-body">
                             <h3>Proof of concept: we prove value on your real data</h3>
                             <p>We build a working prototype on your actual data and put it in front of you fast. You see real output against a concrete success measure, so you can judge the value and the fit before committing to a full build.</p>
+                            <div class="step-meta">
+                                <span class="step-chip">{durationLabel(engagement[1])}</span>
+                                {engagement[1].free && <span class="step-chip step-chip-free">Free</span>}
+                            </div>
+                            <p class="step-get"><strong>You get:</strong> {engagement[1].youGet}</p>
                         </div>
                     </div>
 
@@ -232,9 +244,15 @@ const ogImage = "/og-home.jpg";
                         <div class="step-body">
                             <h3>Implementation: we harden it into a system you own</h3>
                             <p>Once the PoC earns its place, we engineer it into a production system: integrated with your tools, documented, and handed over with full ownership. No lock-in, and a foundation that keeps getting smarter as your business grows.</p>
+                            <div class="step-meta">
+                                <span class="step-chip">{durationLabel(engagement[2])}</span>
+                                {engagement[2].free && <span class="step-chip step-chip-free">Free</span>}
+                            </div>
+                            <p class="step-get"><strong>You get:</strong> {engagement[2].youGet}</p>
                         </div>
                     </div>
                 </div>
+                <p class="process-total">From first call to a system in production: usually {totalWeeks.min} to {totalWeeks.max} weeks.</p>
             </div>
         </section>
 
@@ -732,6 +750,53 @@ const ogImage = "/og-home.jpg";
         display: flex;
         gap: 1.25rem;
         align-items: flex-start;
+    }
+
+    .step-meta {
+        display: flex;
+        gap: 0.5rem;
+        margin: 0.85rem 0 0.6rem;
+    }
+
+    .step-chip {
+        display: inline-block;
+        padding: 0.2rem 0.65rem;
+        border-radius: 999px;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: var(--wp-ink);
+        background: var(--wp-canvas-2);
+        border: 1px solid var(--wp-line-2);
+    }
+
+    .step-chip-free {
+        color: #fff;
+        background: var(--wp-ink);
+        border-color: var(--wp-ink);
+    }
+
+    .step-body p.step-get {
+        margin: 0;
+        font-size: 0.9375rem;
+    }
+
+    .step-get strong {
+        color: var(--wp-ink);
+    }
+
+    .step-link {
+        display: inline-block;
+        margin-top: 0.6rem;
+        font-size: 0.9375rem;
+        font-weight: 700;
+        color: var(--wp-ink);
+        text-decoration: underline;
+    }
+
+    .process-total {
+        margin: 2.5rem 0 0;
+        font-weight: 700;
+        color: var(--wp-ink);
     }
 
     .step-num {

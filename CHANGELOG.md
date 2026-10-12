@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-12
+
+### Added
+- Engagement durations and deliverables on the homepage and `/about`: Discovery 1 week and free, proof of concept 2 to 3 weeks, implementation 6 to 12 weeks, usually 9 to 16 weeks end to end
+- `/discovery-brief`: a free prompt for ChatGPT, Claude or Gemini that interviews a business owner and writes a brief to send us, with copy and download; linked from the contact form and the Discovery step
+- `llms.txt` lists the engagement durations and the brief prompt
+
 ## [0.3.0] - 2026-10-12
 
 ### Added

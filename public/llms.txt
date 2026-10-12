@@ -25,11 +25,11 @@ The name comes from 72°, the external angle of a regular pentagon, a shape that
 
 ## How an engagement works
 
-1. Discovery: map where decisions stall and the one outcome worth solving first.
-2. Proof of concept: prove value on the client's real data before committing to a full build.
-3. Implementation: harden the validated build into a production system the client owns.
+1. Discovery (1 week, free): map where decisions stall and the one outcome worth solving first.
+2. Proof of concept (2 to 3 weeks): prove value on the client's real data before committing to a full build.
+3. Implementation (6 to 12 weeks): harden the validated build into a production system the client owns.
 
-Engagements start small and are sized frugally.
+From first call to a system in production usually takes 9 to 16 weeks. Engagements start small and are sized frugally.
 
 ## Practice areas
 
@@ -54,8 +54,9 @@ Engagements start small and are sized frugally.
 - [Building Multi-Agent AI Systems That Actually Work](https://72ai.in/blog/blog1_martech_technical): architecture of a multi-agent RAG system (planner, researcher, writer, reviewer) running on local hardware.
 - [Welcome to the 72° AI LABS blog](https://72ai.in/blog/welcome-to-72ai-blog)
 
-## Free tool
+## Free tools
 
+- [Discovery brief prompt](https://72ai.in/discovery-brief): a prompt for ChatGPT, Claude or Gemini that interviews a business owner and writes a short project brief to send to 72° AI LABS.
 - [Voice DNA](https://72ai.in/voice-dna): a free template that configures Claude to write in your own voice and drop common AI-isms.
 
 ## Contact

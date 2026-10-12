@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import PageHeader from "../components/PageHeader.astro";
+import { engagement, durationLabel } from "../utils/engagement";
 import LogoMark from "../components/LogoMark.astro";
 
 const seoTitle = "About | 72° AI LABS";
@@ -84,6 +85,7 @@ const ogImage = "/og-about.jpg"; // Create this 1200x630 image for social sharin
                 <div class="step-content">
                   <strong>Discovery</strong>
                   <p>Map where decisions stall and the one outcome worth solving first</p>
+                  <p class="step-duration"><span>{durationLabel(engagement[0])}</span>{engagement[0].free && <span class="step-free">Free</span>}</p>
                 </div>
               </li>
               <li>
@@ -91,6 +93,7 @@ const ogImage = "/og-about.jpg"; // Create this 1200x630 image for social sharin
                 <div class="step-content">
                   <strong>Proof of Concept</strong>
                   <p>Prove value fast on your real data, before committing to a full build</p>
+                  <p class="step-duration"><span>{durationLabel(engagement[1])}</span>{engagement[1].free && <span class="step-free">Free</span>}</p>
                 </div>
               </li>
               <li>
@@ -98,6 +101,7 @@ const ogImage = "/og-about.jpg"; // Create this 1200x630 image for social sharin
                 <div class="step-content">
                   <strong>Implementation</strong>
                   <p>Harden the validated build into a production system you own</p>
+                  <p class="step-duration"><span>{durationLabel(engagement[2])}</span>{engagement[2].free && <span class="step-free">Free</span>}</p>
                 </div>
               </li>
             </ol>
@@ -418,5 +422,16 @@ const ogImage = "/og-about.jpg"; // Create this 1200x630 image for social sharin
     .founder-card {
       padding: 2rem;
     }
+  }
+
+  .step-duration {
+    margin-top: 0.3rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--wp-ink);
+  }
+
+  .step-free::before {
+    content: " · ";
   }
 </style>
