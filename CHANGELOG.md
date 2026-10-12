@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-10-12
+
+### Added
+- HubSpot attribution: the lead Worker tags each contact's `website_lead_source` as `discovery_prompt` or `contact_form` (property created in HubSpot; Worker retries without it if a portal lacks it)
+- GA4 `discovery_prompt_copy` event when the brief prompt is copied or downloaded (after cookie consent)
+
 ## [0.4.0] - 2026-10-12
 
 ### Added
