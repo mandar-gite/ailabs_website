@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-10-12
+
+### Added
+- Cookie consent banner: GA4, Microsoft Clarity and Apollo load only after the visitor accepts; the choice is remembered and a footer "Cookie settings" link reopens the banner
+- Microsoft Clarity enabled in production (`PUBLIC_CLARITY_ID` repository variable), behind consent
+- README section on deploying the lead Worker
+
+### Fixed
+- GA4's `gtag` is defined on `window`, so the event helpers in `src/utils/analytics.ts` can reach it
+
 ## [0.2.0] - 2026-10-12
 
 ### Added
