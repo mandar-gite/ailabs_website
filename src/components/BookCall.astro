@@ -5,41 +5,40 @@ const MEETINGS_URL = "https://meetings-na2.hubspot.com/mandar-gite";
 ---
 <div id="book-call" class="book-call">
   <h3>Book a 30-min call</h3>
-  <p class="book-call-lede">Prefer to talk it through? Pick a slot that suits you. You'll speak with Mandar, the founder.</p>
-  <div class="meetings-iframe-container" data-src={`${MEETINGS_URL}?embed=true`}>
-    <p class="meetings-placeholder">Loading available slots...</p>
+  <div class="book-card">
+    <ul class="book-points">
+      <li>30 minutes with Mandar, the founder</li>
+      <li>Talk through your problem before writing a brief</li>
+      <li>Times shown in your own time zone</li>
+    </ul>
+    <button type="button" id="show-times" class="book-show">Show available times</button>
+    <div class="meetings-iframe-container" data-src={`${MEETINGS_URL}?embed=true`} hidden>
+      <p class="meetings-placeholder">Loading available slots...</p>
+    </div>
+    <p class="book-call-fallback">
+      Or <a href={MEETINGS_URL} target="_blank" rel="noopener noreferrer">open the booking page</a> in a new tab
+    </p>
   </div>
-  <p class="book-call-fallback">
-    Calendar not loading? <a href={MEETINGS_URL} target="_blank" rel="noopener noreferrer">Open the booking page</a>
-  </p>
 </div>
 
 <script>
-  // The embed script is third-party JS, so it loads only when the visitor nears
-  // the scheduler. MeetingsEmbedCode.js scans for .meetings-iframe-container when
-  // it runs and builds the iframe straight away if the page has already loaded.
+  // HubSpot's embed sets its own cookie and looks unlike the site, so it loads
+  // only when the visitor asks for times. MeetingsEmbedCode.js scans for
+  // .meetings-iframe-container when it runs and builds the iframe straight away.
   const EMBED_SCRIPT = "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
-  const container = document.querySelector("#book-call .meetings-iframe-container");
+  const btn = document.getElementById("show-times");
+  const container = document.querySelector<HTMLElement>("#book-call .meetings-iframe-container");
 
-  const loadEmbed = () => {
+  btn?.addEventListener("click", () => {
+    if (!container) return;
+    container.hidden = false;
+    btn.hidden = true;
     if (document.querySelector(`script[src="${EMBED_SCRIPT}"]`)) return;
     const s = document.createElement("script");
     s.src = EMBED_SCRIPT;
     s.async = true;
     document.body.appendChild(s);
-  };
-
-  if (container && "IntersectionObserver" in window) {
-    const io = new IntersectionObserver((entries) => {
-      if (entries.some((e) => e.isIntersecting)) {
-        io.disconnect();
-        loadEmbed();
-      }
-    }, { rootMargin: "200px" });
-    io.observe(container);
-  } else if (container) {
-    loadEmbed();
-  }
+  });
 </script>
 
 <style>
@@ -47,16 +46,68 @@ const MEETINGS_URL = "https://meetings-na2.hubspot.com/mandar-gite";
     font-size: var(--text-xl);
     font-weight: 700;
     color: var(--wp-ink);
-    margin: 0 0 0.5rem;
+    margin: 0 0 1rem;
     text-align: center;
   }
 
-  .book-call-lede {
-    font-size: 0.9rem;
+  /* Matches the contact form card beside it */
+  .book-card {
+    background: #fff;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    max-width: 28rem;
+    margin: 0 auto;
+  }
+
+  .book-points {
+    list-style: none;
+    margin: 0 0 1.25rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .book-points li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
     color: var(--wp-ink-2);
-    line-height: 1.6;
-    margin: 0 0 1rem;
-    text-align: center;
+  }
+
+  .book-points li::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--wp-gold);
+    flex-shrink: 0;
+    transform: translateY(-1px);
+  }
+
+  .book-show {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--wp-ink);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    cursor: pointer;
+  }
+
+  .book-show:hover {
+    background: var(--wp-ink-2);
+  }
+
+  .book-show[hidden],
+  .meetings-iframe-container[hidden] {
+    display: none;
   }
 
   .meetings-iframe-container {

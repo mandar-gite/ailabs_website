@@ -144,30 +144,6 @@
     "tags": ["Predictive Maintenance", "Fleet Management", "IoT", "Time Series"]
   },
   {
-    "id": "insightbridge",
-    "name": "InsightBridge",
-    "hidden": true,
-    "shortBlurb": "Retrieval and summarisation layer over distributed business datasets.",
-    "tagline": "Quick insights from distributed data sources.",
-    "description": "Summaries and retrieval across distributed data systems.",
-    "category": "On-Prem LLM Systems",
-    "featured": false,
-    "dataTypes": [
-      "Business data tables",
-      "Small operational datasets"
-    ],
-    "mlMethods": [
-      "Retrieval",
-      "Summarisation",
-      "Lightweight ML"
-    ],
-    "challenges": [
-      "Low data volume",
-      "Schema volatility"
-    ],
-    "tags": ["Data Integration", "RAG", "Data Retrieval", "Summarization"]
-  },
-  {
     "id": "jnvessays",
     "name": "JNVessays",
     "shortBlurb": "Handwriting-OCR pipeline for exam and evaluation workflow.",

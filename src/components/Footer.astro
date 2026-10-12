@@ -23,6 +23,7 @@ import LogoMark from "./LogoMark.astro";
 
         <div class="footer-bottom">
             <p>&copy; 2026 72° AI LABS. All rights reserved.</p>
+            <a href="/privacy" class="footer-privacy">Privacy policy</a>
             <button type="button" class="footer-consent" data-consent-open hidden>Cookie settings</button>
         </div>
     </div>
@@ -110,6 +111,14 @@ import LogoMark from "./LogoMark.astro";
             flex-wrap: wrap;
             gap: 1rem;
         }
+    }
+
+    .footer-privacy {
+        display: inline-block;
+        margin-right: 1rem;
+        font-size: 0.8125rem;
+        color: inherit;
+        text-decoration: underline;
     }
 
     .footer-consent {
