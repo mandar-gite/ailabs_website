@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-10-12
+
+### Added
+- `/privacy`: privacy policy covering forms, booking, consent-gated analytics, browser storage, hosting, processors, retention and rights; linked from the footer and the cookie banner
+
+### Changed
+- Booking calendar is a branded card; HubSpot's embed loads only after "Show available times", so no HubSpot cookie or widget before the visitor asks
+
+### Removed
+- InsightBridge project page and data; `/projects/insightbridge` redirects to `/projects`
+
 ## [0.5.0] - 2026-10-12
 
 ### Added
