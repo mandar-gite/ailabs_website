@@ -284,5 +284,38 @@
       "Document AI",
       "Contract Review"
     ]
+  },
+  {
+    "id": "farm-wildlife-alerts",
+    "name": "Farm Wildlife Alerts",
+    "shortBlurb": "Night-time farm intrusion identification, with each species benchmarked on its own.",
+    "tagline": "Species calls for farm wildlife, with false-alert exposure reported next to accuracy.",
+    "description": "In development: a research-stage system that identifies which animal is entering a farm plot, built on pretrained wildlife detectors and classifiers. Each benchmark run scores every species on its own and reports how often a non-target animal would wake the farmer, next to accuracy. The night-time head, the alert logic and the field hardware are still being designed.",
+    "category": "Operational Intelligence",
+    "featured": false,
+    "dataTypes": [
+      "Public wildlife photographs and camera-trap archive images",
+      "Labelled detection-dataset crops",
+      "Negative-class images: livestock, dogs, people, empty frames",
+      "Night-time infrared frames (limited)"
+    ],
+    "mlMethods": [
+      "Pretrained wildlife detector and species classifier, benchmarked per species",
+      "Background-subtraction motion detection",
+      "Per-image alert-exposure reporting"
+    ],
+    "challenges": [
+      "Night imagery is scarce in public archives",
+      "Look-alike animals in darkness (cattle and nilgai)",
+      "Keeping false alerts low enough that a farmer keeps the system on",
+      "Labels that do not match the animal in frame"
+    ],
+    "tags": [
+      "Data Pipeline",
+      "Computer Vision",
+      "Camera Trap",
+      "Wildlife Detection",
+      "Agriculture"
+    ]
   }
 ]
