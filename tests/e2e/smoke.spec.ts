@@ -4,7 +4,7 @@ import { builtRoutes } from './routes';
 // Pages that currently ship without an <h1> (found 2026-10-07). test.fail()
 // keeps the suite green while flagging them; once a page gets its <h1> the test
 // "unexpectedly passes" and fails the run, so remove it from this list then.
-const KNOWN_MISSING_H1 = new Set(['/about', '/projects', '/solutions']);
+const KNOWN_MISSING_H1 = new Set<string>([]);
 
 for (const route of builtRoutes()) {
   test(`${route} loads cleanly`, async ({ page }) => {
