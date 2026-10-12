@@ -285,7 +285,7 @@ Blog posts automatically generate SEO metadata from frontmatter:
 
 ### Brand Voice
 
-Follow the [Brand Kit](../../Brand_Kit.md) guidelines:
+Follow the [Brand Kit](../Brand_Kit.md) guidelines:
 
 - **Professional** but approachable
 - **Innovative** and forward-thinking

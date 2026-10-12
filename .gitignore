@@ -84,3 +84,9 @@ thoughts/
 test-results/
 playwright-report/
 blob-report/
+
+# Project briefs: some hold private customer details; keep out of the public repo
+website_brief/
+
+# Archify diagram working files (published output is docs/architecture.html)
+.archify/

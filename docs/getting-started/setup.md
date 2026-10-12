@@ -165,7 +165,7 @@ Once you have the site running locally:
 
 - **Build errors**: Check the terminal output for specific error messages
 - **Page not loading**: Ensure you're using http://localhost:4321 (not https)
-- **Analytics issues**: See the [Analytics Setup Guide](../../ANALYTICS_SETUP.md)
+- **Analytics issues**: See the [Analytics Setup Guide](../deployment/ANALYTICS_SETUP.md)
 - **Styling issues**: Tailwind CSS should work out of the box
 
 ---

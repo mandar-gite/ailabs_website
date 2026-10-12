@@ -385,7 +385,7 @@
       "**Don't** set readable small text in Quiet Caption (#8A93A3); at about 3:1 it's for decorative micro-labels only.",
       "**Don't** reintroduce cream (#FAF7F2), the slate/blue site palette (#2563EB, #1E293B) or brand-kit gold (#DDA744) in UI. Brand-kit gold is for the logo.",
       "**Don't** use the logo serif or any second typeface for headings.",
-      "**Don't** stretch, recolour, shadow or filter the logo (per `Brand_Kit.md`).",
+      "**Don't** stretch, recolour, shadow or filter the logo (per `docs/Brand_Kit.md`).",
       "**Don't** float or animate anything at rest beyond the hero pipeline window and its metric card.",
       "**Don't** rely on `src/styles/home.css` (legacy, still imported by `src/layouts/Layout.astro`); its `.hero` and `.cta-section` rules leak centring that pages currently override."
     ]
