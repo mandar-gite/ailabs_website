@@ -150,3 +150,27 @@ test('HubSpot error logs carry no submitted personal data', async () => {
   assert.match(all, /VALIDATION_ERROR/);
   assert.doesNotMatch(all, /asha@example\.com|Asha|Rao Textiles|98200/);
 });
+
+// Attribution: website_lead_source tells HubSpot whether the brief came from the
+// discovery prompt (it starts with the marker line) or was typed into the form.
+const MARKER = 'Discovery brief (72ai prompt)';
+
+test('briefs from the discovery prompt are tagged discovery_prompt', async () => {
+  await worker.fetch(post({ ...VALID, Brief: `${MARKER}\nBusiness: a 3-outlet bakery.` }), env());
+  assert.equal(JSON.parse(calls[0].init.body).properties.website_lead_source, 'discovery_prompt');
+});
+
+test('other briefs are tagged contact_form, even if they mention the marker later', async () => {
+  await worker.fetch(post({ ...VALID, Brief: `We read your page. ${MARKER}` }), env());
+  assert.equal(JSON.parse(calls[0].init.body).properties.website_lead_source, 'contact_form');
+});
+
+test('a HubSpot 400 retries once without the attribution property, so the lead is kept', async () => {
+  hubspot = (url, init) => (JSON.parse(init.body).properties.website_lead_source
+    ? Response.json({ category: 'VALIDATION_ERROR' }, { status: 400 })
+    : Response.json({ id: '202' }, { status: 201 }));
+  const res = await worker.fetch(post(VALID), env());
+  assert.equal(res.status, 200);
+  assert.equal(calls.length, 2);
+  assert.equal(JSON.parse(calls[1].init.body).properties.website_lead_source, undefined);
+});
