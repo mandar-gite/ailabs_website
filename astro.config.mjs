@@ -12,6 +12,8 @@ export default defineConfig({
   redirects: {
     '/projects/martech': '/projects',
     '/projects/insightbridge': '/projects',
+    '/projects/hospitality-hub': '/projects',
+    '/projects/tire-analytics': '/projects',
   },
   ...(basePath ? { base: basePath } : {}),
   integrations: [

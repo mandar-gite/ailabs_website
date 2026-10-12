@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.2] - 2026-10-12
+
+### Removed
+- Hospitality & F&B Data Hub and Tire-Life Analytics: both were proofs of concept the clients never let go ahead. `/projects/hospitality-hub` and `/projects/tire-analytics` redirect to `/projects`; Solutions and `llms.txt` updated
+
 ## [0.6.1] - 2026-10-12
 
 ### Fixed

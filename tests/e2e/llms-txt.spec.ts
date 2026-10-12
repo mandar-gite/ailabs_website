@@ -8,7 +8,7 @@ test('llms.txt is current and every internal link resolves', async ({ page, requ
   const text = await res.text();
 
   expect(text).not.toContain('—');
-  for (const dropped of ['MarTech', 'Cascade', 'InsightBridge', 'Used Car', 'On-Prem']) {
+  for (const dropped of ['MarTech', 'Cascade', 'InsightBridge', 'Used Car', 'On-Prem', 'Hospitality', 'Tire-Life']) {
     expect(text, `mentions dropped "${dropped}"`).not.toContain(dropped);
   }
 

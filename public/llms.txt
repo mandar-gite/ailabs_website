@@ -34,7 +34,7 @@ From first call to a system in production usually takes 9 to 16 weeks. Engagemen
 ## Practice areas
 
 - **Finance Automation:** classifying transactions, forecasting expenses and flagging unusual entries in accounting data such as Tally exports.
-- **Operational Intelligence:** analytics and automation for operations such as restaurants, supply chains and call centres.
+- **Operational Intelligence:** analytics and automation for operational work, such as checking every call-centre call against its script.
 - **Document & OCR Systems:** extracting structured data from PDFs, scans and handwritten pages.
 - **Data Engineering & Integration:** pipelines, feature engineering and forecasting on messy, multi-source data.
 
@@ -42,8 +42,6 @@ From first call to a system in production usually takes 9 to 16 weeks. Engagemen
 
 - [FastAccounting](https://72ai.in/projects/fastaccounting): proof of concept on 5 companies' Tally exports that classifies expense transactions (95.9% average party-group accuracy), forecasts recurring expenses 3 months ahead and flags unusual entries.
 - [CallMind](https://72ai.in/projects/callmind): Hindi call-audit pipeline. Transcribes calls, separates speakers and scores each call against its campaign script, so every call is checked instead of a hand-picked sample.
-- [Hospitality & F&B Data Hub](https://72ai.in/projects/hospitality-hub): unified analytics across POS, Tally, WhatsApp and marketing feeds, deployed across multiple restaurants.
-- [Tire-Life Analytics](https://72ai.in/projects/tire-analytics): supply-chain analytics modelling tyre life and replacement cycles.
 - [NextSurge Momentum Alpha](https://72ai.in/projects/nextsurge): market-signal models with engineered features and walk-forward validation.
 - [JNVessays](https://72ai.in/projects/jnvessays): proof of concept for reading handwritten exam sheets with OCR.
 - [DocIntel](https://72ai.in/projects/docintel): document understanding for PDFs, scans and mixed-format files.
