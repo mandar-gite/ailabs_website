@@ -22,16 +22,20 @@ test('booking panel sits beside the form with a working fallback link', async ({
   await expect(page.locator('#contact #contact-form')).toBeVisible();
 });
 
-// The embed pulls third-party JS, so it must only load once the visitor
-// scrolls near the contact section, never on first paint.
-test('HubSpot embed script loads only when the section is scrolled into view', async ({ page, blocked }) => {
+// HubSpot's embed sets its own cookie, so nothing from HubSpot loads until the
+// visitor asks for times: scrolling to the card is not enough.
+test('HubSpot embed loads only after Show available times is clicked', async ({ page, blocked }) => {
   await page.goto('/');
-  await page.waitForLoadState('load');
-  await page.waitForTimeout(300);
+  const card = page.locator('#book-call');
+  await card.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
   expect(blocked).not.toContain(EMBED_SCRIPT);
+  await expect(card.locator('.meetings-iframe-container')).toBeHidden();
 
-  await page.locator('#book-call').scrollIntoViewIfNeeded();
+  await card.getByRole('button', { name: 'Show available times' }).click();
   await expect.poll(() => blocked.includes(EMBED_SCRIPT)).toBe(true);
+  await expect(card.locator('.meetings-iframe-container')).toBeVisible();
+  await expect(card.getByRole('button', { name: 'Show available times' })).toBeHidden();
   expect(await page.locator(`script[src="${EMBED_SCRIPT}"]`).count()).toBe(1);
 });
 
