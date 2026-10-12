@@ -25,11 +25,11 @@ The name comes from 72°, the external angle of a regular pentagon, a shape that
 
 ## How an engagement works
 
-1. Discovery: map where decisions stall and the one outcome worth solving first.
-2. Proof of concept: prove value on the client's real data before committing to a full build.
-3. Implementation: harden the validated build into a production system the client owns.
+1. Discovery (1 week, free): map where decisions stall and the one outcome worth solving first.
+2. Proof of concept (2 to 3 weeks): prove value on the client's real data before committing to a full build.
+3. Implementation (6 to 12 weeks): harden the validated build into a production system the client owns.
 
-Engagements start small and are sized frugally.
+From first call to a system in production usually takes 9 to 16 weeks. Engagements start small and are sized frugally.
 
 ## Practice areas
 

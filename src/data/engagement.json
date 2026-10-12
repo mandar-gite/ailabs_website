@@ -1,0 +1,26 @@
+[
+  {
+    "num": "01",
+    "name": "Discovery",
+    "minWeeks": 1,
+    "maxWeeks": 1,
+    "free": true,
+    "youGet": "A prioritised scope: the one outcome worth solving first and the data that supports it."
+  },
+  {
+    "num": "02",
+    "name": "Proof of concept",
+    "minWeeks": 2,
+    "maxWeeks": 3,
+    "free": false,
+    "youGet": "A working prototype on your data, measured against a success target agreed up front."
+  },
+  {
+    "num": "03",
+    "name": "Implementation",
+    "minWeeks": 6,
+    "maxWeeks": 12,
+    "free": false,
+    "youGet": "A production system in your cloud or on-prem, documented and handed over with full ownership."
+  }
+]

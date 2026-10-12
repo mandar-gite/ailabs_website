@@ -29,7 +29,7 @@ Market position: India-based, selling globally. India is the origin and a source
 ## Operating Context
 
 - Owners usually arrive from a referral, LinkedIn or search, skim the homepage, and decide within a minute whether the studio "gets" their kind of business.
-- Engagement model as stated on `/about`: 01 Discovery, 02 Proof of Concept, 03 Implementation.
+- Engagement model as stated on `/about` and the homepage: 01 Discovery (1 week, free), 02 Proof of Concept (2 to 3 weeks), 03 Implementation (6 to 12 weeks); usually 9 to 16 weeks end to end. Confirmed by the founder 2026-10-12. Source of truth: `src/data/engagement.json`.
 - Practice areas from `src/data/solutions.json`: Finance Automation, Operational Intelligence, Content & Marketing Intelligence, Document & OCR Systems, Data Engineering & Integration. `public/llms.txt` also lists On-Premises LLM Systems.
 - New project entries are drafted with the `/create_websitebrief` skill into `website_brief/<id>.md` and hand-assembled into `src/data/projects.json` by the founder. Nothing writes `projects.json` automatically.
 
