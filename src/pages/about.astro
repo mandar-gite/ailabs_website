@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import PageHeader from "../components/PageHeader.astro";
 import LogoMark from "../components/LogoMark.astro";
 
 const seoTitle = "About | 72° AI LABS";
@@ -11,12 +12,13 @@ const ogImage = "/og-about.jpg"; // Create this 1200x630 image for social sharin
 
 <Layout title={seoTitle} description={seoDescription} ogImage={ogImage}>
   <Nav />
-  <main class="about-page">
-    <p class="sr-only">TL;DR: Founded by Mandar Gite (BITS Pilani). We build frugal, context-aware AI for growing businesses — smaller pilots, clear KPIs, clean handovers. No bloat, no lock-in.</p>
+  <main id="main-content" class="about-page">
+    <p class="sr-only">TL;DR: Founded by Mandar Gite (BITS Pilani). We build frugal, context-aware AI for growing businesses: smaller pilots, clear KPIs, clean handovers. No bloat, no lock-in.</p>
 
     <!-- Hero Section -->
     <section class="about-hero">
       <div class="max-w-[1200px] mx-auto px-6 lg:px-8 py-6 lg:py-8 text-left">
+        <PageHeader title="About 72° AI LABS" />
         <p class="hero-intro">
           We build frugal, context-aware AI that converts scattered business data into clear, usable decisions. Finance, ops, sales, support, marketing, logistics—stitched together and turned into working intelligence that improves how the business runs, not just how it reports.
         </p>

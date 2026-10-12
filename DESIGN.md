@@ -284,4 +284,4 @@ The hero graphic: a white 20px-cornered window with Showpiece shadow, a Cool Mis
 - **Don't** use the logo serif or any second typeface for headings.
 - **Don't** stretch, recolour, shadow or filter the logo (per `docs/Brand_Kit.md`).
 - **Don't** float or animate anything at rest beyond the hero pipeline window and its metric card.
-- **Don't** rely on `src/styles/home.css` (legacy, still imported by `src/layouts/Layout.astro`); its `.hero` and `.cta-section` rules leak centring that pages currently override.
+- **Don't** add global page-section styles (`.hero`, `.cta-section`, `.container`) to a shared stylesheet. The legacy `home.css` did this and leaked into every page; it was removed on 2026-10-12. Keep section styles scoped to their page or component.

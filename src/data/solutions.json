@@ -9,7 +9,7 @@
     "id": "operational-intelligence",
     "name": "Operational Intelligence",
     "description": "Real-time insights and automation for operational workflows across industries.",
-    "projects": ["callmind", "cascade", "hospitality-hub", "tire-analytics"]
+    "projects": ["callmind", "hospitality-hub", "tire-analytics"]
   },
   {
     "id": "document-ocr",
@@ -21,6 +21,6 @@
     "id": "data-engineering",
     "name": "Data Engineering & Integration",
     "description": "Robust data pipelines, feature engineering, and advanced modeling for complex datasets.",
-    "projects": ["nextsurge", "usedcar"]
+    "projects": ["nextsurge"]
   }
 ]

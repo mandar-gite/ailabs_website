@@ -1,7 +1,6 @@
 ---
 // Fonts are loaded via Google Fonts in global.css
 import '../styles/global.css';
-import '../styles/home.css';
 import ExitIntentPopup from '../components/ExitIntentPopup.astro';
 
 export interface ArticleMeta {
@@ -18,9 +17,11 @@ export interface Props {
     ogImage?: string;
     pageType?: 'website' | 'article';
     articleMeta?: ArticleMeta;
+    noindex?: boolean;
+    exitPopup?: boolean;
 }
 
-const { title, description, canonical, ogImage, pageType = 'website', articleMeta } = Astro.props;
+const { title, description, canonical, ogImage, pageType = 'website', articleMeta, noindex = false, exitPopup = true } = Astro.props;
 
 // Generate canonical URL
 const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
@@ -41,6 +42,7 @@ const APOLLO_APP_ID = import.meta.env.PUBLIC_APOLLO_APP_ID;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
 
     <!-- SEO & Favicons -->
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -203,7 +205,7 @@ const APOLLO_APP_ID = import.meta.env.PUBLIC_APOLLO_APP_ID;
 <body class="antialiased leading-relaxed bg-white text-[#1E293B]">
     <a href="#main-content" class="skip-to-main">Skip to main content</a>
     <slot />
-    <ExitIntentPopup />
+    {exitPopup && <ExitIntentPopup />}
     <style>
         .skip-to-main {
             position: absolute;

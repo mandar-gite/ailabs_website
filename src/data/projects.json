@@ -31,28 +31,38 @@
   {
     "id": "callmind",
     "name": "CallMind",
-    "shortBlurb": "Speech understanding for calls: transcription, topic extraction, and summaries.",
-    "tagline": "Structured intelligence from noisy sales and service calls.",
-    "description": "Automatically transcribe and analyze sales and support calls to understand customer needs, coach agents, and spot trends—without listening to hours of recordings.",
+    "shortBlurb": "Audit every call for script compliance automatically, instead of sampling a handful by hand.",
+    "tagline": "Script-compliance scoring for call audio, without manual listening.",
+    "description": "A GPU-accelerated pipeline that transcribes Hindi calls, separates speakers and scores each call against its campaign script, using a mix of multilingual embeddings and lexical matching. Raw audio becomes a structured compliance report for every call.",
     "category": "Operational Intelligence",
     "featured": false,
     "dataTypes": [
-      "Call recordings",
-      "Transcripts",
-      "Agent notes"
+      "Hindi call recordings",
+      "Campaign scripts",
+      "ASR transcripts",
+      "Ground-truth checklists"
     ],
     "mlMethods": [
-      "ASR",
-      "Diarisation",
-      "Topic extraction",
-      "Sentiment modelling"
+      "Whisper ASR",
+      "Speaker diarisation (pyannote)",
+      "Multilingual sentence embeddings",
+      "Hybrid LLM + lexical matching",
+      "LLM-assisted ground-truth extraction"
     ],
     "challenges": [
-      "Noisy audio",
-      "Accent variability",
-      "Long-call coherence"
+      "Noisy call audio",
+      "Hindi accent variability",
+      "Paraphrase vs literal script matching",
+      "Objective compliance scoring at scale"
     ],
-    "tags": ["Speech-to-Text", "Transcription", "Call Analytics", "NLP"]
+    "tags": [
+      "Speech-to-Text",
+      "Call Analytics",
+      "Compliance",
+      "Hindi ASR",
+      "Speaker Diarization",
+      "NLP"
+    ]
   },
   {
     "id": "nextsurge",
