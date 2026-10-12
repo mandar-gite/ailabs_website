@@ -20,9 +20,10 @@ npm run preview        # serve dist/ locally
 npm run test:e2e                          # builds with analytics off, then runs Playwright
 npm run test:e2e:ui                       # same, in Playwright's UI mode
 node --test tests/apollo-tracker.test.mjs # Apollo tracker env var check (2 full builds, slow)
+node --test tests/lead-worker.test.mjs    # lead-capture Worker, HubSpot mocked
 ```
 
-The e2e suite in `tests/e2e/` runs on desktop and mobile viewports. Every request leaving localhost is stubbed (`tests/e2e/fixtures.ts`), so tests never send real leads to HubSpot or Formspree.
+CI runs the Worker tests and the e2e suite on every pull request, and again before each deploy; a failure blocks the deploy. The e2e suite in `tests/e2e/` runs on desktop and mobile viewports. Every request leaving localhost is stubbed (`tests/e2e/fixtures.ts`), so tests never send real leads to HubSpot or Formspree.
 
 ## Where things live
 
