@@ -14,8 +14,8 @@ export function getStaticPaths() {
 
 const { project } = Astro.props as { project: Project };
 
-const seoTitle = `${project.name} | 72° AI Labs`;
-const seoDescription = project.tagline;
+const seoTitle = `${project.seoTitle ?? project.name} | 72° AI LABS`;
+const seoDescription = project.metaDescription ?? project.tagline;
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
