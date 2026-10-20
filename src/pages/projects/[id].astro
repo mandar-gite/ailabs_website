@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import projectsData from '../../data/projects.json';
+import solutionsData from '../../data/solutions.json';
 import type { Project } from '../../types';
 
 // One page per project in projects.json (hidden entries excluded).
@@ -14,16 +15,46 @@ export function getStaticPaths() {
 
 const { project } = Astro.props as { project: Project };
 
-const seoTitle = `${project.name} | 72° AI Labs`;
-const seoDescription = project.tagline;
+const seoTitle = `${project.seoTitle ?? project.name} | 72° AI LABS`;
+const seoDescription = project.metaDescription ?? project.tagline;
+
+const related = (projectsData as (Project & { hidden?: boolean })[]).filter(
+  (p) => !p.hidden && p.category === project.category && p.id !== project.id
+);
+const solution = solutionsData.find((s) => s.name === project.category);
+
+const pageURL = `https://72ai.in/projects/${project.id}/`;
+const breadcrumbLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://72ai.in/" },
+    { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://72ai.in/projects/" },
+    { "@type": "ListItem", "position": 3, "name": project.name, "item": pageURL }
+  ]
+};
+const creativeWorkLD = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": project.name,
+  "description": seoDescription,
+  "url": pageURL,
+  "about": project.category,
+  "keywords": project.tags.join(', '),
+  "creator": { "@id": "https://72ai.in/#organization" }
+};
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLD)} />
+    <script type="application/ld+json" set:html={JSON.stringify(creativeWorkLD)} />
+  </Fragment>
   <Nav />
   <main id="main-content" class='project-detail'>
     <div class='max-w-[1200px] mx-auto px-6 lg:px-8 py-20 lg:py-24'>
       <nav class='breadcrumb'>
-        <a href='/projects'>Projects</a>
+        <a href='/projects/'>Projects</a>
         <span class='separator'>/</span>
         <span class='current'>{project.name}</span>
       </nav>
@@ -59,6 +90,20 @@ const seoDescription = project.tagline;
           </div>
         </div>
       </section>
+      {(related.length > 0 || solution) && (
+        <section class='related-section' data-related>
+          <h2 class='section-heading'>Related projects</h2>
+          <div class='tech-grid'>
+            {related.map((p) => (
+              <a href={`/projects/${p.id}/`} class='tech-card related-card'>
+                <h3 class='tech-card-title'>{p.name}</h3>
+                <p class='related-blurb'>{p.shortBlurb}</p>
+              </a>
+            ))}
+          </div>
+          {solution && <a href={`/solutions/#${solution.id}`} class='related-more'>More {project.category} work →</a>}
+        </section>
+      )}
       <section class='cta-section'>
         <div class='cta-card'>
           <h3>Interested in this solution?</h3>
@@ -67,7 +112,7 @@ const seoDescription = project.tagline;
         </div>
       </section>
       <div class='back-link'>
-        <a href='/projects'>← Back to All Projects</a>
+        <a href='/projects/'>← Back to All Projects</a>
       </div>
     </div>
   </main>
@@ -76,13 +121,13 @@ const seoDescription = project.tagline;
 
 <style>
   .project-detail { background: var(--brand-cream); min-height: 100vh; }
-  .breadcrumb { font-size: 0.875rem; color: rgba(12, 26, 63, 0.6); margin-bottom: 2rem; }
+  .breadcrumb { font-size: 0.875rem; color: var(--wp-ink-2); margin-bottom: 2rem; }
   .breadcrumb a { color: var(--brand-blue); text-decoration: none; transition: color 0.2s ease; }
   .breadcrumb a:hover { color: var(--brand-gold); }
   .separator { margin: 0 0.5rem; }
-  .current { color: rgba(12, 26, 63, 0.6); }
+  .current { color: var(--wp-ink-2); }
   .project-header { margin-bottom: 3rem; }
-  .category-badge { display: inline-block; background: var(--brand-gold); color: white; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+  .category-badge { display: inline-block; background: var(--brand-gold); color: var(--wp-navy); padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
   .project-title { font-size: 3rem; font-weight: 800; color: var(--brand-blue); margin: 0 0 1rem 0; line-height: 1.2; }
   .project-tagline { font-size: 1.25rem; color: rgba(12, 26, 63, 0.75); line-height: 1.6; }
   .tech-section { margin-bottom: 3rem; }
@@ -96,6 +141,11 @@ const seoDescription = project.tagline;
   .tech-list.challenges li { font-style: italic; color: rgba(12, 26, 63, 0.7); }
   .description-section { margin-bottom: 3rem; padding: 2rem; background: white; border-radius: 8px; border: 2px solid rgba(12, 26, 63, 0.1); }
   .project-description { font-size: 1.125rem; line-height: 1.8; color: rgba(12, 26, 63, 0.85); }
+  .related-section { margin-bottom: 3rem; }
+  .related-card { display: block; text-decoration: none; transition: border-color 0.2s ease; }
+  .related-card:hover { border-color: var(--wp-gold); }
+  .related-blurb { margin: 0; color: var(--wp-ink-2); line-height: 1.6; }
+  .related-more { display: inline-block; margin-top: 1.25rem; color: var(--wp-ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--wp-gold); }
   .cta-section { margin-bottom: 3rem; }
   .cta-card { background: var(--brand-blue); color: white; padding: 1.75rem 2rem; border-radius: 12px; text-align: left; max-width: 640px; }
   .cta-card h3 { font-size: 1.2rem; margin: 0 0 0.4rem 0; }

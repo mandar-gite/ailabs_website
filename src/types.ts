@@ -5,6 +5,8 @@ export interface Project {
   name: string;
   shortBlurb: string;
   tagline: string;
+  seoTitle?: string;
+  metaDescription?: string;
   description: string;
   category: string;
   featured: boolean;

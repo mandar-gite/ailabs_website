@@ -14,7 +14,7 @@ test('privacy page names every data processor and the contact address', async ({
 test('footer links to the privacy policy on every page type', async ({ page }) => {
   for (const path of ['/', '/projects', '/blog']) {
     await page.goto(path);
-    await expect(page.locator('footer a[href="/privacy"]'), path).toBeVisible();
+    await expect(page.locator('footer a[href="/privacy/"]'), path).toBeVisible();
   }
 });
 
@@ -22,6 +22,6 @@ test.describe('consent banner', () => {
   test.use({ consent: null });
   test('links to the privacy policy', async ({ page }) => {
     await page.goto('/');
-    await expect(page.locator('#consent-banner a[href="/privacy"]')).toBeVisible();
+    await expect(page.locator('#consent-banner a[href="/privacy/"]')).toBeVisible();
   });
 });

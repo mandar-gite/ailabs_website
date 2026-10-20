@@ -13,7 +13,7 @@ const sortedPosts = allPosts.sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
-const seoTitle = "Blog | 72° AI Labs";
+const seoTitle = "Blog | 72° AI LABS";
 const seoDescription = "Practical insights on AI implementation, real-world case studies, and operational intelligence for growing businesses.";
 const ogImage = "/og-blog.jpg"; // Create this 1200x630 image for social sharing
 
@@ -44,7 +44,7 @@ function formatDate(date: Date): string {
       <div class="posts-grid">
         {sortedPosts.map((post) => (
           <article class="post-card">
-            <a href={`/blog/${post.slug}`} class="post-link">
+            <a href={`/blog/${post.slug}/`} class="post-link">
               <div class="post-meta">
                 <span class="post-category">{post.data.category}</span>
               </div>
@@ -141,14 +141,14 @@ function formatDate(date: Date): string {
   .post-category {
     font-size: 0.875rem;
     font-weight: 600;
-    color: var(--brand-gold);
+    color: var(--wp-ink-2);
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
 
   .featured-badge {
     background: var(--brand-gold);
-    color: white;
+    color: var(--wp-navy);
     font-size: 0.7rem;
     font-weight: 600;
     padding: 0.25rem 0.5rem;

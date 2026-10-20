@@ -13,7 +13,7 @@ export interface Props {
 const { project } = Astro.props;
 ---
 
-<a href={`/projects/${project.id}`} class="project-card group">
+<a href={`/projects/${project.id}/`} class="project-card group">
   <div class="card-header">
     <h3 class="project-name">{project.name}</h3>
     {project.featured && <span class="featured-badge">Featured</span>}
@@ -70,7 +70,7 @@ const { project } = Astro.props;
 
   .project-category {
     font-size: 0.875rem;
-    color: var(--brand-gold);
+    color: var(--wp-ink-2);
     font-weight: 600;
     margin: 0 0 0.75rem 0;
   }

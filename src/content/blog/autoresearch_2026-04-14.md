@@ -1,5 +1,6 @@
 ---
 title: "I Ran Karpathy's AutoResearch on a $300 GPU. The Agent Discovered Something the H100 Benchmarks Won't Show You."
+seoTitle: "Karpathy's AutoResearch on a $300 RTX 3060"
 description: "57 autonomous experiments, 7 hours, RTX 3060. Why smaller models win on consumer hardware — and what the agent discovered that inverts the usual scaling playbook."
 pubDate: 2026-04-14
 author: "Mandar Gite"
@@ -130,7 +131,7 @@ By 7:15 AM, the agent had completed 55 experiments. It stalled on experiment 56 
 
 Here's what happened, broken into phases.
 
-![57 autonomous experiments: kept (green) vs discarded (red), with the best-so-far ratchet line in blue](/blog/chart_experiment_trajectory_2.png)
+<img src="/blog/chart_experiment_trajectory_2.webp" alt="57 autonomous experiments: kept (green) vs discarded (red), with the best-so-far ratchet line in blue" width="1600" height="795" loading="lazy" decoding="async">
 
 ### Phase 1: Architecture Fails, Hyperparameters Win (Experiments 1-11)
 
@@ -200,7 +201,7 @@ Some spectacular failures in this phase: weight tying cratered to val_bpb 3.21 (
 
 By experiment ~50, the agent was trying increasingly speculative changes (cosine warmdown, factored value embeddings, batch sizes between powers of 2) with everything regressing. The search space was effectively exhausted at this model scale.
 
-![Where the 23.4% improvement came from: batch size reduction and model shrinking drove 80% of total gains](/blog/chart_phase_breakdown_1.png)
+<img src="/blog/chart_phase_breakdown_1.webp" alt="Where the 23.4% improvement came from: batch size reduction and model shrinking drove 80% of total gains" width="1600" height="794" loading="lazy" decoding="async">
 
 ## Final Results
 
@@ -214,7 +215,7 @@ By experiment ~50, the agent was trying increasingly speculative changes (cosine
 
 A 23% improvement in prediction quality. A model one-third the original size. Half the VRAM. Nearly 10x more training steps per run. All discovered autonomously by an agent running overnight on a consumer GPU.
 
-![Before and after: val_bpb, parameters, VRAM, and steps per run](/blog/chart_before_after_1.png)
+<img src="/blog/chart_before_after_1.webp" alt="Before and after: val_bpb, parameters, VRAM, and steps per run" width="1600" height="556" loading="lazy" decoding="async">
 
 ## Seven Things I Learned
 
@@ -253,7 +254,7 @@ The search trajectory looks like this: **scale up (fails) → tune what you have
 
 AutoResearch runs a loop: propose a change, test it against a metric, keep or discard. The repo is built for LLM training. But the loop underneath is generic.
 
-Any optimization problem where you can (a) define a score, (b) parameterize changes, and (c) test automatically fits this pattern. Expense classification accuracy. Call quality scoring. Pricing model error rates. Ad copy click-through rates. Template rendering performance (Shopify's CEO pointed the same pattern at Liquid, Shopify's 20-year-old Ruby template engine, and reported 53% faster rendering from 93 automated commits across ~120 experiments. He noted the results were "probably somewhat overfit," but the structural optimizations the agent found were real).
+Any optimization problem where you can (a) define a score, (b) parameterize changes, and (c) test automatically fits this pattern. [Expense classification accuracy](/projects/fastaccounting/). [Call quality scoring](/projects/callmind/). Pricing model error rates. Ad copy click-through rates. Template rendering performance (Shopify's CEO pointed the same pattern at Liquid, Shopify's 20-year-old Ruby template engine, and reported 53% faster rendering from 93 automated commits across ~120 experiments. He noted the results were "probably somewhat overfit," but the structural optimizations the agent found were real).
 
 The interesting finding from this 3060 run is that the agent doesn't just tune parameters. It discovers structural insights about its constraints. It figured out that on this hardware, under this time budget, the optimal strategy inverts the usual scaling playbook. That kind of constraint-aware reasoning is what makes the loop more than just grid search with an LLM bolted on.
 

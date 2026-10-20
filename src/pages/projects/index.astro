@@ -10,7 +10,7 @@ import type { Project } from "../../types";
 const projects = (projectsData as Project[]).filter((p: any) => !p.hidden);
 const categories = [...new Set(projects.map(p => p.category))];
 
-const seoTitle = "Projects | 72° AI Labs";
+const seoTitle = "Projects | 72° AI LABS";
 const seoDescription = "Practical AI built for real business systems. Local models, RAG pipelines, OCR engines, forecasting stacks, and agentic workflows that run on everyday data.";
 ---
 
@@ -35,6 +35,7 @@ const seoDescription = "Practical AI built for real business systems. Local mode
       </div>
 
       <!-- Grid View -->
+      <h2 class="sr-only">All projects</h2>
       <div class="projects-grid" id="projects-grid">
         {projects.map(project => (
           <div class="grid-item" data-category={project.category}>

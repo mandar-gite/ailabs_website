@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-10-20
+
+### Added
+- Optional `seoTitle` and `metaDescription` for project pages, and `seoTitle` for blog posts, so search titles can differ from the on-page heading
+- LinkedIn company and founder profiles in the Organization schema (`sameAs`)
+- `--wp-gold-large` (#B8872B) token for gold text at 24px and up, documented in DESIGN.md
+- Each project page links to the other projects in its practice area and to its section on `/solutions`
+- BreadcrumbList and CreativeWork schema on all 10 project pages
+- Blog posts link into the projects and solutions they mention; the multi-agent post links to the free Voice DNA template; the homepage links to `/about` from "How we work"
+- Specs for the sitemap, project SEO, brand titles, site-wide colour contrast, trailing-slash URLs, related projects and content links
+
+### Changed
+- All 10 project pages carry buyer-term titles (60 chars or fewer) and 131 to 157 char meta descriptions
+- Every page title uses the `72° AI LABS` brand; the AutoResearch post's search title is now 56 chars
+- Small gold and grey text moved to `--wp-ink-2`; gold badges now carry navy text
+- AutoResearch charts served as 1600px lazy WebP (404 KB down to 72 KB)
+- Code blocks use the `github-dark-high-contrast` theme
+- Stopped loading Inter from Google Fonts and removed the unused `@fontsource/inter` package
+- Valent's description now opens with "cap table and liquidation waterfall"
+
+### Fixed
+- Sitemap listed `/about`, `/projects` and `/solutions` twice, included noindex and redirect pages, and stamped every page with the build time
+- `/careers` canonical pointed at a URL that 301s
+- 31 WCAG AA contrast failures across 23 pages (Lighthouse accessibility now 100 on the pages tested)
+- `/projects` skipped from `<h1>` to `<h3>`
+- Internal links, canonicals and JSON-LD URLs pointed at slashless paths that 301 on GitHub Pages (`/projects` alone appeared 99 times in the build); every one now ends in `/`, including the retired-project redirects and the contact and careers thank-you pages
+
 ## [0.8.0] - 2026-10-12
 
 ### Added

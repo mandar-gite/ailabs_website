@@ -1,5 +1,5 @@
 ---
-title: "Welcome to 72° AI Labs Blog"
+title: "Welcome to 72° AI LABS Blog"
 description: "Introducing our blog: practical insights on AI implementation, real-world case studies, and operational intelligence for Indian SMBs."
 pubDate: 2025-12-15
 author: "Mandar Gite"
@@ -25,7 +25,7 @@ Welcome to the 72° AI Labs blog. This space is dedicated to sharing practical i
 Our blog will cover:
 
 - **Real Implementation Stories**: How businesses transform scattered data into actionable decisions
-- **Technical Deep Dives**: Practical guides on RAG pipelines, OCR systems, and forecasting models
+- **Technical Deep Dives**: Practical guides on RAG pipelines, [OCR systems](/solutions/#document-ocr), and [forecasting models](/projects/fastaccounting/)
 - **Industry Insights**: Specific use cases in F&B, manufacturing, and cross-functional SME operations
 - **Frugal Engineering**: Building effective AI systems without enterprise budgets
 

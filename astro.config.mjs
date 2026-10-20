@@ -10,10 +10,10 @@ export default defineConfig({
   site: 'https://72ai.in',
   // Dropped project pages: send old links to the projects index
   redirects: {
-    '/projects/martech': '/projects',
-    '/projects/insightbridge': '/projects',
-    '/projects/hospitality-hub': '/projects',
-    '/projects/tire-analytics': '/projects',
+    '/projects/martech': '/projects/',
+    '/projects/insightbridge': '/projects/',
+    '/projects/hospitality-hub': '/projects/',
+    '/projects/tire-analytics': '/projects/',
   },
   ...(basePath ? { base: basePath } : {}),
   integrations: [
@@ -21,13 +21,9 @@ export default defineConfig({
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
-      lastmod: new Date(),
-      customPages: [
-        'https://72ai.in/',
-        'https://72ai.in/about',
-        'https://72ai.in/solutions',
-        'https://72ai.in/projects'
-      ],
+      // noindex and meta-refresh pages; tests/e2e/sitemap.spec.ts catches new ones
+      filter: (page) =>
+        !['/thanks/', '/careers/thanks/', '/en/careers/'].includes(new URL(page).pathname),
       serialize(item) {
         // Set custom priority and changefreq based on URL
         if (item.url === 'https://72ai.in/') {
@@ -55,5 +51,9 @@ export default defineConfig({
   },
   build: {
     assets: 'assets'
+  },
+  markdown: {
+    // The default github-dark comment colour is 3.05:1 on its own background
+    shikiConfig: { theme: 'github-dark-high-contrast' }
   }
 });
