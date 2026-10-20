@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import projectsData from '../../data/projects.json';
+import solutionsData from '../../data/solutions.json';
 import type { Project } from '../../types';
 
 // One page per project in projects.json (hidden entries excluded).
@@ -16,6 +17,11 @@ const { project } = Astro.props as { project: Project };
 
 const seoTitle = `${project.seoTitle ?? project.name} | 72° AI LABS`;
 const seoDescription = project.metaDescription ?? project.tagline;
+
+const related = (projectsData as (Project & { hidden?: boolean })[]).filter(
+  (p) => !p.hidden && p.category === project.category && p.id !== project.id
+);
+const solution = solutionsData.find((s) => s.name === project.category);
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
@@ -59,6 +65,20 @@ const seoDescription = project.metaDescription ?? project.tagline;
           </div>
         </div>
       </section>
+      {(related.length > 0 || solution) && (
+        <section class='related-section' data-related>
+          <h2 class='section-heading'>Related projects</h2>
+          <div class='tech-grid'>
+            {related.map((p) => (
+              <a href={`/projects/${p.id}/`} class='tech-card related-card'>
+                <h3 class='tech-card-title'>{p.name}</h3>
+                <p class='related-blurb'>{p.shortBlurb}</p>
+              </a>
+            ))}
+          </div>
+          {solution && <a href={`/solutions/#${solution.id}`} class='related-more'>More {project.category} work →</a>}
+        </section>
+      )}
       <section class='cta-section'>
         <div class='cta-card'>
           <h3>Interested in this solution?</h3>
@@ -96,6 +116,11 @@ const seoDescription = project.metaDescription ?? project.tagline;
   .tech-list.challenges li { font-style: italic; color: rgba(12, 26, 63, 0.7); }
   .description-section { margin-bottom: 3rem; padding: 2rem; background: white; border-radius: 8px; border: 2px solid rgba(12, 26, 63, 0.1); }
   .project-description { font-size: 1.125rem; line-height: 1.8; color: rgba(12, 26, 63, 0.85); }
+  .related-section { margin-bottom: 3rem; }
+  .related-card { display: block; text-decoration: none; transition: border-color 0.2s ease; }
+  .related-card:hover { border-color: var(--wp-gold); }
+  .related-blurb { margin: 0; color: var(--wp-ink-2); line-height: 1.6; }
+  .related-more { display: inline-block; margin-top: 1.25rem; color: var(--wp-ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--wp-gold); }
   .cta-section { margin-bottom: 3rem; }
   .cta-card { background: var(--brand-blue); color: white; padding: 1.75rem 2rem; border-radius: 12px; text-align: left; max-width: 640px; }
   .cta-card h3 { font-size: 1.2rem; margin: 0 0 0.4rem 0; }
