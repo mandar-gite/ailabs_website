@@ -22,9 +22,34 @@ const related = (projectsData as (Project & { hidden?: boolean })[]).filter(
   (p) => !p.hidden && p.category === project.category && p.id !== project.id
 );
 const solution = solutionsData.find((s) => s.name === project.category);
+
+const pageURL = `https://72ai.in/projects/${project.id}/`;
+const breadcrumbLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://72ai.in/" },
+    { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://72ai.in/projects/" },
+    { "@type": "ListItem", "position": 3, "name": project.name, "item": pageURL }
+  ]
+};
+const creativeWorkLD = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": project.name,
+  "description": seoDescription,
+  "url": pageURL,
+  "about": project.category,
+  "keywords": project.tags.join(', '),
+  "creator": { "@id": "https://72ai.in/#organization" }
+};
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLD)} />
+    <script type="application/ld+json" set:html={JSON.stringify(creativeWorkLD)} />
+  </Fragment>
   <Nav />
   <main id="main-content" class='project-detail'>
     <div class='max-w-[1200px] mx-auto px-6 lg:px-8 py-20 lg:py-24'>
