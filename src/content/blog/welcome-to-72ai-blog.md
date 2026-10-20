@@ -1,5 +1,5 @@
 ---
-title: "Welcome to 72° AI Labs Blog"
+title: "Welcome to 72° AI LABS Blog"
 description: "Introducing our blog: practical insights on AI implementation, real-world case studies, and operational intelligence for Indian SMBs."
 pubDate: 2025-12-15
 author: "Mandar Gite"
