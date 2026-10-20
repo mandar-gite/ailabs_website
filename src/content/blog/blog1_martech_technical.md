@@ -254,12 +254,14 @@ Everything runs on a single server. No cloud dependencies for core functionality
 This architecture is the foundation. We're extending it with:
 - **Domain-specific knowledge bases** for different industries
 - **Feedback learning loops** that improve generation based on user edits
-- **Multi-modal support** for image and document analysis
-- **Integration connectors** for common Indian business platforms
+- **Multi-modal support** for image and [document analysis](/solutions/#document-ocr)
+- **Integration connectors** for common [Indian business platforms](/solutions/#data-engineering)
 
 The goal isn't to build the "smartest" AI. It's to build AI systems that reliably solve real operational problems—without the hype, without the abstraction.
 
 That's what 72° AI Labs does. Practical AI for real business systems.
+
+If you write with Claude, our free [Voice DNA template](/voice-dna/) strips the AI tells out of its drafts.
 
 
 
