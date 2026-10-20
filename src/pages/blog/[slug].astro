@@ -119,7 +119,7 @@ const breadcrumbLD = {
           <p class="post-description">{post.data.description}</p>
           <div class="post-info">
             <span class="post-author">By {post.data.author}</span>
-            <span class="separator">•</span>
+            <span class="separator" aria-hidden="true">•</span>
             <time class="post-date" datetime={post.data.pubDate.toISOString()}>
               {formatDate(post.data.pubDate)}
             </time>
@@ -179,14 +179,14 @@ const breadcrumbLD = {
   .post-category {
     font-size: 0.875rem;
     font-weight: 600;
-    color: var(--brand-gold);
+    color: var(--wp-ink-2);
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
 
   .featured-badge {
     background: var(--brand-gold);
-    color: white;
+    color: var(--wp-navy);
     font-size: 0.7rem;
     font-weight: 600;
     padding: 0.25rem 0.5rem;
@@ -293,8 +293,9 @@ const breadcrumbLD = {
   }
 
   .post-content :global(a) {
-    color: var(--brand-gold);
+    color: var(--wp-ink);
     text-decoration: underline;
+    text-decoration-color: var(--brand-gold);
     font-weight: 600;
     transition: color 0.3s ease;
   }

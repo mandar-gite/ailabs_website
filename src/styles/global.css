@@ -34,6 +34,7 @@
   --wp-line-2:     rgba(26,34,56,0.14);
   --wp-gold:       #D9A441;   /* single warm accent */
   --wp-gold-deep:  #C4902E;
+  --wp-gold-large: #B8872B;   /* gold text at 24px+ only: 3.2:1 on white */
   --wp-gold-tint:  rgba(217,164,65,0.12);
   --wp-navy:       #0C1A3F;
 

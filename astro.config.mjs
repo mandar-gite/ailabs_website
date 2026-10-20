@@ -51,5 +51,9 @@ export default defineConfig({
   },
   build: {
     assets: 'assets'
+  },
+  markdown: {
+    // The default github-dark comment colour is 3.05:1 on its own background
+    shikiConfig: { theme: 'github-dark-high-contrast' }
   }
 });
