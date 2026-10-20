@@ -130,7 +130,7 @@ By 7:15 AM, the agent had completed 55 experiments. It stalled on experiment 56 
 
 Here's what happened, broken into phases.
 
-![57 autonomous experiments: kept (green) vs discarded (red), with the best-so-far ratchet line in blue](/blog/chart_experiment_trajectory_2.png)
+<img src="/blog/chart_experiment_trajectory_2.webp" alt="57 autonomous experiments: kept (green) vs discarded (red), with the best-so-far ratchet line in blue" width="1600" height="795" loading="lazy" decoding="async">
 
 ### Phase 1: Architecture Fails, Hyperparameters Win (Experiments 1-11)
 
@@ -200,7 +200,7 @@ Some spectacular failures in this phase: weight tying cratered to val_bpb 3.21 (
 
 By experiment ~50, the agent was trying increasingly speculative changes (cosine warmdown, factored value embeddings, batch sizes between powers of 2) with everything regressing. The search space was effectively exhausted at this model scale.
 
-![Where the 23.4% improvement came from: batch size reduction and model shrinking drove 80% of total gains](/blog/chart_phase_breakdown_1.png)
+<img src="/blog/chart_phase_breakdown_1.webp" alt="Where the 23.4% improvement came from: batch size reduction and model shrinking drove 80% of total gains" width="1600" height="794" loading="lazy" decoding="async">
 
 ## Final Results
 
@@ -214,7 +214,7 @@ By experiment ~50, the agent was trying increasingly speculative changes (cosine
 
 A 23% improvement in prediction quality. A model one-third the original size. Half the VRAM. Nearly 10x more training steps per run. All discovered autonomously by an agent running overnight on a consumer GPU.
 
-![Before and after: val_bpb, parameters, VRAM, and steps per run](/blog/chart_before_after_1.png)
+<img src="/blog/chart_before_after_1.webp" alt="Before and after: val_bpb, parameters, VRAM, and steps per run" width="1600" height="556" loading="lazy" decoding="async">
 
 ## Seven Things I Learned
 

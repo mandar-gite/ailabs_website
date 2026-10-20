@@ -4,6 +4,7 @@ description: Bespoke AI systems built on a client's own data, presented with pen
 colors:
   gold: "#D9A441"
   gold-deep: "#C4902E"
+  gold-large: "#B8872B"
   gold-tint: "rgba(217,164,65,0.12)"
   navy: "#0C1A3F"
   ink: "#1A2238"
@@ -150,6 +151,7 @@ A white, near-neutral field with softened navy ink and a single warm gold that c
 
 ### Primary
 - **Pentagon Gold** (#D9A441): the one accent. Separator dots, badge dots, the 3px hover edge on cards, step-number numerals, the float-metric number, and the soft radial glow behind the hero. Decorative and graphic use only, never body text on white.
+- **Large-Text Gold** (#B8872B): gold for text at 24px and up (hero accent words, big numerals). 3.2:1 on white, so it passes WCAG AA for large text only.
 - **Burnished Gold** (#C4902E): the text-weight gold. Hero accent words and the eyebrow label. At large display sizes only (see contrast rule below).
 - **Gold Wash** (rgba(217,164,65,0.12)): tint behind the eyebrow chip and hovered card icons.
 
