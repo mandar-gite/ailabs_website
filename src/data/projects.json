@@ -236,7 +236,7 @@
     "tagline": "Source-cited preference terms, checked by a validator and confirmed by a reviewer before compute.",
     "seoTitle": "Valent: Cap Table and Liquidation Waterfall AI",
     "metaDescription": "Extracts preference terms from charters and articles of association, ties each value to a verbatim citation, and runs the liquidation waterfall after review.",
-    "description": "Valent extracts preference terms from US certificates of incorporation and Indian articles of association, with each value tied to a verbatim quote that a validator checks. A reviewer confirms every term, and the waterfall engine distributes an assumed exit value down the preference stack, with totals reconciled back to the exit value. The output distributes an assumed exit value. It does not estimate fair market value, which needs an EV-to-equity bridge and a locked valuation date.",
+    "description": "For cap table and liquidation waterfall work, Valent extracts preference terms from US certificates of incorporation and Indian articles of association, with each value tied to a verbatim quote that a validator checks. A reviewer confirms every term, and the waterfall engine distributes an assumed exit value down the preference stack, with totals reconciled back to the exit value. The output distributes an assumed exit value. It does not estimate fair market value, which needs an EV-to-equity bridge and a locked valuation date.",
     "category": "Finance Automation",
     "featured": false,
     "dataTypes": [

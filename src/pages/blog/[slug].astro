@@ -36,7 +36,7 @@ const seoTitle = `${post.data.seoTitle ?? post.data.title} | 72° AI LABS`;
 const seoDescription = post.data.description;
 // Use post-specific OG image if available, otherwise use blog default
 const ogImage = post.data.image || "/og-blog.jpg";
-const canonicalURL = new URL(`/blog/${post.slug}`, Astro.site).href;
+const canonicalURL = new URL(`/blog/${post.slug}/`, Astro.site).href;
 const ogImageURL = new URL(ogImage, Astro.site).href;
 
 const articleMeta = {
@@ -92,7 +92,7 @@ const breadcrumbLD = {
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://72ai.in" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://72ai.in/blog" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://72ai.in/blog/" },
     { "@type": "ListItem", "position": 3, "name": post.data.title, "item": canonicalURL }
   ]
 };
@@ -140,7 +140,7 @@ const breadcrumbLD = {
 
         <!-- Post Footer -->
         <footer class="post-footer">
-          <a href="/blog" class="back-link">← Back to Blog</a>
+          <a href="/blog/" class="back-link">← Back to Blog</a>
           <a href="/#contact" class="contact-link">Get in Touch</a>
         </footer>
 

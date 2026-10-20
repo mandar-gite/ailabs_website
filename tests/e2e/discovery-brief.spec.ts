@@ -30,8 +30,8 @@ test('copy button puts the exact prompt on the clipboard', async ({ page, contex
 
 test('contact form and Discovery step both link to the page', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('#contact-form a[href="/discovery-brief"]')).toBeVisible();
-  await expect(page.locator('section.process a[href="/discovery-brief"]')).toBeVisible();
+  await expect(page.locator('#contact-form a[href="/discovery-brief/"]')).toBeVisible();
+  await expect(page.locator('section.process a[href="/discovery-brief/"]')).toBeVisible();
 });
 
 test('downloadable prompt file is served', async ({ request }) => {
