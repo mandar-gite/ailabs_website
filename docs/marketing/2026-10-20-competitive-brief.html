@@ -1,0 +1,472 @@
+<title>72ai Competitor Brief</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column (68ch) with wide tables breaking out to 1100px; analyst-memo feel. */
+:root {
+  /* Institutional Finance palette (financial-palette.css) */
+  --fp-navy: #12294A; --fp-slate-blue: #2E5A86; --fp-forest-green: #3E7256; --fp-paper: #FCFCFD;
+  --fp-navy-50: #EEF1F6; --fp-navy-100: #D4DCE7; --fp-navy-300: #8298B4; --fp-navy-500: #3B5578; --fp-navy-700: #1C3B5F; --fp-navy-900: #12294A;
+  --fp-green-50: #EBF2ED; --fp-green-100: #CBE0D2; --fp-green-300: #8FBB9F; --fp-green-500: #5A9070; --fp-green-700: #3E7256; --fp-green-900: #274B39;
+  --fp-slate-50: #EEF2F7; --fp-slate-100: #D3DEEA; --fp-slate-300: #93AAC4; --fp-slate-500: #4E739A; --fp-slate-700: #2E5A86; --fp-slate-900: #1E3F62;
+  --fp-ink: #16283F; --fp-slate-600: #5A6880; --fp-muted: #8A94A6; --fp-line: #D8DCE3; --fp-mist: #EEF1F6;
+  --fp-success: #3E7256; --fp-warning: #C0803A; --fp-alert: #B23B3B;
+
+  /* Page tokens */
+  --bg: var(--fp-paper);
+  --surface: #FFFFFF;
+  --mist: var(--fp-mist);
+  --fg: var(--fp-ink);
+  --fg-soft: var(--fp-slate-600);
+  --heading: var(--fp-navy);
+  --line: var(--fp-line);
+  --link: var(--fp-slate-blue);
+  --accent: var(--fp-forest-green);
+  --accent-soft: var(--fp-green-50);
+  --us: var(--fp-forest-green);
+  --them: var(--fp-slate-500);
+  --warn: var(--fp-warning);
+  --alert: var(--fp-alert);
+  --warn-soft: #F7EDE1;
+  --alert-soft: #F6E4E4;
+
+  --f-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0C1726; --surface: #12213A; --mist: #172A45; --fg: #DCE3EC; --fg-soft: #A3B1C4; --heading: #EEF1F6;
+    --line: #2A3D5A; --link: #93AAC4; --accent: #8FBB9F; --accent-soft: #1A3326; --us: #8FBB9F; --them: #93AAC4;
+    --warn: #D9A160; --alert: #E07C7C; --warn-soft: #3A2C1A; --alert-soft: #3A1E22; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0C1726; --surface: #12213A; --mist: #172A45; --fg: #DCE3EC; --fg-soft: #A3B1C4; --heading: #EEF1F6;
+  --line: #2A3D5A; --link: #93AAC4; --accent: #8FBB9F; --accent-soft: #1A3326; --us: #8FBB9F; --them: #93AAC4;
+  --warn: #D9A160; --alert: #E07C7C; --warn-soft: #3A2C1A; --alert-soft: #3A1E22; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--f-body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+}
+.wrap { max-width: 1100px; margin: 0 auto; display: grid; gap: 56px; }
+.col { max-width: 68ch; }
+h1, h2, h3 { font-family: var(--f-display); color: var(--heading); text-wrap: balance; line-height: 1.2; margin: 0; }
+h1 { font-size: clamp(2rem, 4.5vw, 2.9rem); }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.15rem; }
+p { margin: 0; }
+a { color: var(--link); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+section { display: grid; gap: 18px; min-width: 0; }
+.eyebrow { font-family: var(--f-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-soft); }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 20px; font-family: var(--f-mono); font-size: 0.8rem; color: var(--fg-soft); }
+.lede { font-size: 1.15rem; color: var(--fg); }
+.stack { display: grid; gap: 12px; }
+
+header.top { display: grid; gap: 16px; border-bottom: 1px solid var(--line); padding-bottom: 28px; }
+
+.callouts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.callout { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); padding: 16px 18px; display: grid; gap: 6px; min-width: 0; }
+.callout.threat { border-left-color: var(--warn); }
+.callout .k { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-soft); }
+
+.scroll { overflow-x: auto; border: 1px solid var(--line); background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.88rem; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+thead th { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-soft); background: var(--mist); white-space: nowrap; }
+tbody th { font-weight: 600; color: var(--heading); white-space: nowrap; }
+td.us, th.us { background: var(--accent-soft); }
+.matrix td { min-width: 170px; }
+.num { font-variant-numeric: tabular-nums; font-family: var(--f-mono); }
+
+.pill { display: inline-block; font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
+.pill.hi { background: var(--alert-soft); color: var(--alert); }
+.pill.md { background: var(--warn-soft); color: var(--warn); }
+.pill.lo { background: var(--mist); color: var(--fg-soft); }
+.pill.y { background: var(--accent-soft); color: var(--accent); }
+
+.profiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.card .sub { font-family: var(--f-mono); font-size: 0.75rem; color: var(--fg-soft); }
+.card blockquote { margin: 0; font-family: var(--f-display); font-size: 1.02rem; color: var(--heading); }
+.card dl { margin: 0; display: grid; gap: 6px; font-size: 0.9rem; }
+.card dt { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-soft); }
+.card dd { margin: 0 0 4px; }
+.group-label { font-family: var(--f-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-soft); border-top: 1px solid var(--line); padding-top: 14px; }
+
+.map { background: var(--surface); border: 1px solid var(--line); padding: 12px; overflow-x: auto; }
+.map svg { display: block; width: 100%; min-width: 520px; height: auto; }
+.map text { font-family: var(--f-body); }
+
+ol.actions { margin: 0; padding-left: 1.4em; display: grid; gap: 14px; }
+ol.actions li::marker { font-family: var(--f-mono); color: var(--accent); }
+ul { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+.sources { font-size: 0.82rem; color: var(--fg-soft); columns: 2 320px; column-gap: 32px; }
+.sources a { word-break: break-word; }
+.sources li { break-inside: avoid; }
+footer { border-top: 1px solid var(--line); padding-top: 20px; font-size: 0.85rem; color: var(--fg-soft); display: grid; gap: 8px; }
+</style>
+
+<div class="wrap">
+
+<header class="top">
+  <span class="eyebrow">Competitive brief</span>
+  <h1>72° AI LABS and 8 Indian AI firms</h1>
+  <p class="lede col">2 seeds you named (Cere Labs, DataChamps), 4 lookalikes and 2 larger benchmarks, compared on positioning, proof, price and content.</p>
+  <div class="meta">
+    <span>Research date: 20 Oct 2026</span>
+    <span>Sources: company sites, directories, news</span>
+    <span>Status: draft for agency briefing</span>
+  </div>
+</header>
+
+<section>
+  <h2>Executive summary</h2>
+  <div class="col stack">
+    <p>The field splits in 2. Enterprise players (Exponentia, Talentica, Cogniquest, Cere Labs) carry logos, partner badges and certifications. SME-facing players (DataChamps, Magenta, FutureSmart, Agility Tech) carry thin proof and quiet or mass-produced content.</p>
+    <p>Nobody in the set says "Tally" or "GST" on their homepage, and nobody publishes a price. 72ai already has both raw ingredients: a Tally project with a measured result and a public engagement model with weeks attached.</p>
+  </div>
+  <div class="callouts">
+    <div class="callout">
+      <span class="k">Biggest opportunity</span>
+      <p><strong>Own "custom AI on your Tally books" for mid-sized Indian firms.</strong> The space between enterprise doc-AI platforms and dormant SME dashboard tools is empty, and FastAccounting's 95.9% figure is the proof nobody else has.</p>
+    </div>
+    <div class="callout threat">
+      <span class="k">Biggest threat</span>
+      <p><strong>Speed claims are getting commoditised.</strong> Agility Tech says "Production AI in 3-8 Weeks" and Talentica's DevX AI Pods claim 50% faster delivery. 72ai's 2-3 week PoC stops standing out unless it comes with named, measured results.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Positioning map</h2>
+  <p class="col">Horizontal: who they sell to. Vertical: whether the buyer gets a product or a build. Placement is a judgement from each company's own site, plotted on one scale.</p>
+  <div class="map">
+    <svg viewBox="0 0 760 470" role="img" aria-labelledby="mapTitle mapDesc">
+      <title id="mapTitle">Positioning map of 72ai and 8 competitors</title>
+      <desc id="mapDesc">72ai, FutureSmart and Agility Tech sit in the SME custom-build quadrant. Magenta and DataChamps sit in SME product. Cogniquest and Cere Labs sit in enterprise product. Exponentia and Talentica sit in enterprise and scale-up custom build.</desc>
+      <!-- plot area x 80..720, y 30..410 -->
+      <rect x="80" y="30" width="640" height="380" fill="var(--bg)" stroke="var(--line)"/>
+      <line x1="400" y1="30" x2="400" y2="410" stroke="var(--line)" stroke-dasharray="4 4"/>
+      <line x1="80" y1="220" x2="720" y2="220" stroke="var(--line)" stroke-dasharray="4 4"/>
+      <text x="90" y="50" font-size="11" fill="var(--fg-soft)" letter-spacing="1">SME · PRODUCT</text>
+      <text x="710" y="50" font-size="11" fill="var(--fg-soft)" text-anchor="end" letter-spacing="1">ENTERPRISE · PRODUCT</text>
+      <text x="90" y="400" font-size="11" fill="var(--fg-soft)" letter-spacing="1">SME · CUSTOM BUILD</text>
+      <text x="710" y="400" font-size="11" fill="var(--fg-soft)" text-anchor="end" letter-spacing="1">ENTERPRISE · CUSTOM BUILD</text>
+      <text x="400" y="440" font-size="12" fill="var(--fg-soft)" text-anchor="middle">SMEs and mid-market  →  large enterprises and scale-ups</text>
+      <text x="30" y="220" font-size="12" fill="var(--fg-soft)" text-anchor="middle" transform="rotate(-90 30 220)">custom build  →  product</text>
+      <g font-size="12.5" fill="var(--fg)">
+        <circle cx="218" cy="72" r="7" fill="var(--them)"/><text x="230" y="76">Magenta</text>
+        <circle cx="272" cy="125" r="7" fill="var(--them)"/><text x="284" y="129">DataChamps</text>
+        <circle cx="620" cy="100" r="7" fill="var(--them)"/><text x="608" y="104" text-anchor="end">Cogniquest</text>
+        <circle cx="560" cy="190" r="7" fill="var(--them)"/><text x="548" y="194" text-anchor="end">Cere Labs</text>
+        <circle cx="660" cy="270" r="7" fill="var(--them)"/><text x="648" y="274" text-anchor="end">Exponentia.ai</text>
+        <circle cx="520" cy="345" r="7" fill="var(--them)"/><text x="532" y="349">Talentica</text>
+        <circle cx="250" cy="295" r="7" fill="var(--them)"/><text x="262" y="299">Agility Tech</text>
+        <circle cx="290" cy="345" r="7" fill="var(--them)"/><text x="302" y="349">FutureSmart AI</text>
+        <circle cx="175" cy="360" r="10" fill="var(--us)"/><text x="175" y="385" text-anchor="middle" font-weight="600" fill="var(--us)">72ai</text>
+      </g>
+    </svg>
+  </div>
+  <p class="col" style="color:var(--fg-soft);font-size:0.9rem">72ai shares its quadrant with FutureSmart (overseas clients, tutorial-led) and Agility Tech (UK and global, very broad offer). Neither anchors to Indian books or Indian buyers.</p>
+</section>
+
+<section>
+  <h2>Messaging comparison</h2>
+  <p class="col">Headlines are quoted from each homepage on 20 Oct 2026. Scroll sideways on a phone.</p>
+  <div class="scroll">
+    <table class="matrix">
+      <thead>
+        <tr><th></th><th class="us">72ai</th><th>Cere Labs</th><th>DataChamps</th><th>FutureSmart AI</th><th>Agility Tech</th><th>Magenta</th><th>Cogniquest</th><th>Exponentia.ai</th><th>Talentica</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>Headline</th>
+          <td class="us">"Your data. Your AI system."</td>
+          <td>"We make generative AI work for your business."</td>
+          <td>"Enabling Data Driven Growth"</td>
+          <td>"Custom Generative AI Solutions for Enterprises &amp; Startups"</td>
+          <td>"AI-driven consulting that delivers real business outcomes."</td>
+          <td>"The Intelligence Layer for Your Distribution Business"</td>
+          <td>"The decision layer for the enterprise."</td>
+          <td>"Engineering the AI-Native Enterprise"</td>
+          <td>"We Don't Just Build AI. We Ship Products With It."</td></tr>
+        <tr><th>Buyer</th>
+          <td class="us">Mid-sized Indian B2B firms</td>
+          <td>Large enterprises, BFSI, legal, pharma</td>
+          <td>Founders, CEOs, COOs</td>
+          <td>Startups and enterprises, mostly overseas</td>
+          <td>SMEs and startups, UK and global</td>
+          <td>Distribution-led businesses</td>
+          <td>Regulated enterprises: insurance, banking, finance ops</td>
+          <td>Large enterprises (Godrej, Kotak, PayPal)</td>
+          <td>VC-backed startups and software companies, US-led</td></tr>
+        <tr><th>Category</th>
+          <td class="us">Bespoke AI systems</td>
+          <td>GenAI provider plus Queryfic product</td>
+          <td>No-code analytics platform</td>
+          <td>Custom GenAI build shop</td>
+          <td>AI and data consultancy</td>
+          <td>Distribution execution ecosystem</td>
+          <td>Decision intelligence platform</td>
+          <td>IP-driven AI consultancy</td>
+          <td>AI product engineering</td></tr>
+        <tr><th>Key differentiator</th>
+          <td class="us">Built on the client's own data; client owns the result</td>
+          <td>8 years of production AI</td>
+          <td>Industry KPIs, 5-minute onboarding</td>
+          <td>Building since the GPT-3 era</td>
+          <td>"Production AI in 3-8 Weeks"</td>
+          <td>"21+ ERPs" connected</td>
+          <td>Decision Record with page and line evidence</td>
+          <td>Own accelerators plus governance (GenTrust)</td>
+          <td>200+ products, 30+ customer exits</td></tr>
+        <tr><th>Hard proof shown</th>
+          <td class="us">95.9% party-group accuracy across 5 companies' books (FastAccounting)</td>
+          <td>Bank logos; no case studies</td>
+          <td>3 unnamed case studies</td>
+          <td>2 case studies (Glamira, Abby)</td>
+          <td>Self-reported: 88% forecast accuracy, 90% less manual effort</td>
+          <td>9 unlabelled logos</td>
+          <td>Invoice-to-ERP 8 days to under 12 hours; SOC 2, ISO 27001</td>
+          <td>83% faster dashboards; $3M value</td>
+          <td>Clutch 4.6/5 from 32 reviews</td></tr>
+        <tr><th>Price signal</th>
+          <td class="us">Free 1-week Discovery, 2-3 week PoC, 6-12 week build</td>
+          <td>None</td>
+          <td>Free trial</td>
+          <td>None</td>
+          <td>Free 30-min call, "fixed estimate"</td>
+          <td>"Get started free"</td>
+          <td>None, demo only</td>
+          <td>None</td>
+          <td>$25-49/hr, $25,000 minimum (Clutch)</td></tr>
+        <tr><th>Tally or GST on site</th>
+          <td class="us"><span class="pill y">Yes</span></td>
+          <td><span class="pill lo">No</span></td>
+          <td><span class="pill lo">No</span></td>
+          <td><span class="pill lo">No</span></td>
+          <td><span class="pill lo">No</span></td>
+          <td><span class="pill lo">No</span></td>
+          <td><span class="pill lo">No</span></td>
+          <td><span class="pill lo">No</span></td>
+          <td><span class="pill lo">No</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Competitor profiles</h2>
+  <p class="col">The overlap tag rates how often 72ai would meet each firm in a real deal for its target buyer, a mid-sized Indian B2B firm.</p>
+
+  <p class="group-label">Seeds</p>
+  <div class="profiles">
+    <article class="card">
+      <header><h3>Cere Labs</h3><span class="pill md">Overlap: medium</span></header>
+      <span class="sub">Mumbai · founded 2015 · about 50 people · bootstrapped · cerelabs.com</span>
+      <dl>
+        <dt>What they do</dt><dd>Enterprise GenAI with Queryfic, a document Q&amp;A product, sold by industry (legal, pharma, financial services).</dd>
+        <dt>Proof</dt><dd>Logos read as Standard Chartered, HDFC Bank, Capgemini, Lodha. Forbes India DGEMS 2025 Select 200. No case studies; the numbers on the site are Forrester and BCG stats.</dd>
+        <dt>Content</dt><dd>Articles section is empty. The founder writes for KDnuggets and has a book on GPT.</dd>
+        <dt>Where they're weak</dt><dd>No published results, no content engine, enterprise-only sales motion.</dd>
+      </dl>
+      <p><strong>Read:</strong> the closest rival to DocIntel, and also Mumbai-based. 72ai wins where the buyer wants results on its own documents, shown with numbers.</p>
+    </article>
+    <article class="card">
+      <header><h3>DataChamps</h3><span class="pill lo">Overlap: low</span></header>
+      <span class="sub">Nashik · founded 2021 · $500K seed (Windrose, Jun 2024) · datachamps.ai</span>
+      <dl>
+        <dt>What they do</dt><dd>No-code analytics platform with industry KPIs, an AI chat layer and BI analyst services. Part of the Ruby Consulting group.</dd>
+        <dt>Proof</dt><dd>3 unnamed case studies, testimonials with no company names. Press names Kotak, Nivea, SIDBI as clients (unverified).</dd>
+        <dt>Content</dt><dd>6 undated posts, footer reads 2023. Nothing published in the last 3 months.</dd>
+        <dt>Where they're weak</dt><dd>Stale site, no Tally mention, no pricing, no named proof.</dd>
+      </dl>
+      <p><strong>Read:</strong> sells dashboards rather than builds. It overlaps with Report Copilot and only meets 72ai when a buyer is choosing between a tool and a custom build.</p>
+    </article>
+  </div>
+
+  <p class="group-label">Lookalikes</p>
+  <div class="profiles">
+    <article class="card">
+      <header><h3>FutureSmart AI</h3><span class="pill md">Overlap: medium</span></header>
+      <span class="sub">India (city not stated on site) · founded 2022 · 1-10 people · futuresmart.ai</span>
+      <dl>
+        <dt>What they do</dt><dd>Custom RAG, agents, NL2SQL, document processing and fine-tuning. Founder Pradip Nichite: ex-Oracle, top 1% on Upwork.</dd>
+        <dt>Proof</dt><dd>2 case studies (Glamira support across 80+ sites; Abby for Cliniko). Clients look mostly overseas.</dd>
+        <dt>Content</dt><dd>About 108 tutorial posts (LangGraph, RAG, Mem0, NL2SQL) plus a training arm. Strong developer SEO.</dd>
+        <dt>Where they're weak</dt><dd>No India SME story, few numbers, no pricing.</dd>
+      </dl>
+      <p><strong>Read:</strong> the nearest size match. Its tutorials pull in builders, so the people who find it are developers, while 72ai's target buyer is a business owner.</p>
+    </article>
+    <article class="card">
+      <header><h3>Agility Tech</h3><span class="pill md">Overlap: medium</span></header>
+      <span class="sub">UK and global (no HQ stated) · founder Nihar Thakkar · agilitytech.ai</span>
+      <dl>
+        <dt>What they do</dt><dd>Lean AI and data consultancy covering GenAI, RAG, MLOps, cloud migration, EDI and integration. Industries run from FMCG to maritime.</dd>
+        <dt>Proof</dt><dd>Claims 200+ projects in 30+ countries, a 5-star Clutch rating and 88% forecast accuracy, all self-reported. Most case clients are unnamed.</dd>
+        <dt>Content</dt><dd>58 posts from 1 Jul to 17 Oct 2026 (about 5 a week), mostly news commentary that reads machine-written. India city landing pages.</dd>
+        <dt>Where they're weak</dt><dd>Unfocused offer, thin identity, no India anchor.</dd>
+      </dl>
+      <p><strong>Read:</strong> makes the same timeline promise as 72ai and has more SEO surface. The Mumbai and BFSI framing from directories didn't hold up on the site.</p>
+    </article>
+    <article class="card">
+      <header><h3>Magenta (formerly MagentaBi)</h3><span class="pill lo">Overlap: low</span></header>
+      <span class="sub">Ahmedabad · founded 2018 · about $80K seed (IIMA Ventures) · magenta.works</span>
+      <dl>
+        <dt>What they do</dt><dd>4 products for distribution businesses: Insights, OnField, Workflow, DMS. Claims "21+ ERPs".</dd>
+        <dt>Proof</dt><dd>9 unlabelled logos. Counters on the page show 0. The industries section still holds placeholder text.</dd>
+        <dt>Content</dt><dd>28 posts; the latest is dated 14 Feb 2025.</dd>
+        <dt>Where they're weak</dt><dd>Unfinished site, dormant blog, no Tally claim.</dd>
+      </dl>
+      <p><strong>Read:</strong> a product rival for distribution firms' MIS spend. It shows that demand exists in the segment 72ai wants.</p>
+    </article>
+    <article class="card">
+      <header><h3>Cogniquest</h3><span class="pill md">Overlap: medium</span></header>
+      <span class="sub">Bengaluru · founded 2022 · $1.2M seed (Cedar IBSI, Feb 2025) · cogniquest.ai</span>
+      <dl>
+        <dt>What they do</dt><dd>Decision intelligence platform with APWise, ClaimWise, FinWise, MailWise and DocWise. Infosys and Tech Mahindra are SI partners.</dd>
+        <dt>Proof</dt><dd>Generali Central, KPMG; invoice-to-ERP from 8 days to under 12 hours; 145,000 invoices a month; SOC 2, ISO 27001, HIPAA.</dd>
+        <dt>Content</dt><dd>3 posts in Oct 2026; the one before that was Dec 2025.</dd>
+        <dt>Where they're weak</dt><dd>Enterprise sales motion and heavy for SMEs; no Tally or GST.</dd>
+      </dl>
+      <p><strong>Read:</strong> the best-proven document AI in the set. Its "evidence for every decision" story is close to GradeQP and Contract Risk Radar.</p>
+    </article>
+  </div>
+
+  <p class="group-label">Benchmarks</p>
+  <div class="profiles">
+    <article class="card">
+      <header><h3>Exponentia.ai</h3><span class="pill lo">Overlap: low (SME) · high (upper mid-market)</span></header>
+      <span class="sub">Mumbai · founded 2014 · 287-500 people · angel-funded · exponentia.ai</span>
+      <dl>
+        <dt>What they do</dt><dd>Moves agentic AI from pilot to governed production, using its own accelerators (AIXponent, GenTrust, WealthXponent). Partners with Databricks, Microsoft, AWS and Qlik.</dd>
+        <dt>Proof</dt><dd>Godrej, PayPal, L&amp;T, Kotak, Adani logos; 83% faster dashboards; 93% pricing accuracy.</dd>
+        <dt>Content</dt><dd>18 items from 20 Jul to 20 Oct 2026, 14 of them case studies. Events in Mumbai and London. About 21K social followers.</dd>
+        <dt>Recent</dt><dd>Santor AI launch (Oct 2026, single source); AIM PeMa "Seasoned Vendor" (Aug 2026).</dd>
+      </dl>
+      <p><strong>Read:</strong> shows what a case study a week looks like. Its price and process are heavier than a ₹-sensitive mid-sized firm will accept.</p>
+    </article>
+    <article class="card">
+      <header><h3>Talentica Software</h3><span class="pill lo">Overlap: low</span></header>
+      <span class="sub">Pune and Pleasanton, CA · founded 2003 · about 600 engineers · talentica.com</span>
+      <dl>
+        <dt>What they do</dt><dd>AI product engineering for startups and software companies. DevX AI Pods launched 21 Sep 2026, claiming 50% faster delivery at 20% lower cost.</dd>
+        <dt>Proof</dt><dd>200+ products, 30+ customer exits, 4 Nasdaq-100 customers. Clutch 4.6/5; reviewers praise timeliness and say it costs more than some Indian rivals.</dd>
+        <dt>Content</dt><dd>About 8 own posts a quarter plus bylines in InfoWorld and DevOps.com. Technical topics.</dd>
+        <dt>Price</dt><dd>$25-49/hr with a $25,000 minimum (Clutch).</dd>
+      </dl>
+      <p><strong>Read:</strong> sells to a different buyer. Its $25,000 floor leaves the whole sub-$25K Indian SME band to studios like 72ai.</p>
+    </article>
+  </div>
+</section>
+
+<section>
+  <h2>Content gap analysis</h2>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Format</th><th class="us">72ai</th><th>Cere</th><th>DataCh.</th><th>FutureSm.</th><th>Agility</th><th>Magenta</th><th>Cogniq.</th><th>Expon.</th><th>Talentica</th></tr></thead>
+      <tbody>
+        <tr><th>Blog posts, last 3 months</th><td class="us num">0</td><td class="num">0</td><td class="num">0</td><td class="num">n/a</td><td class="num">58</td><td class="num">0</td><td class="num">3</td><td class="num">4</td><td class="num">8</td></tr>
+        <tr><th>Case studies with numbers</th><td class="us">Thin pages</td><td>No</td><td>Unnamed</td><td>2</td><td>Unnamed</td><td>No</td><td>Yes</td><td>14 in 3 mo.</td><td>Yes</td></tr>
+        <tr><th>Public price or engagement model</th><td class="us">Yes</td><td>No</td><td>Trial</td><td>No</td><td>Partial</td><td>Free tier</td><td>No</td><td>No</td><td>Via Clutch</td></tr>
+        <tr><th>Free tools or audits</th><td class="us">2 tools</td><td>No</td><td>Trial</td><td>Demos</td><td>Audit, ROI calc.</td><td>No</td><td>No</td><td>No</td><td>No</td></tr>
+        <tr><th>Founder bylines, books, events</th><td class="us">No</td><td>Book, KDnuggets</td><td>No</td><td>Training arm</td><td>No</td><td>No</td><td>Awards</td><td>Events, awards</td><td>InfoWorld</td></tr>
+        <tr><th>Security and certification page</th><td class="us">No</td><td>No</td><td>No</td><td>No</td><td>No</td><td>No</td><td>SOC 2, ISO</td><td>Governance IP</td><td>No</td></tr>
+        <tr><th>Review-site profile</th><td class="us">No</td><td>No</td><td>No</td><td>No</td><td>Claimed</td><td>No</td><td>No</td><td>No</td><td>Clutch 4.6</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col stack">
+    <p><strong>Topics 72ai covers that nobody else in the set does:</strong> Tally books, GST-adjacent finance classification, handwritten exam sheets, call-audio compliance, and PII-free report generation. Each is a page someone could rank for.</p>
+    <p><strong>Formats to adopt:</strong> numbers-first case studies (Exponentia's cadence), a security one-pager (Cogniquest), and a Clutch profile with 3-5 reviews (Talentica). Skip high-volume news commentary; Agility shows how cheap it looks.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Opportunities</h2>
+  <ul class="col">
+    <li><strong>The Tally gap.</strong> No firm here names Tally or GST. From the SEO review, aiaccountant.com and suvit.io do, but they're products. A custom build on the client's own Tally data is unclaimed.</li>
+    <li><strong>Sub-$25K projects.</strong> Talentica's floor is $25,000 and Exponentia sells platform estates. A free Discovery plus a 2-3 week PoC fits budgets they can't serve profitably.</li>
+    <li><strong>Proof is scarce in the SME half.</strong> DataChamps, Magenta and Cere Labs show logos with no numbers. 72ai's measured results (95.9% on 5 companies' books) stand out the moment they're on a proper case study page.</li>
+    <li><strong>Ownership.</strong> Platforms (Cogniquest, Magenta, DataChamps) rent software. "The client owns what we build" is a clean counter for owners wary of lock-in.</li>
+    <li><strong>The founder is the brand.</strong> Cere Labs and FutureSmart sell through their founders. 72ai can too, aimed at Indian CFOs and owners rather than developers.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Threats</h2>
+  <ul class="col">
+    <li><strong>Speed is now a common claim.</strong> "3-8 weeks" (Agility) and "50% faster" (Talentica) sit on the same shelf as 72ai's PoC timeline.</li>
+    <li><strong>Certifications block regulated buyers.</strong> Cogniquest's SOC 2 and ISO 27001 badges will win insurance and banking document work before 72ai is shortlisted.</li>
+    <li><strong>Enterprise firms are packaging down.</strong> DevX AI Pods and Exponentia's industry agents are productised offers that could reach upper mid-market buyers at fixed prices.</li>
+    <li><strong>Funded SME tools.</strong> DataChamps ($500K) and Cogniquest ($1.2M) can outspend a studio on demos and sales, even with weak content today.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Recommended actions</h2>
+  <p class="col">Each one is aimed at the agency target: 8 qualified meetings a month by end of March 2027.</p>
+  <ol class="actions col">
+    <li><strong>This week: rebuild FastAccounting as a full case study.</strong> Put "Tally" in the title, show the 95.9% figure with the before-and-after workflow, and add a clear call to book a Discovery. Today the project pages run 73-213 words.</li>
+    <li><strong>This week: state a PoC price band on the engagement page.</strong> Nobody in this set shows a rupee figure. Use your own number; this brief doesn't propose one.</li>
+    <li><strong>This month: ship 1 segment landing page, "Custom AI on your Tally data",</strong> for mid-sized trading, distribution and CA-led firms. Magenta and DataChamps prove the demand and leave the build option open.</li>
+    <li><strong>This quarter: publish 1 numbers-first case study a month</strong> and open a Clutch profile with 3-5 client reviews. That's the proof layer the agency's outbound will need.</li>
+    <li><strong>This quarter: write a 1-page data-security note</strong> (runs in the client's cloud or on-prem, who sees what, PII handling from Report Copilot). It answers the certification gap without an audit spend yet.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Caveats</h2>
+  <ul class="col">
+    <li>Future Lab (the third seed) couldn't be identified and isn't in this brief. Cognub was dropped: the registry puts it in Trivandrum, its site didn't load, and its claims had a single source.</li>
+    <li>Headcounts, funding and client names marked as directory data aren't verified. Client names read from logos may be wrong.</li>
+    <li>Agility Tech's Mumbai and BFSI framing came from directories and didn't match its own site.</li>
+    <li>Review sites (G2, GoodFirms, Tracxn) and LinkedIn were barely checked. The overlap tags are judgement calls.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Sources</h2>
+  <ul class="sources">
+    <li><a href="https://cerelabs.com">cerelabs.com</a></li>
+    <li><a href="https://indiaai.gov.in/startup/cere-labs">IndiaAI: Cere Labs</a></li>
+    <li><a href="https://inc42.com/company/cere-labs">Inc42: Cere Labs</a></li>
+    <li><a href="https://www.instafinancials.com/company/cere-labs-private-limited/U72900MH2015PTC263117">InstaFinancials: Cere Labs</a></li>
+    <li><a href="https://datachamps.ai">datachamps.ai</a></li>
+    <li><a href="https://www.indiaretailing.com/2024/06/26/ai-startup-datachamps-raises-seed-funding-of-500000/">IndiaRetailing: DataChamps seed</a></li>
+    <li><a href="https://www.cbinsights.com/company/datachamps">CB Insights: DataChamps</a></li>
+    <li><a href="https://futuresmart.ai">futuresmart.ai</a></li>
+    <li><a href="https://futuresmart.ai/about-us">FutureSmart: about</a></li>
+    <li><a href="https://ensun.io/company/futuresmart-ai-64a87bfc39c54ecab8a0f807">ensun: FutureSmart</a></li>
+    <li><a href="https://agilitytech.ai">agilitytech.ai</a></li>
+    <li><a href="https://agilitytech.ai/insights">Agility Tech: insights</a></li>
+    <li><a href="https://magenta.works">magenta.works</a></li>
+    <li><a href="https://magenta.works/blog">Magenta: blog</a></li>
+    <li><a href="https://www.cbinsights.com/company/magenta-bi">CB Insights: MagentaBi</a></li>
+    <li><a href="https://cogniquest.ai">cogniquest.ai</a></li>
+    <li><a href="https://yourstory.com/2025/02/cogniquest-ai-secures-1-2-m-seed-funding-cedar-ibsi-capital">YourStory: Cogniquest seed</a></li>
+    <li><a href="https://exponentia.ai">exponentia.ai</a></li>
+    <li><a href="https://exponentia.ai/insights">Exponentia: insights</a></li>
+    <li><a href="https://pitchbook.com/profiles/company/492736-51">PitchBook: Exponentia</a></li>
+    <li><a href="https://www.talentica.com">talentica.com</a></li>
+    <li><a href="https://clutch.co/profile/talentica-software">Clutch: Talentica</a></li>
+    <li><a href="https://techintelpro.com/news/AI/Agentic-AI/talentica-launches-devx-ai-pods-for-product-engineering">TechIntelPro: DevX AI Pods</a></li>
+    <li><a href="https://www.zaubacorp.com/COGNUB-DECISION-SOLUTIONS-PRIVATE-LIMITED-U72900KL2004PTC017036">Zauba: Cognub</a></li>
+  </ul>
+</section>
+
+<footer>
+  <p>72ai figures come from the 72ai.in repo (projects, engagement model) and the 19 Oct 2026 agency positioning note. Competitor facts were collected on 20 Oct 2026; refresh quarterly.</p>
+</footer>
+
+</div>
