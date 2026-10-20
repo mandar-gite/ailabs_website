@@ -6,7 +6,7 @@ export async function GET(context: APIContext) {
   const posts = await getCollection('blog', ({ data }) => data.draft !== true);
 
   return rss({
-    title: '72° AI Labs Blog',
+    title: '72° AI LABS Blog',
     description: 'Practical AI insights, experiment logs, and real-world case studies for growing businesses.',
     site: context.site!,
     items: posts

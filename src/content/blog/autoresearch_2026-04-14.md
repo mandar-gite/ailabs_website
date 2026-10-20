@@ -1,5 +1,6 @@
 ---
 title: "I Ran Karpathy's AutoResearch on a $300 GPU. The Agent Discovered Something the H100 Benchmarks Won't Show You."
+seoTitle: "Karpathy's AutoResearch on a $300 RTX 3060"
 description: "57 autonomous experiments, 7 hours, RTX 3060. Why smaller models win on consumer hardware — and what the agent discovered that inverts the usual scaling playbook."
 pubDate: 2026-04-14
 author: "Mandar Gite"

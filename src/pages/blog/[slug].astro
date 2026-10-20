@@ -32,7 +32,7 @@ function formatDate(date: Date): string {
   });
 }
 
-const seoTitle = `${post.data.title} | 72° AI Labs Blog`;
+const seoTitle = `${post.data.seoTitle ?? post.data.title} | 72° AI LABS`;
 const seoDescription = post.data.description;
 // Use post-specific OG image if available, otherwise use blog default
 const ogImage = post.data.image || "/og-blog.jpg";
