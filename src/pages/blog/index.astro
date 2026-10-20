@@ -44,7 +44,7 @@ function formatDate(date: Date): string {
       <div class="posts-grid">
         {sortedPosts.map((post) => (
           <article class="post-card">
-            <a href={`/blog/${post.slug}`} class="post-link">
+            <a href={`/blog/${post.slug}/`} class="post-link">
               <div class="post-meta">
                 <span class="post-category">{post.data.category}</span>
               </div>

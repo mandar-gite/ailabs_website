@@ -26,3 +26,18 @@ test('project pages have unique, search-sized titles and descriptions', async ({
   expect(titles.size).toBe(projects.length);
   expect(descriptions.size).toBe(projects.length);
 });
+
+test('project pages carry BreadcrumbList and CreativeWork schema', async ({ request }) => {
+  for (const route of builtRoutes().filter((r) => r.startsWith('/projects/'))) {
+    const html = await (await request.get(route + '/')).text();
+    const blocks = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
+    const crumbs = blocks.find((b) => b['@type'] === 'BreadcrumbList');
+    const work = blocks.find((b) => b['@type'] === 'CreativeWork');
+    const url = `https://72ai.in${route}/`;
+    expect(crumbs?.itemListElement.map((i: { item: string }) => i.item), route)
+      .toEqual(['https://72ai.in/', 'https://72ai.in/projects/', url]);
+    expect(work?.url, route).toBe(url);
+    expect(work?.creator?.['@id'], route).toBe('https://72ai.in/#organization');
+    expect(work?.description, route).toBe(html.match(/<meta name="description" content="([^"]*)"/)![1].replace(/&#39;/g, "'"));
+  }
+});

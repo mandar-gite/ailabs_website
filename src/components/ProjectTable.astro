@@ -23,7 +23,7 @@ const { projects } = Astro.props;
       {projects.map((project) => (
         <tr class="table-row" data-project-id={project.id}>
           <td class="project-cell">
-            <a href={`/projects/${project.id}`} class="project-link">
+            <a href={`/projects/${project.id}/`} class="project-link">
               <strong>{project.name}</strong>
             </a>
           </td>
