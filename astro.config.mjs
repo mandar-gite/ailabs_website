@@ -10,10 +10,10 @@ export default defineConfig({
   site: 'https://72ai.in',
   // Dropped project pages: send old links to the projects index
   redirects: {
-    '/projects/martech': '/projects',
-    '/projects/insightbridge': '/projects',
-    '/projects/hospitality-hub': '/projects',
-    '/projects/tire-analytics': '/projects',
+    '/projects/martech': '/projects/',
+    '/projects/insightbridge': '/projects/',
+    '/projects/hospitality-hub': '/projects/',
+    '/projects/tire-analytics': '/projects/',
   },
   ...(basePath ? { base: basePath } : {}),
   integrations: [

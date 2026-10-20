@@ -35,3 +35,20 @@ test('file links still resolve without a trailing slash', async ({ request }) =>
   for (const path of ['/rss.xml', '/voice-dna.md', '/discovery-brief-prompt.txt', '/llms.txt'])
     expect((await request.get(path)).status(), path).toBe(200);
 });
+
+// Redirect stubs are skipped by builtRoutes(), so their targets are checked here.
+test('retired project URLs redirect straight to /projects/', async ({ request }) => {
+  for (const id of ['martech', 'insightbridge', 'hospitality-hub', 'tire-analytics']) {
+    const html = await (await request.get(`/projects/${id}/`)).text();
+    expect(html, id).toContain('url=/projects/"');
+    expect(html, id).toContain('<link rel="canonical" href="https://72ai.in/projects/"');
+  }
+});
+
+test('form submits land on the slash form of the thanks pages', async ({ request }) => {
+  const home = await (await request.get('/')).text();
+  expect(home).toContain('value="https://72ai.in/thanks/"');
+  expect(home).toMatch(/location\.href\s*=\s*"\/thanks\/"/);
+  const careers = await (await request.get('/careers/')).text();
+  expect(careers).toContain('value="https://72ai.in/careers/thanks/"');
+});
