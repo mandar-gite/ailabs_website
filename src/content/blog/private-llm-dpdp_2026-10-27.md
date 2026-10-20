@@ -2,12 +2,12 @@
 title: "Private LLMs and the DPDP Act: What an Indian Business Owner Needs to Decide Before May 2027"
 seoTitle: "Private LLM and the DPDP Act: A Guide for Owners"
 description: "The DPDP Rules' core duties start in May 2027. Here's how pasting customer data into public AI tools creates risk, and when a private LLM is the simpler answer."
-pubDate: 2026-10-20
+pubDate: 2026-10-27
 author: "Mandar Gite"
 category: "Guide"
 tags: ["DPDP", "private-LLM", "data-protection", "self-hosted-AI", "India"]
 featured: false
-draft: false
+draft: true
 faq:
   - question: "Is it illegal to use ChatGPT with customer data under the DPDP Act?"
     answer: "No. The Act allows personal data to be processed outside India unless the government restricts a specific country. You remain responsible for that data, though: you need a lawful basis to process it, a contract with the AI provider, reasonable security safeguards, and the ability to erase it when asked."

@@ -56,12 +56,14 @@ There is no paid spend. Email isn't a channel yet because there's no subscriber 
 
 Weeks start on Tuesdays. Diwali (8 Nov) and the year-end weeks are kept light.
 
+**How posts go live:** each post merges early with `draft: true` and its campaign date as `pubDate`. The filename carries the same date, since it becomes the URL. On the release date, flip `draft` to `false` and ship a release to `main` (deploy runs on every push to `main`). Before you publish a post, check that its cross-links point only to posts already live; the e2e link test catches any that don't.
+
 | Week | Content piece | Channel | Notes | Status |
 |---|---|---|---|---|
-| 1 (27 Oct) | Publish DPDP post; submit sitemap; request indexing for 8 pages | Blog, GSC | Merge `feature/blog-private-llm-dpdp` first | Drafted |
+| 1 (27 Oct) | Publish DPDP post; submit sitemap; request indexing for 8 pages | Blog, GSC | Flip `draft` in `private-llm-dpdp_2026-10-27.md` | Drafted |
 | 1 | LinkedIn: "Your team is pasting customer data into ChatGPT" | LinkedIn | Link to the DPDP post | To do |
 | 1 | Clutch and GoodFirms listings | Directories | 1 time, about 1 hr | To do |
-| 2 (3 Nov) | Publish self-hosted vs ChatGPT post | Blog | In worktree `../website_72ai-blog`, commit pending | Drafted |
+| 2 (3 Nov) | Publish self-hosted vs ChatGPT post | Blog | Flip `draft` in `self-hosted-llm-vs-chatgpt_2026-11-03.md` | Drafted |
 | 2 | LinkedIn: "$6,000 a year for 25 ChatGPT seats" | LinkedIn | | To do |
 | 3 (10 Nov) | LinkedIn: DPDP 5-step plan as a text list | LinkedIn | Diwali week, 1 post only | To do |
 | 3 | Google Business Profile (Mumbai) and BITS alumni listing | Directories | | To do |
@@ -86,8 +88,8 @@ About 20% of the slots are light on purpose, to leave room for reactive posts (f
 
 | Asset | Contents | Priority | Due |
 |---|---|---|---|
-| Blog 1: DPDP | Done, on the branch | Must | Week 1 |
-| Blog 2: Self-hosted vs ChatGPT | Done, not yet committed | Must | Week 2 |
+| Blog 1: DPDP | Done, `draft: true` until 27 Oct | Must | Week 1 |
+| Blog 2: Self-hosted vs ChatGPT | Done, `draft: true` until 3 Nov | Must | Week 2 |
 | Blog 3: RAG vs fine-tuning | Owner decision guide; "train our own" is a common owner question | Must | Week 4 |
 | Blog 4: Private LLM running cost | Real numbers from the founder's hardware | Must | Week 6 |
 | Blog 5: Tally exports and AI | Starts the Tally/GST cluster from the SEO audit | Must | Week 8 |
@@ -135,8 +137,8 @@ There is no paid spend, so the cost is founder time: about 5 hours a week.
 
 ## 10. Next steps
 
-1. Commit the self-hosted vs ChatGPT post in `../website_72ai-blog` and push.
-2. Open the PR for `feature/blog-private-llm-dpdp` to `develop`.
+1. Merge `feature/blog-private-llm-dpdp` to `develop` now. Both posts stay hidden as drafts.
+2. On 27 Oct and 3 Nov, flip `draft` and release to `main`.
 3. Record the LinkedIn follower count and GA4 LinkedIn sessions as the missing baselines.
 4. Decide whether to add a `/private-llm/` hub page. `PRODUCT.md` says there is no on-prem LLM practice area, so this is the founder's call. Without a hub page, the cluster works through the cross-links.
 5. Choose the 2 guest-post targets.

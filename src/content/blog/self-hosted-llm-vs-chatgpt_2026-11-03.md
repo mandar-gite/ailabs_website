@@ -2,12 +2,12 @@
 title: "Self-Hosted LLM vs ChatGPT: How a Business Owner Should Choose"
 seoTitle: "Self-Hosted LLM vs ChatGPT for Business"
 description: "Cost, data control, quality and upkeep compared. A plain guide to when ChatGPT is enough and when a self-hosted LLM on your own server pays off."
-pubDate: 2026-10-20
+pubDate: 2026-11-03
 author: "Mandar Gite"
 category: "Guide"
 tags: ["self-hosted-LLM", "ChatGPT", "private-LLM", "AI-cost", "open-source-models"]
 featured: false
-draft: false
+draft: true
 faq:
   - question: "What is a self-hosted LLM?"
     answer: "An open-source language model (such as Llama, Qwen or Mistral) running on a server you control, in your office or in your own cloud account. Your prompts and documents stay on that server."
@@ -52,7 +52,7 @@ A quantized model of 7 to 14 billion parameters runs on a single GPU with 24GB o
 
 What you get:
 
-- **Data stays put.** Prompts, files and answers never leave your server. (If the DPDP Act is on your mind, I covered that angle in [Private LLMs and the DPDP Act](/blog/private-llm-dpdp_2026-10-20/).)
+- **Data stays put.** Prompts, files and answers never leave your server. (If the DPDP Act is on your mind, I covered that angle in [Private LLMs and the DPDP Act](/blog/private-llm-dpdp_2026-10-27/).)
 - **Cost scales with hardware.** After the server, the 10,000th request costs about the same as the 10th: electricity.
 - **It plugs into your systems.** The model sits behind an API on your network, so a Tally export or a folder of PDFs can flow through it on a schedule.
 - **Nothing changes unless you change it.** The model you tested is the model you run next year.
