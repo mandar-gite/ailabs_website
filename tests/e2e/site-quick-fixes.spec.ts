@@ -25,7 +25,7 @@ for (const route of ['/thanks', '/careers/thanks', '/this-page-does-not-exist'])
 
 test('careers applications land on their own thank-you page', async ({ page }) => {
   await page.goto('/careers');
-  await expect(page.locator('form input[name="_redirect"]')).toHaveAttribute('value', 'https://72ai.in/careers/thanks');
+  await expect(page.locator('form input[name="_redirect"]')).toHaveAttribute('value', 'https://72ai.in/careers/thanks/');
   await page.goto('/careers/thanks');
   await expect(page.locator('h1')).toHaveCount(1);
 });
