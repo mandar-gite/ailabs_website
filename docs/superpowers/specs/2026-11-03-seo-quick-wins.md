@@ -33,7 +33,7 @@ All titles stay at 60 chars or under and keep `72° AI LABS` (pinned by `tests/e
 | `/` | `src/pages/index.astro:9` | 72° AI LABS \| Bespoke AI Systems for Growing Businesses | 72° AI LABS \| Custom AI Built on Your Business Data | 51 |
 | `/solutions/` | `src/pages/solutions/index.astro:14` | Solutions \| 72° AI LABS | AI for Tally, Call Analytics and Document OCR \| 72° AI LABS | 59 |
 | `/projects/` | `src/pages/projects/index.astro:13` | Projects \| 72° AI LABS | AI Projects Built on Real Business Data \| 72° AI LABS | 53 |
-| `/about/` | `src/pages/about.astro:9` | About \| 72° AI LABS | About the Founder-Led AI Studio \| 72° AI LABS | 45 |
+| `/about/` | `src/pages/about.astro:9` | About \| 72° AI LABS | About Us: Custom AI Studio \| 72° AI LABS | 40 |
 | `/blog/` | `src/pages/blog/index.astro:16` | Blog \| 72° AI LABS | Blog: Practical AI, RAG and Small Models \| 72° AI LABS | 54 |
 | `/voice-dna/` | `src/pages/voice-dna.astro:8` | Voice DNA — Make Claude Sound Like You \| 72° AI LABS | Voice DNA: Make Claude Sound Like You \| 72° AI LABS | 51 |
 
