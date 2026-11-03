@@ -30,7 +30,7 @@ All titles stay at 60 chars or under and keep `72° AI LABS` (pinned by `tests/e
 
 | Page | File | Now | New | Chars |
 |---|---|---|---|---|
-| `/` | `src/pages/index.astro:9` | 72° AI LABS \| Bespoke AI Systems for Growing Businesses | 72° AI LABS \| Custom AI on Tally, Calls and Documents | 53 |
+| `/` | `src/pages/index.astro:9` | 72° AI LABS \| Bespoke AI Systems for Growing Businesses | 72° AI LABS \| Custom AI Built on Your Business Data | 51 |
 | `/solutions/` | `src/pages/solutions/index.astro:14` | Solutions \| 72° AI LABS | AI for Tally, Call Analytics and Document OCR \| 72° AI LABS | 59 |
 | `/projects/` | `src/pages/projects/index.astro:13` | Projects \| 72° AI LABS | AI Projects Built on Real Business Data \| 72° AI LABS | 53 |
 | `/about/` | `src/pages/about.astro:9` | About \| 72° AI LABS | About the Founder-Led AI Studio \| 72° AI LABS | 45 |
@@ -39,7 +39,7 @@ All titles stay at 60 chars or under and keep `72° AI LABS` (pinned by `tests/e
 
 The audit suggested "AI Case Studies on Real Business Data" for `/projects/`. The pages hold 105-242 words each, so "case studies" overclaims until they're expanded. "AI Projects" is the honest version; swap it when the case studies ship.
 
-The homepage title names Tally, calls and documents, which are the projects on the site today (FastAccounting, CallMind, DocIntel). It doesn't touch the cards that decision 1 covers.
+The homepage title swaps "Bespoke" for "Custom", the term buyers search, and keeps the site's main claim (AI built on the client's own data). It doesn't touch the cards that decision 1 covers.
 
 ### 3. Descriptions
 
