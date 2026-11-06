@@ -1,4 +1,10 @@
-![[logo_ver2.1_brandkit.jpeg]]
+### 1. Logo
+
+![72° AI LABS logo, version 3.3](../public/logos/logo_ver3.3_1x1.jpg)
+
+- **Main logo:** `public/logos/logo_ver3.3_1x1.jpg` (version 3.3, square, 2048 x 2048 px). This replaces version 2.1.
+- **Mark only:** `public/logos/logo-mark.png`, for small sizes such as the site header and favicons.
+
 ### 2. Color Palette The chosen colors exude professionalism and a touch of elegance, perfectly complementing the AI and "Labs" aspect of your brand. 
 * **Primary Blue (Dark Knight / Midnight Blue)** 
 * Hex: #0C1A3F 
