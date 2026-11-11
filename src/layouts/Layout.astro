@@ -80,9 +80,7 @@ const HAS_TRACKERS = Boolean(GA4_ID || CLARITY_ID || APOLLO_APP_ID);
     <meta name="twitter:image" content={ogImageURL} />
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Analytics: each tracker queues its start-up code; ConsentBanner runs the
          queue only after the visitor accepts, so nothing loads before consent. -->
