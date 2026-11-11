@@ -79,6 +79,7 @@
     "name": "NextSurge Momentum Alpha",
     "shortBlurb": "Market-signal models built on engineered features and walk-forward validation.",
     "tagline": "Tested market signals built from robust feature engineering.",
+    "disclaimer": "Research project. Not investment advice, and not offered as a signal service.",
     "seoTitle": "NextSurge: ML Market-Signal Models",
     "metaDescription": "Market-signal models built with LightGBM, XGBoost and ensembles on engineered OHLCV indicator features, tested with walk-forward cross-validation.",
     "description": "Feature-rich market-signal models with walk-forward testing.",

@@ -90,3 +90,6 @@ website_brief/
 
 # Archify diagram working files (published output is docs/architecture.html)
 .archify/
+
+# Impeccable local tool config (critique snapshots stay tracked)
+.impeccable/config.json

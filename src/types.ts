@@ -7,6 +7,7 @@ export interface Project {
   tagline: string;
   seoTitle?: string;
   metaDescription?: string;
+  disclaimer?: string;
   description: string;
   category: string;
   featured: boolean;

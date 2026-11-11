@@ -62,6 +62,7 @@ const creativeWorkLD = {
         <div class='category-badge'>{project.category}</div>
         <h1 class='project-title'>{project.name}</h1>
         <p class='project-tagline'>{project.tagline}</p>
+        {project.disclaimer && <p class='project-disclaimer' role='note'>{project.disclaimer}</p>}
       </header>
       <section class='description-section'>
         <h2 class='section-heading'>About the Project</h2>
@@ -122,7 +123,7 @@ const creativeWorkLD = {
 <style>
   .project-detail { background: var(--brand-cream); min-height: 100vh; }
   .breadcrumb { font-size: 0.875rem; color: var(--wp-ink-2); margin-bottom: 2rem; }
-  .breadcrumb a { color: var(--brand-blue); text-decoration: none; transition: color 0.2s ease; }
+  .breadcrumb a { color: var(--brand-blue); text-decoration: underline; text-underline-offset: 2px; transition: color 0.2s ease; }
   .breadcrumb a:hover { color: var(--brand-gold); }
   .separator { margin: 0 0.5rem; }
   .current { color: var(--wp-ink-2); }
@@ -130,6 +131,7 @@ const creativeWorkLD = {
   .category-badge { display: inline-block; background: var(--brand-gold); color: var(--wp-navy); padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
   .project-title { font-size: 3rem; font-weight: 800; color: var(--brand-blue); margin: 0 0 1rem 0; line-height: 1.2; }
   .project-tagline { font-size: 1.25rem; color: rgba(12, 26, 63, 0.75); line-height: 1.6; }
+  .project-disclaimer { margin-top: 1rem; font-size: 0.875rem; color: var(--wp-ink-2); }
   .tech-section { margin-bottom: 3rem; }
   .section-heading { font-size: 1.75rem; font-weight: 700; color: var(--brand-blue); margin: 0 0 1.5rem 0; }
   .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
