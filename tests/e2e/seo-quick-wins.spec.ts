@@ -59,6 +59,7 @@ test('every route fits search snippets and has no em dash or "deep dive"', async
     const title = titleOf(html);
     const description = descriptionOf(html);
     expect(title.length, `${route} title: ${title}`).toBeLessThanOrEqual(60);
+    expect(description, `${route} has no meta description`).not.toBe('');
     if (!LONG_DESCRIPTION_ALLOWED.includes(route)) {
       expect(description.length, `${route} description: ${description}`).toBeLessThanOrEqual(160);
     }
@@ -80,14 +81,22 @@ test('Plus Jakarta Sans is self-hosted and preloaded', async ({ request }) => {
   expect(font.headers()['content-type']).toContain('font/woff2');
 });
 
-test('the browser loads the self-hosted font for headings', async ({ page }) => {
+test('the browser loads the self-hosted font once, as the variable face', async ({ page, blocked }) => {
   await page.goto('/');
-  const loaded = await page.evaluate(async () => {
+  const font = await page.evaluate(async () => {
     await document.fonts.ready;
-    return document.fonts.check('800 16px "Plus Jakarta Sans"') &&
-      [...document.fonts].some((f) => f.family.includes('Plus Jakarta Sans') && f.status === 'loaded');
+    const face = [...document.fonts].find((f) => f.family.includes('Plus Jakarta Sans') && f.status === 'loaded');
+    return {
+      weight: face?.weight ?? null,
+      // An unused preload (CSS src at another URL) would show up as a second download.
+      woff2Downloads: performance.getEntriesByType('resource').filter((e) => e.name.endsWith('.woff2')).length,
+    };
   });
-  expect(loaded).toBe(true);
+  // A static single-weight file would make the 800 headings faux bold.
+  expect(font.weight).toBe('400 800');
+  expect(font.woff2Downloads).toBe(1);
+  // Catches a Google Fonts @import in the CSS bundle, which the HTML check can't see.
+  expect(blocked.filter((u) => /fonts\.(googleapis|gstatic)\.com/.test(u))).toEqual([]);
 });
 
 test('breadcrumb links are underlined', async ({ page }) => {
