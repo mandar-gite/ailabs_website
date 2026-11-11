@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `CLAUDE.md` records where Search Console data lives: the "google search data" sheet and the weekly review reports in Drive `72AI_Marketing/SEO`, and the "72ai GSC weekly review" routine (Mondays, 9:00 IST)
+- Session note for the 0.10.0 release in `docs/changelog/`
+
+### Changed
+- `docs/changelog/*-session-summary.md` is gitignored, so ops-only session summaries stay local
+
 ## [0.10.0] - 2026-11-11
 
 ### Added
