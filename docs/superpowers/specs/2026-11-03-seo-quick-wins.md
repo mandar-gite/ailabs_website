@@ -36,6 +36,7 @@ All titles stay at 60 chars or under and keep `72° AI LABS` (pinned by `tests/e
 | `/about/` | `src/pages/about.astro:9` | About \| 72° AI LABS | About Us: Custom AI Studio \| 72° AI LABS | 40 |
 | `/blog/` | `src/pages/blog/index.astro:16` | Blog \| 72° AI LABS | Blog: Practical AI, RAG and Small Models \| 72° AI LABS | 54 |
 | `/voice-dna/` | `src/pages/voice-dna.astro:8` | Voice DNA — Make Claude Sound Like You \| 72° AI LABS | Voice DNA for Claude: Write Like a Human \| 72° AI LABS | 54 |
+| `/blog/blog1_martech_technical/` | `src/content/blog/blog1_martech_technical.md:3` (new `seoTitle`) | Building Multi-Agent AI Systems That Actually Work \| 72° AI LABS (64) | Multi-Agent AI Systems That Actually Work \| 72° AI LABS | 55 |
 
 The audit suggested "AI Case Studies on Real Business Data" for `/projects/`. The pages hold 105-242 words each, so "case studies" overclaims until they're expanded. "AI Projects" is the honest version; swap it when the case studies ship.
 
@@ -81,7 +82,7 @@ The nav stays as it is. It holds the 5 buyer pages, and a free template there wo
 New file `tests/e2e/seo-quick-wins.spec.ts`, written first and failing before each change:
 
 1. `/projects/nextsurge/` contains the exact disclaimer in a `role="note"` element; `/projects/callmind/` has no `.project-disclaimer`.
-2. Each of the 6 pages in the titles table has the exact new title, and `/voice-dna/` has the exact new meta description.
+2. Each of the 7 pages in the titles table has the exact new title, and `/voice-dna/` has the exact new meta description.
 3. Every built route (from `tests/e2e/routes.ts`) has a title of 60 chars or under and a meta description of 160 chars or under, except `/about/` (out of scope, listed in the test).
 4. No title or meta description on any route contains `—` or "deep dive".
 5. No page links to `fonts.googleapis.com` or `fonts.gstatic.com`; every page preloads `/fonts/plus-jakarta-sans-latin.woff2`, and that file returns 200 with a woff2 content type.
@@ -103,5 +104,7 @@ Before writing test 3, run it against the current build to list any route beyond
 
 - The variable woff2 is about 40-60 KB. If it's much larger, fall back to static 400, 600 and 800 files and preload only 400.
 - Dropping the Google Fonts CSS also drops its other subsets (latin-ext, vietnamese). Site copy is English with `°` and `₹`; check that both are in the latin range or add them to `unicode-range`.
+  - Checked 11 Nov: `°` (U+00B0) is in latin. `₹` (U+20B9) is in latin-ext and appears once, in `src/content/blog/welcome-to-72ai-blog.md:37`. It renders in the system fallback font. Accepted: the latin-ext file would add about 30 KB to every page for 1 glyph.
+  - The latin variable woff2 is 27 KB.
 - New titles change search snippets for pages that already earn clicks (the homepage has 19 of 23). Watch the homepage CTR in Search Console for 4 weeks after deploy.
 - `/voice-dna/` has 0 clicks now, so the risk is low. Rerun the Search Analytics for Sheets export (group by Query and Page) 4 weeks after deploy and compare clicks and position for the Voice DNA queries.

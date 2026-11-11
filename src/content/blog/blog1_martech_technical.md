@@ -1,6 +1,7 @@
 ---
 title: "Building Multi-Agent AI Systems That Actually Work"
-description: "A deep dive into building production-ready multi-agent RAG systems: architecture, quality loops, graceful degradation, and lessons learned from real implementations."
+seoTitle: "Multi-Agent AI Systems That Actually Work"
+description: "How to build production-ready multi-agent RAG systems: architecture, quality loops, graceful degradation, and lessons from real implementations."
 pubDate: 2025-12-24
 author: "Mandar Gite"
 category: "Technical Deep Dive"
