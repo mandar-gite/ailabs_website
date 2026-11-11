@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.0] - 2026-11-11
+
+### Added
+- "Research project. Not investment advice" note on the NextSurge project page, from a new optional `disclaimer` field on projects
+- Footer link to the Voice DNA template on every page, and a link to it from the AutoResearch post
+- Plus Jakarta Sans served from `/fonts/` (27 KB latin variable woff2, OFL licence included) and preloaded
+- `tests/e2e/seo-quick-wins.spec.ts`: exact titles and descriptions, title and description length on every route, no em dash or "deep dive", font loading, breadcrumb underline and Voice DNA links
+- Brand kit uses logo version 3.3 and matches DESIGN.md colours, type and voice
+
+### Changed
+- Buyer-term titles on the homepage, Solutions, Projects, About, Blog, Voice DNA and the multi-agent post, all 60 chars or fewer
+- Meta descriptions on Solutions, Voice DNA and both long blog posts fit in 160 chars, with no em dash
+- Voice DNA title and description target the queries it already shows for in Search Console ("voice dna claude", "write like a human")
+- Project breadcrumb links are underlined, so they don't rely on colour alone
+
+### Removed
+- Google Fonts stylesheet and preconnects, which blocked render for about 870 ms on mobile
+
 ## [0.9.0] - 2026-10-20
 
 ### Added

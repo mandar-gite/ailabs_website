@@ -1,7 +1,7 @@
 ---
 title: "I Ran Karpathy's AutoResearch on a $300 GPU. The Agent Discovered Something the H100 Benchmarks Won't Show You."
 seoTitle: "Karpathy's AutoResearch on a $300 RTX 3060"
-description: "57 autonomous experiments, 7 hours, RTX 3060. Why smaller models win on consumer hardware — and what the agent discovered that inverts the usual scaling playbook."
+description: "57 autonomous experiments, 7 hours, 1 RTX 3060. Why smaller models win on consumer hardware, and what the agent found that flips the usual scaling playbook."
 pubDate: 2026-04-14
 author: "Mandar Gite"
 category: "Experiment Log"
@@ -293,5 +293,7 @@ No. The core loop (propose change, test against metric, keep or discard) is gene
 
 **What was the agent's biggest discovery?**
 Reducing batch size and model size to get more optimization steps per fixed time budget. This inverts the standard ML scaling playbook. On constrained hardware with a fixed time budget, more iterations beat larger models.
+
+If you write with Claude too, our free [Voice DNA template](/voice-dna/) makes its drafts sound like you.
 
 **Tags**: Machine Learning, AutoResearch, Consumer GPU, Andrej Karpathy, AI Research
