@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - `CLAUDE.md` records where Search Console data lives: the "google search data" sheet and the weekly review reports in Drive `72AI_Marketing/SEO`, and the "72ai GSC weekly review" routine (Mondays, 9:00 IST)
 - Session note for the 0.10.0 release in `docs/changelog/`
-- Sitemap `<lastmod>` on every URL, taken from the last git commit to the page's own source files, so Google recrawls changed pages without a manual indexing request
+- Sitemap `<lastmod>` on every URL, taken from the last git commit to the page's own source file and the data it renders, so Google recrawls changed pages without a manual indexing request
 - CI and deploy checkouts fetch full git history (`fetch-depth: 0`), which `lastmod` needs
 
 ### Changed

@@ -1,5 +1,7 @@
 import { execFileSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import { test, expect } from './fixtures';
+import { sourceFiles } from '../../src/utils/sitemapLastmod.mjs';
 
 // Search Console had no sitemap and only knew 12 of ~22 pages, so the sitemap
 // must list only real, indexable pages: each one canonical to itself, no
@@ -47,8 +49,40 @@ test('every sitemap URL has a git-based lastmod', async ({ request }) => {
   // All equal means build-time stamping or a shallow clone in CI (fetch-depth: 0)
   expect(new Set(dates).size, 'every lastmod is the same').toBeGreaterThan(1);
 
-  // Independent check against git for 1 page
-  const voice = urls.find((u) => u.includes('<loc>https://72ai.in/voice-dna/</loc>'))!;
-  const gitDate = execFileSync('git', ['log', '-1', '--format=%cI', '--', 'src/pages/voice-dna.astro'], { encoding: 'utf8' }).trim();
-  expect(Date.parse(voice.match(/<lastmod>([^<]*)<\/lastmod>/)![1])).toBe(Date.parse(gitDate));
+  // Independent checks against git: a plain page, a blog post, and 2 listing pages
+  // whose content comes from data files
+  const cases: [string, string[]][] = [
+    ['/voice-dna/', ['src/pages/voice-dna.astro']],
+    ['/blog/welcome-to-72ai-blog/', ['src/content/blog/welcome-to-72ai-blog.md']],
+    ['/projects/', ['src/pages/projects/index.astro', 'src/data/projects.json']],
+    ['/blog/', ['src/pages/blog/index.astro', 'src/content/blog']],
+  ];
+  for (const [path, files] of cases) {
+    const entry = urls.find((u) => u.includes(`<loc>https://72ai.in${path}</loc>`))!;
+    const gitDate = execFileSync('git', ['log', '-1', '--format=%cI', '--', ...files], { encoding: 'utf8' }).trim();
+    expect(Date.parse(entry.match(/<lastmod>([^<]*)<\/lastmod>/)![1]), path).toBe(Date.parse(gitDate));
+  }
+});
+
+// Today every data file is older than its page, so the date checks above can't
+// tell a dropped data file from a mapped one. This guards the mapping itself:
+// every data file a page imports must count towards its lastmod.
+test('sitemap lastmod sources include every data file a page imports', () => {
+  const pages: [string, string][] = [
+    ['/', 'src/pages/index.astro'],
+    ['/about/', 'src/pages/about.astro'],
+    ['/blog/', 'src/pages/blog/index.astro'],
+    ['/projects/', 'src/pages/projects/index.astro'],
+    ['/projects/callmind/', 'src/pages/projects/[id].astro'],
+    ['/solutions/', 'src/pages/solutions/index.astro'],
+  ];
+  for (const [path, file] of pages) {
+    const src = readFileSync(file, 'utf8');
+    const imported = [...src.matchAll(/from ["'](?:\.\.\/)+(data\/[\w-]+\.json|utils\/engagement)["']/g)].map((m) =>
+      m[1].startsWith('utils/') ? `src/${m[1]}.ts` : `src/${m[1]}`,
+    );
+    if (/getCollection\(["']blog["']/.test(src)) imported.push('src/content/blog');
+    const mapped = sourceFiles(path);
+    for (const dep of imported) expect(mapped, `${path} imports ${dep}`).toContain(dep);
+  }
 });
