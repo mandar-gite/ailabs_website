@@ -28,7 +28,7 @@ The site exists to turn a qualified visitor into a conversation. Success is a su
 
 The 1 message (draft, 12 Nov 2026, wording open): "Bring us a problem you'd like AI to solve. We'll test it on your own data in a few weeks, show you what it costs and what it returns, and you decide what's next." For partners: "Your team builds; we add the senior layer."
 
-Sector-agnostic: the lab picks problems, in any industry. Content is organised around the buyer's 4 questions (will it work, what will it cost, will it pay back, will we stay in control), and each project is shown as an unnamed experiment that answers 1 of them.
+Sector-agnostic: the lab picks problems, in any industry. Every project write-up, article and post follows the 3-point case-study structure: the benefit the client got (title and impact), how we approached it (the hard part and the choices we made), and how quickly it was done with little disruption and care for the client's data. Projects stay unnamed.
 
 Built on the client's own data, owned by the client. Systems run on open-source models, can be hosted in the client's cloud or on-prem, and carry no subscription fee or vendor lock-in. Engagements start small (discovery, then a proof of concept on real data, then a production build the client owns) and are sized frugally.
 
