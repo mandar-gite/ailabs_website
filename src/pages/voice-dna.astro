@@ -16,7 +16,7 @@ import Footer from "../components/Footer.astro";
     <section class="hero">
       <div class="container">
         <p class="eyebrow">Free Template</p>
-        <h1>Stop Sounding Like An AI</h1>
+        <h1>Voice DNA: Stop Sounding Like an AI</h1>
         <p class="subtitle">
           Configure Claude to match your actual writing voice. Set once, forget about it.
         </p>
@@ -56,7 +56,7 @@ import Footer from "../components/Footer.astro";
           The structure is solid. The facts are right. But it doesn't sound like you.
         </p>
         <p class="lead">
-          Voice DNA fixes this. It's a configuration file that tells Claude how you write:
+          The Voice DNA system fixes this. It's a configuration file that tells Claude how you write:
           your sentence rhythms, your hedging style, your banned phrases.
           Add your own writing samples and Claude pattern-matches against your actual voice.
         </p>
@@ -80,7 +80,7 @@ import Footer from "../components/Footer.astro";
     <!-- What's inside -->
     <section class="section" id="how-it-works">
       <div class="container">
-        <h2>What's inside</h2>
+        <h2>What's inside the Voice DNA system</h2>
         <p class="section-subtitle">The template has three sections. The first two work immediately. The third is where your voice comes in.</p>
 
         <div class="feature-grid">
@@ -131,7 +131,7 @@ import Footer from "../components/Footer.astro";
     <!-- Implementation -->
     <section class="section-alt">
       <div class="container narrow">
-        <h2>3 ways to use it</h2>
+        <h2>4 ways to use Voice DNA</h2>
 
         <div class="impl-list">
           <div class="impl-item">
@@ -158,6 +158,15 @@ import Footer from "../components/Footer.astro";
               <h3>Per-Conversation Prompt</h3>
               <p>Paste at the start of any conversation.</p>
               <p class="impl-note">One-off use. Doesn't carry over to new conversations.</p>
+            </div>
+          </div>
+
+          <div class="impl-item">
+            <div class="impl-num">4</div>
+            <div class="impl-body">
+              <h3>As a Claude Skill</h3>
+              <p>Rename the file to <code>SKILL.md</code> and put it in a folder called <code>voice-dna</code>. Add 2 lines of front matter at the top: a <code>name</code> (voice-dna) and a <code>description</code> that tells Claude to apply it whenever it writes for you. In Claude Code, place the folder in <code>~/.claude/skills/</code>. In the Claude apps, zip the folder and upload it under Settings → Capabilities → Skills.</p>
+              <p class="impl-note">Claude loads the skill only when it's writing, so it doesn't crowd every chat.</p>
             </div>
           </div>
         </div>

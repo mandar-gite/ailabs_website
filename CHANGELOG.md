@@ -10,9 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - `CLAUDE.md` records where Search Console data lives: the "google search data" sheet and the weekly review reports in Drive `72AI_Marketing/SEO`, and the "72ai GSC weekly review" routine (Mondays, 9:00 IST)
 - Session note for the 0.10.0 release in `docs/changelog/`
+- Voice DNA page: a 4th way to use it, as a Claude Skill (`SKILL.md`), for the 2 "Claude skills" queries it already shows for
+- `alternateName` on the Organization schema (72ai, 72 AI Labs, AI 72, AI72), since "ai 72" and "ai72" ranked below 1 for the brand
 
 ### Changed
 - `docs/changelog/*-session-summary.md` is gitignored, so ops-only session summaries stay local
+- Voice DNA page H1 is "Voice DNA: Stop Sounding Like an AI", and the page names the "Voice DNA system" in an H2 and the intro, matching the queries it ranks for
 
 ## [0.10.0] - 2026-11-11
 
