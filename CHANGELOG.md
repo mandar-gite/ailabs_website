@@ -10,11 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - `CLAUDE.md` records where Search Console data lives: the "google search data" sheet and the weekly review reports in Drive `72AI_Marketing/SEO`, and the "72ai GSC weekly review" routine (Mondays, 9:00 IST)
 - Session note for the 0.10.0 release in `docs/changelog/`
+- Sitemap `<lastmod>` on every URL, taken from the last git commit to the page's own source file and the data it renders, so Google recrawls changed pages without a manual indexing request
+- CI and deploy checkouts fetch full git history (`fetch-depth: 0`), which `lastmod` needs
 - Voice DNA page: a 4th way to use it, as a Claude Skill (`SKILL.md`), for the 2 "Claude skills" queries it already shows for
 - `alternateName` on the Organization schema (72ai, 72 AI Labs, AI 72, AI72), since "ai 72" and "ai72" ranked below 1 for the brand
 
 ### Changed
 - `docs/changelog/*-session-summary.md` is gitignored, so ops-only session summaries stay local
+- `CLAUDE.md` describes the Search Console sheet as it really runs: a daily backup with 1 tab per day grouped by Date, Query and Page, since the add-on has no weekly option, and the weekly routine adds up 7 days
 - Voice DNA page H1 is "Voice DNA: Stop Sounding Like an AI", and the page names the "Voice DNA system" in an H2 and the intro, matching the queries it ranks for
 
 ## [0.10.0] - 2026-11-11
