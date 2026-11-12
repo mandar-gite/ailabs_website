@@ -22,6 +22,9 @@ const CONTACT = "mandar.gite@72ai.in";
     <p>
       The contact form asks for your name, company, email, phone and brief, plus optional answers about what you need and when. We use it only to reply and to plan a first conversation. It goes to our CRM, HubSpot, through a small service of ours hosted on Cloudflare, and to Formspree, which emails it to us.
     </p>
+    <p>
+      With the form, HubSpot also gets how you first reached the site in this browser tab: the page you landed on, the address of the site that linked you here (without its query string), and any campaign tags in that first link, such as <code>utm_source</code>. It tells us which of our emails, posts or articles brought you. Nothing of this is sent unless you submit the form.
+    </p>
 
     <h3>When you apply for work</h3>
     <p>
@@ -35,12 +38,12 @@ const CONTACT = "mandar.gite@72ai.in";
 
     <h3>Analytics, only if you accept</h3>
     <p>
-      If you click Accept on the cookie banner, we use Google Analytics to see how the site is used, Microsoft Clarity to see how pages are used through heatmaps and session recordings, and Apollo to recognise which companies visit. If you decline, none of them load. You can change your choice at any time with "Cookie settings" at the bottom of every page.
+      If you click Accept on the cookie banner, we use Google Analytics to see how the site is used, Microsoft Clarity to see how pages are used through heatmaps and session recordings, and Apollo to recognise which companies visit. If you decline, none of them load. You can change your choice at any time with "Cookie settings" at the bottom of every page. Separately, Cloudflare Web Analytics counts page views without cookies and without identifying you: it records the page, the referring site, your country and device type, and it runs whatever you choose on the banner.
     </p>
 
     <h3>What your browser stores</h3>
     <p>
-      Your cookie choice is saved in your browser's local storage (<code>72ai_consent</code>), and a session flag (<code>exit_popup_shown</code>) stops a popup appearing twice. Neither is sent to us or used to track you.
+      Your cookie choice is saved in your browser's local storage (<code>72ai_consent</code>), and a session flag (<code>exit_popup_shown</code>) stops a popup appearing twice. Neither is sent to us or used to track you. A second session entry (<code>72ai_first_touch</code>) holds the landing page, referring site and campaign tags described above. It's cleared when you close the tab, and it's sent only if you submit the contact form.
     </p>
 
     <h3>Hosting</h3>
