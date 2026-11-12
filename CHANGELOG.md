@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - `docs/changelog/*-session-summary.md` is gitignored, so ops-only session summaries stay local
+- `CLAUDE.md` describes the Search Console sheet as it really runs: a daily backup with 1 tab per day grouped by Date, Query and Page, since the add-on has no weekly option, and the weekly routine adds up 7 days
 
 ## [0.10.0] - 2026-11-11
 

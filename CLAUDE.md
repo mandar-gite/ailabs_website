@@ -19,7 +19,9 @@ Set up on 11 Nov 2026. Everything sits in 1 Google Drive folder on the 72ai shar
 | Weekly reports, "YYYY-MM-DD GSC weekly review 72ai.in" | Google Docs in that folder | 1 per week |
 | Routine "72ai GSC weekly review" | https://claude.ai/code/routines/trig_017HLvcGYKQW6zDu3uGsmpg1 | `trig_017HLvcGYKQW6zDu3uGsmpg1` |
 
-- The Search Analytics for Sheets add-on fills the sheet. It runs a weekly backup for `sc-domain:72ai.in`, grouped by Query and Page. The 11 Nov tab `SAS_2026-11-11_last 90 days` is the baseline: 90 rows over 90 days.
+- The Search Analytics for Sheets add-on fills the sheet. Its automated backups run only daily or monthly, so a daily backup for `sc-domain:72ai.in` writes 1 tab per day named `YYYY-MM-DD`, grouped by Date, Query and Page, and logs each run in the `Backup Log` tab. Manual runs write `SAS_<date>_<time>` tabs. Leave Compare off and Country out of Group By.
+- The routine adds up the newest 7 dates into "this week", takes each date from 1 tab only (the daily tab first, else the newest `SAS_*` tab), and lists the source tab of each date in the report's Data notes.
+- The 11 Nov 90-day baseline tab is gone from the sheet. Its Voice DNA figure (54 impressions, 0 clicks) lives in the routine prompt.
 - The routine runs every Monday at 9:00 IST (cron `30 3 * * 1` UTC) on `claude-sonnet-5-5` with the Google Drive connector only. It reads the sheet and this repo, and its only write is the report Doc. Run it by hand from the link above whenever needed.
 - Read the sheet with the Google Drive connector (`read_file_content`). The Chrome extension couldn't open Search Console on 11 Nov, and the Search Console API needs a service account that isn't set up.
 - About 40% of impressions are `ai7xxxx` code queries (regex `^ai\d{4,}$`) with 0 clicks. Drop them before any analysis.
