@@ -174,3 +174,48 @@ test('a HubSpot 400 retries once without the attribution property, so the lead i
   assert.equal(calls.length, 2);
   assert.equal(JSON.parse(calls[1].init.body).properties.website_lead_source, undefined);
 });
+
+// First-touch attribution: the site sends the visitor's UTM tags, landing page and
+// external referrer; the Worker stores them as website_* contact properties.
+const TOUCH = {
+  utm_source: 'apollo', utm_medium: 'sequence', utm_campaign: 's1', utm_content: 'step-2',
+  landing_page: '/blog/dpdp-rules-2025/', referrer: 'https://www.linkedin.com/feed/',
+};
+
+test('first-touch attribution is written as website_* properties', async () => {
+  await worker.fetch(post({ ...VALID, ...TOUCH }), env());
+  const p = JSON.parse(calls[0].init.body).properties;
+  assert.equal(p.website_utm_source, 'apollo');
+  assert.equal(p.website_utm_medium, 'sequence');
+  assert.equal(p.website_utm_campaign, 's1');
+  assert.equal(p.website_utm_content, 'step-2');
+  assert.equal(p.website_landing_page, '/blog/dpdp-rules-2025/');
+  assert.equal(p.website_referrer, 'https://www.linkedin.com/feed/');
+});
+
+test('without attribution, no website_utm or landing properties are sent', async () => {
+  await worker.fetch(post(VALID), env());
+  const keys = Object.keys(JSON.parse(calls[0].init.body).properties);
+  assert.deepEqual(keys.filter((k) => k.startsWith('website_') && k !== 'website_lead_source'), []);
+});
+
+test('overlong attribution is cut to its cap and the lead is still accepted', async () => {
+  const res = await worker.fetch(post({ ...VALID, utm_campaign: 'x'.repeat(500), referrer: 'https://a.example/' + 'y'.repeat(900) }), env());
+  assert.equal(res.status, 200);
+  const p = JSON.parse(calls[0].init.body).properties;
+  assert.equal(p.website_utm_campaign.length, 100);
+  assert.equal(p.website_referrer.length, 300);
+});
+
+test('a HubSpot 400 retry drops every attribution property and keeps the lead fields', async () => {
+  hubspot = (url, init) => (Object.keys(JSON.parse(init.body).properties).some((k) => k.startsWith('website_'))
+    ? Response.json({ category: 'VALIDATION_ERROR' }, { status: 400 })
+    : Response.json({ id: '303' }, { status: 201 }));
+  const res = await worker.fetch(post({ ...VALID, ...TOUCH }), env());
+  assert.equal(res.status, 200);
+  assert.equal(calls.length, 2);
+  const retry = JSON.parse(calls[1].init.body).properties;
+  assert.deepEqual(Object.keys(retry).filter((k) => k.startsWith('website_')), []);
+  assert.equal(retry.email, 'asha@example.com');
+  assert.equal(retry.company, 'Rao Textiles');
+});

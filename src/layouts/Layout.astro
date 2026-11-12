@@ -220,6 +220,10 @@ const HAS_TRACKERS = Boolean(GA4_ID || CLARITY_ID || APOLLO_APP_ID);
     <slot />
     {exitPopup && <ExitIntentPopup />}
     {HAS_TRACKERS && <ConsentBanner />}
+    <script>
+        import { captureFirstTouch } from '../utils/attribution';
+        captureFirstTouch();
+    </script>
     <style>
         .skip-to-main {
             position: absolute;
