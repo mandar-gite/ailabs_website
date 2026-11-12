@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
+import { sourceFiles, lastCommitDate } from './src/utils/sitemapLastmod.mjs';
 
 // Optional: set BASE_PATH in CI only when deploying to a subpath
 const basePath = process.env.BASE_PATH;
@@ -42,6 +43,8 @@ export default defineConfig({
           item.priority = 0.5;
           item.changefreq = 'monthly';
         }
+        // Google ignores changefreq and priority but uses an accurate lastmod to schedule recrawls
+        item.lastmod = lastCommitDate(sourceFiles(new URL(item.url).pathname));
         return item;
       }
     })
