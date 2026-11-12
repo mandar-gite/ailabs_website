@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # sitemap lastmod reads git history
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -31,6 +33,8 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # sitemap lastmod reads git history
         
       - name: Install, build, and upload your site
         uses: withastro/action@v2
