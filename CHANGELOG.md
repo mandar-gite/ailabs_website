@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- First-touch lead attribution: the site keeps the landing page, external referrer (origin and path only) and UTM tags of a visitor's first page in sessionStorage (`72ai_first_touch`), and the contact form sends them to the HubSpot Worker only
+- The lead Worker writes them as `website_utm_source`, `website_utm_medium`, `website_utm_campaign`, `website_utm_content`, `website_landing_page` and `website_referrer`, cut to length so a bad tag never costs a lead; `create-hubspot-property.sh` creates the 6 properties
+- Tests: 4 Worker unit tests and 2 e2e tests (tags survive internal navigation and skip Formspree; the referrer loses its query string)
+
+### Changed
+- On a HubSpot 400, the Worker retries without every `website_*` property, not only `website_lead_source`
+- Privacy page names the new session entry and what the form now sends
+
 ## [0.11.0] - 2026-11-12
 
 ### Added

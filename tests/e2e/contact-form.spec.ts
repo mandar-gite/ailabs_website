@@ -135,3 +135,43 @@ test('unmocked submit never leaves the machine', async ({ page, blocked }) => {
   expect(blocked).toContain(HUBSPOT);
   expect(blocked.some((u) => u.startsWith('https://formspree.io/f/'))).toBe(true);
 });
+
+// First-touch attribution: the landing page's UTM tags and external referrer are
+// kept for the session and sent to the HubSpot Worker with the form, but not to Formspree.
+async function submitAndCapture(page: Page) {
+  let hubspotBody: Record<string, string> = {};
+  let formspreeBody = '';
+  await page.route(HUBSPOT, async (route) => {
+    hubspotBody = route.request().postDataJSON();
+    await route.fulfill({ status: 200, json: { ok: true } });
+  });
+  await page.route(FORMSPREE, async (route) => {
+    formspreeBody = route.request().postData() ?? '';
+    await route.fulfill({ status: 200, json: { ok: true } });
+  });
+  await fillForm(page);
+  await page.locator('#contact-form').getByRole('button', { name: 'Send Message' }).click();
+  await expect(page).toHaveURL(/\/thanks\/?$/);
+  return { hubspotBody, formspreeBody };
+}
+
+test('first-touch UTM tags survive internal navigation and reach only the Worker', async ({ page }) => {
+  await page.goto('/?utm_source=apollo&utm_medium=sequence&utm_campaign=s1&utm_content=step-2');
+  await page.goto('/about/?utm_source=internal-should-not-win');
+  await page.goto('/#contact');
+  const { hubspotBody, formspreeBody } = await submitAndCapture(page);
+
+  expect(hubspotBody).toMatchObject({
+    utm_source: 'apollo', utm_medium: 'sequence', utm_campaign: 's1', utm_content: 'step-2', landing_page: '/',
+  });
+  expect(hubspotBody.referrer).toBeUndefined();
+  expect(formspreeBody).not.toContain('utm_source');
+});
+
+test('an external referrer is sent without its query string', async ({ page }) => {
+  await page.goto('/#contact', { referer: 'https://www.linkedin.com/feed/?trk=private-123' });
+  const { hubspotBody } = await submitAndCapture(page);
+
+  expect(hubspotBody.referrer).toBe('https://www.linkedin.com/feed/');
+  expect(JSON.stringify(hubspotBody)).not.toContain('private-123');
+});

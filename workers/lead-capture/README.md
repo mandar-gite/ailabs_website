@@ -13,6 +13,15 @@ fallback, so a lead is never lost.
 Maps to HubSpot contact: `firstname`/`lastname` (from Name), `company`, `email`,
 `phone`, `message` (from Brief).
 
+First-touch attribution, sent by the site with each submit (all optional): `utm_source`,
+`utm_medium`, `utm_campaign`, `utm_content` (cut to 100 characters), `landing_page` and
+`referrer` (cut to 300). They map to the contact properties `website_utm_source`,
+`website_utm_medium`, `website_utm_campaign`, `website_utm_content`,
+`website_landing_page` and `website_referrer`. Create them once with
+`scripts/create-hubspot-property.sh` before deploying. If HubSpot rejects any
+`website_*` property, the Worker retries once without them, so the lead is kept.
+Tag conventions: `72ailabs/72ai-marketing`, `outbound/2026-11-12-utm-convention.md`.
+
 ## Deploy
 
 ```bash

@@ -101,6 +101,13 @@ import LogoMark from "./LogoMark.astro";
     const fd = new FormData(form);
     const payload: Record<string, string> = {};
     fd.forEach((v, k) => (payload[k] = String(v)));
+    // First-touch attribution (written by src/utils/attribution.ts) goes to the HubSpot
+    // Worker only; Formspree gets the form as typed. Read inline, without an import,
+    // so Astro keeps this script inline in the page.
+    try {
+      const touch = JSON.parse(sessionStorage.getItem("72ai_first_touch") ?? "{}");
+      if (touch && typeof touch === "object" && !Array.isArray(touch)) Object.assign(payload, touch);
+    } catch { /* no attribution: storage blocked or empty */ }
 
     const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
     const label = btn?.textContent ?? "Send Message";

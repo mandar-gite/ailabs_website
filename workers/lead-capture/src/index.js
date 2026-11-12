@@ -12,6 +12,17 @@ const ALLOWED_ORIGINS = [
 // Longest accepted value per form field; anything longer is rejected, not truncated.
 const MAX_LENGTH = { Name: 200, Company: 200, Email: 254, Phone: 40, Brief: 5000, Need: 100, Timing: 100 };
 
+// First-touch attribution sent by the site: form key -> [HubSpot property, cap].
+// These are cut to length instead of rejected, so a bad UTM tag never costs a lead.
+const ATTRIBUTION = {
+  utm_source: ["website_utm_source", 100],
+  utm_medium: ["website_utm_medium", 100],
+  utm_campaign: ["website_utm_campaign", 100],
+  utm_content: ["website_utm_content", 100],
+  landing_page: ["website_landing_page", 300],
+  referrer: ["website_referrer", 300],
+};
+
 function corsHeaders(origin) {
   const allow = ALLOWED_ORIGINS.includes(origin) ? origin : "https://72ai.in";
   return {
@@ -114,6 +125,10 @@ export default {
     properties.website_lead_source = fields.Brief.startsWith("Discovery brief (72ai prompt)")
       ? "discovery_prompt"
       : "contact_form";
+    for (const [key, [prop, max]] of Object.entries(ATTRIBUTION)) {
+      const v = typeof data[key] === "string" ? data[key].trim().slice(0, max) : "";
+      if (v) properties[prop] = v;
+    }
 
     const HS = "https://api.hubapi.com/crm/v3/objects/contacts";
     const auth = {
@@ -146,11 +161,11 @@ export default {
     let res;
     try {
       res = await upsert(properties);
-      // If HubSpot rejects the attribution property (missing in this portal),
-      // keep the lead: retry once without it.
+      // If HubSpot rejects an attribution property (missing in this portal),
+      // keep the lead: retry once without any website_* property.
       if (res.status === 400) {
-        console.error("hubspot_retry_without_lead_source", 400);
-        const { website_lead_source, ...rest } = properties;
+        console.error("hubspot_retry_without_attribution", 400);
+        const rest = Object.fromEntries(Object.entries(properties).filter(([k]) => !k.startsWith("website_")));
         res = await upsert(rest);
       }
     } catch (e) {
