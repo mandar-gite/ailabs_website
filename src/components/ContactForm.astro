@@ -1,7 +1,4 @@
 ---
-// This form uses Formspree as the backend for static forms.
-// You must replace the action URL with your unique Formspree endpoint.
-const FORM_ENDPOINT = "https://formspree.io/f/xdkdvzvl";
 import LogoMark from "./LogoMark.astro";
 ---
 <section class="pt-4 pb-6">
@@ -10,10 +7,7 @@ import LogoMark from "./LogoMark.astro";
     <div class="flex justify-center mb-3">
       <LogoMark size={56} />
     </div>
-    <form id="contact-form" action={FORM_ENDPOINT} method="POST" class="space-y-3.5">
-      <!-- Metadata for better inbox + redirect after submit -->
-      <input type="hidden" name="_subject" value="New inquiry from 72° AI Labs" />
-      <input type="hidden" name="_redirect" value="https://72ai.in/thanks/" />
+    <form id="contact-form" action="/api/lead" method="POST" class="space-y-3.5">
 
       <!-- Name, Company, Email, Phone: 2 columns from sm up, stacked on phones -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -86,12 +80,12 @@ import LogoMark from "./LogoMark.astro";
 </section>
 
 <script>
-  // Progressive enhancement: with JS, submit to BOTH the HubSpot Worker (owns the
-  // lead in the CRM) and Formspree (email notification + fallback so no lead is lost),
-  // then redirect to /thanks once at least one of them has accepted the lead. If both
-  // fail, the visitor stays on the form with their input and sees an error instead
-  // of a false "thank you". Without JS, the plain <form action> still posts to
-  // Formspree with its _redirect, so leads are captured either way.
+  // Progressive enhancement: with JS, submit to the lead Worker, which creates the
+  // HubSpot contact and assigns it to Mandar (HubSpot emails him on assignment, which
+  // is the new-lead alert). On success go to /thanks; otherwise the visitor stays on
+  // the form with their input and sees an error instead of a false "thank you".
+  // Without JS, the plain <form action> posts to the same Worker, which answers
+  // with a redirect to /thanks.
   const HUBSPOT_ENDPOINT = "https://72ai.in/api/lead";
   const form = document.getElementById("contact-form") as HTMLFormElement | null;
   const errorEl = document.getElementById("contact-form-error");
@@ -101,9 +95,8 @@ import LogoMark from "./LogoMark.astro";
     const fd = new FormData(form);
     const payload: Record<string, string> = {};
     fd.forEach((v, k) => (payload[k] = String(v)));
-    // First-touch attribution (written by src/utils/attribution.ts) goes to the HubSpot
-    // Worker only; Formspree gets the form as typed. Read inline, without an import,
-    // so Astro keeps this script inline in the page.
+    // First-touch attribution (written by src/utils/attribution.ts) goes to the lead
+    // Worker. It's read inline, without an import, so Astro keeps this script inline.
     try {
       const touch = JSON.parse(sessionStorage.getItem("72ai_first_touch") ?? "{}");
       if (touch && typeof touch === "object" && !Array.isArray(touch)) Object.assign(payload, touch);
@@ -115,20 +108,13 @@ import LogoMark from "./LogoMark.astro";
     if (errorEl) errorEl.hidden = true;
 
     // fetch only rejects on network errors, so an HTTP error must be checked via res.ok.
-    const results = await Promise.allSettled([
-      fetch(HUBSPOT_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      }),
-      fetch(form.action, {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: fd,
-      }),
-    ]);
+    const res = await fetch(HUBSPOT_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }).catch(() => null);
 
-    if (results.some((r) => r.status === "fulfilled" && r.value.ok)) {
+    if (res?.ok) {
       window.location.href = "/thanks/";
       return;
     }
