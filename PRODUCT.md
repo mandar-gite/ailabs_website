@@ -14,19 +14,19 @@ Second primary reader is a partner: the founder or CTO of an AI services firm wh
 
 Secondary reader is the technical person either of them asks to vet the studio (CTO, tech lead, or a trusted advisor). They read project pages and the blog for evidence of real engineering depth.
 
-Not for: leaders who want a vision workshop with no problem in mind, buyers who want a licence for a ready-made product, and anyone with no data or problem to experiment on yet. Full ICP: `72ailabs/72ai-marketing`, `positioning/2026-11-12-icp-v2.md`.
+Not for: leaders who want a vision workshop with no problem in mind, buyers who want a licence for a ready-made product, and anyone with no data or problem to work on yet. Full ICP: `72ailabs/72ai-marketing`, `positioning/2026-11-12-icp-v2.md`.
 
 The site serves the owner first. Technical proof sits one click deeper, never in the way of the owner's read.
 
 ## Product Purpose
 
-72ai.in is the marketing site for 72° AI LABS, a founder-led lab of senior people who understand both the business and the technology. It looks for interesting problems and solves them on a client's own business data, as an experiment the client runs with the lab: custom models, RAG pipelines, workflow automation and decision tools, built bespoke for each problem. A visitor should leave with 1 impression: these people are curious about my problem and will test it properly.
+72ai.in is the marketing site for 72° AI LABS, a founder-led lab of senior people who understand both the business and the technology. It looks for interesting problems and solves them on a client's own business data, starting with a small proof against a target agreed up front: custom models, RAG pipelines, workflow automation and decision tools, built bespoke for each problem. A visitor should leave with 1 impression: these people are curious about my problem and will test it properly.
 
 The site exists to turn a qualified visitor into a conversation. Success is a submitted contact form (`/#contact`, which posts to Formspree and the HubSpot Worker at `72ai.in/api/lead`) from a business with a real data problem. Secondary jobs: show breadth of work (`/projects`, `/solutions`), build credibility through writing (`/blog`, RSS), and offer a free tool (`/voice-dna`).
 
 ## Positioning
 
-The 1 message (draft, 12 Nov 2026, wording open): "Bring us a problem you'd like AI to solve. We'll test it on your own data in a few weeks, show you what it costs and what it returns, and you decide what's next." For partners: "Your team builds; we add the senior layer."
+The 1 message (13 Nov 2026): "Find out if AI can solve your problem before you commit to it. A few weeks on your own data, a target we agree up front, and a clear answer on what it costs and what it returns." For partners: "Your team builds; we add the senior layer."
 
 Sector-agnostic: the lab picks problems, in any industry. Every project write-up, article and post follows the 3-point case-study structure: the benefit the client got (title and impact), how we approached it (the hard part and the choices we made), and how quickly it was done with little disruption and care for the client's data. Projects stay unnamed.
 
@@ -86,4 +86,4 @@ Market position: India-based, selling globally. India is the origin and a source
 3. Ownership is the differentiator: their data, their models, their infrastructure, no lock-in. Keep it visible.
 4. Small first step. The path from reading to a discovery conversation stays short and low-commitment.
 5. Technical depth is available, not imposed: project pages and the blog carry the engineering detail for the person vetting the studio.
-6. Show work as experiments: the problem, what we tried, what worked, what didn't, and what it cost, with no client names. Curiosity about the problem comes before any claim about the lab.
+6. Show work as problems solved: the problem, what we tried, what worked, what didn't, and what it cost, with no client names. Curiosity about the problem comes before any claim about the lab.
