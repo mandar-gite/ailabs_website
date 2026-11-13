@@ -8,7 +8,7 @@ web
 
 ## Users
 
-Primary reader is an AI-curious decision-maker: an owner, founder, CXO or senior functional head who can approve spend, in any sector and at any company size. They're drawn to AI mainly for cost reasons (work that takes too many people, too long, or goes wrong too often), and they're unsure on 4 things: can AI do this on our data, what will it cost to build and to run, will it pay back, and will we keep control of our data. They have a specific job in mind and the data behind it (ledgers, call recordings, documents, reports, spreadsheets), and no in-house AI team. They want a small, safe experiment with a clear answer before any big commitment.
+Primary reader is an AI-curious decision-maker: an owner, founder, CXO or senior functional head who can approve spend, in any sector and at any company size. They're drawn to AI mainly for cost reasons (work that takes too many people, too long, or goes wrong too often), and they're unsure on 4 things: can AI do this on our data, what will it cost to build and to run, will it pay back, and will we keep control of our data. They have a specific job in mind and the data behind it (ledgers, call recordings, documents, reports, spreadsheets), and no in-house AI team. They want a small, safe first step with a clear answer before any big commitment.
 
 Second primary reader is a partner: the founder or CTO of an AI services firm whose engineers are strong but who's missing the senior layer between them and the founder. They're looking for a forward deployed engineer (Mandar) who knows the technology and the business, for design, specs and review on their own client work.
 
