@@ -58,9 +58,13 @@ We made 4 choices.
 
 **Mask the data as it arrives.** Names and phone numbers are swapped for tokens the moment the data lands in the NGO's warehouse. Rule 6 of the DPDP Rules names masking and virtual tokens among the security safeguards, and asks for logs that show who accessed personal data. Analysts and reports work on masked data from the start, so nobody sees a name by accident on the way to a chart.
 
+![A state report titled Teachers to call this week, with each teacher shown as a code such as T-4F7A, phone numbers hidden, and a stamp reading Names released only on approval](/images/blog/dpdp-masked-report.jpg)
+
 **Keep the reports fixed.** All 77 come from 7 report scripts, run per state. Each one is tested and checked against the figures the NGO already trusted in Power BI. Nobody types a free-form question and gets AI-written SQL back. That limits what a manager can ask without us, and it means the same question gives the same number every time.
 
 **Put a named approver on every release of names.** A calling team files a disclosure request with a reason. It goes to the data officer for that state, or to a standby officer when that officer is away. The portal produces a list with real names on it (an identified list) only after that approval. Every request and every decision is kept.
+
+![Disclosure flow: a calling team requests names with a reason, the state data officer or a standby approves, and only then is an identified list released, with the request and decision kept on record](/images/blog/dpdp-disclosure-flow.png)
 
 **Never reverse a token.** The identified list comes from a separate, restricted table that the masking step fills at load time, and only the disclosure step can read it. The system has no code that turns a token back into a name, so there's no shortcut around the approval to build.
 
