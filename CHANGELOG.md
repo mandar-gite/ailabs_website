@@ -7,7 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.12.2] - 2026-11-14
+
+### Changed
+- DPDP post: new version, titled "The ₹250 crore question: Who has access to your data?". It opens on the penalty, moves the dates table to the end, and ends with "A takeaway for us all" and "Here's what you can do". Slug, `seoTitle` and FAQ are unchanged
+- Blog posts can wrap a section in `<div class="takeaway">` (grey box) or `<div class="callout">` (gold box)
+
+### Fixed
+- Numbered and bulleted lists in blog posts show their numbers and bullets again; Tailwind's base reset had removed them
+
+## [0.12.1] - 2026-11-14
+
 ### Added
+- DPDP post: a masked state report illustration and a disclosure-flow diagram
+
+## [0.12.0] - 2026-11-14
+
+### Added
+- Blog post "Getting ready for DPDP" (`/blog/dpdp-compliance-masked-reports/`), with FAQ schema and its own share image
 - First-touch lead attribution: the site keeps the landing page, external referrer (origin and path only) and UTM tags of a visitor's first page in sessionStorage (`72ai_first_touch`), and the contact form sends them to the HubSpot Worker only
 - The lead Worker writes them as `website_utm_source`, `website_utm_medium`, `website_utm_campaign`, `website_utm_content`, `website_landing_page` and `website_referrer`, cut to length so a bad tag never costs a lead; `create-hubspot-property.sh` creates the 6 properties
 - Tests: 4 Worker unit tests and 2 e2e tests (tags survive internal navigation and skip Formspree; the referrer loses its query string)
@@ -15,6 +32,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - On a HubSpot 400, the Worker retries without every `website_*` property, not only `website_lead_source`
 - Privacy page names the new session entry and what the form now sends
+- Privacy page names Cloudflare Web Analytics
+- `PRODUCT.md` follows ICP v2 and the 3-point case-study structure
 
 ## [0.11.0] - 2026-11-12
 
