@@ -97,7 +97,6 @@ Notice and consent for teachers, retention and erasure rules, and a breach plan 
 
 If your reports carry names and phone numbers, start with a [free 1-week Discovery](/discovery-brief/): we map where personal data flows through your reports and pick the one to fix first. A 2-3 week proof of concept on your own data follows, against a target we agree up front. [Talk to us](/#contact).
 
-
 ## Frequently asked questions about DPDP compliance
 
 **When do the DPDP core duties start?**
