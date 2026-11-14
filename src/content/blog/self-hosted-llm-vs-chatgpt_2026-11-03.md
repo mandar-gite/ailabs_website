@@ -52,7 +52,7 @@ A quantized model of 7 to 14 billion parameters runs on a single GPU with 24GB o
 
 What you get:
 
-- **Data stays put.** Prompts, files and answers never leave your server. (If the DPDP Act is on your mind, I covered that angle in [Private LLMs and the DPDP Act](/blog/private-llm-dpdp_2026-10-27/).)
+- **Data stays put.** Prompts, files and answers never leave your server. (If the DPDP Act is on your mind, see [how an education NGO keeps names masked under DPDP](/blog/dpdp-compliance-masked-reports/).)
 - **Cost scales with hardware.** After the server, the 10,000th request costs about the same as the 10th: electricity.
 - **It plugs into your systems.** The model sits behind an API on your network, so a Tally export or a folder of PDFs can flow through it on a schedule.
 - **Nothing changes unless you change it.** The model you tested is the model you run next year.

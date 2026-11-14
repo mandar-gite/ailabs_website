@@ -60,7 +60,7 @@ Weeks start on Tuesdays. Diwali (8 Nov) and the year-end weeks are kept light.
 
 | Week | Content piece | Channel | Notes | Status |
 |---|---|---|---|---|
-| 1 (27 Oct) | Publish DPDP post; submit sitemap; request indexing for 8 pages | Blog, GSC | Flip `draft` in `private-llm-dpdp_2026-10-27.md` | Drafted |
+| 1 (27 Oct) | Publish DPDP post; submit sitemap; request indexing for 8 pages | Blog, GSC | Replaced by `dpdp-compliance-masked-reports.md` (PR #60); old post deleted 14 Nov 2026 | Replaced |
 | 1 | LinkedIn: "Your team is pasting customer data into ChatGPT" | LinkedIn | Link to the DPDP post | To do |
 | 1 | Clutch and GoodFirms listings | Directories | 1 time, about 1 hr | To do |
 | 2 (3 Nov) | Publish self-hosted vs ChatGPT post | Blog | Flip `draft` in `self-hosted-llm-vs-chatgpt_2026-11-03.md` | Drafted |
