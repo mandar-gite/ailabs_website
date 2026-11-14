@@ -283,6 +283,10 @@ const breadcrumbLD = {
     margin: 0.5rem 0;
   }
 
+  /* Tailwind's base reset strips list markers; posts need them back */
+  .post-content :global(ol) { list-style: decimal; }
+  .post-content :global(ul) { list-style: disc; }
+
   .post-content :global(strong) {
     font-weight: 700;
     color: var(--brand-blue);
@@ -326,6 +330,30 @@ const breadcrumbLD = {
     background: transparent;
     padding: 0;
     color: white;
+  }
+
+  /* Article closing pattern (Ajay, 14 Nov 2026): a takeaway, then what the reader can do */
+  .post-content :global(.takeaway),
+  .post-content :global(.callout) {
+    border-radius: 20px;
+    padding: 0.5rem 2rem 1rem;
+    margin: 3rem 0;
+  }
+
+  .post-content :global(.takeaway) {
+    background: #F6F7F9;
+    border-left: 4px solid var(--brand-blue);
+  }
+
+  .post-content :global(.callout) {
+    background: rgba(217, 164, 65, 0.12);
+    border: 1px solid var(--brand-gold);
+    border-left: 4px solid var(--brand-gold);
+  }
+
+  .post-content :global(.takeaway h2),
+  .post-content :global(.callout h2) {
+    margin-top: 1.5rem;
   }
 
   .post-content :global(blockquote) {
