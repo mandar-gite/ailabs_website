@@ -1,5 +1,5 @@
 ---
-title: "Getting ready for DPDP: how an education NGO keeps teachers' names masked until a data officer signs off"
+title: "The ₹250 crore question: Who has access to your data?"
 seoTitle: "DPDP compliance: masking names in reports"
 description: "DPDP's core duties start on 13 May 2027. How an education NGO masks personal data on arrival and releases names only after a data officer signs off."
 pubDate: 2026-11-14
@@ -22,84 +22,183 @@ faq:
     answer: "Up to ₹250 crore, for failing to take reasonable security safeguards that leads to a breach."
 ---
 
-A state team at an education NGO needs a list of teachers who've gone quiet, with phone numbers, so they can call them this week. The same tables hold children's details. Who gets to pull that list, and who decides?
+Under India's Digital Personal Data Protection (DPDP) Act, an organisation can face a penalty of up to ₹250 crore for failing to take reasonable security safeguards, leading to a personal data breach.
 
-Until this year, many organisations answered that with "whoever runs the report". India's Digital Personal Data Protection (DPDP) Act puts a date on a better answer.
+If your organisation decides why and how personal data is used, the Act calls you a **Data Fiduciary**. The responsibilities are yours. NGOs included.
 
-## DPDP compliance in 3 dates
+The core duties are scheduled to come into effect on 13 May 2027.
 
-| Date | What starts |
-|---|---|
-| 13 Nov 2025 | The DPDP Rules are notified, and the Data Protection Board is set up |
-| 13 Nov 2026 | Consent Manager registration |
-| 13 May 2027 | The core duties: notice, consent, security safeguards, breach reporting, retention and erasure |
+One education NGO decided to get ready early. What we found in its reporting process is something many organisations might recognise.
 
-The full text is in the [DPDP Rules, 2025 on MeitY's site (PDF)](https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf).
+## Every report started on a laptop
 
-That leaves under 6 months. If your organisation decides why and how personal data gets used, the Act calls you a **Data Fiduciary**, and the duties are yours. NGOs included. The highest penalty, up to ₹250 crore, is for failing to take reasonable security safeguards that leads to a breach.
+The NGO trains volunteer teachers to teach English in rural India.
 
-Most of those duties come down to 2 questions you should be able to answer on any day: who can see a person's name, and how would you prove it?
+Its state teams keep the programme moving. They call teachers, run quizzes and plan campaigns. To decide what needs attention, they rely on reports. Which teachers have gone quiet this month? Who needs a follow-up?
 
-Here's how one NGO answered them. Swap teachers for customers or employees, and it's the same problem.
+There are 77 standard reports across 11 states.
 
-## The benefit: state teams pull their own reports, and names stay masked
+Here's how one used to get made.
 
-The NGO trains volunteer teachers to teach English in rural India. Its state teams keep those teachers going: they phone them, run quizzes and plan campaigns. Every campaign starts from a report, such as which districts are active and which teachers have gone quiet.
+Someone downloaded the full dataset into Excel on their personal laptop. Built the report. Then emailed it to the state team or a donor.
 
-There are 7 standard reports, and each one has a version for every one of 11 states: 77 reports in all. Every one used to be built by hand, by 1 of 3 people who could run the Python scripts behind them. State teams waited their turn.
+That dataset contained teachers' phone numbers and details of children.
 
-Now all 77 are automated. A state lead picks a report for their state in a portal, and gets a PDF. The reports show codes where names used to be. When a calling team needs real names, it asks, and the state's data officer has to approve before any name leaves the system.
+Every report created another copy of personal data. On another laptop. In another inbox.
 
-## The approach: mask on arrival, release names on approval
+The process was also slow. Just 3 people were responsible for preparing all 77 reports manually. State teams had to wait for their turn.
 
-The hard part was that speed and control pull in opposite directions. Letting state teams serve themselves means more people near the data. The data holds teachers' phone numbers and details of children, and the Act sets stricter rules for children's data.
+The organisation had a reporting problem. It also had a data protection problem.
 
-We made 4 choices.
+We decided to address both.
 
-**Mask the data as it arrives.** Names and phone numbers are swapped for tokens the moment the data lands in the NGO's warehouse. Rule 6 of the DPDP Rules names masking and virtual tokens among the security safeguards, and asks for logs that show who accessed personal data. Analysts and reports work on masked data from the start, so nobody sees a name by accident on the way to a chart.
+## Names stay masked until someone says yes
+
+We moved the reporting process into the NGO's own protected cloud environment.
+
+The data stays in one place. Teams can access their reports whenever they need them. Nobody needs to download the full dataset to prepare a report.
+
+But the biggest change happens the moment data enters the system.
+
+**Names are replaced with codes.**
+
+Every teacher's name and phone number is swapped for a code, such as T-4F7A. Reports and charts work with these codes. Someone preparing a report can see the information they need without seeing the identity behind it.
+
+Rule 6 of the DPDP Rules includes measures such as masking and virtual tokens among the security safeguards it describes.
 
 ![A state report titled Teachers to call this week, with each teacher shown as a code such as T-4F7A, phone numbers hidden, and a stamp reading Names released only on approval](/images/blog/dpdp-masked-report.jpg)
 
-**Keep the reports fixed.** All 77 come from 7 report scripts, run per state. Each one is tested and checked against the figures the NGO already trusted in Power BI. Nobody types a free-form question and gets AI-written SQL back. That limits what a manager can ask without us, and it means the same question gives the same number every time.
+**Every state gets its own reports.**
 
-**Put a named approver on every release of names.** A calling team files a disclosure request with a reason. It goes to the data officer for that state, or to a standby officer when that officer is away. The portal produces a list with real names on it (an identified list) only after that approval. Every request and every decision is kept.
+A state lead opens a web page, selects a report for their state and downloads a PDF.
+
+All 77 reports are now generated automatically. Before anyone started relying on them, we checked each one against figures the NGO already trusted. The same inputs produce the same numbers every time.
+
+**Real names need a real person's approval.**
+
+Sometimes a team needs to call a teacher. It then requests the relevant names and explains why they're needed.
+
+The state data officer, or a designated standby when that officer is away, approves or rejects the request.
+
+Only after approval does the system produce an identified list containing names and phone numbers.
+
+Every request and every decision is recorded.
 
 ![Disclosure flow: a calling team requests names with a reason, the state data officer or a standby approves, and only then is an identified list released, with the request and decision kept on record](/images/blog/dpdp-disclosure-flow.png)
 
-**Never reverse a token.** The identified list comes from a separate, restricted table that the masking step fills at load time, and only the disclosure step can read it. The system has no code that turns a token back into a name, so there's no shortcut around the approval to build.
+**And there's no back door.**
 
-## Care: inside the NGO's own cloud, with nothing switched off
+Real names sit in a separate, restricted store. Only the approval process can access it. Nothing in the system turns a code back into a name.
 
-The data stays in the NGO's own cloud project, in an Indian region. No language model runs in production; the reports are plain, tested code.
+The idea is simple: people should be able to do their work without routinely seeing personal information they don't need.
 
-The NGO's existing reports kept running the whole time, and Power BI stayed in place as the cross-check. The 3 people who built the reports by hand now spend that time on deeper analysis of the programme.
+## Safer data. Faster reports.
 
-## Why it worked here
+Data protection often sounds like more approvals, more restrictions and more waiting.
 
-The NGO has taken up new tools from day one: WhatsApp, then low-cost tech, and now AI. It paid for this work from its own reserves, choosing to invest in its own systems.
+Here, it went the other way.
 
-Its team brought the problems and put the methods to work. A member of that team now runs the portal day to day.
+Reports that once had to be prepared manually are now available on demand. State teams no longer have to wait for someone to build them. Personal information doesn't routinely land on individual laptops.
 
-## What this setup helps the NGO show
+And the 3 people who previously spent their time preparing reports can now focus on deeper analysis of the programme.
 
-On its own, the setup gives the NGO evidence for some of the duties that start in May 2027:
+The organisation has better control over personal information and a more efficient reporting process.
 
-- **Security safeguards:** personal data is masked by default, and access to names is narrow and logged.
-- **Purpose:** every release of names carries a stated reason and a named officer's approval.
-- **Breach response:** if something goes wrong, the record shows who held names, and which ones.
-- **Requests from data principals (the people whose data it holds):** the NGO can answer "who has seen my number?" from the record.
+That's a useful outcome. The two don't have to work against each other.
 
-Notice and consent for teachers, retention and erasure rules, and a breach plan are still the NGO's own work, with legal advice. Software can carry a policy out; the organisation has to write it.
+## The old reports never stopped
 
-## 5 steps to copy for your own data
+There was one more thing we had to get right.
 
-1. **List every report that carries a name or phone number.** Include the spreadsheets people email each other.
-2. **Ask which of them need names at all.** Most reports need counts, areas and dates.
-3. **Mask where data enters.** Masking at report time means somebody has already seen the plaintext.
-4. **Name an approver (and a standby) for every release of names, and keep the record.** The record is what you'll show the Board.
-5. **Fix your report set.** Check each report against numbers you already trust, before anyone relies on it.
+The NGO already had reports and Power BI dashboards that its teams trusted. Introducing a new system couldn't mean stopping the work or asking everyone to start from scratch.
 
-If your reports carry names and phone numbers, start with a [free 1-week Discovery](/discovery-brief/): we map where personal data flows through your reports and pick the one to fix first. A 2-3 week proof of concept on your own data follows, against a target we agree up front. [Talk to us](/#contact).
+So the existing reports continued to run. The Power BI dashboards stayed in place as a cross-check while the new system was built and tested.
+
+The data is stored in India. And there's no AI model reading it during day-to-day reporting. The reports are generated using conventional, tested code.
+
+We think that's worth pointing out.
+
+Technology should follow the problem. This organisation needed better reporting, better control over personal information and a more efficient process. It didn't need an AI model to do those particular jobs.
+
+Knowing what technology to use is important. Knowing what not to use is just as important.
+
+## Ready for more than the law asks?
+
+The new system gives the NGO practical controls that are relevant to its DPDP Act compliance.
+
+**Security safeguards:** Personal data is masked by default. Access to real names is restricted and recorded.
+
+**Purpose:** Every request to release names has a stated reason and requires an authorised person's approval.
+
+**Access records:** The organisation can see who requested access and who approved it.
+
+**Breach response:** If something goes wrong, the record shows who had names, and which ones.
+
+**Questions from teachers:** If a teacher asks "who has seen my number?", the organisation can answer from the record.
+
+These controls also give the organisation something useful beyond compliance. If a teacher or donor asks how personal information is handled, the organisation has a record it can refer to.
+
+It also gets faster reporting, fewer copies of personal data on laptops and a process that its own team can operate.
+
+<div class="takeaway">
+
+## A takeaway for us all
+
+The NGO has a history of adopting new tools early, from WhatsApp to low-cost technology and now AI.
+
+It also chose to fund this work from its own reserves, investing in systems it could own and use.
+
+Its team brought the operational knowledge and identified the problems. A member of the team now manages the portal day to day.
+
+Starting early gave the organisation time to test all 77 reports against figures it already trusted, well before the May 2027 deadline.
+
+That's one advantage of getting started early: you have time to find what doesn't work, fix it and build confidence in the system before it becomes essential.
+
+</div>
+
+<div class="callout">
+
+## Here's what you can do
+
+You don't have to begin by rebuilding every system in your organisation.
+
+Start with the reports. They can show quite a bit about how personal data moves through your business.
+
+1. **Find every report that carries personal data.** Include spreadsheets, email attachments and files people download onto their laptops.
+2. **Ask whether each report really needs names.** Most reports need counts, locations and dates. They may not need someone's identity.
+3. **Mask names when the data enters the system.** If you mask them only when a report is generated, people may already have seen the original information.
+4. **Decide who can approve access to real identities.** Name an authorised person and a standby. Record every request, its purpose and the decision.
+5. **Test your reports before automating them.** Check the numbers against information you already trust. Automation is useful only when people can rely on what it produces.
+
+</div>
+
+## The ₹250 crore question is worth asking now
+
+Where does personal data go after it enters your organisation?
+
+Who sees it? Who needs it? Where does it get copied? And can you demonstrate that access is controlled?
+
+These are good questions to start with, whether you're working towards being DPDP-compliant or simply trying to manage your organisation's information better.
+
+At 72° AI LABS, we begin with a [1-week Discovery, free of charge](/discovery-brief/). We map how data moves through your organisation, identify the problems and agree on one worth addressing.
+
+We then build a paid proof of concept (PoC), typically over 2-3 weeks. It's a small proof against a target we agree up front, using your own data. The client owns what we build. [Talk to us](/#contact).
+
+You don't have to fix everything at once. Start with one problem. Understand it properly. Then build something that works.
+
+## DPDP compliance: 3 dates to know
+
+| Date | What happens |
+|---|---|
+| 13 November 2025 | The DPDP Rules were notified and the Data Protection Board was set up |
+| 13 November 2026 | Registration of Consent Managers is scheduled to begin |
+| 13 May 2027 | Core duties are scheduled to take effect, covering notice, consent, security safeguards, breach reporting, retention and erasure |
+
+The Act provides for penalties of up to ₹250 crore for failure to take reasonable security safeguards leading to a personal data breach.
+
+Read the [DPDP Rules, 2025 published by MeitY](https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf) for the notified provisions.
+
+This article reflects the DPDP Act and Rules as notified up to November 2026. The applicability of specific obligations and the steps required by an organisation depend on its circumstances. Organisations should seek appropriate legal advice for their own compliance requirements.
 
 ## Frequently asked questions about DPDP compliance
 
