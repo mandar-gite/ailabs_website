@@ -100,6 +100,32 @@ You can run both. The setup that works for most owners:
 
 You get the privacy and cost control where they matter, and the best general model where they don't.
 
+<div class="takeaway">
+
+## A takeaway for us all
+
+The choice between ChatGPT and a model of your own gets made one workflow at a time.
+
+A manager drafting emails and a process reading 3,000 invoices a month have different needs, and they can run on different tools.
+
+What matters is knowing where each piece of your data goes, and choosing the tool for it on purpose. (Most teams start asking after 6 people already have personal logins.)
+
+</div>
+
+<div class="callout">
+
+## Here's what you can do
+
+You can sort most of this out in an afternoon, before anyone buys seats or a server.
+
+1. **List who uses ChatGPT today, and on which account.** Personal logins put your business data under consumer terms.
+2. **Write down what goes into it.** A week of real examples is enough. Mark anything with customer, staff or supplier details.
+3. **Set one rule for the hosted tools.** For example: no customer names, phone numbers or invoices in ChatGPT.
+4. **Pick the 1 workflow that runs most often on sensitive data.** That's your candidate for a self-hosted model.
+5. **Test it on your real data before you commit.** Check the output against figures you already trust, then decide.
+
+</div>
+
 ## How we build it
 
 At 72° AI LABS we build self-hosted AI systems on open-source models, in the client's cloud or on-prem. The client owns the model, the data and the code, with no subscription.
