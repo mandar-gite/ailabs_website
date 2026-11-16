@@ -219,3 +219,59 @@ test('a HubSpot 400 retry drops every attribution property and keeps the lead fi
   assert.equal(retry.email, 'asha@example.com');
   assert.equal(retry.company, 'Rao Textiles');
 });
+
+// Owner assignment: HubSpot emails the owner when a new contact is assigned to them,
+// which is how a new website lead reaches the inbox (Formspree removed 13 Nov 2026).
+const envOwner = () => ({ ...env(), HUBSPOT_OWNER_ID: '164620221' });
+
+test('a new contact is assigned to the configured owner', async () => {
+  const res = await worker.fetch(post(VALID), envOwner());
+  assert.equal(res.status, 200);
+  assert.equal(JSON.parse(calls[0].init.body).properties.hubspot_owner_id, '164620221');
+});
+
+test('an existing contact keeps its owner: the PATCH sends no owner', async () => {
+  hubspot = (url, init) =>
+    init.method === 'POST'
+      ? Response.json({ message: 'Contact already exists. Existing ID: 555' }, { status: 409 })
+      : Response.json({ id: '555' }, { status: 200 });
+  const res = await worker.fetch(post(VALID), envOwner());
+  assert.equal(res.status, 200);
+  assert.equal(calls[1].init.method, 'PATCH');
+  assert.equal(JSON.parse(calls[1].init.body).properties.hubspot_owner_id, undefined);
+});
+
+test('without HUBSPOT_OWNER_ID no owner is sent', async () => {
+  await worker.fetch(post(VALID), env());
+  assert.equal(JSON.parse(calls[0].init.body).properties.hubspot_owner_id, undefined);
+});
+
+test('a HubSpot 400 retry also drops the owner, so a bad owner id never loses the lead', async () => {
+  hubspot = (url, init) => {
+    const props = JSON.parse(init.body).properties;
+    return props.hubspot_owner_id ? Response.json({ category: 'VALIDATION_ERROR' }, { status: 400 }) : Response.json({ id: '102' }, { status: 201 });
+  };
+  const res = await worker.fetch(post(VALID), envOwner());
+  assert.equal(res.status, 200);
+  assert.equal(calls.length, 2);
+  assert.equal(JSON.parse(calls[1].init.body).properties.hubspot_owner_id, undefined);
+  assert.equal(JSON.parse(calls[1].init.body).properties.email, 'asha@example.com');
+});
+
+test('a plain form post (no JavaScript) is sent on to /thanks/ after HubSpot accepts it', async () => {
+  const body = new URLSearchParams(VALID).toString();
+  const res = await worker.fetch(new Request('https://72ai.in/api/lead', {
+    method: 'POST',
+    headers: { Origin: ORIGIN, 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'text/html', 'CF-Connecting-IP': '203.0.113.7' },
+    body,
+  }), env());
+  assert.equal(res.status, 303);
+  assert.equal(res.headers.get('Location'), '/thanks/');
+  assert.equal(JSON.parse(calls[0].init.body).properties.email, 'asha@example.com');
+});
+
+test('a JSON post still gets JSON back, never a redirect', async () => {
+  const res = await worker.fetch(post(VALID, { Accept: 'text/html' }), env());
+  assert.equal(res.status, 200);
+  assert.equal((await res.json()).ok, true);
+});

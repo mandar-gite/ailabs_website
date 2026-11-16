@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Contact form posts only to the lead Worker. Formspree is removed from it: on 13 Nov 2026 it rejected every submission with 403 and its Submissions list was empty. Without JavaScript the form posts to the Worker, which redirects to `/thanks/`
+- The lead Worker assigns new contacts to the HubSpot owner in `HUBSPOT_OWNER_ID`; HubSpot's assignment email is the new-lead alert. Existing contacts keep their owner, and a 400 retry drops the owner so a bad id never loses a lead
+- Privacy page: the contact form section no longer mentions Formspree (the careers form still uses it)
+- Tests: 6 Worker tests (owner on create only, retry without owner, plain form post redirect); e2e form tests now cover the single destination
+
 ## [0.12.2] - 2026-11-14
 
 ### Changed

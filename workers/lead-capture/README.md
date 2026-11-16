@@ -2,8 +2,10 @@
 
 Receives contact-form submissions from `72ai.in` and creates/updates a **HubSpot
 contact** (create-or-update by email) via the free CRM contacts API. No paid HubSpot
-Forms feature required. The site also mirrors each submission to **Formspree** as a
-fallback, so a lead is never lost.
+Forms feature required. New contacts are assigned to Mandar (`HUBSPOT_OWNER_ID` in
+`wrangler.toml`), and HubSpot emails the owner on assignment: that is the new-lead alert.
+An existing contact keeps its owner, so a repeat submission updates it without an email.
+A plain form post (JavaScript off) gets a 303 redirect to `/thanks/`.
 
 ## Endpoint
 
@@ -53,4 +55,5 @@ curl -sS -X POST https://lead-capture-72ai.<subdomain>.workers.dev/ \
 ## Notes
 - CORS is restricted to the 72ai.in origins (+ localhost/tailnet for dev).
 - Secret `HUBSPOT_TOKEN` is never committed; it lives only in the Worker.
+- The alert needs "Contact assigned to you" email turned on in HubSpot (Settings > Notifications). HubSpot's "Form submission" notification doesn't apply: it covers HubSpot-built forms only.
 - Later upgrades (same Worker): Apollo enrichment, Telegram ping on new lead.

@@ -47,7 +47,8 @@ test('retired project URLs redirect straight to /projects/', async ({ request })
 
 test('form submits land on the slash form of the thanks pages', async ({ request }) => {
   const home = await (await request.get('/')).text();
-  expect(home).toContain('value="https://72ai.in/thanks/"');
+  // With JS the form script redirects; without JS the lead Worker answers with a 303 to /thanks/.
+  expect(home).toContain('action="/api/lead"');
   expect(home).toMatch(/location\.href\s*=\s*"\/thanks\/"/);
   const careers = await (await request.get('/careers/')).text();
   expect(careers).toContain('value="https://72ai.in/careers/thanks/"');

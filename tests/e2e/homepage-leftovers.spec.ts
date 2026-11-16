@@ -30,7 +30,6 @@ test('need and timing dropdowns are optional and sent with the lead', async ({ p
     body = route.request().postDataJSON();
     await route.fulfill({ status: 200, json: { ok: true } });
   });
-  await page.route('https://formspree.io/f/**', (route) => route.fulfill({ status: 200, json: { ok: true } }));
 
   await page.goto('/#contact');
   const form = page.locator('#contact-form');
