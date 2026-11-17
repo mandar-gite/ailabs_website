@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Projects and solutions take an optional `relatedPost` (a blog slug) and show "From the blog: <title>". The build fails if the slug isn't a published post
+- Report Copilot and the Data Engineering & Integration section of `/solutions/` link to the DPDP post, which had only 1 internal link before
+- e2e test: both pages link to the DPDP post exactly once
+
+### Changed
+- Sitemap lastmod for `/solutions/` and project pages counts `src/content/blog` (shortcut: any blog edit dates those pages)
+
 ## [0.13.0] - 2026-11-17
 
 ### Added
