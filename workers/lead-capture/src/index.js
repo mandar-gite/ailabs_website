@@ -138,11 +138,13 @@ export default {
 
     // Create; if the contact already exists HubSpot returns 409 with the existing id,
     // then update that contact instead (create-or-update by email).
-    const upsert = async (props) => {
+    // The owner goes on new contacts only: HubSpot emails the owner on assignment,
+    // which is the new-lead alert, and an existing contact keeps whoever owns it.
+    const upsert = async (props, owner) => {
       let r = await fetch(HS, {
         method: "POST",
         headers: auth,
-        body: JSON.stringify({ properties: props }),
+        body: JSON.stringify({ properties: owner ? { ...props, hubspot_owner_id: owner } : props }),
       });
       if (r.status === 409) {
         const err = await r.json().catch(() => ({}));
@@ -160,9 +162,9 @@ export default {
 
     let res;
     try {
-      res = await upsert(properties);
-      // If HubSpot rejects an attribution property (missing in this portal),
-      // keep the lead: retry once without any website_* property.
+      res = await upsert(properties, env.HUBSPOT_OWNER_ID);
+      // If HubSpot rejects an attribution property (missing in this portal) or the owner,
+      // keep the lead: retry once without any website_* property and without the owner.
       if (res.status === 400) {
         console.error("hubspot_retry_without_attribution", 400);
         const rest = Object.fromEntries(Object.entries(properties).filter(([k]) => !k.startsWith("website_")));
@@ -181,6 +183,11 @@ export default {
       return json({ ok: false, error: "hubspot_error" }, 502, origin);
     }
 
+    // A plain HTML form post (JavaScript off) gets the thank-you page, not raw JSON.
+    const ct = request.headers.get("content-type") || "";
+    if (!ct.includes("application/json") && (request.headers.get("Accept") || "").includes("text/html")) {
+      return new Response(null, { status: 303, headers: { Location: "/thanks/" } });
+    }
     const result = await res.json().catch(() => ({}));
     return json({ ok: true, id: result.id || null }, 200, origin);
   },

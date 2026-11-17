@@ -2,7 +2,6 @@ import type { Page, Route } from '@playwright/test';
 import { test, expect } from './fixtures';
 
 const HUBSPOT = 'https://72ai.in/api/lead';
-const FORMSPREE = 'https://formspree.io/f/**';
 
 async function fillForm(page: Page) {
   const form = page.locator('#contact-form');
@@ -30,15 +29,12 @@ test('empty form is blocked by required fields', async ({ page, blocked }) => {
   expect(blocked.filter((u) => u.includes('formspree') || u.includes('/api/lead'))).toEqual([]);
 });
 
-test('valid submit posts to HubSpot and Formspree, then redirects', async ({ page }) => {
+test('valid submit posts only to the lead Worker, then redirects', async ({ page }) => {
   let hubspotBody: Record<string, string> | null = null;
-  let formspreeCalled = false;
+  const formspree: string[] = [];
+  page.on('request', (r) => { if (r.url().includes('formspree')) formspree.push(r.url()); });
   await page.route(HUBSPOT, async (route) => {
     hubspotBody = route.request().postDataJSON();
-    await route.fulfill({ status: 200, json: { ok: true } });
-  });
-  await page.route(FORMSPREE, async (route) => {
-    formspreeCalled = route.request().method() === 'POST';
     await route.fulfill({ status: 200, json: { ok: true } });
   });
 
@@ -47,7 +43,7 @@ test('valid submit posts to HubSpot and Formspree, then redirects', async ({ pag
   await page.locator('#contact-form').getByRole('button', { name: 'Send Message' }).click();
 
   await expect(page).toHaveURL(/\/thanks\/?$/);
-  expect(formspreeCalled).toBe(true);
+  expect(formspree).toEqual([]);
   expect(hubspotBody).toMatchObject({
     Name: 'Asha Rao',
     Company: 'Rao Textiles',
@@ -59,34 +55,20 @@ test('valid submit posts to HubSpot and Formspree, then redirects', async ({ pag
   });
 });
 
-// The lead is captured if either endpoint accepts it, so one failure still
-// counts as success.
-for (const failing of ['HubSpot', 'Formspree'] as const) {
-  test(`redirects when only ${failing} fails`, async ({ page }) => {
-    await page.route(HUBSPOT, (route) =>
-      route.fulfill(failing === 'HubSpot' ? { status: 500, body: 'down' } : { status: 200, json: { ok: true } }),
-    );
-    await page.route(FORMSPREE, (route) =>
-      route.fulfill(failing === 'Formspree' ? { status: 500, body: 'down' } : { status: 200, json: { ok: true } }),
-    );
+test('without JavaScript the form posts to the lead Worker', async ({ page }) => {
+  await page.goto('/#contact');
+  await expect(page.locator('#contact-form')).toHaveAttribute('action', '/api/lead');
+});
 
-    await page.goto('/#contact');
-    await fillForm(page);
-    await page.locator('#contact-form').getByRole('button', { name: 'Send Message' }).click();
-    await expect(page).toHaveURL(/\/thanks\/?$/);
-  });
-}
-
-// When neither endpoint has the lead, the visitor must not see /thanks: they
+// When the Worker doesn't take the lead, the visitor must not see /thanks: they
 // stay on the form with their input intact and a visible error.
 const bothFail = {
   'HTTP 500': (route: Route) => route.fulfill({ status: 500, body: 'down' }),
   'network error': (route: Route) => route.abort('failed'),
 };
 for (const [label, handler] of Object.entries(bothFail)) {
-  test(`shows an error and keeps input when both endpoints fail (${label})`, async ({ page }) => {
+  test(`shows an error and keeps input when the Worker fails (${label})`, async ({ page }) => {
     await page.route(HUBSPOT, handler);
-    await page.route(FORMSPREE, handler);
 
     await page.goto('/#contact');
     await fillForm(page);
@@ -110,7 +92,6 @@ test('retry after a failed submit succeeds and clears the error', async ({ page 
   const respond = (route: Route) =>
     down ? route.fulfill({ status: 500, body: 'down' }) : route.fulfill({ status: 200, json: { ok: true } });
   await page.route(HUBSPOT, respond);
-  await page.route(FORMSPREE, respond);
 
   await page.goto('/#contact');
   await fillForm(page);
@@ -133,39 +114,33 @@ test('unmocked submit never leaves the machine', async ({ page, blocked }) => {
   await expect(page).toHaveURL(/\/thanks\/?$/);
 
   expect(blocked).toContain(HUBSPOT);
-  expect(blocked.some((u) => u.startsWith('https://formspree.io/f/'))).toBe(true);
+  expect(blocked.some((u) => u.includes('formspree'))).toBe(false);
 });
 
 // First-touch attribution: the landing page's UTM tags and external referrer are
-// kept for the session and sent to the HubSpot Worker with the form, but not to Formspree.
+// kept for the session and sent to the lead Worker with the form.
 async function submitAndCapture(page: Page) {
   let hubspotBody: Record<string, string> = {};
-  let formspreeBody = '';
   await page.route(HUBSPOT, async (route) => {
     hubspotBody = route.request().postDataJSON();
-    await route.fulfill({ status: 200, json: { ok: true } });
-  });
-  await page.route(FORMSPREE, async (route) => {
-    formspreeBody = route.request().postData() ?? '';
     await route.fulfill({ status: 200, json: { ok: true } });
   });
   await fillForm(page);
   await page.locator('#contact-form').getByRole('button', { name: 'Send Message' }).click();
   await expect(page).toHaveURL(/\/thanks\/?$/);
-  return { hubspotBody, formspreeBody };
+  return { hubspotBody };
 }
 
-test('first-touch UTM tags survive internal navigation and reach only the Worker', async ({ page }) => {
+test('first-touch UTM tags survive internal navigation and reach the Worker', async ({ page }) => {
   await page.goto('/?utm_source=apollo&utm_medium=sequence&utm_campaign=s1&utm_content=step-2');
   await page.goto('/about/?utm_source=internal-should-not-win');
   await page.goto('/#contact');
-  const { hubspotBody, formspreeBody } = await submitAndCapture(page);
+  const { hubspotBody } = await submitAndCapture(page);
 
   expect(hubspotBody).toMatchObject({
     utm_source: 'apollo', utm_medium: 'sequence', utm_campaign: 's1', utm_content: 'step-2', landing_page: '/',
   });
   expect(hubspotBody.referrer).toBeUndefined();
-  expect(formspreeBody).not.toContain('utm_source');
 });
 
 test('an external referrer is sent without its query string', async ({ page }) => {
