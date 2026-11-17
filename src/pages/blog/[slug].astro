@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
@@ -87,21 +88,11 @@ const faqLD = post.data.faq?.length ? {
   }))
 } : null;
 
-const breadcrumbLD = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://72ai.in" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://72ai.in/blog/" },
-    { "@type": "ListItem", "position": 3, "name": post.data.title, "item": canonicalURL }
-  ]
-};
 ---
 
 <Layout title={seoTitle} description={seoDescription} ogImage={ogImage} pageType="article" articleMeta={articleMeta}>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(blogPostingLD)} />
-    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLD)} />
     {faqLD && <script type="application/ld+json" set:html={JSON.stringify(faqLD)} />}
   </Fragment>
   <Nav />
@@ -110,6 +101,7 @@ const breadcrumbLD = {
       <div class="max-w-[800px] mx-auto px-6 lg:px-8 py-8 lg:py-10">
 
         <!-- Post Header -->
+        <Breadcrumb items={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog/" }, { name: post.data.title, href: `/blog/${post.slug}/` }]} />
         <header class="post-header">
           <div class="post-meta">
             <span class="post-category">{post.data.category}</span>
