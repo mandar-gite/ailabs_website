@@ -24,3 +24,11 @@ test('Valent names "cap table" in its first 100 words', async ({ page }) => {
   const words = (await page.locator('main').innerText()).split(/\s+/).slice(0, 100).join(' ');
   expect(words.toLowerCase()).toContain('cap table');
 });
+
+// The DPDP post had 1 internal link (from /blog/); Report Copilot is the system it describes.
+test('Report Copilot and Solutions link to the DPDP post', async ({ page }) => {
+  for (const route of ['/projects/report-copilot/', '/solutions/']) {
+    await page.goto(route);
+    await expect(page.locator('main a[href="/blog/dpdp-compliance-masked-reports/"]'), route).toHaveCount(1);
+  }
+});

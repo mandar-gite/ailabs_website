@@ -15,6 +15,7 @@ export interface Project {
   mlMethods: string[];
   challenges: string[];
   tags: string[];
+  relatedPost?: string; // blog slug; the build fails if it isn't a published post
 }
 
 export interface Solution {
@@ -22,4 +23,5 @@ export interface Solution {
   name: string;
   description: string;
   projects: string[];
+  relatedPost?: string; // blog slug; the build fails if it isn't a published post
 }
