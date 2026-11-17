@@ -6,6 +6,7 @@ import Footer from '../../components/Footer.astro';
 import projectsData from '../../data/projects.json';
 import solutionsData from '../../data/solutions.json';
 import type { Project } from '../../types';
+import { getCollection } from 'astro:content';
 
 // One page per project in projects.json (hidden entries excluded).
 export function getStaticPaths() {
@@ -23,6 +24,10 @@ const related = (projectsData as (Project & { hidden?: boolean })[]).filter(
   (p) => !p.hidden && p.category === project.category && p.id !== project.id
 );
 const solution = solutionsData.find((s) => s.name === project.category);
+const post = project.relatedPost
+  ? (await getCollection('blog', ({ data }) => data.draft !== true)).find((p) => p.slug === project.relatedPost)
+  : undefined;
+if (project.relatedPost && !post) throw new Error(`${project.id}: relatedPost "${project.relatedPost}" is not a published blog post`);
 
 const pageURL = `https://72ai.in/projects/${project.id}/`;
 const creativeWorkLD = {
@@ -78,7 +83,7 @@ const creativeWorkLD = {
           </div>
         </div>
       </section>
-      {(related.length > 0 || solution) && (
+      {(related.length > 0 || solution || post) && (
         <section class='related-section' data-related>
           <h2 class='section-heading'>Related projects</h2>
           <div class='tech-grid'>
@@ -89,6 +94,7 @@ const creativeWorkLD = {
               </a>
             ))}
           </div>
+          {post && <p class='related-post'>From the blog: <a href={`/blog/${post.slug}/`}>{post.data.title}</a></p>}
           {solution && <a href={`/solutions/#${solution.id}`} class='related-more'>More {project.category} work →</a>}
         </section>
       )}
@@ -129,6 +135,8 @@ const creativeWorkLD = {
   .related-card { display: block; text-decoration: none; transition: border-color 0.2s ease; }
   .related-card:hover { border-color: var(--wp-gold); }
   .related-blurb { margin: 0; color: var(--wp-ink-2); line-height: 1.6; }
+  .related-post { margin: 1.25rem 0 0; color: var(--wp-ink-2); }
+  .related-post a { color: var(--wp-ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--wp-gold); }
   .related-more { display: inline-block; margin-top: 1.25rem; color: var(--wp-ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--wp-gold); }
   .cta-section { margin-bottom: 3rem; }
   .cta-card { background: var(--brand-blue); color: white; padding: 1.75rem 2rem; border-radius: 12px; text-align: left; max-width: 640px; }

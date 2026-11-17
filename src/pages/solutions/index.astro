@@ -7,9 +7,17 @@ import Footer from "../../components/Footer.astro";
 import solutionsData from "../../data/solutions.json";
 import projectsData from "../../data/projects.json";
 import type { Solution, Project } from "../../types";
+import { getCollection } from "astro:content";
 
 const solutions = solutionsData as Solution[];
 const projects = projectsData as Project[];
+const posts = await getCollection("blog", ({ data }) => data.draft !== true);
+const postFor = (s: Solution) => {
+  if (!s.relatedPost) return undefined;
+  const post = posts.find((p) => p.slug === s.relatedPost);
+  if (!post) throw new Error(`${s.id}: relatedPost "${s.relatedPost}" is not a published blog post`);
+  return post;
+};
 
 const seoTitle = "AI for Tally, Call Analytics and Document OCR | 72° AI LABS";
 const seoDescription = "AI built on your own data in 4 practice areas: Finance Automation, Operational Intelligence, Document & OCR Systems, and Data Engineering & Integration.";
@@ -28,12 +36,14 @@ const seoDescription = "AI built on your own data in 4 practice areas: Finance A
           const solutionProjects = projects.filter(p =>
             solution.projects.includes(p.id)
           );
+          const post = postFor(solution);
 
           return (
             <section class="solution-section" id={solution.id}>
               <div class="solution-header">
                 <h2 class="solution-title">{solution.name}</h2>
                 <p class="solution-description">{solution.description}</p>
+                {post && <p class="solution-post">From the blog: <a href={`/blog/${post.slug}/`}>{post.data.title}</a></p>}
               </div>
 
               <div class="projects-grid">
@@ -88,6 +98,18 @@ const seoDescription = "AI built on your own data in 4 practice areas: Finance A
     font-weight: 700;
     color: var(--brand-blue);
     margin: 0 0 0.75rem 0;
+  }
+
+  .solution-post {
+    margin: 0.75rem 0 0;
+    color: rgba(12, 26, 63, 0.75);
+  }
+
+  .solution-post a {
+    color: var(--wp-ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--wp-gold);
   }
 
   .solution-description {

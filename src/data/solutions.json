@@ -21,6 +21,7 @@
     "id": "data-engineering",
     "name": "Data Engineering & Integration",
     "description": "Robust data pipelines, feature engineering, and advanced modeling for complex datasets.",
-    "projects": ["nextsurge", "report-copilot"]
+    "projects": ["nextsurge", "report-copilot"],
+    "relatedPost": "dpdp-compliance-masked-reports"
   }
 ]
