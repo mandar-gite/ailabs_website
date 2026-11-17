@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.13.1] - 2026-11-17
+
 ### Added
 - Projects and solutions take an optional `relatedPost` (a blog slug) and show "From the blog: <title>". The build fails if the slug isn't a published post
 - Report Copilot and the Data Engineering & Integration section of `/solutions/` link to the DPDP post, which had only 1 internal link before
