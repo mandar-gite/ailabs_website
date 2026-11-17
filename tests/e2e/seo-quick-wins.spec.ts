@@ -17,7 +17,7 @@ const TITLES: Record<string, string> = {
   '/projects': 'AI Projects Built on Real Business Data | 72° AI LABS',
   '/about': 'About Us: Custom AI Studio | 72° AI LABS',
   '/blog': 'Blog: Practical AI, RAG and Small Models | 72° AI LABS',
-  '/voice-dna': 'Voice DNA for Claude: Write Like a Human | 72° AI LABS',
+  '/voice-dna': 'Voice DNA System: Make Claude Write Like You | 72° AI LABS',
   '/blog/blog1_martech_technical': 'Multi-Agent AI Systems That Actually Work | 72° AI LABS',
 };
 
@@ -29,7 +29,7 @@ const DESCRIPTIONS: Record<string, string> = {
   '/blog/blog1_martech_technical':
     'How to build production-ready multi-agent RAG systems: architecture, quality loops, graceful degradation, and lessons from real implementations.',
   '/voice-dna':
-    'Free Voice DNA template that makes Claude write like a human and sound like you. Removes AI-isms in 10 minutes. Set it once and it works in every chat.',
+    'The Voice DNA system is a free template that makes Claude write like you: writing rules, 50+ banned AI phrases and your own samples. Set up in 10 minutes.',
 };
 
 // /about/ lists the 6 old practice areas; its rewrite waits for positioning decision 1.
