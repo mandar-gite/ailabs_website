@@ -7,7 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.13.0] - 2026-11-17
+
+### Added
+- Breadcrumb component: 1 list of steps renders the visible trail (accessible `<nav>` with an `<ol>`) and its BreadcrumbList JSON-LD, so the two always match. Blog posts now show Home / Blog / title above the header; project pages show Home / Projects / name
+- Voice DNA page: a short "What is Voice DNA?" section that defines the Voice DNA system
+
 ### Changed
+- Voice DNA page: title "Voice DNA System: Make Claude Write Like You", H1 "Voice DNA System: Stop Sounding Like an AI", and a meta description that opens with "The Voice DNA system". Search Console showed the page ranking for "voice dna system" with 0 clicks
+- Breadcrumb JSON-LD uses `https://72ai.in/` for Home on every page; blog posts used it without the slash
 - Contact form posts only to the lead Worker. Formspree is removed from it: on 13 Nov 2026 it rejected every submission with 403 and its Submissions list was empty. Without JavaScript the form posts to the Worker, which redirects to `/thanks/`
 - The lead Worker assigns new contacts to the HubSpot owner in `HUBSPOT_OWNER_ID`; HubSpot's assignment email is the new-lead alert. Existing contacts keep their owner, and a 400 retry drops the owner so a bad id never loses a lead
 - Privacy page: the contact form section no longer mentions Formspree (the careers form still uses it)
