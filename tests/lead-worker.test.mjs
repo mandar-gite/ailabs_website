@@ -275,3 +275,64 @@ test('a JSON post still gets JSON back, never a redirect', async () => {
   assert.equal(res.status, 200);
   assert.equal((await res.json()).ok, true);
 });
+
+// Turnstile: with TURNSTILE_SECRET_KEY set, the Worker checks the widget token with
+// Cloudflare siteverify before anything reaches HubSpot. Bots without a token stop here.
+const SITEVERIFY = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+const envTs = () => ({ ...env(), TURNSTILE_SECRET_KEY: 'ts-secret' });
+const TOKEN = { 'cf-turnstile-response': 'tok-123' };
+const verifyWith = (outcome) => {
+  const hs = hubspot;
+  hubspot = (url, init) => (url === SITEVERIFY ? outcome(init) : hs(url, init));
+};
+const hubspotCalls = () => calls.filter((c) => c.url.startsWith('https://api.hubapi.com'));
+
+test('turnstile: a passing token is verified first, then the contact is created', async () => {
+  verifyWith(() => Response.json({ success: true }));
+  const res = await worker.fetch(post({ ...VALID, ...TOKEN }), envTs());
+  assert.equal(res.status, 200);
+  assert.equal(calls[0].url, SITEVERIFY);
+  assert.deepEqual(JSON.parse(calls[0].init.body), { secret: 'ts-secret', response: 'tok-123', remoteip: '203.0.113.7' });
+  assert.equal(hubspotCalls().length, 1);
+  assert.equal(JSON.parse(hubspotCalls()[0].init.body).properties['cf-turnstile-response'], undefined);
+});
+
+test('turnstile: a missing token is rejected with 403 and nothing is sent anywhere', async () => {
+  const res = await worker.fetch(post(VALID), envTs());
+  assert.equal(res.status, 403);
+  assert.equal((await res.json()).error, 'captcha_failed');
+  assert.equal(calls.length, 0);
+});
+
+test('turnstile: a failed token is rejected with 403 and HubSpot is not called', async () => {
+  verifyWith(() => Response.json({ success: false, 'error-codes': ['invalid-input-response'] }));
+  const res = await worker.fetch(post({ ...VALID, ...TOKEN }), envTs());
+  assert.equal(res.status, 403);
+  assert.equal(hubspotCalls().length, 0);
+});
+
+test('turnstile: a siteverify outage fails closed with 502', async () => {
+  verifyWith(() => { throw new TypeError('network down'); });
+  const res = await worker.fetch(post({ ...VALID, ...TOKEN }), envTs());
+  assert.equal(res.status, 502);
+  assert.equal(hubspotCalls().length, 0);
+});
+
+test('turnstile: a non-JSON siteverify answer is treated as a failure', async () => {
+  verifyWith(() => new Response('bad gateway', { status: 502 }));
+  const res = await worker.fetch(post({ ...VALID, ...TOKEN }), envTs());
+  assert.equal(res.status, 403);
+  assert.equal(hubspotCalls().length, 0);
+});
+
+test('turnstile: an over-long token is rejected without calling siteverify', async () => {
+  const res = await worker.fetch(post({ ...VALID, 'cf-turnstile-response': 'x'.repeat(2049) }), envTs());
+  assert.equal(res.status, 403);
+  assert.equal(calls.length, 0);
+});
+
+test('turnstile: the honeypot still answers 200 before any token check', async () => {
+  const res = await worker.fetch(post({ ...VALID, _gotcha: 'bot' }), envTs());
+  assert.equal(res.status, 200);
+  assert.equal(calls.length, 0);
+});
