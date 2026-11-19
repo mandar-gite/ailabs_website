@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.14.0] - 2026-11-19
+
+### Added
+- Contact form: Cloudflare Turnstile widget (managed, interaction-only), rendered when `PUBLIC_TURNSTILE_SITE_KEY` is set. A failed send resets it, because tokens work once
+- Lead Worker: with `TURNSTILE_SECRET_KEY` set, posts need a token that siteverify accepts. Missing, failed or over-long tokens get 403; a siteverify outage gets 502 and nothing reaches HubSpot
+- `<noscript>` line on the form with the email address, since posts without JavaScript carry no token
+- Tests: 7 Worker cases and 2 e2e cases for Turnstile
+
+### Changed
+- Privacy page names Cloudflare Turnstile under Hosting
+- Worker README: the switch-on order (site key, deploy, check, then secret)
+
 ## [0.13.1] - 2026-11-17
 
 ### Added
