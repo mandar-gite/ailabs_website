@@ -26,12 +26,29 @@ Tag conventions: `72ailabs/72ai-marketing`, `outbound/2026-11-12-utm-convention.
 
 ## Deploy
 
+Every deploy:
+
+```bash
+cd workers/lead-capture
+set -a && . ../../.env && set +a   # loads CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID
+npx wrangler deploy
+```
+
+Worker secrets survive deploys, so steps 2 and 3 below are needed once per new Worker.
+
+### First-time setup
+
 ```bash
 cd workers/lead-capture
 
-# 1. Authenticate wrangler to Cloudflare (one of):
-#    - export CLOUDFLARE_API_TOKEN=<token with "Edit Cloudflare Workers">
-#    - or: npx wrangler login   (interactive browser OAuth)
+# 1. Save a Cloudflare API token in the site's .env (gitignored).
+#    Make it from the "Edit Cloudflare Workers" template, scoped to the 72ai.in zone
+#    and the 1 account. read -rsp keeps the token off screen and out of shell history.
+read -rsp "Cloudflare API token: " T; echo; [ -n "$T" ] && echo "CLOUDFLARE_API_TOKEN=$T" >> ../../.env && echo saved; unset T
+echo "CLOUDFLARE_ACCOUNT_ID=<32-char id from the dashboard URL>" >> ../../.env
+chmod 600 ../../.env
+set -a && . ../../.env && set +a
+npx wrangler whoami        # should list the 72ai account
 
 # 2. Set the HubSpot token as a secret (reuses the existing private app token):
 npx wrangler secret put HUBSPOT_TOKEN     # paste HUBSPOT_PRIVATE_APP_TOKEN value
@@ -58,8 +75,12 @@ Turn it on in this order, or real leads get 403:
 
 Posts without JavaScript carry no token, so they get 403 once the check is on.
 
-Deploy prints the Worker URL (e.g. `https://lead-capture-72ai.<subdomain>.workers.dev`).
-Put that URL in the site's contact form as the primary POST target.
+Deploy prints the route `72ai.in/api/lead*`. The site posts there (same origin).
+
+If wrangler says "Failed to automatically retrieve account IDs" or "No access to the
+specified resource", the token in `.env` has expired or lacks Workers permissions.
+Make a new one as in step 1. The dashboard shows a shortened account ID (`3f9a...e7`);
+copy the full one from the URL.
 
 ## Test
 
