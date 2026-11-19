@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Worker README: deploy loads a scoped Cloudflare API token from the site's gitignored `.env`, with first-time setup, a `wrangler whoami` check and the fix for the 2 wrangler errors seen on 19 Nov
+
 ## [0.14.0] - 2026-11-19
 
 ### Added

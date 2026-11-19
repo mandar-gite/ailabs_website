@@ -12,6 +12,8 @@ By 10:18 IST the Worker was rejecting tokenless posts and a real test lead still
 | PR #75 | feature to develop |
 | `f2131eb`, PR #76 | `chore(release): 0.14.0`, release to main; tag `v0.14.0` |
 | PR #77 | back-merge main to develop |
+| PR #78 | this note |
+| PR #79 | `docs(worker)`: deploy from `.env` with a scoped Cloudflare API token |
 
 ## How the check works
 
@@ -24,7 +26,7 @@ By 10:18 IST the Worker was rejecting tokenless posts and a real test lead still
 ## Things that came up
 
 - **Headless Chrome got no token.** Playwright on the live page left the field empty after 10 s. Turnstile treats automation as a bot, which is the point. Mandar's own browser got a 730-char token.
-- **Wrangler's old login couldn't see the account.** "Failed to automatically retrieve account IDs", then "No access to the specified resource" once the account ID was set. A new API token from the "Edit Cloudflare Workers" template, narrowed to the `72ai.in` zone and the 1 account, fixed it. The token isn't stored anywhere yet.
+- **Wrangler's old login couldn't see the account.** "Failed to automatically retrieve account IDs", then "No access to the specified resource" once the account ID was set. A new API token from the "Edit Cloudflare Workers" template, narrowed to the `72ai.in` zone and the 1 account, fixed it. It now lives in the site's gitignored `.env` (mode 600), and a redeploy from there kept the secret and the 403 for tokenless posts.
 - **The dashboard shortens the account ID** with `...`, and wrangler rejects that. Copy it from the URL instead.
 - **No-JS posts now get 403.** The form shows a `<noscript>` line with the email address.
 
@@ -46,6 +48,7 @@ HubSpot had no `check@example.com` afterwards. The real test lead (`test2@exampl
 
 ## Open
 
-- Store the Cloudflare API token somewhere durable (gitignored `.env`, or a password manager) before the next Worker deploy.
 - The careers form posts to Formspree and has no Turnstile.
+- `~/smriti/sync.sh` doesn't mirror `growth/website/docs/changelog`, so session summaries here have no GitHub copy.
+- The Cloudflare API token expires 19 Nov 2027.
 - Cloudflare's request logs for the zone may still name where the 2 bots came from (POSTs to `/api/lead` at 01:25 and 02:54 UTC).
