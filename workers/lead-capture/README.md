@@ -36,9 +36,27 @@ cd workers/lead-capture
 # 2. Set the HubSpot token as a secret (reuses the existing private app token):
 npx wrangler secret put HUBSPOT_TOKEN     # paste HUBSPOT_PRIVATE_APP_TOKEN value
 
-# 3. Deploy
+# 3. Set the Turnstile secret (Cloudflare dashboard > Turnstile > the 72ai.in widget):
+npx wrangler secret put TURNSTILE_SECRET_KEY
+
+# 4. Deploy
 npx wrangler deploy
 ```
+
+### Turnstile bot check
+
+With `TURNSTILE_SECRET_KEY` set, every post must carry a `cf-turnstile-response`
+token that Cloudflare siteverify accepts. A missing or failed token gets 403 and
+never reaches HubSpot. If siteverify is down, the Worker answers 502 (fail closed).
+Without the secret there is no check, so the site can ship the widget first.
+
+Turn it on in this order, or real leads get 403:
+1. Create the widget in Cloudflare (hostnames `72ai.in`, `www.72ai.in`).
+2. Set the GitHub variable `PUBLIC_TURNSTILE_SITE_KEY` and deploy the site.
+3. Check that a live submit sends `cf-turnstile-response` (browser dev tools).
+4. Set the `TURNSTILE_SECRET_KEY` secret and run `npx wrangler deploy`.
+
+Posts without JavaScript carry no token, so they get 403 once the check is on.
 
 Deploy prints the Worker URL (e.g. `https://lead-capture-72ai.<subdomain>.workers.dev`).
 Put that URL in the site's contact form as the primary POST target.
@@ -54,6 +72,6 @@ curl -sS -X POST https://lead-capture-72ai.<subdomain>.workers.dev/ \
 
 ## Notes
 - CORS is restricted to the 72ai.in origins (+ localhost/tailnet for dev).
-- Secret `HUBSPOT_TOKEN` is never committed; it lives only in the Worker.
+- Secrets `HUBSPOT_TOKEN` and `TURNSTILE_SECRET_KEY` are never committed; it lives only in the Worker.
 - The alert needs "Contact assigned to you" email turned on in HubSpot (Settings > Notifications). HubSpot's "Form submission" notification doesn't apply: it covers HubSpot-built forms only.
 - Later upgrades (same Worker): Apollo enrichment, Telegram ping on new lead.
