@@ -102,6 +102,37 @@ export default {
       return json({ ok: false, error: "invalid_email" }, 422, origin);
     }
 
+    // Turnstile: the widget puts a single-use token in the form; Cloudflare confirms it.
+    // shortcut: no check while TURNSTILE_SECRET_KEY is unset (local dev, and the window
+    // before the secret is set); set the secret in production or bots get through.
+    if (env.TURNSTILE_SECRET_KEY) {
+      const token = typeof data["cf-turnstile-response"] === "string" ? data["cf-turnstile-response"] : "";
+      if (!token || token.length > 2048) {
+        return json({ ok: false, error: "captcha_failed" }, 403, origin);
+      }
+      let verdict;
+      try {
+        const r = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            secret: env.TURNSTILE_SECRET_KEY,
+            response: token,
+            remoteip: request.headers.get("CF-Connecting-IP") || undefined,
+          }),
+        });
+        verdict = await r.json().catch(() => ({}));
+      } catch (e) {
+        // Fail closed: an unverified post never reaches HubSpot.
+        console.error("turnstile_unreachable", e?.name || "Error");
+        return json({ ok: false, error: "captcha_unavailable" }, 502, origin);
+      }
+      if (verdict.success !== true) {
+        console.error("turnstile_failed", (verdict["error-codes"] || []).join(",") || "unknown");
+        return json({ ok: false, error: "captcha_failed" }, 403, origin);
+      }
+    }
+
     // Map form fields -> HubSpot contact properties
     const name = fields.Name;
     const parts = name.split(/\s+/).filter(Boolean);

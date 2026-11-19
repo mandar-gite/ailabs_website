@@ -150,3 +150,24 @@ test('an external referrer is sent without its query string', async ({ page }) =
   expect(hubspotBody.referrer).toBe('https://www.linkedin.com/feed/');
   expect(JSON.stringify(hubspotBody)).not.toContain('private-123');
 });
+
+// Turnstile: the e2e build sets Cloudflare's always-pass test site key. The fixture
+// stubs challenges.cloudflare.com, so the widget never loads and window.turnstile
+// stays undefined: the form must still work and a failed send must not throw.
+test('the Turnstile widget is in the form with the build-time site key', async ({ page }) => {
+  await page.goto('/#contact');
+  const widget = page.locator('#contact-form .cf-turnstile');
+  await expect(widget).toHaveAttribute('data-sitekey', '1x00000000000000000000AA');
+});
+
+test('a failed send without the Turnstile script loaded raises no page error', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  await page.route(HUBSPOT, (route) => route.fulfill({ status: 403, json: { ok: false, error: 'captcha_failed' } }));
+  await page.goto('/#contact');
+  await fillForm(page);
+  await page.locator('#contact-form button[type="submit"]').click();
+  await expect(page.locator('#contact-form [role="alert"]')).toBeVisible();
+  await expect(page.locator('#contact-form button[type="submit"]')).toBeEnabled();
+  expect(errors).toEqual([]);
+});

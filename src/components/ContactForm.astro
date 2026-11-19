@@ -1,5 +1,7 @@
 ---
 import LogoMark from "./LogoMark.astro";
+// Cloudflare Turnstile bot check. The site key is public; no widget renders without it.
+const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 ---
 <section class="pt-4 pb-6">
   <h2 class="text-3xl font-bold text-white mb-10 text-center sr-only">Book a Call or Send an Inquiry</h2>
@@ -67,6 +69,15 @@ import LogoMark from "./LogoMark.astro";
       </div>
       <!-- Honeypot field for bot protection -->
       <input type="text" name="_gotcha" style="display:none !important">
+      {TURNSTILE_SITE_KEY && (
+        <>
+          <div class="cf-turnstile flex justify-center" data-sitekey={TURNSTILE_SITE_KEY} data-appearance="interaction-only"></div>
+          <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+          <noscript>
+            <p class="text-xs text-gray-600 text-center">This form needs JavaScript. You can also email <a href="mailto:mandar.gite@72ai.in" class="underline">mandar.gite@72ai.in</a>.</p>
+          </noscript>
+        </>
+      )}
       <p id="contact-form-error" role="alert" class="text-sm text-red-700 text-center" hidden>
         We couldn't send your message. Check your connection and try again.
       </p>
@@ -121,5 +132,7 @@ import LogoMark from "./LogoMark.astro";
 
     if (btn) { btn.disabled = false; btn.textContent = label; }
     if (errorEl) errorEl.hidden = false;
+    // A Turnstile token works once, so get a fresh one before the visitor retries.
+    (window as any).turnstile?.reset();
   });
 </script>
