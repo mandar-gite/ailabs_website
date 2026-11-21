@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.15.1] - 2026-11-21
+
+### Fixed
+- Site-wide JSON-LD: the 3 legacy `Service` nodes (data intelligence, F&B and manufacturing optimisation, AI advisory) are replaced by 4, one per practice area, copied from `src/data/solutions.json`: Finance Automation, Operational Intelligence, Document & OCR Systems, Data Engineering & Integration. Each links to its section of `/solutions/`. This also drops `industry`, which schema.org doesn't define for `Service`
+- Organization description names the practice areas instead of finance, ops, sales, support, marketing and logistics
+- e2e tests: the `Service` nodes must match `solutions.json`, and the Organization description must name the areas and none of the old 4
+
 ## [0.15.0] - 2026-11-21
 
 ### Added
