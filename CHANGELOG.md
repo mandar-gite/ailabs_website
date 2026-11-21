@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.15.0] - 2026-11-21
+
+### Added
+- `WebSite` node in the site-wide JSON-LD graph: name "72° AI LABS", the same `alternateName` list as the Organization node, and the Organization as publisher. Google takes the site name in results from it
+- Project pages: the `seoTitle` descriptor (the text after `: `) shows as a subtitle inside the H1, so the buyer term in the title is on the page too, e.g. "DocIntel" then "Document AI for PDFs and Scans"
+- e2e tests for the H1 subtitle, the `WebSite` node and the `/blog/` description (`tests/e2e/seo-on-site.spec.ts`)
+
+### Changed
+- `/blog/` meta description names the topics of the published posts: DPDP-safe reporting, small models on a consumer GPU and multi-agent RAG
+- `CLAUDE.md`: site structure changes (homepage sections, nav, footer, layouts) wait until the case studies are final and discussed with Ajay; the Search Console API works through the `gsc-reader` service account
+- Spec for the 21 Nov on-site SEO fixes, with the homepage sections and the `/careers/` footer link deferred
+- Worker README: deploy loads a scoped Cloudflare API token from the site's gitignored `.env`, with first-time setup, a `wrangler whoami` check and the fix for the 2 wrangler errors seen on 19 Nov
+
 ## [0.14.0] - 2026-11-19
 
 ### Added
