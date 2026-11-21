@@ -44,3 +44,36 @@ test('/blog/ has the topic-led meta description', async ({ request }) => {
     'Notes from building AI on real business data: DPDP-safe reporting, small models on a consumer GPU, and multi-agent RAG that holds up.',
   );
 });
+
+// Site-wide Service nodes mirror the 4 practice areas on /solutions/ (src/data/solutions.json).
+test('the JSON-LD Service nodes match the practice areas in solutions.json', async ({ request }) => {
+  const areas: { id: string; name: string; description: string }[] = JSON.parse(
+    readFileSync(new URL('../../src/data/solutions.json', import.meta.url), 'utf8'),
+  );
+  const html = await (await request.get('/')).text();
+  const nodes = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+    .map((m) => JSON.parse(m[1]))
+    .flatMap((j) => j['@graph'] ?? [j]);
+  const services = nodes.filter((n) => n['@type'] === 'Service');
+  expect(services.map((s) => [s['@id'], s.name, s.serviceType, s.description, s.url, s.provider['@id']])).toEqual(
+    areas.map((a) => [
+      `https://72ai.in/#service-${a.id}`, a.name, a.name, a.description,
+      `https://72ai.in/solutions/#${a.id}`, 'https://72ai.in/#organization',
+    ]),
+  );
+  for (const s of services) expect(s, s['@id']).not.toHaveProperty('industry');
+});
+
+test('the Organization description names the 4 practice areas and no others', async ({ request }) => {
+  const areas: { name: string }[] = JSON.parse(
+    readFileSync(new URL('../../src/data/solutions.json', import.meta.url), 'utf8'),
+  );
+  const html = await (await request.get('/')).text();
+  const org = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+    .map((m) => JSON.parse(m[1]))
+    .flatMap((j) => j['@graph'] ?? [j])
+    .find((n) => n['@type'] === 'Organization');
+  const desc = org.description.toLowerCase();
+  for (const a of areas) expect(desc, a.name).toContain(a.name.toLowerCase().replace('&', 'and'));
+  for (const old of ['sales', 'support', 'marketing', 'logistics']) expect(desc, old).not.toContain(old);
+});
