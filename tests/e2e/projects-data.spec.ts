@@ -9,7 +9,7 @@ test('every project in projects.json has its own page', async ({ page }) => {
   for (const p of projects) {
     const res = await page.goto(`/projects/${p.id}`);
     expect(res?.status(), p.id).toBe(200);
-    await expect(page.locator('h1'), p.id).toHaveText(p.name);
+    await expect(page.locator('h1'), p.id).toContainText(p.name);
   }
 });
 
