@@ -8,6 +8,10 @@ Technical SEO lives here, because the code that implements it does: titles, meta
 
 SEO audits, keyword research, competitor research, performance reports and all other marketing work live in `mandar-gite/72ai-marketing`. When an audit there finds something that needs a code change, the fix and its plan come here.
 
+## Site structure changes
+
+Decided by Mandar on 21 Nov 2026: changes to the site's structure (new homepage sections, nav or footer links, new page layouts) wait until the case studies are final and Mandar has discussed them with Ajay. Metadata, schema and fixes inside an existing page can ship before that. The deferred items are listed in `docs/superpowers/specs/2026-11-21-seo-on-site-fixes.md`.
+
 ## Search Console data: where it lives
 
 Set up on 11 Nov 2026. Everything sits in 1 Google Drive folder on the 72ai shared drive.
@@ -24,6 +28,7 @@ Set up on 11 Nov 2026. Everything sits in 1 Google Drive folder on the 72ai shar
 - The 11 Nov 90-day baseline tab is gone from the sheet. Its Voice DNA figure (54 impressions, 0 clicks) lives in the routine prompt.
 - URL Inspection: `Sheet1` holds the URL list (sitemap URLs plus 5 known duplicates, columns URL and Source). The add-on can't schedule URL Inspection, so run it by hand about once a week (select `Sheet1` A2:A28, URL Inspections, Inspect); each run writes a `SAS_*` tab with Coverage, Last Crawled and canonical columns. The routine's Indexing section reads the newest one and flags pages not indexed, canonical mismatches and pages whose sitemap `lastmod` is newer than Last Crawled, with their Request indexing links.
 - The routine runs every Monday at 9:00 IST (cron `30 3 * * 1` UTC) on `claude-sonnet-5-5`. It uses the Google Drive connector for the sheet and curl for the live sitemap, reads this repo, and its only write is the report Doc. Run it by hand from the link above whenever needed.
-- Read the sheet with the Google Drive connector (`read_file_content`). The Chrome extension couldn't open Search Console on 11 Nov, and the Search Console API needs a service account that isn't set up.
+- Read the sheet with the Google Drive connector (`read_file_content`). The Chrome extension couldn't open Search Console on 11 Nov.
+- The Search Console API works too (checked 21 Nov): the `gsc-reader` service account in `72ai-analytics` (key at `~/.config/gsc-credentials.json`) and the `gsc` MCP server in Claude Code. Take clicks and impressions totals from it, grouped by date or page. The sheet's tabs group by query, and Google leaves anonymous queries out of any query grouping: 22 Oct to 19 Nov that was 65% of impressions and 10 of 12 clicks. Keep the sheet; the routine reads it.
 - About 40% of impressions are `ai7xxxx` code queries (regex `^ai\d{4,}$`) with 0 clicks. Drop them before any analysis.
 - Ahrefs Webmaster Tools reports 0 organic keywords because it uses its own estimate. Use the GSC sheet for keyword data.
