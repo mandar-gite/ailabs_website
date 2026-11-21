@@ -6,6 +6,16 @@ Date: 2026-11-21. Source: `72ai-marketing/research/2026-11-21-seo-audit-on-site.
 
 Pass the homepage's search weight to the pages that sell, and tidy the last weak metadata. The homepage earns 10 of 12 search clicks (22 Oct to 19 Nov) and links to 0 project pages and 0 posts. DocIntel is indexed and got 0 impressions in 58 days.
 
+## Status (21 Nov)
+
+| Item | Status |
+|---|---|
+| 1. Homepage "Recent work" and "Latest writing" | Deferred. Structure changes wait until the case studies are final and Mandar has discussed them with Ajay |
+| 2. Project H1 descriptor | Built in PR #82 |
+| 3. `WebSite` schema node | Built in PR #82 |
+| 4. `/careers/` footer link and title | Deferred with item 1 (it changes the footer) |
+| 5. `/blog/` description | Built in PR #82 |
+
 ## Out of scope
 
 - **Waits on decision 1:** the 3 legacy `Service` nodes (`src/layouts/Layout.astro:179-210`), the Organization and About descriptions, the homepage capability cards (`src/pages/index.astro:141-204`) and the `/solutions/` H1.
