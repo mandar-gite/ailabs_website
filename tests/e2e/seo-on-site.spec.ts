@@ -18,6 +18,8 @@ test('every project H1 holds the name and the seoTitle descriptor', async ({ pag
     await expect(h1, p.id).toContainText(p.name);
     const descriptor = p.seoTitle?.split(': ').slice(1).join(': ');
     if (descriptor) await expect(h1.locator('.project-title-sub'), p.id).toHaveText(descriptor);
+    // A space keeps the name and descriptor apart in the raw text crawlers read.
+    if (descriptor) expect(await h1.textContent(), p.id).toBe(`${p.name} ${descriptor}`);
   }
 });
 

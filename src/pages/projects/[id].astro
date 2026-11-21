@@ -54,7 +54,7 @@ const creativeWorkLD = {
       <Breadcrumb items={[{ name: "Home", href: "/" }, { name: "Projects", href: "/projects/" }, { name: project.name, href: `/projects/${project.id}/` }]} />
       <header class='project-header'>
         <div class='category-badge'>{project.category}</div>
-        <h1 class='project-title'>{project.name}{descriptor && <span class='project-title-sub'>{descriptor}</span>}</h1>
+        <h1 class='project-title'>{project.name}{descriptor && ' '}{descriptor && <span class='project-title-sub'>{descriptor}</span>}</h1>
         <p class='project-tagline'>{project.tagline}</p>
         {project.disclaimer && <p class='project-disclaimer' role='note'>{project.disclaimer}</p>}
       </header>

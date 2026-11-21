@@ -98,7 +98,7 @@ Every topic in it maps to a published post. Rewrite it when the self-hosted LLM 
 
 ## Tests
 
-New file `tests/e2e/seo-on-site.spec.ts`, written first; each test must fail before its change.
+New file `tests/e2e/seo-on-site.spec.ts`, written first; each test must fail before its change. Tests 3, 4 and 6 shipped in PR #82. Tests 1, 2 and 5 are deferred with items 1 and 4; write them when those items are built.
 
 1. `/` has `section.recent-work` with exactly 4 links to `/projects/docintel/`, `/projects/contract-risk-radar/`, `/projects/callmind/` and `/projects/report-copilot/`, plus a link to `/projects/`.
 2. `/` has `section.latest-writing` linking to the 3 newest non-draft posts. Compute the expected slugs from `src/content/blog/*.md` front matter in the test (`pubDate`, `draft`). Don't hard-code them, so the test survives the next post.
