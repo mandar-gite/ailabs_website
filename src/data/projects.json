@@ -343,11 +343,11 @@
   {
     "id": "leapbuddy",
     "name": "LeapBuddy",
-    "shortBlurb": "A chat assistant that answers a national education NGO's teacher-entrepreneurs from its own FAQ, teaching text, worksheets and training videos.",
-    "tagline": "Answers teacher-entrepreneurs from the NGO's own material, on the web today and WhatsApp next.",
+    "shortBlurb": "A chat assistant built to answer a national education NGO's teacher-entrepreneurs from its own FAQ, teaching text, worksheets and training videos. In a staff pilot today.",
+    "tagline": "Built to answer teacher-entrepreneurs from the NGO's own material. In a staff pilot today, with teachers and WhatsApp next.",
     "seoTitle": "LeapBuddy: AI Assistant for Teachers",
-    "metaDescription": "LeapBuddy answers teachers from an education NGO's own FAQ, teaching text and videos, sends the matching worksheet or video, and alerts staff to risk signals.",
-    "description": "LeapBuddy is a chat assistant that answers a national education NGO's teacher-entrepreneurs from the NGO's own material: the programme FAQ, teaching text, worksheets and training videos. Each answer draws only on those sources. If the material doesn't cover a question, the assistant says so and doesn't guess. Every message passes a safety check before any model call runs. A risk match gets a fixed reply, and a staff team is alerted in a private Slack channel. Any other question is sorted into one of 8 departments, such as Product Management or Classroom Management, and searched across catalog videos, teaching text and FAQ rows. A team-approved answer that closely matches the question leads. The assistant then picks one action: answer from text, answer with a video link, ask a clarifying question, decline as out of scope, or escalate. The reply is written from the top 4 sources only, and any link outside those sources is removed. A request for a test or homework gets worksheets and practice sheets, never a video. Every turn is logged, and every model call is traced in Langfuse. LeapBuddy runs as a web chat today, with WhatsApp next.",
+    "metaDescription": "LeapBuddy is built to answer teachers from an education NGO's own FAQ, teaching text and videos, and send the matching worksheet or video. In staff pilot now.",
+    "description": "LeapBuddy is a chat assistant built to answer a national education NGO's teacher-entrepreneurs from the NGO's own material: the programme FAQ, teaching text, worksheets and training videos. It's in a staff pilot today, and teachers come next. Each answer draws only on those sources. If the material doesn't cover a question, the assistant says so and doesn't guess. Every message passes a safety check before any model call runs, and a risk message gets a fixed reply and goes to the staff team. Any other question is sorted into one of 8 departments, such as Product Management or Classroom Management, and searched across catalog videos, teaching text and FAQ rows. A team-approved answer that closely matches the question leads. The assistant then picks one action: answer from text, answer with a video link, ask a clarifying question, decline as out of scope, or escalate to a person. The reply is written from the top 4 sources only, and any link outside those sources is removed. A request for a test or homework gets worksheets and practice sheets, never a video. LeapBuddy runs as a web chat today, with WhatsApp next.",
     "category": "AI Assistants",
     "featured": false,
     "dataTypes": [
@@ -355,8 +355,7 @@
       "Teaching text from the NGO's books, split into 266 chunks",
       "Worksheets and practice sheets",
       "A training video catalog, with links to hosted clips",
-      "Team-approved answers, matched against new questions",
-      "Turn logs: each question, its sources and its reply"
+      "Team-approved answers, matched against new questions"
     ],
     "mlMethods": [
       "A language model that rewrites follow-up messages into full questions",
@@ -365,8 +364,8 @@
       "Team-approved answer matching, which can lead the reply",
       "A rules-based safety check that runs before any model call",
       "Grounded reply writing from the top 4 sources, with links checked against them",
-      "A hosted language model behind an OpenAI-compatible gateway, with every call traced in Langfuse",
-      "Python 3.12 and FastAPI in one Docker container, with Postgres for turn logs"
+      "A hosted language model behind an OpenAI-compatible gateway",
+      "Python 3.12 and FastAPI in one Docker container"
     ],
     "challenges": [
       "Answering only from material that may not cover the question",
@@ -374,7 +373,7 @@
       "Sending a worksheet, not a video, when a teacher asks for a test or homework",
       "Catching risk messages before any model call runs",
       "Keeping links in a reply only when a source supports them",
-      "Reporting an escalation only when the staff alert actually went through"
+      "Handing a question to a person only when the hand-off actually goes through"
     ],
     "tags": [
       "Chatbot",
