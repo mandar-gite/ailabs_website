@@ -9,7 +9,7 @@ featured: true
 draft: false
 faq:
   - question: "What does 72° AI Labs do?"
-    answer: "72° AI Labs builds frugal, context-aware AI solutions for Indian small and medium businesses, converting scattered business data into clear decisions across finance, operations, sales, support, marketing, and logistics."
+    answer: "72° AI Labs builds frugal, context-aware AI solutions for Indian small and medium businesses on their own data, in 5 groups: document intelligence, visual intelligence, call and voice analytics, AI assistants, and data engineering and reporting."
   - question: "Who is the 72° AI Labs blog for?"
     answer: "Business owners, operators, and technical teams at Indian SMBs who want to understand how AI can solve real operational problems without enterprise budgets."
   - question: "What topics does the blog cover?"
@@ -25,7 +25,7 @@ Welcome to the 72° AI Labs blog. This space is dedicated to sharing practical i
 Our blog will cover:
 
 - **Real Implementation Stories**: How businesses transform scattered data into actionable decisions
-- **Technical Deep Dives**: Practical guides on RAG pipelines, [OCR systems](/solutions/#document-ocr), and [forecasting models](/projects/fastaccounting/)
+- **Technical Deep Dives**: Practical guides on RAG pipelines, [OCR systems](/solutions/#document-intelligence), and [forecasting models](/projects/fastaccounting/)
 - **Industry Insights**: Specific use cases in F&B, manufacturing, and cross-functional SME operations
 - **Frugal Engineering**: Building effective AI systems without enterprise budgets
 
@@ -50,7 +50,7 @@ We'll be publishing new articles regularly. Each post tackles a specific operati
 ## Frequently Asked Questions
 
 **What does 72° AI Labs do?**
-72° AI Labs builds frugal, context-aware AI solutions for Indian small and medium businesses. We convert scattered business data into clear, usable decisions across finance, operations, sales, support, marketing, and logistics.
+72° AI Labs builds frugal, context-aware AI solutions for Indian small and medium businesses. We build on a business's own data, in 5 groups: document intelligence, visual intelligence, call and voice analytics, AI assistants, and data engineering and reporting.
 
 **Who is the 72° AI Labs blog for?**
 Business owners, operators, and technical teams at Indian SMBs who want to understand how AI can solve real operational problems without enterprise budgets. We also cover technical deep dives for developers building AI systems.

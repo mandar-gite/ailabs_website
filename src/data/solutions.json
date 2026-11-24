@@ -1,27 +1,49 @@
 [
   {
-    "id": "finance-automation",
-    "name": "Finance Automation",
-    "description": "Routine accounting work automated on the data you already keep: classifying transactions, forecasting expenses and flagging unusual entries.",
-    "projects": ["fastaccounting", "valent"]
+    "id": "document-intelligence",
+    "name": "Document Intelligence",
+    "description": "Reads the documents a business runs on, from company filings and contracts to cap tables and question papers, and turns them into checked, structured output.",
+    "projects": [
+      "docintel",
+      "contract-risk-radar",
+      "valent",
+      "gradeqp"
+    ]
   },
   {
-    "id": "operational-intelligence",
-    "name": "Operational Intelligence",
-    "description": "Real-time insights and automation for operational workflows across industries.",
-    "projects": ["callmind", "contract-risk-radar", "farm-wildlife-alerts"]
+    "id": "visual-intelligence",
+    "name": "Visual Intelligence",
+    "description": "Reads images and handwriting: which animal walked into a farm plot at night, and what a student wrote on a handwritten exam sheet.",
+    "projects": [
+      "farm-wildlife-alerts",
+      "jnvessays"
+    ]
   },
   {
-    "id": "document-ocr",
-    "name": "Document & OCR Systems",
-    "description": "Advanced document understanding, OCR, and intelligent extraction from complex formats.",
-    "projects": ["jnvessays", "docintel", "gradeqp"]
+    "id": "call-voice-analytics",
+    "name": "Call & Voice Analytics",
+    "description": "Turns call recordings into evidence: every call transcribed and scored against its script, with the line behind each score.",
+    "projects": [
+      "callmind"
+    ]
+  },
+  {
+    "id": "ai-assistants",
+    "name": "AI Assistants",
+    "description": "Assistants that answer your people from your own material, and hand the question to a person when they should.",
+    "projects": [
+      "leapbuddy"
+    ]
   },
   {
     "id": "data-engineering",
-    "name": "Data Engineering & Integration",
-    "description": "Robust data pipelines, feature engineering, and advanced modeling for complex datasets.",
-    "projects": ["nextsurge", "report-copilot"],
+    "name": "Data Engineering & Reporting",
+    "description": "Pipelines and reports on your own data: self-serve reports with personal data masked until approval, and Tally entries classified from your own books.",
+    "projects": [
+      "report-copilot",
+      "fastaccounting",
+      "nextsurge"
+    ],
     "relatedPost": "dpdp-compliance-masked-reports"
   }
 ]
