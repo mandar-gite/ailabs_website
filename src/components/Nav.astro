@@ -17,7 +17,7 @@ const menuProjects = projects.filter((p) => p.id !== "nextsurge");
         <nav class="nav-links" id="nav-links">
             <a href="/solutions/">Solutions</a>
             <div class="nav-dropdown">
-                <a href="/projects/" aria-haspopup="true">Projects</a>
+                <a href="/projects/">Projects</a>
                 <div class="nav-dropdown-panel">
                     {menuProjects.map((p) => (
                         <a href={`/projects/${p.id}/`}>
@@ -152,6 +152,9 @@ const menuProjects = projects.filter((p) => p.id !== "nextsurge");
     }
 
     .nav-mobile-menu {
+        /* 76px is the header height; the 9 project links can outgrow a short phone screen */
+        max-height: calc(100dvh - 76px);
+        overflow-y: auto;
         border-top: 1px solid var(--border);
         background: var(--bg);
         padding: 1rem 2rem;
