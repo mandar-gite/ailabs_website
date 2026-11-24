@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.15.2] - 2026-11-21
+
+### Fixed
+- About page: meta description, hero intro and the "What We Do" grid name the 4 practice areas from `/solutions/` (Finance Automation, Operational Intelligence, Document & OCR Systems, Data Engineering & Integration). They promised finance, ops, sales, support, marketing and logistics, and listed data intelligence, F&B and manufacturing optimisation, and AI advisory
+- Welcome post: the "What does 72° AI Labs do?" answer (FAQ schema and body) names the practice areas; F&B and manufacturing use cases become finance, document and operations projects
+- LocalBusiness schema: description and `knowsAbout` name the practice areas in place of Business Intelligence, Data Analytics and Operational Optimization
+- e2e tests: About and the welcome post carry none of the legacy phrases, About lists the 4 areas, and `knowsAbout` holds them
+
 ## [0.15.1] - 2026-11-21
 
 ### Fixed
