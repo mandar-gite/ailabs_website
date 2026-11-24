@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.17.0] - 2026-11-24
+
+### Changed
+- The site moves to 5 solution groups (Mandar, 24 Nov 2026): Document Intelligence, Visual Intelligence, Call & Voice Analytics, AI Assistants, and Data Engineering & Reporting. They replace the 4 practice areas on /solutions/, every project category, the schema (5 Service nodes, Organization description, knowsAbout), About, `llms.txt` and the welcome post
+- Homepage "What we build" shows 5 group cards linking to their /solutions/ sections, in place of the 6 sector cards
+- About: the grid, intro and meta description name the 5 groups; the old sector list is gone
+
+### Added
+- LeapBuddy project page under AI Assistants, described as a staff pilot
+- e2e test that keeps the groups consistent across the data, homepage, About and /solutions/
+
 ## [0.16.1] - 2026-11-24
 
 ### Reverted
