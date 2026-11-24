@@ -13,7 +13,7 @@ const get = async (request: { get: (u: string) => Promise<{ text: () => Promise<
 
 const TITLES: Record<string, string> = {
   '/': '72° AI LABS | Custom AI Built on Your Business Data',
-  '/solutions': 'AI for Tally, Call Analytics and Document OCR | 72° AI LABS',
+  '/solutions': 'AI for Documents, Calls and Reporting | 72° AI LABS',
   '/projects': 'AI Projects Built on Real Business Data | 72° AI LABS',
   '/about': 'About Us: Custom AI Studio | 72° AI LABS',
   '/blog': 'Blog: Practical AI, RAG and Small Models | 72° AI LABS',
@@ -23,7 +23,7 @@ const TITLES: Record<string, string> = {
 
 const DESCRIPTIONS: Record<string, string> = {
   '/solutions':
-    'AI built on your own data in 4 practice areas: Finance Automation, Operational Intelligence, Document & OCR Systems, and Data Engineering & Integration.',
+    'AI built on your own data in 5 groups: Document Intelligence, Visual Intelligence, Call & Voice Analytics, AI Assistants, and Data Engineering & Reporting.',
   '/blog/autoresearch_2026-04-14':
     '57 autonomous experiments, 7 hours, 1 RTX 3060. Why smaller models win on consumer hardware, and what the agent found that flips the usual scaling playbook.',
   '/blog/blog1_martech_technical':
@@ -32,8 +32,7 @@ const DESCRIPTIONS: Record<string, string> = {
     'The Voice DNA system is a free template that makes Claude write like you: writing rules, 50+ banned AI phrases and your own samples. Set up in 10 minutes.',
 };
 
-// /about/ lists the 6 old practice areas; its rewrite waits for positioning decision 1.
-const LONG_DESCRIPTION_ALLOWED = ['/about'];
+const LONG_DESCRIPTION_ALLOWED: string[] = [];
 
 test('NextSurge shows the not-investment-advice note; other projects do not', async ({ page }) => {
   await page.goto('/projects/nextsurge/');
