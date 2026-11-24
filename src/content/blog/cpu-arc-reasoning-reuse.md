@@ -8,7 +8,7 @@ category: "AI Engineering"
 tags: ["LLM costs", "reasoning caching", "CPU-ARC", "AI agents", "small models"]
 featured: false
 draft: true  # flip to false after Mandar and Ajay sign off
-image: "/og-default.jpg"  # swap for Aditya's share image
+image: "/og-cpu-arc-reasoning.jpg"
 faq:
   - question: "What is CPU-ARC?"
     answer: "A method from NVIDIA researchers that turns a large model's solved reasoning into small Python programs. A small model then runs those programs on a CPU for similar new problems."

@@ -8,7 +8,7 @@ category: "AI Engineering"
 tags: ["reasoning caching", "CPU-ARC", "LLM inference", "semantic caching", "AI agents"]
 featured: false
 draft: true  # flip to false after Mandar and Ajay sign off
-image: "/og-default.jpg"  # swap for Aditya's share image
+image: "/og-cpu-arc-reasoning.jpg"
 faq:
   - question: "How does CPU-ARC find a cached method?"
     answer: "It embeds the request and compares it against a registry of entry points by cosine similarity. A close enough match runs the compiled function; anything else goes to the source model."
