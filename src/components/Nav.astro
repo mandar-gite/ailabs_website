@@ -1,5 +1,8 @@
 ---
 import LogoMark from "./LogoMark.astro";
+import projects from "../data/projects.json";
+// shortcut: NextSurge is parked, so it stays out of the menu; drop the filter if it returns
+const menuProjects = projects.filter((p) => p.id !== "nextsurge");
 ---
 <header class="nav-header">
     <div class="nav-inner">
@@ -13,7 +16,18 @@ import LogoMark from "./LogoMark.astro";
 
         <nav class="nav-links" id="nav-links">
             <a href="/solutions/">Solutions</a>
-            <a href="/projects/">Projects</a>
+            <div class="nav-dropdown">
+                <a href="/projects/" aria-haspopup="true">Projects</a>
+                <div class="nav-dropdown-panel">
+                    {menuProjects.map((p) => (
+                        <a href={`/projects/${p.id}/`}>
+                            <strong>{p.name}</strong>
+                            <span>{p.seoTitle.split(": ").slice(1).join(": ")}</span>
+                        </a>
+                    ))}
+                    <a href="/projects/" class="nav-dropdown-all">All projects</a>
+                </div>
+            </div>
             <a href="/blog/">Blog</a>
             <a href="/about/">About</a>
             <a href="/#contact">Contact Us</a>
@@ -32,6 +46,9 @@ import LogoMark from "./LogoMark.astro";
     <div class="nav-mobile-menu hidden" id="mobile-menu">
         <a href="/solutions/">Solutions</a>
         <a href="/projects/">Projects</a>
+        <div class="nav-mobile-sub">
+            {menuProjects.map((p) => <a href={`/projects/${p.id}/`}>{p.name}</a>)}
+        </div>
         <a href="/blog/">Blog</a>
         <a href="/about/">About</a>
         <a href="/#contact">Contact Us</a>
@@ -104,6 +121,27 @@ import LogoMark from "./LogoMark.astro";
         background: var(--wp-canvas-2);
     }
 
+    .nav-dropdown { position: relative; display: flex; }
+    .nav-dropdown-panel {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 22rem;
+        padding: 0.5rem;
+        background: var(--bg);
+        border: 1px solid var(--wp-line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-lg);
+        z-index: 50;
+    }
+    .nav-dropdown:hover .nav-dropdown-panel,
+    .nav-dropdown:focus-within .nav-dropdown-panel { display: grid; }
+    .nav-dropdown-panel a { display: flex; flex-direction: column; gap: 0.1rem; padding: 0.5rem 0.75rem; }
+    .nav-dropdown-panel strong { color: var(--wp-ink); font-size: var(--text-sm); }
+    .nav-dropdown-panel span { font-weight: 500; font-size: var(--text-xs); color: var(--wp-ink-2); }
+    .nav-dropdown-panel .nav-dropdown-all { border-top: 1px solid var(--wp-line); margin-top: 0.25rem; font-size: var(--text-sm); }
+
     .nav-mobile-btn {
         display: none;
         background: none;
@@ -136,6 +174,9 @@ import LogoMark from "./LogoMark.astro";
         color: var(--accent);
         background: var(--surface);
     }
+
+    .nav-mobile-sub { display: flex; flex-direction: column; margin-left: 1rem; padding-left: 0.5rem; border-left: 2px solid var(--wp-gold-tint); }
+    .nav-mobile-menu .nav-mobile-sub a { font-weight: 600; font-size: var(--text-sm); padding: 0.4rem 0.5rem; color: var(--text-2); }
 
     .nav-mobile-menu.hidden { display: none; }
 
