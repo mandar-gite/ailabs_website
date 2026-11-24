@@ -39,3 +39,12 @@ test('/solutions/ has a section for every group, and LeapBuddy has a page', asyn
   for (const g of groups) await expect(page.locator(`section#${g.id} .solution-title`)).toHaveText(g.name);
   expect((await request.get('/projects/leapbuddy/')).ok()).toBe(true);
 });
+
+// The old 4-area names must not come back anywhere, hidden summaries included (HTML may encode & as &amp;).
+test('no page carries the retired practice-area names', async ({ request }) => {
+  const retired = [/Finance Automation/, /Operational Intelligence/, /Document (&amp;|&) OCR/, /Data Engineering (&amp;|&) Integration/, /\b4 practice areas\b/];
+  for (const path of ['/', '/solutions/', '/about/', '/projects/', '/blog/welcome-to-72ai-blog/']) {
+    const html = await (await request.get(path)).text();
+    for (const re of retired) expect(html, `${path} ${re}`).not.toMatch(re);
+  }
+});
