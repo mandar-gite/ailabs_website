@@ -12,7 +12,7 @@ test('homepage copy has no em dashes and no unconfirmed proof', async ({ page })
   expect(text).not.toMatch(/Deployed across/i);
   expect(text).not.toMatch(/Industries served/i);
   expect(text).not.toMatch(/Not a demo/i);
-  await expect(page.locator('.trust-label')).toHaveText(/Built for/i);
+  await expect(page.locator('.trust-bar')).toHaveCount(0);
 });
 
 test('contact fields stack on narrow screens so email is not cut off', async ({ page }) => {
