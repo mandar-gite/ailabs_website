@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.16.1] - 2026-11-24
+
+### Reverted
+- About page, welcome post and LocalBusiness schema go back to their 0.15.1 copy (reverts #89 from 0.15.2). That copy named 4 practice areas, including Finance Automation, which was dropped on 21 Nov; the solution names wait on the review with Ajay
+
 ## [0.16.0] - 2026-11-24
 
 ### Added
