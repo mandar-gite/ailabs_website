@@ -45,8 +45,8 @@ test('/blog/ has the topic-led meta description', async ({ request }) => {
   );
 });
 
-// Site-wide Service nodes mirror the 4 practice areas on /solutions/ (src/data/solutions.json).
-test('the JSON-LD Service nodes match the practice areas in solutions.json', async ({ request }) => {
+// Site-wide Service nodes mirror the solution groups on /solutions/ (src/data/solutions.json).
+test('the JSON-LD Service nodes match the solution groups in solutions.json', async ({ request }) => {
   const areas: { id: string; name: string; description: string }[] = JSON.parse(
     readFileSync(new URL('../../src/data/solutions.json', import.meta.url), 'utf8'),
   );
@@ -64,7 +64,7 @@ test('the JSON-LD Service nodes match the practice areas in solutions.json', asy
   for (const s of services) expect(s, s['@id']).not.toHaveProperty('industry');
 });
 
-test('the Organization description names the 4 practice areas and no others', async ({ request }) => {
+test('the Organization description names every solution group and no old sectors', async ({ request }) => {
   const areas: { name: string }[] = JSON.parse(
     readFileSync(new URL('../../src/data/solutions.json', import.meta.url), 'utf8'),
   );

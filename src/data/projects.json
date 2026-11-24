@@ -7,7 +7,7 @@
     "seoTitle": "FastAccounting: AI for Tally Expense Data",
     "metaDescription": "Proof of concept on 5 companies' Tally exports: classifies transactions at 95.9% party-group accuracy, forecasts expenses 3 months ahead and flags anomalies.",
     "description": "A proof of concept on 5 companies' Tally exports: Random Forest models with text features classify transactions by party and expense group (95.9% average party-group accuracy), XGBoost and Prophet forecast recurring expenses 3 months ahead, and Isolation Forest flags unusual entries for review.",
-    "category": "Finance Automation",
+    "category": "Data Engineering & Reporting",
     "featured": false,
     "dataTypes": [
       "Tally daybook exports",
@@ -44,7 +44,7 @@
     "seoTitle": "CallMind: AI Call Compliance Scoring for Hindi",
     "metaDescription": "Transcribes Hindi call recordings, separates speakers and scores each call against its campaign script, so every call gets a compliance report.",
     "description": "A GPU-accelerated pipeline that transcribes Hindi calls, separates speakers and scores each call against its campaign script, using a mix of multilingual embeddings and lexical matching. Raw audio becomes a structured compliance report for every call.",
-    "category": "Operational Intelligence",
+    "category": "Call & Voice Analytics",
     "featured": false,
     "dataTypes": [
       "Hindi call recordings",
@@ -83,7 +83,7 @@
     "seoTitle": "NextSurge: ML Market-Signal Models",
     "metaDescription": "Market-signal models built with LightGBM, XGBoost and ensembles on engineered OHLCV indicator features, tested with walk-forward cross-validation.",
     "description": "Feature-rich market-signal models with walk-forward testing.",
-    "category": "Data Engineering & Integration",
+    "category": "Data Engineering & Reporting",
     "featured": false,
     "dataTypes": [
       "OHLCV data",
@@ -111,7 +111,7 @@
     "seoTitle": "JNVessays: Handwritten Exam Sheet OCR",
     "metaDescription": "A handwriting OCR pipeline that digitises scanned exam answer sheets, with layout parsing, answer segmentation and text extraction.",
     "description": "Handwriting-OCR pipeline for exam digitisation.",
-    "category": "Document & OCR Systems",
+    "category": "Visual Intelligence",
     "featured": false,
     "dataTypes": [
       "Handwritten exam sheets",
@@ -137,7 +137,7 @@
     "seoTitle": "DocIntel: Document AI for PDFs and Scans",
     "metaDescription": "Turns PDFs, scans, Word files and mixed-format documents into structured, searchable data with OCR, layout analysis and entity extraction.",
     "description": "OCR and layout intelligence for complex documents.",
-    "category": "Document & OCR Systems",
+    "category": "Document Intelligence",
     "featured": false,
     "dataTypes": [
       "PDFs",
@@ -166,7 +166,7 @@
     "seoTitle": "GradeQP: AI Question Paper Compliance Checker",
     "metaDescription": "Checks draft question papers against a course rulebook with rule checks and LLM judgement, then returns the faculty's Word file with cited comments.",
     "description": "A proof of concept that parses a draft paper, extracts its structure in one structured LLM call, then runs deterministic checks and LLM-judged rules against a course-specific rulebook. The output is a verdict, findings that cite their rule, and a copy of the faculty member's own Word file with comments on the affected questions.",
-    "category": "Document & OCR Systems",
+    "category": "Document Intelligence",
     "featured": false,
     "dataTypes": [
       "Draft question papers (DOCX and PDF)",
@@ -200,7 +200,7 @@
     "seoTitle": "Report Copilot: Privacy-Safe LLM Reporting",
     "metaDescription": "Turns plain-language report requests into validated scripts over pseudonymised warehouse data. The LLM sees table schemas only, never personal data.",
     "description": "A reporting system for an education non-profit's teacher programme. A plain-language request such as \"training report for one state, split by district\" is turned into business rules and a report script by an LLM, run against the warehouse, and the output is checked against the manual report on counts and values. The LLM only ever sees table schemas, never row values; 1,763 columns across 95 tables are classified for personal data, and direct identifiers are pseudonymised with a keyed HMAC-SHA256 hash, failing closed on any unclassified column.",
-    "category": "Data Engineering & Integration",
+    "category": "Data Engineering & Reporting",
     "featured": false,
     "dataTypes": [
       "Teacher programme records",
@@ -239,7 +239,7 @@
     "seoTitle": "Valent: Cap Table and Liquidation Waterfall AI",
     "metaDescription": "Extracts preference terms from charters and articles of association, ties each value to a verbatim citation, and runs the liquidation waterfall after review.",
     "description": "For cap table and liquidation waterfall work, Valent extracts preference terms from US certificates of incorporation and Indian articles of association, with each value tied to a verbatim quote that a validator checks. A reviewer confirms every term, and the waterfall engine distributes an assumed exit value down the preference stack, with totals reconciled back to the exit value. The output distributes an assumed exit value. It does not estimate fair market value, which needs an EV-to-equity bridge and a locked valuation date.",
-    "category": "Finance Automation",
+    "category": "Document Intelligence",
     "featured": false,
     "dataTypes": [
       "Certificates of incorporation (DOCX)",
@@ -277,7 +277,7 @@
     "seoTitle": "Contract Risk Radar: AI Contract Clause Review",
     "metaDescription": "Reviews cybersecurity contract clauses against 133 policy obligations. Each flag carries a verdict, confidence and a rationale. Built on synthetic contracts.",
     "description": "A three-stage pipeline (obligation extraction, per-obligation judgment, verdict prediction by analogy) reviews contract clauses against obligations drawn from three policy documents. Each flagged clause gets a verdict (Accept, Modify, Replace, Reject or Escalate), a confidence flag and a rationale, and low-similarity clauses default to Escalate. Built and evaluated on synthetic contracts.",
-    "category": "Operational Intelligence",
+    "category": "Document Intelligence",
     "featured": false,
     "dataTypes": [
       "Cybersecurity contract clauses (Word files)",
@@ -313,7 +313,7 @@
     "seoTitle": "Farm Wildlife Alerts: AI Intrusion Detection",
     "metaDescription": "In development: identifies which animal is entering a farm plot, benchmarked per species, with false-alert rates reported next to accuracy.",
     "description": "In development: a research-stage system that identifies which animal is entering a farm plot, built on pretrained wildlife detectors and classifiers. Each benchmark run scores every species on its own and reports how often a non-target animal would wake the farmer, next to accuracy. The night-time head, the alert logic and the field hardware are still being designed.",
-    "category": "Operational Intelligence",
+    "category": "Visual Intelligence",
     "featured": false,
     "dataTypes": [
       "Public wildlife photographs and camera-trap archive images",
@@ -338,6 +338,51 @@
       "Camera Trap",
       "Wildlife Detection",
       "Agriculture"
+    ]
+  },
+  {
+    "id": "leapbuddy",
+    "name": "LeapBuddy",
+    "shortBlurb": "A chat assistant that answers a national education NGO's teacher-entrepreneurs from its own FAQ, teaching text, worksheets and training videos.",
+    "tagline": "Answers teacher-entrepreneurs from the NGO's own material, on the web today and WhatsApp next.",
+    "seoTitle": "LeapBuddy: AI Assistant for Teachers",
+    "metaDescription": "LeapBuddy answers teachers from an education NGO's own FAQ, teaching text and videos, sends the matching worksheet or video, and alerts staff to risk signals.",
+    "description": "LeapBuddy is a chat assistant that answers a national education NGO's teacher-entrepreneurs from the NGO's own material: the programme FAQ, teaching text, worksheets and training videos. Each answer draws only on those sources. If the material doesn't cover a question, the assistant says so and doesn't guess. Every message passes a safety check before any model call runs. A risk match gets a fixed reply, and a staff team is alerted in a private Slack channel. Any other question is sorted into one of 8 departments, such as Product Management or Classroom Management, and searched across catalog videos, teaching text and FAQ rows. A team-approved answer that closely matches the question leads. The assistant then picks one action: answer from text, answer with a video link, ask a clarifying question, decline as out of scope, or escalate. The reply is written from the top 4 sources only, and any link outside those sources is removed. A request for a test or homework gets worksheets and practice sheets, never a video. Every turn is logged, and every model call is traced in Langfuse. LeapBuddy runs as a web chat today, with WhatsApp next.",
+    "category": "AI Assistants",
+    "featured": false,
+    "dataTypes": [
+      "The programme FAQ, kept as an Excel workbook",
+      "Teaching text from the NGO's books, split into 266 chunks",
+      "Worksheets and practice sheets",
+      "A training video catalog, with links to hosted clips",
+      "Team-approved answers, matched against new questions",
+      "Turn logs: each question, its sources and its reply"
+    ],
+    "mlMethods": [
+      "A language model that rewrites follow-up messages into full questions",
+      "A classifier that sorts each question into one of 8 departments",
+      "Embedding search (BAAI/bge-m3) with a keyword boost across videos, text and FAQ rows",
+      "Team-approved answer matching, which can lead the reply",
+      "A rules-based safety check that runs before any model call",
+      "Grounded reply writing from the top 4 sources, with links checked against them",
+      "A hosted language model behind an OpenAI-compatible gateway, with every call traced in Langfuse",
+      "Python 3.12 and FastAPI in one Docker container, with Postgres for turn logs"
+    ],
+    "challenges": [
+      "Answering only from material that may not cover the question",
+      "Matching questions worded many ways to the right teaching text",
+      "Sending a worksheet, not a video, when a teacher asks for a test or homework",
+      "Catching risk messages before any model call runs",
+      "Keeping links in a reply only when a source supports them",
+      "Reporting an escalation only when the staff alert actually went through"
+    ],
+    "tags": [
+      "Chatbot",
+      "Education",
+      "NGO",
+      "Grounded AI",
+      "Teacher Support",
+      "Human Escalation"
     ]
   }
 ]

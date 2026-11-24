@@ -7,6 +7,17 @@ import { engagement, durationLabel, totalWeeks } from "../utils/engagement";
 import Footer from "../components/Footer.astro";
 import { getCollection } from "astro:content";
 import projects from "../data/projects.json";
+import solutions from "../data/solutions.json";
+
+// Icon paths per solution group; a group without one fails the build below
+const ICONS: Record<string, string> = {
+    "document-intelligence": '<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/>',
+    "visual-intelligence": '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>',
+    "call-voice-analytics": '<path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/>',
+    "ai-assistants": '<path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>',
+    "data-engineering": '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>',
+};
+for (const g of solutions) if (!ICONS[g.id]) throw new Error(`no homepage icon for solution group ${g.id}`);
 
 // Card copy from the 22 Nov project-page drafts; order follows the proof inventory
 const recentWork = [
@@ -140,63 +151,20 @@ const ogImage = "/og-home.jpg";
             <div class="container">
                 <div class="section-header">
                     <h2>What we build</h2>
-                    <p>AI that answers the questions keeping you up at night</p>
+                    <p>5 kinds of system, each built on your own data</p>
                 </div>
 
                 <div class="cap-grid">
-                    <div class="cap-card">
-                        <div class="cap-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-                        </div>
-                        <div class="cap-label">Finance</div>
-                        <h3>Know where the money's going before month-end</h3>
-                        <p>AI that tracks cash flow, flags anomalies, and surfaces the numbers that actually matter to your business.</p>
-                    </div>
-
-                    <div class="cap-card">
-                        <div class="cap-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                        </div>
-                        <div class="cap-label">Operations</div>
-                        <h3>Spot bottlenecks before they cost you</h3>
-                        <p>Real-time visibility into production, inventory and fulfilment, with AI flagging issues before they escalate.</p>
-                    </div>
-
-                    <div class="cap-card">
-                        <div class="cap-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-                        </div>
-                        <div class="cap-label">Sales</div>
-                        <h3>Know which deals will close, and which won't</h3>
-                        <p>Pipeline intelligence that surfaces high-value opportunities and tells your team where to focus this week.</p>
-                    </div>
-
-                    <div class="cap-card">
-                        <div class="cap-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                        </div>
-                        <div class="cap-label">Customer Support</div>
-                        <h3>Answer every customer query in seconds</h3>
-                        <p>Intelligent assistants trained on your products, policies, and past conversations. No outsourcing required.</p>
-                    </div>
-
-                    <div class="cap-card">
-                        <div class="cap-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg>
-                        </div>
-                        <div class="cap-label">Marketing</div>
-                        <h3>Know which campaign is working and which is wasting budget</h3>
-                        <p>Attribution analytics that tie your spend to revenue, past clicks and impressions.</p>
-                    </div>
-
-                    <div class="cap-card">
-                        <div class="cap-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/><path d="M13 15.5h.01M17 15.5h.01"/></svg>
-                        </div>
-                        <div class="cap-label">Logistics</div>
-                        <h3>Know where your shipment is before your customer asks</h3>
-                        <p>End-to-end tracking, delay prediction, and automated alerts that keep your supply chain moving.</p>
-                    </div>
+                    {solutions.map((g) => (
+                        <a href={`/solutions/#${g.id}`} class="cap-card">
+                            <div class="cap-icon" aria-hidden="true">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" set:html={ICONS[g.id]} />
+                            </div>
+                            <h3>{g.name}</h3>
+                            <p>{g.description}</p>
+                            <span class="cap-more">See the work</span>
+                        </a>
+                    ))}
                 </div>
             </div>
         </section>
@@ -645,6 +613,9 @@ const ogImage = "/og-home.jpg";
     }
 
     .cap-card {
+        display: block;
+        color: inherit;
+        text-decoration: none;
         position: relative;
         overflow: hidden;
         background: #fff;
@@ -694,13 +665,13 @@ const ogImage = "/og-home.jpg";
         color: var(--wp-gold-deep);
     }
 
-    .cap-label {
-        font-size: 0.7rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.09em;
-        color: var(--wp-ink-2);
-        margin-bottom: 0.5rem;
+    .cap-more {
+        display: inline-block;
+        margin-top: 1rem;
+        font-size: var(--text-sm);
+        font-weight: 600;
+        color: var(--wp-ink);
+        border-bottom: 2px solid var(--wp-gold);
     }
 
     .cap-card h3 {

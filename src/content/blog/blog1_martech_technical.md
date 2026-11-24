@@ -255,7 +255,7 @@ Everything runs on a single server. No cloud dependencies for core functionality
 This architecture is the foundation. We're extending it with:
 - **Domain-specific knowledge bases** for different industries
 - **Feedback learning loops** that improve generation based on user edits
-- **Multi-modal support** for image and [document analysis](/solutions/#document-ocr)
+- **Multi-modal support** for image and [document analysis](/solutions/#document-intelligence)
 - **Integration connectors** for common [Indian business platforms](/solutions/#data-engineering)
 
 The goal isn't to build the "smartest" AI. It's to build AI systems that reliably solve real operational problems—without the hype, without the abstraction.
