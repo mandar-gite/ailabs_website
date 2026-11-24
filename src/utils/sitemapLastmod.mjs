@@ -8,7 +8,7 @@ if (execFileSync('git', ['rev-parse', '--is-shallow-repository'], { encoding: 'u
 
 // Data a page renders besides its own .astro file. Keep in step with the page's imports.
 const DATA = {
-  '': ['src/utils/engagement.ts'],
+  '': ['src/utils/engagement.ts', 'src/data/projects.json', 'src/content/blog'], // Recent work and Latest writing rows
   about: ['src/utils/engagement.ts'],
   blog: ['src/content/blog'], // the index lists every post
   projects: ['src/data/projects.json'],
