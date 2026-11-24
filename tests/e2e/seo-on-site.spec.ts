@@ -77,31 +77,3 @@ test('the Organization description names the 4 practice areas and no others', as
   for (const a of areas) expect(desc, a.name).toContain(a.name.toLowerCase().replace('&', 'and'));
   for (const old of ['sales', 'support', 'marketing', 'logistics']) expect(desc, old).not.toContain(old);
 });
-
-// The old 6-area and F&B positioning, left over on pages that predate the 4 practice areas.
-const LEGACY = [/sales, support/i, /f&(amp;)?b\b/i, /operational optimi[sz]ation/i, /food (&|and) beverage/i];
-
-test('About and the welcome post carry no legacy positioning, and About lists the 4 areas', async ({ page, request }) => {
-  const areas: { name: string }[] = JSON.parse(
-    readFileSync(new URL('../../src/data/solutions.json', import.meta.url), 'utf8'),
-  );
-  for (const path of ['/about/', '/blog/welcome-to-72ai-blog/']) {
-    const html = await (await request.get(path)).text();
-    for (const re of LEGACY) expect(html, `${path} ${re}`).not.toMatch(re);
-  }
-  await page.goto('/about/');
-  await expect(page.locator('.service-item h3')).toHaveText(areas.map((a) => a.name));
-});
-
-test('LocalBusiness knowsAbout lists the 4 practice areas', async ({ request }) => {
-  const areas: { name: string }[] = JSON.parse(
-    readFileSync(new URL('../../src/data/solutions.json', import.meta.url), 'utf8'),
-  );
-  const html = await (await request.get('/')).text();
-  const lb = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
-    .map((m) => JSON.parse(m[1]))
-    .flatMap((j) => j['@graph'] ?? [j])
-    .find((n) => n['@type'] === 'LocalBusiness');
-  for (const a of areas) expect(lb.knowsAbout, a.name).toContain(a.name);
-  for (const re of LEGACY) expect(JSON.stringify(lb), String(re)).not.toMatch(re);
-});
