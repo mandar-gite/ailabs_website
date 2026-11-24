@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.17.1] - 2026-11-24
+
+### Fixed
+- /solutions/ intro and the hidden summaries on /, /solutions/ and /projects/ name the 5 solution groups; they still named the 4 practice areas or old sectors
+- e2e test fails if any retired practice-area name returns to a page
+
 ## [0.17.0] - 2026-11-24
 
 ### Changed
