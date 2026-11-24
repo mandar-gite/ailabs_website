@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.16.0] - 2026-11-24
+
+### Added
+- Homepage "Recent work": 4 project cards (DocIntel, CallMind, Report Copilot, FastAccounting) with a sector label and 1 line each, and an "Also" line linking the other 5 active projects. The homepage earns most search clicks and linked to no project page (21 Nov SEO audit)
+- Homepage "Latest writing": the 3 newest published posts, before the contact form
+- Nav: a Projects dropdown on desktop (hover and keyboard focus) and a project list in the phone menu. Every page now links all 9 active projects; NextSurge stays out while parked
+- e2e tests: project links in the homepage body, dropdown and phone menu; Latest writing order, drafts and links; keyboard access to the dropdown
+
+### Changed
+- Phone menu scrolls inside itself so its last links stay reachable on short screens
+- Homepage sitemap lastmod counts `projects.json` and the blog
+
+### Removed
+- The "Built for" sector bar under the hero, and the 2-stat proof band (replaced by Recent work)
+
 ## [0.15.2] - 2026-11-21
 
 ### Fixed
