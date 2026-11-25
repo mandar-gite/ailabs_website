@@ -275,8 +275,8 @@
     "shortBlurb": "Three-stage LLM pipeline that checks cybersecurity contract clauses against 133 policy obligations and flags them for review.",
     "tagline": "Clause-level contract review grounded in past SME verdicts, with a rationale for every flag.",
     "seoTitle": "Contract Risk Radar: AI Contract Clause Review",
-    "metaDescription": "Reviews cybersecurity contract clauses against 133 policy obligations. Each flag carries a verdict, confidence and a rationale. Built on synthetic contracts.",
-    "description": "A three-stage pipeline (obligation extraction, per-obligation judgment, verdict prediction by analogy) reviews contract clauses against obligations drawn from three policy documents. Each flagged clause gets a verdict (Accept, Modify, Replace, Reject or Escalate), a confidence flag and a rationale, and low-similarity clauses default to Escalate. Built and evaluated on synthetic contracts.",
+    "metaDescription": "Reviews cybersecurity contract clauses against 133 policy obligations. Each flag carries a verdict, confidence and a rationale. Runs on real contracts.",
+    "description": "A three-stage pipeline (obligation extraction, per-obligation judgment, verdict prediction by analogy) reviews contract clauses against obligations drawn from three policy documents. Each flagged clause gets a verdict (Accept, Modify, Replace, Reject or Escalate), a confidence flag and a rationale, and low-similarity clauses default to Escalate. It runs on the client's real supplier contracts, on a dedicated VM and GPU that the client contracts, and the client owns what we build.",
     "category": "Document Intelligence",
     "featured": false,
     "dataTypes": [
