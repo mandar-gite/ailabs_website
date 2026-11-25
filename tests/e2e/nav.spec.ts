@@ -1,6 +1,6 @@
 import { test, expect } from './fixtures';
 
-const LINKS = ['Solutions', 'Projects', 'Blog', 'About', 'Contact Us'];
+const LINKS = ['Solutions', 'Projects', 'Case studies', 'Blog', 'About', 'Contact Us'];
 
 test('desktop nav shows every link on one line', async ({ page, isMobile }) => {
   test.skip(isMobile, 'desktop layout only');
