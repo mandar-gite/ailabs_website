@@ -1,7 +1,7 @@
 ---
 title: "State teams pull their own reports, and teachers' names stay masked until an approver signs off"
-seoTitle: "Masked programme reports for an education NGO"
-description: "State teams pull their own programme reports from a masked warehouse, and teachers' names are released only after a recorded approval."
+seoTitle: "NGO reporting with data masking under DPDP"
+description: "NGO reporting on a data-masking warehouse: state teams pull their own reports, and names are released only after a recorded approval, ready for the DPDP Act."
 pubDate: 2026-11-25
 project: "report-copilot"
 draft: true  # flip to false after Mandar signs off

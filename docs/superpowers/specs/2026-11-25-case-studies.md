@@ -36,3 +36,23 @@ All 4 are anonymised. NEXUS may show "2,000+ documents a month" and "3 months" f
 ## Tests
 
 `tests/e2e/case-studies.spec.ts`: each entry names a live project; each published page returns 200 with 1 H1 and links to its project page, which links back; drafts return 404 and aren't linked; the index lists only published entries and `/projects/` links to it.
+
+## Keyword check (DataForSEO Labs keyword overview, 25 Nov 2026)
+
+Monthly Google searches, English. KD is keyword difficulty, 0-100; a dash means no figure.
+
+| Page | Target | India | US | KD | Intent |
+|---|---|---|---|---|---|
+| `/case-studies/` | ai case studies | 210 | 210 | 22-23 | commercial |
+| CallMind | call center quality assurance | 70 | 320 | 46 (IN) | informational |
+| CallMind | call audit | 260 | 90 | - | transactional (IN) |
+| LeapBuddy | ai teaching assistant | 110 | 210 | 12 (US) | commercial |
+| Report Copilot | data masking | 720 | 1,000 | 19-36 | informational |
+| Report Copilot | ngo reporting | 260 | 110 | 2-10 | informational |
+| Report Copilot | dpdp act | 49,500 | 260 | 29-54 | informational |
+| DocIntel | mca filings | 480 | - | - | informational |
+| DocIntel | intelligent document processing | 390 | 1,600 | 44 (US) | commercial |
+
+Too small to target: ai call scoring (10-20), ai chatbot for teachers (10-30), whatsapp chatbot for education (10-20), due diligence automation (10-30), document data extraction (20-40). "hindi speech to text" (1,300 in India) is a consumer tool search, so it doesn't fit a case study.
+
+The targets sit in each page's `seoTitle` and description, and "AI case studies" is the index H1. The body text stays as the marketing master copy has it.

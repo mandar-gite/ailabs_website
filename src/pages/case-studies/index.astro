@@ -12,11 +12,11 @@ const cases = (await getCollection("case-studies", ({ data }) => data.draft !== 
 const projectOf = (id: string) => (projectsData as Project[]).find((p) => p.id === id);
 ---
 
-<Layout title="Case studies: AI on a business's own data | 72° AI LABS" description="What we built for an education NGO and a due-diligence firm, the hard part, and what changed for them. Each links to the project's technical detail.">
+<Layout title="AI case studies on a business's own data | 72° AI LABS" description="What we built for an education NGO and a due-diligence firm, the hard part, and what changed for them. Each links to the project's technical detail.">
   <Nav />
   <main id="main-content" class="cases-page">
     <div class="max-w-[1000px] mx-auto px-6 lg:px-8 py-8 lg:py-10">
-      <PageHeader title="Case studies" intro="The problem each client had, what we built, and what changed. The technical detail is on each project page." />
+      <PageHeader title="AI case studies" intro="The problem each client had, what we built, and what changed. The technical detail is on each project page." />
       <ul class="case-list">
         {cases.map((c) => (
           <li>
