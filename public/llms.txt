@@ -47,7 +47,7 @@ From first call to a system in production usually takes 9 to 16 weeks. Engagemen
 - [Report Copilot](https://72ai.in/projects/report-copilot): plain-language report requests turned into rule-based, validated report scripts for an education non-profit; the LLM only sees schemas, never personal data, and the pipeline is designed around India's DPDP Act.
 - [GradeQP](https://72ai.in/projects/gradeqp): proof of concept that checks draft exam papers against paper-setting rules and cites the rule behind each finding.
 - [Valent](https://72ai.in/projects/valent): extracts preference terms from company charters with verbatim citations, then models the liquidation waterfall at an assumed exit value; it does not estimate fair market value.
-- [Contract Risk Radar](https://72ai.in/projects/contract-risk-radar): reviews contract clauses against 133 policy obligations and suggests a verdict with a rationale; built and evaluated on synthetic contracts.
+- [Contract Risk Radar](https://72ai.in/projects/contract-risk-radar): reviews contract clauses against 133 policy obligations and suggests a verdict with a rationale; runs on the client's real supplier contracts.
 - [Farm Wildlife Alerts](https://72ai.in/projects/farm-wildlife-alerts): in development; identifies which animal is entering a farm plot at night and alerts the farmer only for target species. No accuracy figures are published yet.
 - [JNVessays](https://72ai.in/projects/jnvessays): proof of concept for reading handwritten exam sheets with OCR.
 - [DocIntel](https://72ai.in/projects/docintel): document understanding for PDFs, scans and mixed-format files.

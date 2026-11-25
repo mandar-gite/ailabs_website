@@ -1,9 +1,10 @@
 ---
 // Page title block for index-style pages that would otherwise start without an h1.
-interface Props { title: string; intro?: string }
-const { title, intro } = Astro.props;
+interface Props { title: string; intro?: string; eyebrow?: string }
+const { title, intro, eyebrow } = Astro.props;
 ---
 <header class="page-header">
+  {eyebrow && <p class="page-header-eyebrow">{eyebrow}</p>}
   <h1>{title}</h1>
   {intro && <p>{intro}</p>}
 </header>
@@ -12,6 +13,15 @@ const { title, intro } = Astro.props;
   .page-header {
     margin: 0 0 2rem;
     max-width: 720px;
+  }
+
+  .page-header .page-header-eyebrow {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--wp-ink-2);
+    margin: 0 0 0.5rem;
   }
 
   .page-header h1 {

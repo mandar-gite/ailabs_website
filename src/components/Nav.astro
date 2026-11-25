@@ -1,8 +1,11 @@
 ---
 import LogoMark from "./LogoMark.astro";
 import projects from "../data/projects.json";
+import { getCollection } from "astro:content";
 // shortcut: NextSurge is parked, so it stays out of the menu; drop the filter if it returns
 const menuProjects = projects.filter((p) => p.id !== "nextsurge");
+const menuCases = await getCollection("case-studies", ({ data }) => data.draft !== true);
+const projectName = (id: string) => projects.find((p) => p.id === id)?.name ?? id;
 ---
 <header class="nav-header">
     <div class="nav-inner">
@@ -16,7 +19,7 @@ const menuProjects = projects.filter((p) => p.id !== "nextsurge");
 
         <nav class="nav-links" id="nav-links">
             <a href="/solutions/">Solutions</a>
-            <div class="nav-dropdown">
+            <div class="nav-dropdown" data-menu="projects">
                 <a href="/projects/">Projects</a>
                 <div class="nav-dropdown-panel">
                     {menuProjects.map((p) => (
@@ -26,6 +29,18 @@ const menuProjects = projects.filter((p) => p.id !== "nextsurge");
                         </a>
                     ))}
                     <a href="/projects/" class="nav-dropdown-all">All projects</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-menu="case-studies">
+                <a href="/case-studies/">Case studies</a>
+                <div class="nav-dropdown-panel">
+                    {menuCases.map((c) => (
+                        <a href={`/case-studies/${c.slug}/`}>
+                            <strong>{projectName(c.data.project)}</strong>
+                            <span>{c.data.seoTitle}</span>
+                        </a>
+                    ))}
+                    <a href="/case-studies/" class="nav-dropdown-all">All case studies</a>
                 </div>
             </div>
             <a href="/blog/">Blog</a>
@@ -46,8 +61,12 @@ const menuProjects = projects.filter((p) => p.id !== "nextsurge");
     <div class="nav-mobile-menu hidden" id="mobile-menu">
         <a href="/solutions/">Solutions</a>
         <a href="/projects/">Projects</a>
-        <div class="nav-mobile-sub">
+        <div class="nav-mobile-sub" data-menu="projects">
             {menuProjects.map((p) => <a href={`/projects/${p.id}/`}>{p.name}</a>)}
+        </div>
+        <a href="/case-studies/">Case studies</a>
+        <div class="nav-mobile-sub" data-menu="case-studies">
+            {menuCases.map((c) => <a href={`/case-studies/${c.slug}/`}>{projectName(c.data.project)}</a>)}
         </div>
         <a href="/blog/">Blog</a>
         <a href="/about/">About</a>
@@ -108,8 +127,8 @@ const menuProjects = projects.filter((p) => p.id !== "nextsurge");
 
     .nav-links a {
         text-decoration: none;
-        color: var(--wp-ink-2);
-        font-weight: 600;
+        color: var(--wp-ink);
+        font-weight: 700;
         font-size: 0.98rem;
         padding: 0.55rem 0.95rem;
         border-radius: 10px;
