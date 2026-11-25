@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.19.1] - 2026-11-25
+
+### Fixed
+- Contract Risk Radar's page and `llms.txt` said it was built on synthetic contracts. It runs on the client's real supplier contracts, on a VM and GPU the client contracts, and the client owns what we build (Mandar, 25 Nov)
+
 ## [0.18.0] - 2026-11-25
 
 ### Added
