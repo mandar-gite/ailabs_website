@@ -7,7 +7,7 @@ author: "Mandar Gite"
 category: "AI Engineering"
 tags: ["LLM costs", "reasoning caching", "CPU-ARC", "AI agents", "small models"]
 featured: false
-draft: true  # flip to false after Mandar and Ajay sign off
+draft: false
 image: "/og-cpu-arc-reasoning.jpg"
 faq:
   - question: "What is CPU-ARC?"

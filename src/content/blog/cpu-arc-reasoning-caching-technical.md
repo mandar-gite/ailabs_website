@@ -7,7 +7,7 @@ author: "Mandar Gite"
 category: "AI Engineering"
 tags: ["reasoning caching", "CPU-ARC", "LLM inference", "semantic caching", "AI agents"]
 featured: false
-draft: true  # flip to false after Mandar and Ajay sign off
+draft: false
 image: "/og-cpu-arc-reasoning.jpg"
 faq:
   - question: "How does CPU-ARC find a cached method?"
