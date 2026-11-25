@@ -26,8 +26,6 @@ Most teams pay a large model to think through every question from scratch, even 
 
 For LLM cost optimization, the most useful thing to cache is the method itself, provided you can check that each reuse is still correct, current and safe.
 
-![A large model works a problem once, the method is compiled into a program that runs on a CPU, and it is reused across many runs with a check on every run](/og-cpu-arc-reasoning.jpg)
-
 ## What we cache today
 
 Most production stacks cache 2 things. Token prefixes, so a long system prompt isn't paid for twice. And sometimes a finished answer, served again when a new query looks similar.
@@ -47,6 +45,8 @@ For a new request, the system uses embedding similarity to find a matching entry
 On a hit, it runs the compiled program on the CPU, with light help from a small target model. In the reported runs, that's a fine-tuned Llama 3.2 1B. A miss, or an error when invoking the program, falls back to the source model.
 
 An optional last step compiles the lookup itself into ordinary Python, so the whole cache can ship as a standalone module.
+
+![A large model works a problem once, the method is compiled into a program that runs on a CPU, and it is reused across many runs with a check on every run](/og-cpu-arc-reasoning.jpg)
 
 ## The savings come with a building cost
 

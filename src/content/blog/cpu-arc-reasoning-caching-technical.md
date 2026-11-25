@@ -26,8 +26,6 @@ Most LLM caching covers 2 things: the prompt prefix (prompt caching) and, someti
 
 CPU-ARC caches a third thing: the method. This post walks through how it does that, what the paper reports, and what you'd need to check before building something like it.
 
-![A large model works a problem once, the method is compiled into a program that runs on a CPU, and it is reused across many runs with a check on every run](/og-cpu-arc-reasoning.jpg)
-
 ## The architecture
 
 CPU-ARC (Belcak, Heinrich, Muralidharan, Diao and Molchanov at NVIDIA, arXiv:2611.09891, submitted 6 Nov 2026) splits the work across 3 roles.
@@ -43,6 +41,8 @@ At request time:
 1. The request is embedded and compared against an entry-point registry by cosine similarity. The threshold is configurable; the paper doesn't publish the value it used.
 2. On a hit, the target model extracts each parameter from the request, guided by the stored descriptions. Then the root function runs. The glue between steps is code; the target only handles elementary language calls such as classification, extraction and conversion.
 3. On a miss, or if invocation raises an error, the request goes to the source model.
+
+![A large model works a problem once, the method is compiled into a program that runs on a CPU, and it is reused across many runs with a check on every run](/og-cpu-arc-reasoning.jpg)
 
 Inside the functions, a few primitives do the work (section 2.1). `load(ctx, "<description>")` finds an input by its plain-language description. `do()` calls another semantic function by description. `narrate()` leaves a readable trace. `lm()` makes an elementary model call. The context is a stack of vector-store memory layers, and lookups inside it use EmbeddingGemma (about 300M parameters) on a FAISS flat index (section 3.4).
 
