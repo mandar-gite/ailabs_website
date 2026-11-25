@@ -1,7 +1,7 @@
 ---
 title: "Stop paying again for reasoning you've already done"
-seoTitle: "Reasoning reuse: cut repeat LLM costs"
-description: "CPU-ARC and 4 related papers compile a solved method into something cheap to run. Why that matters for LLM costs, and why every cache hit needs checking."
+seoTitle: "LLM cost optimization: reuse solved reasoning"
+description: "LLM cost optimization past prompt caching: CPU-ARC and 4 related papers compile a solved method into something cheap to run, and every reuse needs a check."
 pubDate: 2026-11-24
 author: "Mandar Gite"
 category: "AI Engineering"
@@ -24,7 +24,7 @@ faq:
 
 Most teams pay a large model to think through every question from scratch, even when they've solved that kind of problem many times before. I think that's the wrong default.
 
-The most useful thing to cache is the method itself, provided you can check that each reuse is still correct, current and safe.
+For LLM cost optimization, the most useful thing to cache is the method itself, provided you can check that each reuse is still correct, current and safe.
 
 ## What we cache today
 
@@ -86,11 +86,11 @@ Building the cache costs money too, which is why the CPU-ARC authors report it o
 
 A last practical limit: as of 24 Nov 2026, the paper links no code, weights or logs, so nobody outside NVIDIA can reproduce the headline table yet.
 
-## What this means for a team
+## What this means for your LLM costs
 
 Start by asking whether you have a stable method at all.
 
-If the work applies the same method to new cases, with checks you can write down, compiling or caching that method deserves a design review. A small model running on a CPU is part of the appeal.
+If the work applies the same method to new cases, with checks you can write down, compiling or caching that method deserves a design review. A small model running on a CPU is part of the appeal. [Assistants that answer people from your own material](/solutions/#ai-assistants) are a common place to look, because they get the same kinds of question again and again.
 
 If the work is open-ended, or the tools and data shift under you, a prefix cache and a well-written skill may be the better buy. "Reason Wide, Not Deep" is a good reminder to compile only when it pays.
 

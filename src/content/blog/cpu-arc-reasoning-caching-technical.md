@@ -1,7 +1,7 @@
 ---
 title: "Reasoning caching, from the inside: how CPU-ARC compiles a solved method"
-seoTitle: "Reasoning caching: how CPU-ARC works"
-description: "How CPU-ARC turns a solved reasoning trace into CPU-run programs, what its numbers say, when the build cost pays back, and how a cache hit fails."
+seoTitle: "LLM caching: how CPU-ARC reuses reasoning"
+description: "LLM caching past prompt and semantic caching: how CPU-ARC turns a solved reasoning trace into CPU-run programs, when the build pays back, and how a hit fails."
 pubDate: 2026-11-24
 author: "Mandar Gite"
 category: "AI Engineering"
@@ -22,7 +22,7 @@ faq:
 
 *This is the engineering edition. For the short version, read [stop paying again for reasoning you've already done](/blog/cpu-arc-reasoning-reuse/).*
 
-Most LLM stacks cache 2 things: the prompt prefix and, sometimes, a finished answer keyed by embedding similarity. Both break the moment the numbers in a problem change.
+Most LLM caching covers 2 things: the prompt prefix (prompt caching) and, sometimes, a finished answer keyed by embedding similarity (semantic caching). Both break the moment the numbers in a problem change.
 
 CPU-ARC caches a third thing: the method. This post walks through how it does that, what the paper reports, and what you'd need to check before building something like it.
 
@@ -145,7 +145,7 @@ So the cheap case is a hard, stable, high-volume method: few hits repay the buil
 
 The spread matters. StepCache verifies every reuse. Reason Wide, Not Deep describes no per-request check and still recovers most of the gap. CPU-ARC sits in between: a hit runs compiled code, and only an invocation error triggers the fallback.
 
-## How a cache hit fails
+## How an LLM cache hit fails
 
 Semantic caches have known failure modes, and a compiled method inherits all of them.
 
@@ -176,6 +176,7 @@ Caching the method is a real lever when the method is stable and the volume is h
 - Run the break-even formula with your own *k*, *r* and expected hit volume, then add your miss rate.
 - Version every entry against the tools and data it calls, and expire it when they change.
 - Sample hits in production and rerun them on the full model, so drift shows up before users see it.
+- Start where questions repeat most. [Assistants that answer from your own material](/solutions/#ai-assistants) are 1 good candidate.
 
 </div>
 
