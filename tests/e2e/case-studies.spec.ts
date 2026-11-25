@@ -35,7 +35,7 @@ for (const c of published) {
     await expect(page.locator(`main a[href="/projects/${c.project}/"]`).first()).toBeVisible();
 
     await page.goto(`/projects/${c.project}/`);
-    await expect(page.locator(`a[href="/case-studies/${c.slug}/"]`)).toHaveCount(1);
+    await expect(page.locator(`main a[href="/case-studies/${c.slug}/"]`)).toHaveCount(1);
   });
 }
 

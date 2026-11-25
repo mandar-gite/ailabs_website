@@ -15,10 +15,16 @@ import LogoMark from "./LogoMark.astro";
             <nav class="footer-nav" aria-label="Footer navigation">
                 <a href="/solutions/">Solutions</a>
                 <a href="/projects/">Projects</a>
+                <a href="/case-studies/">Case studies</a>
                 <a href="/blog/">Blog</a>
-                <a href="/voice-dna/">Voice DNA</a>
                 <a href="/about/">About</a>
                 <a href="/#contact">Contact</a>
+            </nav>
+
+            <nav class="footer-resources" aria-label="Resources" data-footer-resources>
+                <span class="footer-resources-title">Resources</span>
+                <a href="/voice-dna/">Voice DNA</a>
+                <a href="/discovery-brief/">Discovery brief prompt</a>
             </nav>
         </div>
 
@@ -86,6 +92,31 @@ import LogoMark from "./LogoMark.astro";
     }
 
     .footer-nav a:hover {
+        color: var(--text);
+    }
+
+    .footer-resources {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .footer-resources-title {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--wp-ink-2);
+    }
+
+    .footer-resources a {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text-2);
+        text-decoration: none;
+    }
+
+    .footer-resources a:hover {
         color: var(--text);
     }
 

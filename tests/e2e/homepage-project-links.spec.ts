@@ -17,8 +17,8 @@ test('homepage body links every active project page', async ({ page }) => {
 test('desktop Projects menu lists every active project', async ({ page, isMobile }) => {
   test.skip(isMobile, 'desktop layout only');
   await page.goto('/');
-  await page.locator('#nav-links .nav-dropdown > a').hover();
-  const panel = page.locator('#nav-links .nav-dropdown-panel');
+  await page.locator('#nav-links [data-menu="projects"] > a').hover();
+  const panel = page.locator('#nav-links [data-menu="projects"] .nav-dropdown-panel');
   await expect(panel).toBeVisible();
   expect(await hrefs(panel.locator('a:not(.nav-dropdown-all)'))).toEqual([...active].sort());
 });
@@ -27,7 +27,7 @@ test('phone menu lists every active project under Projects', async ({ page, isMo
   test.skip(!isMobile, 'mobile layout only');
   await page.goto('/');
   await page.locator('#mobile-menu-button').click();
-  const sub = page.locator('#mobile-menu .nav-mobile-sub');
+  const sub = page.locator('#mobile-menu .nav-mobile-sub[data-menu="projects"]');
   await expect(sub).toBeVisible();
   expect(await hrefs(sub.locator('a'))).toEqual([...active].sort());
 });
@@ -35,11 +35,11 @@ test('phone menu lists every active project under Projects', async ({ page, isMo
 test('keyboard focus on Projects opens the menu and Tab moves into it', async ({ page, isMobile }) => {
   test.skip(isMobile, 'desktop layout only');
   await page.goto('/');
-  const trigger = page.locator('#nav-links .nav-dropdown > a');
+  const trigger = page.locator('#nav-links [data-menu="projects"] > a');
   await trigger.focus();
-  await expect(page.locator('#nav-links .nav-dropdown-panel')).toBeVisible();
+  await expect(page.locator('#nav-links [data-menu="projects"] .nav-dropdown-panel')).toBeVisible();
   await page.keyboard.press('Tab');
-  await expect(page.locator('#nav-links .nav-dropdown-panel a').first()).toBeFocused();
+  await expect(page.locator('#nav-links [data-menu="projects"] .nav-dropdown-panel a').first()).toBeFocused();
 });
 
 // Drafts get no page (src/pages/blog/[slug].astro), so a draft card would 404.
