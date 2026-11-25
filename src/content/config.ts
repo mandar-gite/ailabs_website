@@ -22,4 +22,17 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+// The business story for a project; the technical detail stays on /projects/<project>/.
+const caseStudies = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    seoTitle: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    project: z.string(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { blog, 'case-studies': caseStudies };

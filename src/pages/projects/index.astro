@@ -6,9 +6,11 @@ import ProjectCard from "../../components/ProjectCard.astro";
 import Footer from "../../components/Footer.astro";
 import projectsData from "../../data/projects.json";
 import type { Project } from "../../types";
+import { getCollection } from "astro:content";
 
 const projects = (projectsData as Project[]).filter((p: any) => !p.hidden);
 const categories = [...new Set(projects.map(p => p.category))];
+const hasCaseStudies = (await getCollection("case-studies", ({ data }) => data.draft !== true)).length > 0;
 
 const seoTitle = "AI Projects Built on Real Business Data | 72° AI LABS";
 const seoDescription = "Practical AI built for real business systems. Local models, RAG pipelines, OCR engines, forecasting stacks, and agentic workflows that run on everyday data.";
@@ -20,6 +22,7 @@ const seoDescription = "Practical AI built for real business systems. Local mode
     <p class="sr-only">TL;DR: Project write-ups across 5 solution groups: document intelligence, visual intelligence, call and voice analytics, AI assistants, and data engineering and reporting. Each project page lists data types, ML methods, and the specific operational challenge it solves.</p>
     <div class="max-w-[1400px] mx-auto px-6 lg:px-8 py-8 lg:py-10">
       <PageHeader title="What we've built" intro="Systems built on real business data: finance, operations, documents and forecasting. Each page lists the data, methods and hard parts behind it." />
+      {hasCaseStudies && <p class="case-studies-link">For the client's side of the story, read the <a href="/case-studies/">case studies</a>.</p>}
 
       <!-- Filters -->
       <div class="controls-bar">
@@ -63,6 +66,9 @@ const seoDescription = "Practical AI built for real business systems. Local mode
     flex-wrap: wrap;
     gap: 1rem;
   }
+
+  .case-studies-link { margin: -0.5rem 0 1.5rem; color: var(--wp-ink-2); }
+  .case-studies-link a { color: var(--wp-ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--wp-gold); }
 
   .view-toggle {
     display: flex;
