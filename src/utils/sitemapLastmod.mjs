@@ -11,7 +11,8 @@ const DATA = {
   '': ['src/utils/engagement.ts', 'src/data/projects.json', 'src/data/solutions.json', 'src/content/blog'], // What we build, Recent work, Latest writing
   about: ['src/utils/engagement.ts', 'src/data/solutions.json'],
   blog: ['src/content/blog'], // the index lists every post
-  projects: ['src/data/projects.json'],
+  projects: ['src/data/projects.json', 'src/content/case-studies'], // links to /case-studies/ once 1 is published
+  'case-studies': ['src/data/projects.json', 'src/content/case-studies'],
   // shortcut: relatedPost shows 1 post title, but any blog edit dates the page; map the single post file if recrawls get noisy
   solutions: ['src/data/solutions.json', 'src/data/projects.json', 'src/content/blog'],
 };
@@ -27,7 +28,10 @@ export function sourceFiles(pathname) {
   }
   // shortcut: any projects.json edit dates every project page; per-entry dates need git log -L, upgrade if recrawls get noisy
   if (section === 'projects' && slug) {
-    return ['src/pages/projects/[id].astro', 'src/data/projects.json', 'src/data/solutions.json', 'src/content/blog'];
+    return ['src/pages/projects/[id].astro', 'src/data/projects.json', 'src/data/solutions.json', 'src/content/blog', 'src/content/case-studies'];
+  }
+  if (section === 'case-studies' && slug) {
+    return [`src/content/case-studies/${slug}.md`].filter((f) => existsSync(f));
   }
   const own = [`src/pages/${p}.astro`, `src/pages/${p}/index.astro`].filter((f) => existsSync(f));
   return own.length ? [...own, ...(DATA[p] ?? [])] : [];
