@@ -54,7 +54,7 @@ test('every sitemap URL has a git-based lastmod', async ({ request }) => {
   const cases: [string, string[]][] = [
     ['/voice-dna/', ['src/pages/voice-dna.astro']],
     ['/blog/welcome-to-72ai-blog/', ['src/content/blog/welcome-to-72ai-blog.md']],
-    ['/projects/', ['src/pages/projects/index.astro', 'src/data/projects.json']],
+    ['/projects/', ['src/pages/projects/index.astro', 'src/data/projects.json', 'src/content/case-studies']],
     ['/blog/', ['src/pages/blog/index.astro', 'src/content/blog']],
   ];
   for (const [path, files] of cases) {

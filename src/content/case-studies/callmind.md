@@ -4,7 +4,7 @@ seoTitle: "Hindi call audits for an NGO's calling team"
 description: "Call quality assurance for an education NGO: every Hindi outreach call audited against its script, with each score tied to the transcript line."
 pubDate: 2026-11-25
 project: "callmind"
-draft: true  # flip to false after Mandar signs off
+draft: false
 ---
 
 | Industry | Use case | Solution | Impact |

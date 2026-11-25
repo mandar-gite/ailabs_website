@@ -4,7 +4,7 @@ seoTitle: "NGO reporting with data masking under DPDP"
 description: "NGO reporting on a data-masking warehouse: state teams pull their own reports, and names are released only after a recorded approval, ready for the DPDP Act."
 pubDate: 2026-11-25
 project: "report-copilot"
-draft: true  # flip to false after Mandar signs off
+draft: false
 ---
 
 | Industry | Use case | Solution | Impact |

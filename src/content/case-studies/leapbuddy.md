@@ -4,7 +4,7 @@ seoTitle: "AI teaching assistant for an education NGO"
 description: "LeapBuddy, an AI teaching assistant, answers rural teachers mid-class from an education NGO's own material. The pilot is under way, with teachers next."
 pubDate: 2026-11-25
 project: "leapbuddy"
-draft: true  # flip to false after Mandar signs off
+draft: false
 ---
 
 | Industry | Use case | Solution | Impact |

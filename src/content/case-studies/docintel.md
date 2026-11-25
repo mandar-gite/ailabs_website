@@ -4,7 +4,7 @@ seoTitle: "MCA filings to due-diligence reports"
 description: "Intelligent document processing for MCA filings: a Mumbai due-diligence firm's analysts start from a filled report, at 2,000+ documents a month."
 pubDate: 2026-11-25
 project: "docintel"
-draft: true  # flip to false after Mandar signs off
+draft: false
 ---
 
 | Industry | Use case | Solution | Impact |
