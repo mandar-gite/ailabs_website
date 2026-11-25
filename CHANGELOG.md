@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.18.0] - 2026-11-25
+
+### Added
+- 2 CPU-ARC posts: the business edition at /blog/cpu-arc-reasoning-reuse/ and the engineering edition at /blog/cpu-arc-reasoning-caching-technical/, linked to each other
+- Aditya's diagram as the share image and inside both posts
+- Titles and descriptions target searched terms ("LLM cost optimization", "LLM caching", "semantic caching"), with a link to /solutions/#ai-assistants from each post
+
 ## [0.17.1] - 2026-11-24
 
 ### Fixed
