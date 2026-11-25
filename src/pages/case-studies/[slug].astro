@@ -1,0 +1,79 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import projectsData from "../../data/projects.json";
+import type { Project } from "../../types";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const cases = await getCollection("case-studies", ({ data }) => data.draft !== true);
+  return cases.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<"case-studies"> };
+const { Content } = await entry.render();
+const project = (projectsData as Project[]).find((p) => p.id === entry.data.project);
+if (!project) throw new Error(`case study ${entry.slug}: project "${entry.data.project}" is not in projects.json`);
+
+const pageURL = new URL(`/case-studies/${entry.slug}/`, Astro.site).href;
+const articleLD = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": entry.data.title,
+  "description": entry.data.description,
+  "datePublished": entry.data.pubDate.toISOString(),
+  "author": { "@type": "Person", "name": "Mandar Gite", "url": "https://72ai.in" },
+  "publisher": { "@id": "https://72ai.in/#organization" },
+  "about": { "@type": "CreativeWork", "name": project.name, "url": new URL(`/projects/${project.id}/`, Astro.site).href },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageURL },
+};
+---
+
+<Layout title={`${entry.data.seoTitle} | 72° AI LABS`} description={entry.data.description} pageType="article">
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(articleLD)} />
+  </Fragment>
+  <Nav />
+  <main id="main-content" class="case-page">
+    <article class="max-w-[800px] mx-auto px-6 lg:px-8 py-8 lg:py-10">
+      <Breadcrumb items={[{ name: "Home", href: "/" }, { name: "Case studies", href: "/case-studies/" }, { name: project.name, href: `/case-studies/${entry.slug}/` }]} />
+      <header class="case-header">
+        <p class="case-category">{project.category}</p>
+        <h1 class="case-title">{entry.data.title}</h1>
+      </header>
+      <div class="post-content">
+        <Content />
+      </div>
+      <footer class="case-footer">
+        <a href="/case-studies/">← All case studies</a>
+        <a href="/#contact">Get in Touch</a>
+      </footer>
+    </article>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .case-page { background: white; min-height: 100vh; }
+  .case-header { padding-bottom: 2rem; border-bottom: 2px solid rgba(12, 26, 63, 0.1); margin-bottom: 2.5rem; }
+  .case-category { font-size: 0.875rem; font-weight: 600; color: var(--wp-ink-2); text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 1rem; }
+  .case-title { font-size: var(--text-4xl); font-weight: 800; color: var(--brand-blue); margin: 0; line-height: 1.2; }
+  .post-content { font-size: 1.125rem; line-height: 1.8; color: rgba(12, 26, 63, 0.85); }
+  .post-content :global(h2) { font-size: var(--text-2xl); font-weight: 700; color: var(--brand-blue); margin: 2.5rem 0 1rem; line-height: 1.3; }
+  .post-content :global(p) { margin: 0 0 1.5rem; }
+  .post-content :global(ul) { list-style: disc; margin: 0 0 1.5rem; padding-left: 2rem; }
+  .post-content :global(li) { margin: 0.5rem 0; }
+  .post-content :global(strong) { font-weight: 700; color: var(--brand-blue); }
+  .post-content :global(a) { color: var(--wp-ink); text-decoration: underline; text-decoration-color: var(--brand-gold); font-weight: 600; }
+  .post-content :global(table) { width: 100%; border-collapse: collapse; margin: 0 0 2rem; font-size: 0.95rem; display: block; overflow-x: auto; }
+  .post-content :global(thead) { background: var(--brand-blue); color: white; }
+  .post-content :global(th) { padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
+  .post-content :global(td) { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(12, 26, 63, 0.1); }
+  .case-footer { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-top: 2rem; margin-top: 2.5rem; border-top: 2px solid rgba(12, 26, 63, 0.1); }
+  .case-footer a { font-weight: 600; color: var(--brand-blue); text-decoration: none; }
+  .case-footer a:hover { color: var(--brand-gold); }
+  @media (max-width: 768px) { .case-title { font-size: 2rem; } .post-content { font-size: 1rem; } }
+</style>

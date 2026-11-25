@@ -30,6 +30,8 @@ const post = project.relatedPost
   ? (await getCollection('blog', ({ data }) => data.draft !== true)).find((p) => p.slug === project.relatedPost)
   : undefined;
 if (project.relatedPost && !post) throw new Error(`${project.id}: relatedPost "${project.relatedPost}" is not a published blog post`);
+// Drafts are filtered out so a live project page never links to an unbuilt case study.
+const caseStudy = (await getCollection('case-studies', ({ data }) => data.draft !== true)).find((c) => c.data.project === project.id);
 
 const pageURL = `https://72ai.in/projects/${project.id}/`;
 const creativeWorkLD = {
@@ -56,6 +58,7 @@ const creativeWorkLD = {
         <div class='category-badge'>{project.category}</div>
         <h1 class='project-title'>{project.name}{descriptor && ' '}{descriptor && <span class='project-title-sub'>{descriptor}</span>}</h1>
         <p class='project-tagline'>{project.tagline}</p>
+        {caseStudy && <p class='project-case-link'>The client's story: <a href={`/case-studies/${caseStudy.slug}/`}>read the case study</a></p>}
         {project.disclaimer && <p class='project-disclaimer' role='note'>{project.disclaimer}</p>}
       </header>
       <section class='description-section'>
@@ -122,6 +125,8 @@ const creativeWorkLD = {
   .project-title { font-size: 3rem; font-weight: 800; color: var(--brand-blue); margin: 0 0 1rem 0; line-height: 1.2; }
   .project-title-sub { display: block; font-size: 1.5rem; font-weight: 600; color: rgba(12, 26, 63, 0.75); margin-top: 0.5rem; line-height: 1.3; }
   .project-tagline { font-size: 1.25rem; color: rgba(12, 26, 63, 0.75); line-height: 1.6; }
+  .project-case-link { margin-top: 1rem; color: var(--wp-ink-2); }
+  .project-case-link a { color: var(--wp-ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--wp-gold); }
   .project-disclaimer { margin-top: 1rem; font-size: 0.875rem; color: var(--wp-ink-2); }
   .tech-section { margin-bottom: 3rem; }
   .section-heading { font-size: 1.75rem; font-weight: 700; color: var(--brand-blue); margin: 0 0 1.5rem 0; }
