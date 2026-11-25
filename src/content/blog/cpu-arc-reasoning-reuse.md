@@ -26,6 +26,8 @@ Most teams pay a large model to think through every question from scratch, even 
 
 For LLM cost optimization, the most useful thing to cache is the method itself, provided you can check that each reuse is still correct, current and safe.
 
+![A large model works a problem once, the method is compiled into a program that runs on a CPU, and it is reused across many runs with a check on every run](/og-cpu-arc-reasoning.jpg)
+
 ## What we cache today
 
 Most production stacks cache 2 things. Token prefixes, so a long system prompt isn't paid for twice. And sometimes a finished answer, served again when a new query looks similar.

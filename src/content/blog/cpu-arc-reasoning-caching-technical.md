@@ -26,6 +26,8 @@ Most LLM caching covers 2 things: the prompt prefix (prompt caching) and, someti
 
 CPU-ARC caches a third thing: the method. This post walks through how it does that, what the paper reports, and what you'd need to check before building something like it.
 
+![A large model works a problem once, the method is compiled into a program that runs on a CPU, and it is reused across many runs with a check on every run](/og-cpu-arc-reasoning.jpg)
+
 ## The architecture
 
 CPU-ARC (Belcak, Heinrich, Muralidharan, Diao and Molchanov at NVIDIA, arXiv:2611.09891, submitted 6 Nov 2026) splits the work across 3 roles.
