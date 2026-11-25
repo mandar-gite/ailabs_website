@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.19.0] - 2026-11-25
+
+### Added
+- Case studies at /case-studies/: CallMind, LeapBuddy, Report Copilot and DocIntel (the NEXUS work). Each ends with a link to its project page for the technical detail (Ajay, 25 Nov), and each project page links back
+- /projects/ links to the case studies
+- Titles and descriptions target searched terms: "ai case studies", "call audit", "ai teaching assistant", "data masking", "ngo reporting", "mca filings"
+- e2e test that keeps case studies and project pages linked both ways, and keeps drafts unlinked
+
 ## [0.18.0] - 2026-11-25
 
 ### Added
