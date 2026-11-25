@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.20.0] - 2026-11-25
+
+### Added
+- Case studies in the nav, with a hover menu like Projects, and in the mobile menu and footer
+- Footer Resources group: Voice DNA and "Write your AI project brief" (the discovery brief prompt)
+
+### Changed
+- Nav links are bold and in the main ink colour
+- /projects/ heading is "What we're building", under a "Projects" label
+- Voice DNA leaves the main footer links for Resources
+
+### Fixed
+- Contract Risk Radar's page and `llms.txt` said it was built on synthetic contracts. It runs on the client's real supplier contracts, on a VM and GPU the client contracts, and the client owns what we build (Mandar, 25 Nov)
+- The Voice DNA form note no longer says "Opens Google Form"
+
+## [0.19.0] - 2026-11-25
+
+### Added
+- Case studies at /case-studies/: CallMind, LeapBuddy, Report Copilot and DocIntel (the NEXUS work). Each ends with a link to its project page for the technical detail (Ajay, 25 Nov), and each project page links back
+- /projects/ links to the case studies
+- Titles and descriptions target searched terms: "ai case studies", "call audit", "ai teaching assistant", "data masking", "ngo reporting", "mca filings"
+- e2e test that keeps case studies and project pages linked both ways, and keeps drafts unlinked
+
 ## [0.18.0] - 2026-11-25
 
 ### Added
