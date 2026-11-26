@@ -1,8 +1,8 @@
 ---
 title: "A night watch that names the animal on a farmer's plot"
-seoTitle: "AI wildlife detection for crop protection"
+seoTitle: "Crop protection from animals with AI cameras"
 navTitle: "Night alerts for crop-raiding animals"
-description: "Camera-based wildlife detection for farm plots in Maharashtra: deer, monkey and wild boar raise an alert, and every other animal stays silent."
+description: "Crop protection from animals with AI cameras on farm plots in Maharashtra: deer, monkey and wild boar raise an alert, and other animals stay silent."
 pubDate: 2026-11-26
 project: "farm-wildlife-alerts"
 draft: false
