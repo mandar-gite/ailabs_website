@@ -386,7 +386,7 @@
     "dataTypes": [
       "Camera images and video from a watched drop folder",
       "Night infrared frames from field cameras",
-      "Camera-trap and public wildlife images, licence-checked, for training",
+      "Camera-trap and public wildlife images, for training",
       "Negative-class images: livestock, dogs, people, peafowl and empty frames",
       "Uploads from the public demo page"
     ],
