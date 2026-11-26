@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Sitemap `lastmod` for project pages comes from the page's own `projects.json` entry, its solution entry, its related post, its case study and the template, so 1 project edit no longer re-dates every project page (spec `docs/superpowers/specs/2026-11-26-sitemap-lastmod-per-entry.md`)
+
 ## [0.21.0] - 2026-11-26
 
 ### Changed

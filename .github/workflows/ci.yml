@@ -19,6 +19,6 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: node --test tests/lead-worker.test.mjs
+      - run: node --test tests/lead-worker.test.mjs tests/sitemap-lastmod.test.mjs
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
