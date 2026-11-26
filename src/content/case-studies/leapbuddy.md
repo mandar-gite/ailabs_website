@@ -1,7 +1,7 @@
 ---
 title: "An assistant built to answer rural teachers mid-class, from the NGO's own material"
 seoTitle: "AI teaching assistant for an education NGO"
-navTitle: "AI teaching assistant for teachers"
+navTitle: "Answers for teachers from their own course material"
 description: "LeapBuddy, an AI teaching assistant, answers rural teachers mid-class from an education NGO's own material. The pilot is under way, with teachers next."
 pubDate: 2026-11-25
 project: "leapbuddy"
