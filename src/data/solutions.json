@@ -37,8 +37,8 @@
   },
   {
     "id": "data-engineering",
-    "name": "Data Engineering & Reporting",
-    "description": "Pipelines and reports on your own data: self-serve reports with personal data masked until approval, and Tally entries classified from your own books.",
+    "name": "ML, Data Engineering & Reporting",
+    "description": "ML models, pipelines and reports on your own data: Tally entries classified from your own books, market-signal models tested walk-forward, and self-serve reports with personal data masked until approval.",
     "projects": [
       "report-copilot",
       "fastaccounting",

@@ -37,7 +37,7 @@ From first call to a system in production usually takes 9 to 16 weeks. Engagemen
 - **Visual Intelligence:** reading images and handwriting, such as farm camera footage and handwritten exam sheets.
 - **Call & Voice Analytics:** transcribing calls and scoring each one against its script, with the line behind every score.
 - **AI Assistants:** assistants that answer people from an organisation's own material and hand over to a person when they should.
-- **Data Engineering & Reporting:** pipelines and reports on a business's own data, from masked self-serve reports to Tally entry classification.
+- **ML, Data Engineering & Reporting:** ML models, pipelines and reports on a business's own data, from Tally entry classification and market-signal models to masked self-serve reports.
 
 ## Projects
 

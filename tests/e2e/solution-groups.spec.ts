@@ -11,7 +11,7 @@ test('the 5 solution groups are the agreed ones, in order', () => {
     'Visual Intelligence',
     'Call & Voice Analytics',
     'AI Assistants',
-    'Data Engineering & Reporting',
+    'ML, Data Engineering & Reporting',
   ]);
 });
 
