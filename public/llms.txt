@@ -49,12 +49,26 @@ From first call to a system in production usually takes 9 to 16 weeks. Engagemen
 - [GradeQP](https://72ai.in/projects/gradeqp): proof of concept that checks draft exam papers against paper-setting rules and cites the rule behind each finding.
 - [Valent](https://72ai.in/projects/valent): extracts preference terms from company charters with verbatim citations, then models the liquidation waterfall at an assumed exit value; it does not estimate fair market value.
 - [Contract Risk Radar](https://72ai.in/projects/contract-risk-radar): reviews contract clauses against 133 policy obligations and suggests a verdict with a rationale; runs on the client's real supplier contracts.
-- [Farm Wildlife Alerts](https://72ai.in/projects/farm-wildlife-alerts): in development; identifies which animal is entering a farm plot at night and alerts the farmer only for target species. No accuracy figures are published yet.
+- [Farm Wildlife Alerts](https://72ai.in/projects/farm-wildlife-alerts): identifies which animal enters a farm plot at night. Deer, monkey and wild boar raise an alert; other animals stay silent. No accuracy figures are published.
 - [JNVessays](https://72ai.in/projects/jnvessays): proof of concept for reading handwritten exam sheets with OCR.
 - [DocIntel](https://72ai.in/projects/docintel): document understanding for PDFs, scans and mixed-format files.
 
+## Case studies
+
+- [Hindi call audits for calling teams](https://72ai.in/case-studies/callmind/): every call scored against its script, with the transcript line behind each score.
+- [Due-diligence reports built from company documents](https://72ai.in/case-studies/docintel/): MCA filings read into the report a due-diligence firm's analysts start from.
+- [Answers for teachers from their own course material](https://72ai.in/case-studies/leapbuddy/): an assistant that answers from an education NGO's own material.
+- [State reports with teacher data masked](https://72ai.in/case-studies/report-copilot/): self-serve reports, with names released only after a recorded approval.
+- [Supplier contracts checked against cybersecurity policy](https://72ai.in/case-studies/contract-risk-radar/): every clause checked against 133 security and data protection obligations.
+- [Night alerts for crop-raiding animals](https://72ai.in/case-studies/farm-wildlife-alerts/): camera alerts for deer, monkey and wild boar on farm plots.
+- [Question papers checked against university rules](https://72ai.in/case-studies/gradeqp/): draft exam papers checked against the paper-setting rules, with the rule behind each finding.
+- [Liquidation preferences tied to their sources](https://72ai.in/case-studies/valent/): preference terms read from charters, each tied to its source sentence and confirmed by a person.
+
 ## Writing
 
+- [Stop paying again for reasoning you've already done](https://72ai.in/blog/cpu-arc-reasoning-reuse/): LLM cost past prompt caching, and why every reuse needs a check.
+- [Reasoning caching, from the inside](https://72ai.in/blog/cpu-arc-reasoning-caching-technical/): how CPU-ARC turns a solved reasoning trace into CPU-run programs.
+- [The ₹250 crore question: Who has access to your data?](https://72ai.in/blog/dpdp-compliance-masked-reports/): masking personal data on arrival under the DPDP Act.
 - [I Ran Karpathy's AutoResearch on a $300 GPU](https://72ai.in/blog/autoresearch_2026-04-14): 57 autonomous experiments over 7 hours on an RTX 3060. On consumer hardware, smaller models with more iterations beat larger ones.
 - [Building Multi-Agent AI Systems That Actually Work](https://72ai.in/blog/blog1_martech_technical): architecture of a multi-agent RAG system (planner, researcher, writer, reviewer) running on local hardware.
 - [Welcome to the 72° AI LABS blog](https://72ai.in/blog/welcome-to-72ai-blog)
