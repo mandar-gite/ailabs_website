@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.21.0] - 2026-11-26
+
+### Changed
+- Full copy for 10 project pages (all but NextSurge): blurb, tagline, title, description, data types, methods, challenges and tags, from the 22 Nov drafts (PR #114)
+- CallMind says its pilot is running, in place of "in use there" (Mandar, 26 Nov)
+
 ## [0.20.0] - 2026-11-25
 
 ### Added
