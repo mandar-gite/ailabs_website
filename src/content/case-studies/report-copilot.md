@@ -1,6 +1,7 @@
 ---
 title: "State teams pull their own reports, and teachers' names stay masked until an approver signs off"
 seoTitle: "NGO reporting with data masking under DPDP"
+navTitle: "State reports with teacher data masked"
 description: "NGO reporting on a data-masking warehouse: state teams pull their own reports, and names are released only after a recorded approval, ready for the DPDP Act."
 pubDate: 2026-11-25
 project: "report-copilot"

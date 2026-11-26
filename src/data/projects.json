@@ -338,7 +338,7 @@
     "tagline": "Every supplier clause checked against your own policy, with a verdict and the rule behind it.",
     "seoTitle": "Contract Risk Radar: AI Contract Review",
     "metaDescription": "Contract Risk Radar checks each supplier contract clause against your policy library, flags what weakens or breaks a rule, and drafts fixes from past reviews.",
-    "description": "Contract Risk Radar reads a supplier contract clause by clause and checks every clause against the company's own policy obligations. We built it for a global energy and automation company, which runs it on its real supplier contracts and owns what we built. The policy library (terms and conditions, security rules and a data protection agreement) is read once and turned into a checklist of 133 obligations. Each new contract is split into clauses, and each clause is checked against each obligation. Every flagged clause gets a status (Present, Weakened, Contradicted or Absent) and a verdict (Accept, Modify, Replace, Reject or Escalate). The system learns from the company's own history: past reviewer decisions are stored as examples, and each clause is matched to the closest ones. Replacement wording appears only for Modify or Replace verdicts, only at medium or high confidence, and only where a past decision supplies the text. Every result is checked against a fixed schema before it's saved, and the model runs at temperature 0, built so a re-run of the same contract gives the same findings. The model runs on a dedicated virtual machine with a GPU that the company contracts. The reviewer gets a screen with every finding, and keeps the final call.",
+    "description": "Contract Risk Radar reads a supplier contract clause by clause and checks every clause against the company's own policy obligations. We built it for a global energy and automation company, which runs it on its real supplier contracts and owns what we built. The policy library (terms and conditions, security rules and a data protection agreement) is read once and turned into a checklist of 133 obligations. Each new contract is split into clauses, and each clause is checked against each obligation. Every flagged clause gets a status (Present, Weakened, Contradicted or Absent) and a verdict (Accept, Modify, Replace, Reject or Escalate). The system learns from the company's own history: past reviewer decisions are stored as examples, and each clause is matched to the closest ones. Replacement wording appears only for Modify or Replace verdicts, only at medium or high confidence, and only where a past decision supplies the text. Every result is checked against a fixed schema before it's saved, and the model runs at temperature 0, built so a re-run of the same contract gives the same findings. The model runs on a dedicated virtual machine with a GPU that the company contracts. Only the company's security team can see the contracts and findings. The reviewer gets a screen with every finding, and keeps the final call.",
     "category": "Document Intelligence",
     "featured": false,
     "dataTypes": [
@@ -359,7 +359,7 @@
     "challenges": [
       "Clauses with no close precedent, which should go to a person",
       "Policy obligations that overlap across 3 source documents",
-      "Long contracts that stretch a model's context window",
+      "Contracts of nearly 200 clauses, judged against 10 obligations per model call",
       "Deciding between Modify and Escalate when precedents are few",
       "Keeping findings repeatable, so the same contract gets the same review",
       "Keeping contract text inside the client's chosen infrastructure"
@@ -386,7 +386,7 @@
     "dataTypes": [
       "Camera images and video from a watched drop folder",
       "Night infrared frames from field cameras",
-      "Camera-trap and public wildlife images, licence-checked, for training",
+      "Camera-trap and public wildlife images, for training",
       "Negative-class images: livestock, dogs, people, peafowl and empty frames",
       "Uploads from the public demo page"
     ],
@@ -401,7 +401,7 @@
     ],
     "challenges": [
       "Night frames, where colour drops away and cattle can look like deer",
-      "A small raider half-hidden behind a large animal in the same frame",
+      "A small animal and a large one in the same frame, each classified on its own crop",
       "Keeping false alerts low enough that a farmer leaves the system on",
       "Animals the model never trained on, which must stay silent",
       "Training data with licences that allow commercial use",
