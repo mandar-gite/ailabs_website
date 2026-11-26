@@ -333,6 +333,7 @@
   },
   {
     "id": "contract-risk-radar",
+    "relatedPost": "blog1_martech_technical",
     "name": "Contract Risk Radar",
     "shortBlurb": "Clause-by-clause review of supplier contracts against 133 policy obligations, built for a global energy and automation company.",
     "tagline": "Every supplier clause checked against your own policy, with a verdict and the rule behind it.",
@@ -375,6 +376,7 @@
   },
   {
     "id": "farm-wildlife-alerts",
+    "relatedPost": "autoresearch_2026-04-14",
     "name": "Farm Wildlife Alerts",
     "shortBlurb": "Camera-based crop-raider alerts that name the animal and stay quiet for livestock, dogs and people.",
     "tagline": "A night watch for crop plots that names the animal: deer, monkey or wild boar raise an alert, and everything else stays silent.",
@@ -418,6 +420,7 @@
   },
   {
     "id": "leapbuddy",
+    "relatedPost": "cpu-arc-reasoning-reuse",
     "name": "LeapBuddy",
     "shortBlurb": "A chat assistant that answers a national education NGO's teacher-entrepreneurs from its own FAQ, teaching text, worksheets and training videos.",
     "tagline": "Answers teacher-entrepreneurs from the NGO's own material, on the web today and WhatsApp next.",
