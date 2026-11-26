@@ -359,7 +359,7 @@
     "challenges": [
       "Clauses with no close precedent, which should go to a person",
       "Policy obligations that overlap across 3 source documents",
-      "Long contracts that stretch a model's context window",
+      "Contracts of nearly 200 clauses, judged against 10 obligations per model call",
       "Deciding between Modify and Escalate when precedents are few",
       "Keeping findings repeatable, so the same contract gets the same review",
       "Keeping contract text inside the client's chosen infrastructure"
