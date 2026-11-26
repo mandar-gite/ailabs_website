@@ -72,6 +72,7 @@ Market position: India-based, selling globally. India is the origin and a source
 
 - **CallMind:** `website_brief/callmind.md` is the truth (Hindi script-compliance audit). The live sentiment/topic-extraction copy is wrong.
 - **MarTech Intelligence:** dropped from the site.
+- **TreadCycle** (repo oem_recursion, the tyre-life GMM): back on the site from 26 Nov 2026 as a proof of concept in ML, Data Engineering & Reporting (Mandar). The client stays "a tyre manufacturer", car maker names stay off, and the page states the data limit. Brief: `website_brief/tyre-life.md`.
 - **Hospitality & F&B Data Hub** (repo BrewNexus) and **Tire-Life Analytics** (repo Bridgestone): proofs of concept that the clients never let go ahead. Corrected 2026-10-12: neither was deployed. Both removed from the site; don't present either as delivered work or name the clients.
 - **JNVessays:** a quick proof of concept, not a production system.
 - **NextSurge Momentum Alpha:** stays, but needs reframing.

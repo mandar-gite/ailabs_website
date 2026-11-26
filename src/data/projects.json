@@ -460,5 +460,42 @@
       "Teacher Support",
       "Human Escalation"
     ]
+  },
+  {
+    "id": "treadcycle",
+    "name": "TreadCycle",
+    "shortBlurb": "Machine learning and forecasting that infers when owners replace their tyres, from fitment sales and replacement registrations.",
+    "tagline": "When each segment replaces its tyres, and how sure the model is.",
+    "seoTitle": "TreadCycle: Tyre Replacement Forecasting with ML",
+    "metaDescription": "A proof of concept that infers when car owners replace their tyres, from fitment sales and warranty registrations, with a Gaussian mixture model per segment.",
+    "description": "TreadCycle estimates when car owners replace the tyres fitted on their new cars. We built it as a proof of concept for a tyre manufacturer, on its own data: tyre fitment sales by car model from 2015 to 2024, and replacement warranty registrations from 2021 to 2024. There's no direct record of tyre life, so the model infers it. Each year's replacements are shared across the fitment years 1 to 9 years earlier, in proportion to the tyres fitted in each year. A Gaussian mixture model per car maker and vehicle type then finds the replacement patterns (early replacers, the main group and delayers) where an average would show 1 number. 11 segments had enough data for a model, and each one showed 2 to 4 patterns. The work also showed the limit of the data: replacements are recorded for only 4 years, so early fitment years show only their long lags. We built a censored joint fit to correct for that and tested it on synthetic data, and the next phase needs replacement records that link back to the fitted vehicles. A dashboard, built for the client's team, shows which segments to reach first and in which year.",
+    "category": "ML, Data Engineering & Reporting",
+    "featured": false,
+    "dataTypes": [
+      "Tyre fitment sales by car model, 2015-2024",
+      "Replacement warranty registrations, 2021-2024",
+      "Segments by car maker and vehicle type"
+    ],
+    "mlMethods": [
+      "Gaussian mixture model per segment, 1 to 5 groups, chosen by AIC or BIC",
+      "Each year's replacements shared across the fitment years 1 to 9 years earlier, by fitted volume",
+      "Censored joint fit of tyre life and return rate, by Poisson likelihood, tested on synthetic data",
+      "scikit-learn, SciPy, pandas and a Dash dashboard"
+    ],
+    "challenges": [
+      "No direct record of tyre life, so it has to be inferred from 2 separate datasets",
+      "Replacement records cover only 4 years, so early fitment years show only their long lags",
+      "Small segments: some have only a handful of car models and years",
+      "No mileage, road or region data",
+      "Keeping timing apart from brand loyalty, which the data can't separate"
+    ],
+    "tags": [
+      "Forecasting",
+      "Gaussian Mixture Models",
+      "Tyre Life",
+      "Replacement Timing",
+      "Aftermarket",
+      "Proof of Concept"
+    ]
   }
 ]
