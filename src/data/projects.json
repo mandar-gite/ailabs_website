@@ -7,7 +7,7 @@
     "seoTitle": "FastAccounting: ML for Tally Expense Groups",
     "metaDescription": "FastAccounting suggests party and expense groups for Tally daybook entries, flags unusual ones and forecasts recurring expenses, with a model per company.",
     "description": "FastAccounting suggests the party group and the expense group for each entry in a Tally daybook. It was trained on an accounting firm's books: 5 companies, 60 months and about 48,000 transactions. Each company gets its own pair of models, because each firm names its groups and vendors in its own way. The system takes a Tally daybook export in CSV, turns exported expenses into positive values, maps group names to one spelling, and drops voucher IDs and entry numbers before training. Ledger names and narrations are read as text, which copes with the spelling variants vendor names pick up over time. The Streamlit app is built to show the top suggestions with a confidence score. The design also covers a forecast of recurring expenses and an anomaly model that flags unusual entries for a person to check first. A person reviews every suggestion, and the design posts nothing to the books on its own.",
-    "category": "Data Engineering & Reporting",
+    "category": "ML, Data Engineering & Reporting",
     "featured": false,
     "dataTypes": [
       "Tally daybook exports (CSV)",
@@ -85,14 +85,14 @@
   },
   {
     "id": "nextsurge",
-    "name": "NextSurge Momentum Alpha",
+    "name": "NextSurge",
     "shortBlurb": "Market-signal models built on engineered features and walk-forward validation.",
     "tagline": "Tested market signals built from robust feature engineering.",
     "disclaimer": "Research project. Not investment advice, and not offered as a signal service.",
     "seoTitle": "NextSurge: ML Market-Signal Models",
     "metaDescription": "Market-signal models built with LightGBM, XGBoost and ensembles on engineered OHLCV indicator features, tested with walk-forward cross-validation.",
     "description": "Feature-rich market-signal models with walk-forward testing.",
-    "category": "Data Engineering & Reporting",
+    "category": "ML, Data Engineering & Reporting",
     "featured": false,
     "dataTypes": [
       "OHLCV data",
@@ -251,7 +251,7 @@
     "seoTitle": "Report Copilot: Masked Reports for NGOs",
     "metaDescription": "State teams download their own reports with teacher names and phones masked. Real names appear only on an identified list, after an approver signs off.",
     "description": "Report Copilot is a report portal for a national education NGO's state teams. Staff pick one of 7 report types for their state and download it as a PDF or Excel file. Access is set by state, and a user sees only the states they hold. Programme data lands in BigQuery through Airbyte, and every column is classified against a reviewed list of 1,763 columns. A column missing from that list stops the warehouse run before any row moves. The warehouse is built to mask teacher names and phone numbers when it builds its tables, so report scripts read masked values only. Each report is a fixed script with its own tests, checked against the NGO's existing Power BI figures, and users can't ask for new SQL through the portal. When someone needs real names, they raise a disclosure request with a reason. A named approver signs off before any identified list is built. The database blocks anyone from approving their own request, and every request, decision and release is logged with the file's expiry date. Before a PDF goes out, a release check reads it back and confirms that each teacher's name prints correctly. The portal holds no warehouse credential, only a token for the report service. The report service runs on 1 server in India, and the NGO's own team runs the portal, which ships with 1,162 automated tests.",
-    "category": "Data Engineering & Reporting",
+    "category": "ML, Data Engineering & Reporting",
     "featured": false,
     "dataTypes": [
       "Programme data from the NGO's teacher programmes, landed in BigQuery through Airbyte",
@@ -459,6 +459,43 @@
       "Grounded AI",
       "Teacher Support",
       "Human Escalation"
+    ]
+  },
+  {
+    "id": "treadcycle",
+    "name": "TreadCycle",
+    "shortBlurb": "Machine learning and forecasting that infers when owners replace their tyres, from fitment sales and replacement registrations.",
+    "tagline": "When each segment replaces its tyres, and how sure the model is.",
+    "seoTitle": "TreadCycle: ML Tyre Replacement Forecasting",
+    "metaDescription": "A proof of concept that infers when car owners replace their tyres, from fitment sales and warranty registrations, with a Gaussian mixture model per segment.",
+    "description": "TreadCycle estimates when car owners replace the tyres fitted on their new cars. We built it as a proof of concept for a tyre manufacturer, on its own data: tyre fitment sales by car model from 2015 to 2024, and replacement warranty registrations from 2021 to 2024. There's no direct record of tyre life, so the model infers it. Each year's replacements are shared across the fitment years 1 to 9 years earlier, in proportion to the tyres fitted in each year. A Gaussian mixture model per car maker and vehicle type then finds the replacement patterns (early replacers, the main group and delayers) where an average would show 1 number. 11 segments had enough data for a model, and each one showed 2 to 4 patterns. The work also showed the limit of the data: replacements are recorded for only 4 years, so early fitment years show only their long lags. We built a censored joint fit to correct for that and tested it on synthetic data, and the next phase needs replacement records that link back to the fitted vehicles. A dashboard, built for the client's team, shows which segments to reach first and in which year.",
+    "category": "ML, Data Engineering & Reporting",
+    "featured": false,
+    "dataTypes": [
+      "Tyre fitment sales by car model, 2015-2024",
+      "Replacement warranty registrations, 2021-2024",
+      "Segments by car maker and vehicle type"
+    ],
+    "mlMethods": [
+      "Gaussian mixture model per segment, 1 to 5 groups, chosen by AIC or BIC",
+      "Each year's replacements shared across the fitment years 1 to 9 years earlier, by fitted volume",
+      "Censored joint fit of tyre life and return rate, by Poisson likelihood, tested on synthetic data",
+      "scikit-learn, SciPy, pandas and a Dash dashboard"
+    ],
+    "challenges": [
+      "No direct record of tyre life, so it has to be inferred from 2 separate datasets",
+      "Replacement records cover only 4 years, so early fitment years show only their long lags",
+      "Small segments: some have only a handful of car models and years",
+      "No mileage, road or region data",
+      "Keeping timing apart from brand loyalty, which the data can't separate"
+    ],
+    "tags": [
+      "Forecasting",
+      "Gaussian Mixture Models",
+      "Tyre Life",
+      "Replacement Timing",
+      "Aftermarket",
+      "Proof of Concept"
     ]
   }
 ]

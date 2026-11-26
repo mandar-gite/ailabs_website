@@ -64,6 +64,15 @@ test('every sitemap URL has a git-based lastmod', async ({ request }) => {
   }
 });
 
+// Project pages date from their own projects.json entry, not the whole file,
+// so 1 edit to 1 project doesn't move every project page.
+test('project pages carry their own lastmod', async ({ request }) => {
+  const xml = await (await request.get('/sitemap-0.xml')).text();
+  const dates = [...xml.matchAll(/<url><loc>https:\/\/72ai\.in\/projects\/[^<]+\/<\/loc><lastmod>([^<]*)<\/lastmod>/g)].map((m) => m[1]);
+  expect(dates.length).toBeGreaterThan(5);
+  expect(new Set(dates).size, 'every project page has the same lastmod').toBeGreaterThan(1);
+});
+
 // Today every data file is older than its page, so the date checks above can't
 // tell a dropped data file from a mapped one. This guards the mapping itself:
 // every data file a page imports must count towards its lastmod.

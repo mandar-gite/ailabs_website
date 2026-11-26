@@ -23,7 +23,7 @@ const TITLES: Record<string, string> = {
 
 const DESCRIPTIONS: Record<string, string> = {
   '/solutions':
-    'AI built on your own data in 5 groups: Document Intelligence, Visual Intelligence, Call & Voice Analytics, AI Assistants, and Data Engineering & Reporting.',
+    'AI built on your own data in 5 groups: Document Intelligence, Visual Intelligence, Call & Voice Analytics, AI Assistants, and ML, Data Engineering & Reporting.',
   '/blog/autoresearch_2026-04-14':
     '57 autonomous experiments, 7 hours, 1 RTX 3060. Why smaller models win on consumer hardware, and what the agent found that flips the usual scaling playbook.',
   '/blog/blog1_martech_technical':

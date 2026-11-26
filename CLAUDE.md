@@ -32,3 +32,29 @@ Set up on 11 Nov 2026. Everything sits in 1 Google Drive folder on the 72ai shar
 - The Search Console API works too (checked 21 Nov): the `gsc-reader` service account in `72ai-analytics` (key at `~/.config/gsc-credentials.json`) and the `gsc` MCP server in Claude Code. Take clicks and impressions totals from it, grouped by date or page. The sheet's tabs group by query, and Google leaves anonymous queries out of any query grouping: 22 Oct to 19 Nov that was 65% of impressions and 10 of 12 clicks. Keep the sheet; the routine reads it.
 - About 40% of impressions are `ai7xxxx` code queries (regex `^ai\d{4,}$`) with 0 clicks. Drop them before any analysis.
 - Ahrefs Webmaster Tools reports 0 organic keywords because it uses its own estimate. Use the GSC sheet for keyword data.
+
+## Deploy Configuration (configured by /setup-deploy)
+
+Set up 26 Nov 2026. `/ship` and `/land-and-deploy` read this section.
+
+- Platform: GitHub Pages, behind Cloudflare
+- Production URL: https://72ai.in
+- Deploy workflow: `.github/workflows/deploy.yml`, on every push to `main`. It runs the Worker tests and the e2e suite first, so a red test blocks the deploy.
+- Deploy status command: `gh run list --workflow deploy.yml --limit 1 --json status,conclusion`
+- Merge method: merge commit, never squash (feature and fix PRs into `develop`, release PRs into `main`, back-merge PRs into `develop`)
+- Project type: static web site (Astro)
+- Post-deploy health check: `https://72ai.in/` and `https://72ai.in/sitemap-index.xml` return 200, and the page changed by the release shows the new copy
+- Version: `package.json` `version`. There is no `VERSION` file; never create one.
+
+### Branches and releases
+
+- Feature, fix, docs and chore PRs go into `develop`, with `--base develop` passed explicitly.
+- `main` is production. It moves only through a `release/x.y.z` branch cut from `develop`: bump `package.json`, date the CHANGELOG's `[Unreleased]` block, PR into `main`, merge after CI, tag `vX.Y.Z` on the merge commit, then PR `main` back into `develop`.
+- Releases are batched; ask Mandar before cutting one.
+- The Lead Worker (`workers/lead-capture/`) deploys separately with wrangler and isn't part of this flow (README, "Deploy the lead Worker").
+
+### Custom deploy hooks
+- Pre-merge: `ci.yml` on the PR (Worker tests and e2e) must be green
+- Deploy trigger: automatic on push to `main`
+- Deploy status: `gh run list --workflow deploy.yml --limit 1`
+- Health check: the 2 URLs above return 200
