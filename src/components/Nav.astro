@@ -35,7 +35,7 @@ const menuCases = await getCollection("case-studies", ({ data }) => data.draft !
                 <div class="nav-dropdown-panel">
                     {menuCases.map((c) => (
                         <a href={`/case-studies/${c.slug}/`}>
-                            <strong>{c.data.seoTitle}</strong>
+                            <strong>{c.data.navTitle ?? c.data.seoTitle}</strong>
                         </a>
                     ))}
                     <a href="/case-studies/" class="nav-dropdown-all">All case studies</a>
@@ -64,7 +64,7 @@ const menuCases = await getCollection("case-studies", ({ data }) => data.draft !
         </div>
         <a href="/case-studies/">Case studies</a>
         <div class="nav-mobile-sub" data-menu="case-studies">
-            {menuCases.map((c) => <a href={`/case-studies/${c.slug}/`}>{c.data.seoTitle}</a>)}
+            {menuCases.map((c) => <a href={`/case-studies/${c.slug}/`}>{c.data.navTitle ?? c.data.seoTitle}</a>)}
         </div>
         <a href="/blog/">Blog</a>
         <a href="/about/">About</a>

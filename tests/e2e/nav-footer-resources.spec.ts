@@ -19,7 +19,7 @@ test('desktop nav: Case studies opens a hover menu of case studies', async ({ pa
 });
 
 // Mandar, 26 Nov 2026: the Case studies menu shows each case study's own short title,
-// with no project names.
+// with no project names and no client type such as "NGO".
 test('Case studies menu lists case study titles, not project names', async ({ page }) => {
   await page.goto('/');
   for (const sel of ['#nav-links [data-menu="case-studies"] .nav-dropdown-panel', '.nav-mobile-sub[data-menu="case-studies"]']) {
@@ -28,6 +28,7 @@ test('Case studies menu lists case study titles, not project names', async ({ pa
     for (const text of await items.allTextContents()) {
       for (const name of projectNames) expect(text.trim(), `${sel}: ${text}`).not.toBe(name);
       expect(text.trim().length, `${sel}: ${text}`).toBeGreaterThan(10);
+      expect(text, `${sel}: ${text}`).not.toMatch(/\bNGO\b/);
     }
   }
 });

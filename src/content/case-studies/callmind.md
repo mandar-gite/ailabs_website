@@ -1,6 +1,7 @@
 ---
 title: "An NGO's calling team gets every Hindi call scored against its script, with the transcript line behind each score"
 seoTitle: "Hindi call audits for an NGO's calling team"
+navTitle: "Hindi call audits for calling teams"
 description: "Call quality assurance for an education NGO: every Hindi outreach call audited against its script, with each score tied to the transcript line."
 pubDate: 2026-11-25
 project: "callmind"

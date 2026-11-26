@@ -28,6 +28,7 @@ const caseStudies = defineCollection({
   schema: z.object({
     title: z.string(),
     seoTitle: z.string(),
+    navTitle: z.string().optional(), // short label for the Case studies menu; no client type
     description: z.string(),
     pubDate: z.coerce.date(),
     project: z.string(),

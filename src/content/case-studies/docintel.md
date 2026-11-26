@@ -1,6 +1,7 @@
 ---
 title: "A due-diligence firm's analysts start from a filled report, at 2,000+ MCA documents a month"
 seoTitle: "MCA filings to due-diligence reports"
+navTitle: "MCA filings to due-diligence reports"
 description: "Intelligent document processing for MCA filings: a Mumbai due-diligence firm's analysts start from a filled report, at 2,000+ documents a month."
 pubDate: 2026-11-25
 project: "docintel"
