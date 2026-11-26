@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.22.0] - 2026-11-26
+
+### Added
+- TreadCycle at /projects/treadcycle/: the tyre replacement GMM proof of concept for an anonymous tyre manufacturer, with the data limit stated (PR #120, Mandar, 26 Nov)
+- `CONTRIBUTING.md`, pointing to the 72ai git strategy
+
+### Changed
+- The Data Engineering & Reporting group is now ML, Data Engineering & Reporting, across /solutions/, the group lists, schema and `llms.txt`. Its id stays `data-engineering` (PR #119)
+- NextSurge Momentum Alpha is now NextSurge (PR #118)
+
 ### Fixed
 - Sitemap `lastmod` for project pages comes from the page's own `projects.json` entry, its solution entry, its related post, its case study and the template, so 1 project edit no longer re-dates every project page (spec `docs/superpowers/specs/2026-11-26-sitemap-lastmod-per-entry.md`)
 
