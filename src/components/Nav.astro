@@ -5,7 +5,6 @@ import { getCollection } from "astro:content";
 // shortcut: NextSurge is parked, so it stays out of the menu; drop the filter if it returns
 const menuProjects = projects.filter((p) => p.id !== "nextsurge");
 const menuCases = await getCollection("case-studies", ({ data }) => data.draft !== true);
-const projectName = (id: string) => projects.find((p) => p.id === id)?.name ?? id;
 ---
 <header class="nav-header">
     <div class="nav-inner">
@@ -36,8 +35,7 @@ const projectName = (id: string) => projects.find((p) => p.id === id)?.name ?? i
                 <div class="nav-dropdown-panel">
                     {menuCases.map((c) => (
                         <a href={`/case-studies/${c.slug}/`}>
-                            <strong>{projectName(c.data.project)}</strong>
-                            <span>{c.data.seoTitle}</span>
+                            <strong>{c.data.seoTitle}</strong>
                         </a>
                     ))}
                     <a href="/case-studies/" class="nav-dropdown-all">All case studies</a>
@@ -66,7 +64,7 @@ const projectName = (id: string) => projects.find((p) => p.id === id)?.name ?? i
         </div>
         <a href="/case-studies/">Case studies</a>
         <div class="nav-mobile-sub" data-menu="case-studies">
-            {menuCases.map((c) => <a href={`/case-studies/${c.slug}/`}>{projectName(c.data.project)}</a>)}
+            {menuCases.map((c) => <a href={`/case-studies/${c.slug}/`}>{c.data.seoTitle}</a>)}
         </div>
         <a href="/blog/">Blog</a>
         <a href="/about/">About</a>

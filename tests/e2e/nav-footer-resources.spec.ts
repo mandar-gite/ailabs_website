@@ -1,4 +1,7 @@
+import { readFileSync } from 'node:fs';
 import { test, expect } from './fixtures';
+
+const projectNames: string[] = JSON.parse(readFileSync('src/data/projects.json', 'utf8')).map((p: { name: string }) => p.name);
 
 // Mandar, 25 Nov 2026: Case studies joins the nav with a hover menu like Projects,
 // Voice DNA moves to a Resources group in the footer next to the discovery brief
@@ -13,6 +16,20 @@ test('desktop nav: Case studies opens a hover menu of case studies', async ({ pa
   const panel = page.locator('#nav-links [data-menu="case-studies"] .nav-dropdown-panel');
   await expect(panel).toBeVisible();
   await expect(panel.locator('a[href^="/case-studies/"]')).not.toHaveCount(0);
+});
+
+// Mandar, 26 Nov 2026: the Case studies menu shows each case study's own short title,
+// with no project names.
+test('Case studies menu lists case study titles, not project names', async ({ page }) => {
+  await page.goto('/');
+  for (const sel of ['#nav-links [data-menu="case-studies"] .nav-dropdown-panel', '.nav-mobile-sub[data-menu="case-studies"]']) {
+    const items = page.locator(`${sel} a[href^="/case-studies/"]:not(.nav-dropdown-all)`);
+    await expect(items).not.toHaveCount(0);
+    for (const text of await items.allTextContents()) {
+      for (const name of projectNames) expect(text.trim(), `${sel}: ${text}`).not.toBe(name);
+      expect(text.trim().length, `${sel}: ${text}`).toBeGreaterThan(10);
+    }
+  }
 });
 
 test('nav links are bold and in the main ink colour', async ({ page, isMobile }) => {
