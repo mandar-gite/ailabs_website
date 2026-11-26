@@ -401,7 +401,7 @@
     ],
     "challenges": [
       "Night frames, where colour drops away and cattle can look like deer",
-      "A small raider half-hidden behind a large animal in the same frame",
+      "A small animal and a large one in the same frame, each classified on its own crop",
       "Keeping false alerts low enough that a farmer leaves the system on",
       "Animals the model never trained on, which must stay silent",
       "Training data with licences that allow commercial use",
