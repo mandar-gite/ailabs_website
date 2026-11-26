@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.23.0] - 2026-11-26
+
+### Added
+- 4 case studies: Contract Risk Radar, Farm Wildlife Alerts, GradeQP and Valent, each linked to its project page and back (PR #131). Titles target searched terms from a DataForSEO check: "ai contract review", "crop protection from animals", "ai question paper", "liquidation preference"
+- Contract Risk Radar's page says only the company's security team can see the contracts and findings (PR #127)
+
+### Changed
+- The Case studies menu shows a short title for each case study (new `navTitle` field), with no project names and no client type (PR #128)
+- Footer Resources links are smaller (PR #129)
+
+### Fixed
+- Farm Wildlife Alerts no longer says its training images are licence-checked, and a challenge now says what the code does: each animal is classified on its own crop (PR #126)
+- Contract Risk Radar's long-contract challenge now says what the code does: 10 obligations per model call, on contracts of nearly 200 clauses (PR #130)
+
 ## [0.22.0] - 2026-11-26
 
 ### Added
